@@ -1,0 +1,68 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-91f7c4b5-eeda-47b6-95a1-fc4cab206242
+slug: /execute/execute-tests-with-katalon-studio/execute-test-suite-collections-in-katalon-studio
+---
+
+# Execute test suite collections in Katalon Studio
+
+This guide shows you how to configure, perform, and schedule your test suite collections in Katalon Studio.
+
+You can execute a test suite collection in sequential or parallel mode. The behaviors of these two modes are described as follows.
+
+## Sequential mode
+
+The sequential mode allows you to execute the test suites one after another.
+
+## Parallel mode
+
+The parallel mode allows you to execute multiple test suites at the same time. With the parallel mode, you can set:
+
+-   **Max concurrent instances**: The maximum number of test suites executing at the same time.
+
+-   **Delay between instances \(in seconds\)**: The delay time between each test suite execution from 0-999 seconds. \(available from version 8.2.0\).
+
+
+This function reduces the risk of CPU spike issues when there are too many concurrent instances. When a test suite is ready to start, Katalon Studio prints the following message in the **Event Log** tab:
+
+```
+Test suite ${testSuiteID} is ready to start at ${currentTimeStamp}
+```
+
+<img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite-collection/image/ks-delay-between.png" width={700} />
+
+**Previous step**  
+
+
+[Manage test suite collections in Katalon Studio](/organize/manage-tests/manage-test-suite-collections-in-katalon-studio)
+
+## Execute a test suite collection
+
+To execute a test suite collection, follow these steps:
+
+1.  In a test suite collection, click **Execution Information**.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite-collection/image/ks-852-execution-information.png" />
+
+2.  Select **Sequential** or **Parallel** mode.
+
+    If you choose **Parallel** mode, you need to set the **Max concurrent instances** and the delay time between instances.
+
+3.  For each test suite, click on **Run with** to select execution environments.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite-collection/image/ks-select-tsc-environment.png" width={700} />
+
+    If you choose **TestCloud** or **Mobile**, you need to click on **Run Configuration** for further set up.
+
+4.  Choose a profile to run your test suite.
+
+5.  In the **Run** column, you can select which test suites to be run in this execution.
+
+6.  Once you are done, save your test suite collection and click **Execute**.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite-collection/image/ks-test-suite-collection-execute.png" width={700} />
+
+
+The **Job Progress** is triggered automatically to show the progress while your test suite collection is being executed.
+
+<img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite-collection/image/ks-job-progress-tsc.png" width={700} />

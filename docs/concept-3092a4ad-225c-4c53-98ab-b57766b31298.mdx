@@ -1,0 +1,217 @@
+---
+author: Windy Le <windy.le@katalon.com>
+id: concept-3092a4ad-225c-4c53-98ab-b57766b31298
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-test-suite-and-test-suite-collection-reports-in-katalon-studio
+---
+
+# View test suite and test suite collection reports in Katalon Studio
+
+## Test suite report
+
+You can view reports directly inside each test suite page.
+
+After executing a test suite, to see the test suite report, go to the **Result** tab.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORTS-Test-suite-results-tab.png" alt="Results tab" />
+
+<table><tr><th>Component</th><th>Description</th></tr><tbody><tr><td>Test cases table</td><td>List of executed test cases.</td></tr><tr><td>Summary tab</td><td>Information of the executed environment and summary of the execution result.</td></tr><tr><td>Execution Settings tab</td><td><p>Settings of execution browsers/devices. For example:</p> <p><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORTS-Execution-settings.png" /></p></td></tr><tr><td>Execution Environment tab</td><td><p>Other information about the executed system. For example:</p> <p><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORTS-Execution-environment.png" /></p></td></tr></tbody></table>
+
+### Test cases table
+
+The summary information of all executed iterations done in the test suite is displayed here. Each time when a test case is executed with a test data row is considered an iteration.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORT-test-case-table.png" alt="Test cases list" />
+
+You can filter reports based on their execution status:
+
+<table><tr><th>Filter</th><th>Description</th></tr><tbody><tr><td>Passed</td><td>Show only iterations which are passed.</td></tr><tr><td>Failed</td><td>Show only iterations which are failed.</td></tr><tr><td>Error</td><td>Show only iterations having errors.</td></tr><tr><td>Incomplete</td><td>Show only incomplete iterations.</td></tr><tr><td>Skipped</td><td>Show only skipped iterations.</td></tr></tbody></table>
+
+If qTest and JIRA are configured in project settings, you can submit data to those systems. To learn more about qTest and Jira integration, you can refer to the following documents:
+
+-   [qTest Integration](/organize/integration-for-organizing-tests/configure-qtest-integration-in-katalon-studio)
+-   [JIRA Integration](/organize/integration-for-organizing-tests/jira-integration/configure-jira-integration-in-katalon-studio)
+
+
+### Test suite summary
+
+This section gives the summary information of the test suite:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORTS-Summary.png" alt="Test suite summary" />
+
+<table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td><strong>Test Suite ID</strong></td><td>The ID of the executed test suite in Katalon Studio.</td></tr><tr><td><strong>Hostname</strong></td><td>The hostname of the environment where the test suite was executed.</td></tr><tr><td><strong>Local OS</strong></td><td>The OS used to open Katalon Studio.</td></tr><tr><td><strong>Platform</strong></td><td>The OS, browser, and browser version used to execute the test.</td></tr><tr><td><strong>Start / End / Elapse</strong></td><td>Execution start/end date time and duration.</td></tr><tr><td><strong>Total TC</strong></td><td>Total number of test cases and their execution status.</td></tr></tbody></table>
+
+### Test case log details
+
+To view details of the executed logs, in the **Test Case Table**, select an iteration and click **Show Test Case Details**.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORT-Show-test-case-details.png" alt="Show Test Cases Details" />
+
+1.  **Test Log**
+
+    Details regarding all the executed steps and their status are displayed in this tab.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORT-test-log.png" width={650} alt="Test log tab" />
+
+    <table><tr><th>Component</th><th>Description</th></tr><tbody><tr><td>Test Log <strong>Information</strong> tab</td><td>Information of the test step selected in the <strong>Test Case's Log</strong> section: <ul><li>The <strong>Name</strong> of the test step (the name of the keyword used in the test step)</li><li>Execution <strong>Start/End</strong> date time and duration</li><li>The <strong>Description</strong> of the test step</li><li>Any system <strong>Message</strong> raised when the test step was executed</li></ul></td></tr><tr><td>Test Log <strong>Image</strong> tab</td><td><p>The screenshot taken from the application under test, it is captured in either of the following situations:</p><ul><li>An error occurs during test execution</li><li>The <code>take screenshot</code> keyword is used. To learn more about the <code>take screenshot</code> keyword, you can refer to the following document: <a href="/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-take-screenshot" >[WebUI] Take Screenshot</a></li></ul></td></tr>    </tbody></table>
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORT-image-tab.png" width={600} alt="test log image tab" /> You can determine which type of information to be displayed by using the provided filters:
+
+    <table><tr><th>Filter</th><th>Description</th></tr><tbody><tr><td>Info</td><td>Show the messages logged for information/reference.</td></tr><tr><td>Passed</td><td>Show the steps which are successfully executed.</td></tr><tr><td>Failed</td><td>Show the steps which are failed to execute.</td></tr><tr><td>Error</td><td>Show the steps having errors.</td></tr><tr><td>Incomplete</td><td>Show incomplete steps due to other factors such as wrong syntax, power shortage, disconnected network, etc...</td></tr><tr><td>Warning</td><td>Show the steps which have warning status.</td></tr><tr><td>Not Run</td><td>Show the skipped steps.</td></tr>    </tbody></table>
+
+    If you have configured Jira integration, you can submit a ticket to this system. For further details, you can refer to this document: [Submit an issue to Jira](/analyze/integration-for-test-analyzing/jira-integration/submit-an-issue-from-katalon-studio-to-jira).
+
+    Screenshots are taken for the failed steps, and you can hover the mouse cursor over the attachment icon to review.
+
+2.  **Information**
+
+    You can find the summary information of the test case in this tab.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORT-information-tab.png" width={600} alt="Information tab" />
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td><strong>Test Case ID</strong></td><td>The ID of the executed test case in Katalon Studio.</td></tr><tr><td><strong>Start / End / Elapse</strong></td><td>Execution start/end date time and duration.</td></tr><tr><td><strong>Description</strong></td><td>The description of the test case.</td></tr><tr><td><strong>Message</strong></td><td>Any system message raised when this iteration was executed.</td></tr>    </tbody></table>
+
+3.  **Integration**
+
+    The information regarding qTest or JIRA integration of this iteration is displayed in this tab.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/integration-tab.png" width={400} alt="Integration tab" />
+
+
+## Test suite collection report
+
+You can view reports directly inside each test suite collection page. Test suite collection reports are only available for Katalon Studio Enterprise users.
+
+After executing a test suite collection, to see the test suite collection report, go to the **Result** tab.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-REPORTS-Results-of-the-TSC.png" alt="Test suite collection report" />
+
+<table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td><strong>ID</strong></td><td>The ID of the executed test suite in Katalon Studio.</td></tr><tr><td><strong>Environment</strong></td><td>The environment in which the test suite is executed.</td></tr><tr><td><strong>Status</strong></td><td>Information about whether the execution is completed or not.</td></tr><tr><td><strong>Failed Tests / Total</strong></td><td>Total test cases in the test suite and the number of failed test cases, if any.</td></tr><tr><td><strong>Test Suite Details</strong></td><td>Shows test suite reports, see above: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-test-suite-and-test-suite-collection-reports-in-katalon-studio#" >Test suite reports</a>.</td></tr></tbody></table>
+
+## Report history
+
+
+:::note
+
+-   Report History is only available for Katalon Studio Enterprise users.
+
+
+:::
+
+Once a test suite/test suite collection finishes its execution, a report is automatically generated and stored in the **Reports** folder.
+
+For example:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-825-REPORT-history.png" width={500} alt="Test suite history reports" />
+
+The report is named with the following naming convention: *YYYYMMDD*HHmmss\_, corresponding to the date and time of the start of the execution.
+
+## Export reports to other formats
+
+For the purpose of sharing, you can export reports of test suites into other formats such as **HTML**, **CSV**, **PDF**, and **JUnit**.
+
+
+:::note
+
+-   From version 8.5.5 onwards, Katalon Studio automatically generates HTML reports for both test suite and test suite collection.
+
+-   From version 7.0.0 onwards, Katalon Studio automatically generates JUnit reports for both test suite and test suite collection.
+
+-   For Katalon Studio - Platform Edition version 8.5.0 onwards:
+
+    -   Running in debug mode does not automatically generate basic reports \(HTML, PDF, CSV\). With the debug mode, Katalon Studio - Platform Edition only exports the JUnit report.
+    -   Running in debug mode does not automatically send execution results to Katalon TestOps.
+    -   You cannot manually export reports for debug mode.
+
+:::
+
+### Automatically generate reports
+
+
+:::note
+
+-   From version 8.5.5, you can automatically generate HTML reports for test suite collection.
+
+-   For version before 8.5.5, select HTML option only generate HTML reports for test suites.
+
+-   The CSV and PDF options are available for test suite reports only.
+
+
+:::
+
+In **Project** &gt; **Settings** &gt; **Plugins** &gt; **Report**, select your preferred format for the reports generated after each test suite execution.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-REPORTS-Reports-settings.png" width={600} alt="Reports settings" />
+
+Execute a test suite and observe the *Log Viewer* after the test execution completes. The generated reports are the same as the settings you have configured above.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Basic%20Report/log-viewer.png" width={391} alt="Report generator in the log viewer" />
+
+You can view the generated reports in <code>&lt;project&#95;folder&gt;\\Reports\\&lt;execution&#95;folder&gt;</code> after the test execution finishes.
+
+-   Test suite report folder:
+
+    <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_test_reports_in_Studio/view-test-suite-report-in-Studio/image/ks-855-ts.png" width={700} alt="test suite report" />
+
+-   Test suite collection report folder:
+
+    <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_test_reports_in_Studio/view-test-suite-report-in-Studio/image/ks-tsc-report-folder.png" width={700} alt="test suite collection report" />
+
+
+### Manually export reports
+
+For test suite collection, you can export to **HTML** format only. To manually export reports, do as follows:
+
+1.  Open the **Result** view of a test suite or a test suite collection.
+2.  On the top right corner, select **Export report**. Then, choose a format to export.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-REPORTS-Export-reports-manually.png" alt="Manually export reports" />
+
+
+## Get generated reports location at runtime
+
+To retrieve current generated reports location, you can use the sample code below:
+
+```
+import com.kms.katalon.core.configuration.RunConfiguration
+RunConfiguration.getReportFolder()
+
+```
+
+You can also retrieve other information through the RunConfiguration package, see: [RunConfiguration](https://api-docs.katalon.com/com/kms/katalon/core/configuration/RunConfiguration.html).
+
+## Video capturing
+
+
+:::note
+
+-   K-Lite Codec is recommended to play the Katalon Studio test execution videos. You can download K-Lite Codec on the Codec Guide website: [K-Lite Codec](https://www.codecguide.com/download_kl.htm).
+-   Support execution at the test suite level.
+-   Support all browsers except for Remote, Headless, Kobiton, and Custom. For remote or headless browsers, it's recommended to use [Katalium Server](/plugins-and-add-ons/katalium-server/katalium-server-execute-katalon-studio-s-scripts-on-remote-machines) to view captured sessions.
+-   Recording parallel execution is NOT supported yet.
+
+:::
+
+Debugging can be time-consuming and challenging for many automation testers. Katalon Studio helps solve this problem by supporting you with the ability to capture test execution via video format. You can enable the video capturing feature in **Project Settings**.
+
+Follow the steps below to see how to work with Katalon Studio video capturing feature:
+
+1.  After creating a test suite in Katalon Studio, select **Project &gt; Settings &gt; Execution**. Check the **Enable Video Recorder during execution** option.
+
+    By default, Katalon Studio only captures **Failed** test cases. However, you can select options to capture only the **Passed**/**Failed** test cases or both.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-REPORTS-Enable-video-recording.png" alt="Enable video capturing" />
+
+    Video settings can be specified based on the preferences of users. Katalon Studio recommends AVI \(<code>.avi</code>\) format and low quality to save disk space. The higher the video quality is, the bigger the file size is.
+
+    -   **Video format**: AVI \(<code>.avi</code>\) or MOV \(<code>.mov</code>\)
+    -   **Video quality**: Low; Medium or High
+2.  After executing a test suite, navigate to the **Result** tab. You can view the list of test cases in the test cases table with its video attached accordingly.
+
+    To play the video, click on the play icon in the **Video** column. Test steps descriptions are embedded as a subtitle.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-suite-report/KS-835-REPORTS-Enable-video-recording.png" alt="View video capturing" />
+
+
+By watching how the automated test was executed, the testing team can identify exactly where the test failed. Thus, time and resources are managed more efficiently and effectively.
+
+Learn about test suite reports, exporting, and more in our Katalon Academy course: [Katalon Studio: How To Work With Execution Logs and Test Reports](https://academy.katalon.com/courses/software-test-reporting/?utm_source=kat_docs&utm_medium=test_suite_report).

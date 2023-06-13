@@ -1,0 +1,62 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-b4fde17e-fc2d-4e7b-9ee0-dcab52dae65f
+slug: /execute/execute-tests-with-katalon-studio/execute-tests-with-katalon-studio-overview
+---
+
+# Execute tests with Katalon Studio overview
+
+This section shows you how to execute tests in Katalon Studio.
+
+You can execute a test case, test suite, dynamic test suite, and test suite collection in Katalon Studio. For test suite collections, you can choose to execute associated test suites in sequential mode or in parallel mode.
+
+## Test Environments
+
+Below is the list of supported test execution environments in Katalon Studio:
+
+-   **Browsers**:
+
+    -   Chrome
+
+    -   Firefox
+
+    -   Safari
+
+    -   Edge Chromium
+
+    -   IE \(for Windows only\)
+
+-   **TestCloud**: Cloud-based environment in Katalon Platform. This option is available for executing test suite and test suite collection. See [Katalon TestCloud overview](/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-overview).
+
+-   **Headless browsers**: Testing the functionality of a Web page without the presence of a GUI:
+
+    -   Chrome \(headless\)
+
+    -   Firefox \(headless\)
+
+    See [Headless Browsers Execution in Katalon Studio](/execute/execute-tests-with-katalon-studio/headless-browsers-execution-in-katalon-studio).
+
+-   **Remote**: Select a remote environment to run tests. Make sure you have set up the default configuration for the remote environment in project settings. Refer to [Introduction to Desired Capabilities](/create-tests/manage-projects/project-settings/desired-capabilities/introduction-to-desired-capabilities-in-katalon-studio) for more details.
+
+-   **Mobile Devices**: Select either **Android** or **iOS** to launch the connected devices. Then select a device among those listed ones. Before executing your mobile test, check if you have set up the environment for mobile testing for [Windows](https://docs.katalon.com/display/KD/Mobile+on+Windows) or for [macOS](https://docs.katalon.com/display/KD/Mobile+on+macOS).
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-case/image/ks-android-device.png" width={400} />
+
+    If there is no device listed, make sure the **Developer Mode** on the phone is turned on, try to unplug, and reconnect several times until you are prompted to accept/ trust this device.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/create-test-suite/device-troubleshoot.png" width={400} alt="troubleshooting" />
+
+-   **Windows**: Select this option if you are executing tests on a desktop application.
+
+-   **Custom**: Make sure you have set up the default configuration for the remote environment in project settings. Refer to [Custom Execution](/create-tests/manage-projects/project-settings/desired-capabilities/set-custom-desired-capabilities-in-katalon-studio) for more details. When you have set up your custom environment, select it from the drop-down list.
+
+
+## Troubleshooting
+
+Some factors can affect your execution:
+
+-   [Configure failure handling settings in Katalon Studio](/maintain/configure-failure-handling-settings-in-katalon-studio)
+-   [Test Listeners \(Test Hooks\)](/create-tests/create-test-cases/test-fixtures-and-test-listeners-test-hooks-in-katalon-studio#)
+-   [Test Fixtures and Test Listeners \(Test Hooks\) in Katalon Studio](/create-tests/create-test-cases/test-fixtures-and-test-listeners-test-hooks-in-katalon-studio)
+
+For troubleshooting issues relating to web test execution, refer to: [Troubleshoot web test execution exceptions overview](/create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/troubleshoot-web-test-execution-exceptions-overview).

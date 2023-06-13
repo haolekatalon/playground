@@ -1,0 +1,254 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-2310ca36-8519-4d38-bea4-ea7c0bd0bc30
+slug: /get-started/onboarding-katalon-platform/quick-guide-for-testers
+---
+
+# Quick guide for testers
+
+This guide shows you the basic steps to automated testing in Katalon Studio, and explores the basic functions of Katalon Platform and Katalon Runtime Engine.
+
+## Requirements
+
+-   You have created a Katalon account. You can create an account from Katalon website: [Katalon](https://katalon.com/).
+-   You have downloaded and activated Katalon Studio. For further instruction, see [Katalon Studio installation overview](/get-started/katalon-studio-installation/katalon-studio-installation-overview).
+
+## Create your first test project
+
+To create your first test project in Katalon Studio, do as follows:
+
+1.  Go to **File** &gt; **New** &gt; **Project** from the main menu.
+
+2.  In the displayed **New Project** dialog:
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Manage_Test_Project/Images/ks-850-new-project.png" width={500} />
+
+    1.  **Name**: Enter the name of your project.
+
+    2.  **Type**: Choose your desired project type.
+
+    3.  **Project**: In the dropdown list, you can either choose to create a blank project or a sample project.
+
+        -   If you choose to create a sample project, the Git repository URL of that sample project is retrieved in the Repository URL accordingly.
+        -   If you choose to create a blank project, you can choose whether to generate .gitignore file or build.gradle file.
+
+            <img src="/doc_images/Documents/Create_tests/Manage_Projects/Manage_Test_Project/Images/ks-855-gitnore.png" width={500} />
+
+    4.  **Location**: Choose the location to store your test.
+
+    5.  **Description**: Enter a brief description for your new project.
+
+3.  Click **OK**.
+
+
+Your new project is created.
+
+## Write your first test case
+
+This tutorial focuses on how to create a Web test case using the Web Record Utility in Katalon Studio. You can perform all the desired actions as a real user on your website while the Web Record Utility records them.
+
+If you have other project types, see the corresponding guides for [Mobile](/create-tests/record-and-spy/mobile-record-and-spy-utilities/record-mobile-utility-in-katalon-studio), [Desktop](/create-tests/record-and-spy/windows-record-and-spy-utilities/windows-record-utility-in-katalon-studio), [API](/create-tests/create-test-cases/create-your-first-api-test-with-katalon-studio#), and [BDD](/create-tests/create-test-cases/create-bdd-test-cases-in-katalon-studio).
+
+The application under test \(AUT\) is a demo website called CURA Healthcare Service: <code>https://katalon-demo-cura.herokuapp.com/</code>.
+
+You can clone the sample project here: [Healthcare sample](https://github.com/katalon-studio-samples/healthcare-tests).
+
+1.  From the main toolbar, click on **Record Web** to open the **Web Recorder**.
+
+    <img src="/doc_images/Global_reuse/Common_steps/image/ks-record-web.png" width={400} />
+
+    The **Web Recorder** dialog appears.<img src="/doc_images/Global_reuse/Common_steps/image/ks-web-recorder-dialog.png" width={700} />
+
+2.  Enter the demo website URL: <code>https://katalon-demo-cura.herokuapp.com/</code>.
+
+3.  Select a browser to start recording. Here, we choose the Chrome browser.
+
+    You can click **Expand**, then click **Show Captured Object** to see recorded steps and captured objects while recording.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-web-record-dialog.png" width={800} alt="Expand Web Recorder dialog" />
+
+4.  Click **Record**. Wait until the browser is launched and ready to interact.
+
+    When you hover an element, the element is highlighted and displays its correspondent XPath on the top of the page.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/KS-Onboarding-Highlighted-Xpath.gif" width={600} />
+
+5.  Record the test script as planned.
+
+    1.  Click on **Make appointment**, fill in the demo username and password, then click **Login**.
+
+    2.  To verify the **Make appointment** heading after the successful login, mouse over the **Make appointment** text, right-click &gt; **Katalon Studio** &gt; **Verify Element Present**.
+
+        <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/KS-Onboarding-Verify-element-text.png" width={600} alt="Verify Make Appointment heading" />
+
+    3.  Close browser.
+
+6.  Once done, click **Save script** to stop recording and save the captured objects. Web Record Utility exports a list of objects captured in the test case in Katalon Studio.
+
+    Create a new folder or select an existing one in the **Object Repository**, then click **OK**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/KS-Onboarding-Save-captured-test-objects.png" width={400} alt="Save captured objects" />
+
+7.  A pop-up dialog prompts you to name a new test case. Here, we name it **TC1\_Verify Successful Login**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-new-test-case-dialog.png" width={400} />
+
+    Click **OK**.
+
+
+Katalon Studio opens the test case editor with your new test case. You can view the recorded actions and objects as test steps in the Manual view.
+
+<img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-865-test-case-editor.png" width={700} />
+
+## Plan your tests with a test suite
+
+A test suite is a collection of related test cases that are grouped together based on their testing objectives.
+
+This section shows you the basic steps to plan and run a test suite in Katalon Studio with a local browser.
+
+1.  In the **Tests Explorer** tab, right-click on **Test Suites** &gt; **New** &gt; **Test Suite**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-create-TS.png" width={400} />
+
+2.  Input the test suite name in the **New Test Suite** dialog. Here, we name it **TS-healthcare-tests**, then click **OK**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-test-suite.png" width={500} />
+
+    Katalon Studio opens the test suite editor of the **TS-healthcare-tests**.
+
+3.  In the test suite editor, click **Add** to open the **Test Case Browser**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-add-test-case-to-TS.png" width={500} alt="Click Add to add test case to test suite" />
+
+4.  Select the test cases to add. Here, we select **TC1\_Verify Successful Login**, then click **OK**.
+
+5.  Click **Run**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/KS-Onboarding-Click-run-the-test-suite.png" width={700} alt="Run the test suite" />
+
+6.  Watch the test run. When the test run starts, you can see:
+
+    1.  The **Job Progress** bar: This bar allows you to see the progress of executing test cases and test suites/test suite collections.
+
+    2.  The **Log Viewer** tab: This tab shows the real-time report/log of the test execution.
+
+    3.  A pop-up browser window that runs the recording steps.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-run-test-windows.png" width={700} />
+
+
+You've successfully run your first test in Katalon Studio with a local browser.
+
+-   Run your test with Katalon Runtime Engine \(KRE\) using command-line mode execution. To learn more about executing tests with KRE, see [Command-line syntax in Katalon Runtime Engine](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine)
+
+-   Run your test with Katalon TestCloud on standard browsers and operating systems on the cloud. To learn more about executing tests with Katalon TestCloud, see [Try cross-browser cloud testing](/get-started/onboarding-katalon-platform/quick-guide-for-testers#)
+
+When the test run finishes, Katalon Studio automatically generates test reports.
+
+## Analyze your test activities with Cloud Platform
+
+You can access advanced test reports of your automated testing activities on Katalon Platform. Do as follows:
+
+1.  Go to **Project** &gt; **Settings** &gt; **Katalon Platform**.
+
+    Make sure you have enabled **Automatically upload all test reports to Katalon Platform**.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-reports-enabled.png" width={500} />
+
+    After the execution, the test reports are automatically uploaded to Katalon Platform.
+
+2.  Go to [TestOps Homepage](https://testops.katalon.io/) and select the project with your executed test suite.
+
+    In the Project Dashboard, you can find an overview of real-time data on your test activities.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/kt-dashboard-1.png" width={700} />
+
+
+## Try cross-browser cloud testing
+
+You have a Katalon TestCloud license or trial.
+
+Katalon TestCloud is a test automation environment that allows you to execute tests on most standard browsers and operating systems on the cloud. With the 30-day trial of TestCloud, you can execute cross-browser tests in a cloud environment.
+
+In this section, you will learn to run a test suite with TestCloud in Katalon Studio.
+
+1.  Go to **Project** &gt; **Settings** &gt; **Katalon Platform**.
+
+    Make sure Katalon TestCloud integration is enabled.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-testcloud-enabled.png" width={500} />
+
+2.  Open a test suite.
+
+3.  Click on the dropdown icon of the *Run* button and choose to run with TestCloud.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-select-TC.png" width={150} alt="Katalon Studio - Run button - TestCloud option" />
+
+    The **TestCloud Configuration** dialog appears as below.<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_8.6.0_TestCloud_Configuration_dialog.png" width={500} alt="Katalon Studio - TestCloud Configuration dialog" />
+
+    
+    :::note
+
+    -   The **Tunnel** checkbox is cleared by default. TestCloud Tunnel is for running tests in private domains. See [Configure TestCloud Tunnel](/execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-katalon-studio#).
+
+    :::
+
+4.  Select the **Desktop** or **Mobile** execution environment for your tests.
+
+5.  Click **Run**.
+
+
+You can view the execution progress in **Log Viewer** with detailed information on the status of each test step:<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_TestCloud_test_suites_logs.png" width={700} alt="Katalon Studio - TestCloud Log Viewer" />
+
+## Execute test via CI/CD pipeline with Katalon Runtime Engine
+
+-   You have a Katalon Runtime Engine \(KRE\) license or trial.
+-   You have downloaded and set up Katalon Runtime Engine \(KRE\). For further instruction, refer to [Download KRE](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#).
+
+Katalon Runtime Engine \(KRE\) is an add-on test execution of Katalon Studio. With the 30-day trial of KRE, you can execute automation tests in CLI mode and integrate your tests with CI/CD pipeline.
+
+This section shows you how to generate and use KRE command for test execution.
+
+1.  Open the command-line interface of your OS and navigate to the folder of KRE that contains the executable \(<code>katalonc.exe</code> for Windows or <code>katalonc</code> for macOS and Linux\).
+
+    
+    :::note
+
+    -   On macOS, the executable is stored in the <code>Contents</code> folder of the application package. For example, the executable path can be <code>/Downloads/Katalon&#95;Studio&#95;Engine&#95;MacOS-8.6.0/Katalon Studio Engine.app/Contents/MacOS/katalonc</code>.
+    :::
+
+2.  In Katalon Studio, open **Command Builder** from the main toolbar.
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/ks-quick-guide-command-builder.png" width={500} />
+
+3.  In the displayed **Generate Command for Console Mode** dialog, select a Test Suite, and configure your execution with the following information:
+
+    <img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_testers/Image/kre-quick-guide-generate-command.png" width={600} />
+
+    -   **Executive Platform**:
+
+        -   **Run with**: Click on **Edit** and select an environment to run your tests with.
+    -   **Authentication**: the Katalon API key is auto-filled.
+4.  After completing the configuration, click **Generate Command**.
+
+    The **Generated Command** dialog pops out.
+
+    <img src="/doc_images/Documents/Execute/Katalon_Runtime_Engine/console-mode-execution/image/ks-850-generated-command.png" width={500} />
+
+5.  Copy the generated command and paste to the command prompt/terminal for execution.
+
+
+You have successfully generated and used a KREcommand to execute a test suite.
+
+KRE also supports integrating your tests with CI/CD pipeline. Depending on your preference, you can integrate with GitLab, GitHub Action, or Azure DevOps. To learn about the supported CI/CD integrations, see [Supported CI/CD integrations](/integrations/supported-integrations/integrate-katalon-studio-with-other-katalon-platform-tools#).
+
+## Next steps
+
+To explore other capabilities of Katalon Studio and Katalon Platform, you can learn more about:
+
+-   Best practices in Katalon Studio. See [Katalon Studio best practices](/get-started/onboarding-katalon-platform/katalon-studio-best-practices)
+-   BDD testing in Katalon Studio. See [BDD Testing Framework \(Cucumber integration\)](/integrations/supported-integrations/integrate-katalon-studio-with-other-katalon-platform-tools#)
+-   API testing in Katalon Studio. See [Create your first API test with Katalon Studio](/create-tests/create-test-cases/create-your-first-api-test-with-katalon-studio)
+-   Mobile testing in Katalon Studio. See [Introduction to Mobile Recorder in Katalon Studio](/create-tests/record-and-spy/mobile-record-and-spy-utilities/introduction-to-mobile-recorder-in-katalon-studio)
+-   Data-driven testing in Katalon Studio. See [Data-driven testing with Katalon Studio](/create-tests/data-driven-testing/data-driven-testing-with-katalon-studio)
+-   Katalon Platform reports. See [TestOps dashboard overview](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/testops-dashboard-overview)

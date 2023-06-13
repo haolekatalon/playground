@@ -1,0 +1,79 @@
+---
+id: concept-39f4c1cd-c1e4-44ed-91d3-9545e4ecd2ba
+slug: /create-tests/data-driven-testing/global-variables
+---
+
+# Global variables
+
+A global variable is a variable defined in the execution profile and can be used in a test case, test object, web service object, and email configuration in a project.
+
+For example, in a test case, you can use global variables to input data for keywords in Manual view \(see highlighted in blue\), or to input parameters when binding data for test execution \(see highlighted in red\).
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/data-binding-global-varaiable.png" width={700} />
+
+## Add a global variable
+
+To add or create a global variable, do as follows:
+
+1.  Go to **Tests Explorer** &gt; **Profiles** and open your desired profile.
+
+2.  In the profile manual view, click **Add**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-865-add-global-variable.png" width={200} />
+
+3.  Specify details for the variable in the **New Variable** dialog, then click **OK**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-855-new-var.png" width={400} />
+
+4.  The variable is added to the profile accordingly.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/variable-types/default-profile.png" width={600} />
+
+
+## Use global variable in test object
+
+To use a global variable in a test object, enter the syntax <code>$&#10100;GlobalVariable.name&#10101;</code> in the supported selection methods.
+
+For example:
+
+-   In the **HTTP Body** of an API test object:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/http-body.png" width={600} />
+
+-   In the **Selected Locator** of a WebUI test object:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/web-ui-test-object.png" width={600} />
+
+-   In a Web service request path:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/requested-url.png" width={600} />
+
+
+### Use escaping and special characters
+
+To use a special character like <code>$</code> or <code>\</code> as a regular one in any place that calls global variables, prepend it with a backslash: <code>\</code> \(the so-called escape character\).
+
+```
+{
+   "productName": ${GlobalVariable.productName},
+   "unit": "\\bottle\",
+   "quantity": 50,
+   "discount": ${ if (productName == "wine") { return 30 } else { return 0}}
+   "note": "Currency unit of ${GlobalVariable.productName} is \$."
+
+}
+
+```
+
+-   Without <code>\</code>: *note: Currency unit of $\{GlobalVariable.productName\} is $*.
+-   With <code>\</code>: *note: Currency unit of wine is $*.
+
+### See also
+
+For more detailed instructions on parameterizing test objects in Katalon Studio, refer to:
+
+-   [Web test objects](/create-tests/test-objects/web-test-objects/parameterize-web-test-objects-in-katalon-studio)
+-   [Mobile test objects](/create-tests/test-objects/mobile-test-objects/parameterize-mobile-test-object-properties-in-katalon-studio)
+-   [Windows test objects](/create-tests/test-objects/windows-test-objects/windows-test-objects-in-katalon-studio#)
+-   [RESTful request](/create-tests/test-objects/api-test-objects/rest-request/parameterize-a-web-service-object-in-katalon-studio#)
+-   [SOAP-based request](/create-tests/test-objects/api-test-objects/rest-request/parameterize-a-web-service-object-in-katalon-studio#)

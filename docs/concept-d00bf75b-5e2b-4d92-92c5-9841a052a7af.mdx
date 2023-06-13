@@ -1,0 +1,134 @@
+---
+id: concept-d00bf75b-5e2b-4d92-92c5-9841a052a7af
+slug: /create-tests/test-objects/web-test-objects/parameterize-web-test-objects-in-katalon-studio
+---
+
+# Parameterize Web Test Objects in Katalon Studio
+
+## Parameterize Web Test Objects and their properties
+
+With parameterizing test objects, you can update test objects' locators dynamically by using either local or global variables. This feature comes in handy in these use cases:
+
+-   You want to perform a bulk action on a group of similar elements without defining multiple Test Objects, such as checking on multiple checkboxes;
+-   You can only identify an object's locator during runtime because there's a group of similar objects and the chosen one cannot be specified beforehand in test scripts.
+
+Katalon Studio supports parameterizing properties of test objects to handle dynamic objects. Dynamic objects are those that have some particular changes in their properties based on specific business rules. The example below describes how to apply this feature.
+
+Open [the Health Care sample project](https://github.com/katalon-studio-samples/healthcare-tests), navigate to Object Repository/Page\_Login.
+
+1.  Select the object whose properties you want to parameterize. In this case, the selected test object is <code>txt&#95;Username</code>.
+2.  Capture its locator and create a variable with this syntax <code>$&#10100;variable&#95;name&#10101;</code> as a place holder for its dynamic property. For example, we create the <code>$&#10100;id&#10101;</code> variable for the <code>id</code> property's value. You can parameterize test objects with different selection methods.
+
+    -   Attributes <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/param-web-object/attributes.png" width={896} />
+
+    -   XPath <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/param-web-object/xpath-id.png" width={606} />
+
+    -   CSS <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/param-web-object/css-id.png" width={395} />
+
+3.  Using the parameterized test objects.
+
+
+-   **Manual View**
+
+    Open your Test Case in the **Manual View** and double-click on the object that you want to parameterize its properties.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/param-web-object/1.declare.png" width={907} />
+
+    In the displayed **Test Object Input** dialog, declare the expected dynamic property as a variable in the **Variables** panel.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/param-web-object/2.variables-tab.png" width={576} />
+
+    -   Param Type: the variable type \(The default type is String\).
+    -   Param: the variable name.
+    -   Value Type: the type of the variable's value.
+    -   Value: a specific value of that variable.
+    In this case, Katalon Studio uses the <code>id</code> variable with its specific value as <code>4TH4T934253&#^%(</code> to find the <code>txt&#95;UserName</code> object.
+
+-   **Script View**
+
+    Once the property is declared, you can switch to the **Script View** and adjust the perceived value of the property. Typically, users want to pass the property value as a variable or refer to data files.
+
+    The general syntax to find a test object using a dynamic property is as follows:
+
+    ```
+    findTestObject('{your test object}', [('{property}') : '{value of property}'])
+    
+    ```
+
+    For example:
+
+    -   One dynamic property:
+    ```
+    findTestObject('Page_Login/txtUserName', ['id' : '48415648'])
+    
+    ```
+
+    -   Two dynamic properties:
+    ```
+    findTestObject('Page_Login/txtUserName', ['id' : '48415648', [('name') : 'controler14585']])
+    
+    ```
+
+    -   Using the variable for the dynamic property's value:
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/manage-test-object/image2017-6-30-203A223A13.png" />
+
+
+### Example
+
+There are some cases in which you can identify an object's locator only when it's runtime. In other words, the exact locator of the intended object cannot be specified beforehand in test scripts. In the[Cura Healthcare Center appointment web page](https://katalon-demo-cura.herokuapp.com/profile.php#login), for instance, there are three options of the healthcare program, and the selected one is only known with passing data during execution.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/manage-web-test-object/medicare.png" width={670} />
+
+How can we specify an option in a test script? By parameterizing its locator. You need to create only one Test Object, and you can determine which the exact object is with the passed data during execution.
+
+Now for the exciting part: How do you determine which attribute\(s\) you have to adjust to parameterize this object's XPath? The answer to this question is mainly based on your knowledge of the web AUT. Knowing the pattern of how similar objects are grouped is the key. In this case, the index's value of **label attribute** is the value to parameterize for options on the current web screen.
+
+Depending on your preferred [selection method](/create-tests/test-objects/web-test-objects/manage-web-test-objects-in-katalon-studio), including XPath \(Smart XPath\), Attributes or CSS, the captured object has a corresponding selected locator.
+
+Below steps are how to apply parameterizing test objects in this case:
+
+-   Capture the **XPath** locator of those 3 options and save them to the Object Repository in Katalon Studio.
+
+    -   **Medicare**: <code>//&lt;[@id=\"appointment\"]/div/div/form/div[3]/div/label[1]</code>
+    -   **Medicaid**: <code>//&lt;[@id=\"appointment\"]/div/div/form/div[3]/div/label[2]</code>
+
+    -   **None**: <code>//&lt;[@id=\"appointment\"]/div/div/form/div[3]/div/label[3]</code>
+
+
+As can be seen in the captured XPath locators of those 3 options, they share this same pattern <code>//&lt;[@id=\"appointment\"]/div/div/form/div[3]/div/label</code>; hence, in this case, the property variation is the label index.
+
+-   In the test object view of the *Medicare*object, create an XPath property and enter the captured XPath locator as its value.
+
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/param-web-object/label1.png" />
+
+-   Create a variable as a place holder for the property change in the locator with this syntax:<code>$&#10100;Variable&#95;name&#10101;</code>
+
+    In this case, it's the label index so we create <code>[$&#10100;index&#10101;]</code>.
+
+    Modify this XPath value with that variable. There are two options for you: to parameterize the whole XPath value or merely a part of it.
+
+    -   <code>$&#10100;index&#10101;</code> = <code>//&lt;[@id=\"appointment\"]/div/div/form/div[3]/div/label[1]</code>.
+    -   <code>$&#10100;index&#10101;</code> = <code>[1]</code> =&gt; the XPath locator: <code>//&lt;[@id=\"appointment\"]/div/div/form/div[3]/div/label[$&#10100;index&#10101;]</code>.
+
+
+Above is a simple approach to leverage the '**Parameterized Test Object**', a powerful feature. There are other approaches you can apply in your test scripts to reduce the efforts of maintaining many Test Objects at the same time.
+
+### Escaping special characters
+
+To use a special character like <code>$</code> or <code>\</code> as a regular one in any place that uses parameterized test objects, prepend it with a backslash: <code>\</code> \(the so-called escape character\).
+
+```
+{
+    "productName": ${GlobalVariable.productName},
+    "unit": "\\bottle\",
+    "quantity": 50,
+    "discount": ${ if (productName == "wine") { return 30 } else { return 0}}
+    "note": "Currency unit of ${GlobalVariable.productName} is \$."
+
+}
+
+```
+
+-   Without <code>\</code>: *note: Currency unit of $\{GlobalVariable.productName\} is $*.
+-   With <code>\</code>: *note: Currency unit of wine is $*.

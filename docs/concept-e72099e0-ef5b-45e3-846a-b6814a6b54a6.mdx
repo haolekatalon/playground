@@ -1,0 +1,35 @@
+---
+id: concept-e72099e0-ef5b-45e3-846a-b6814a6b54a6
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-get-element-position
+---
+
+# \[Windows\] Get Element Position
+
+
+:::note
+
+-   Starting from **version 7.2.0**, this keyword is available for Desktop testing on Katalon Studio.
+
+
+:::
+
+## getElementPosition
+
+-   **Description**: Get the position of the WebElement that is found by using locator value of the given windowsObject.
+-   **Keyword name**: getElementPosition
+-   **Keyword syntax**: Windows.getElementPosition\(windowsObject\)
+-   **Parameter**: windowsObject
+
+    -   Description: An object that describes locator and locator strategy to find Windows Element.
+    -   Parameter Type: WindowsTestObject
+    -   Mandatory: Required
+-   **Return**: Point indicating the element's position.
+-   **Throw**: **StepFailedException** if Katalon Studio cannot find the specified element.
+-   **Example**:
+
+```
+import org.openqa.selenium.Point as Point
+Point position = Windows.getElementPosition(findWindowsObject('Object Repository/Notepad/Edit'))
+println String.format("{ x: %d, y: %d }", position.getX(), position.getY())
+
+```

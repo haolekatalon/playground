@@ -1,0 +1,57 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-d4d67692-05d8-4365-a2d7-579f03bf9ff9
+slug: /create-tests/create-test-cases/statements/branching-statements
+---
+
+# Branching Statements
+
+
+:::note
+
+-   Once a test step is added as any of the control statements, it is not allowed to change into another keyword.
+
+
+:::
+
+## In manual view
+
+1.  Open a test case in  **Manual**  view. Click on the drop-down icon of the **Add** button, then choose **Branching Statements**.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/branching-statement.png" width={500} alt="Branching statements" />
+
+2.  To add a keyword under a statement, select that statement, then click **Add** . A test step is created under that statement.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/break-continue-return.png" width={600} alt="branching statement in manual view" />
+
+    Refer to the following table for the usage of each statement:
+
+    <table><tr><th>Statement</th><th>Description</th></tr><tbody><tr><td>Break</td><td><span>Katalon Studio</span> exits the current code block and continues to the next code block/test step.</td></tr><tr><td>Continue</td><td><span>Katalon Studio</span> skips the remainder of the current loop and continues with the next iteration of the loop.</td></tr><tr><td>Return</td><td>Katalon exits from the current method/step, and the flow control is returned to where the method/step was invoked.</td></tr>    </tbody></table>
+
+
+## In script view
+
+The **Script**  view of test cases allows you to programmatically define and handle **Break** , **Continue** and **Return** , using either Groovy or Java language. 
+
+For example:
+
+-   **Break** :
+
+```
+for (int i = 0; i < max; i++) { // interested only in p's if (searchMe.charAt(i) != 'p') { break; } // process p's numPs++; }
+            
+```
+
+-   **Continue** :
+
+```
+for (int i = 0; i < max; i++) { // interested only in p's if (searchMe.charAt(i) != 'p') { continue; } // process p's numPs++; }
+            
+```
+
+-   **Return** :
+
+```
+for (int i = 0; i < max; i++) { // interested only in p's if (searchMe.charAt(i) != 'p') { return true; } // process p's numPs++; }
+            
+```

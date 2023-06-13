@@ -1,0 +1,55 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-9e0357df-fe16-4476-803f-918bf90c09ad
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/failed-test-results
+---
+
+# Failed Test Results
+
+When a test failure occurs, it is associated with a failure reason. To help you monitor the quality of a Project via test failures, TestOps comes with a **Failed Test Results** chart that organizes test failures by reason type.
+
+
+:::caution
+
+-   **Failed Test Results** is limited to the Premium and Ultimate plans of Katalon Platform. See [Katalon Platform Plans](/administer/katalon-platform-packages/katalon-platform-plans) for more information.
+
+
+:::
+
+## View failed test results
+
+To view the Failed Test Results module:
+
+1.  Log in to TestOps.
+
+2.  Go to **Reports** &gt; **Test Runs** &gt; **Failed Test Results**.
+
+3.  The **Failed Test Results** chart is displayed:
+
+    <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/Failed_Test_Results/Image/TO-Reports-Failed_Test_Results.png" alt="Failed test results" />
+
+    You can modify the **Failed Test Results** chart by using the following data filters in the drop-down:
+
+    -   **All Results**: Shows statistics of all failed test results.
+
+    -   **Latest Results**: Only shows statistics of the latest test result \(if the latest one failed\).
+
+    Refer to the table below for the types of failure reasons and examples:
+
+    <table><tr><th>Failure reasons</th><th>Examples</th></tr><tbody><tr><td>Automation Bug</td><td><ul><li>Test script cannot be compiled (syntax errors) or executed with runtime errors.</li><li><p>Test script cannot locate web elements.</p></li><li><p>Insufficient wait time for test objects to load.</p></li></ul></td></tr><tr><td>Application Bug</td><td><ul><li><p>Application logic has changed.</p></li><li><p>Unexpected behaviours of web elements.</p></li><li><p>Web elements no longer exist.</p></li><li><p>Use of new /unresolved libraries.</p></li></ul></td></tr><tr><td>Network Issues/ Third Parties Issues</td><td><ul><li>Network connection is down.</li><li><p>Authentication issues.</p></li></ul></td></tr><tr><td>Uncategorized</td><td>For other unspecified failure reasons.</td></tr>    </tbody></table>
+
+4.  Scroll down and navigate to the **Top 10 Exceptions from all Test Results** section to view the ten \(10\) most common exceptions from failed test results. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/Failed_Test_Results/Image/TO-Reports-Top_10_exceptions.png" alt="top 10 exceptions from all test results" />
+
+    
+    :::note
+
+    This list is not affected by the **All Results** and **Latest Result** filters.
+
+    :::
+
+5.  Along your selected exception class item, navigate and click on the test results link under the **Number of Test Results** column to view the list of all test failures featuring the exception class item.<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/Failed_Test_Results/Image/TO-Reports-select_no._of_test_results.png" alt="open test result list" />
+
+6.  From the modal opened in \#5, click **View Errors** to see the error log of a selected test failure as shown below: <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/Failed_Test_Results/Image/TO-Reports-view_errors.png" alt="view errors" />
+
+
+You have successfully navigated through the **Failed Test Results** list.

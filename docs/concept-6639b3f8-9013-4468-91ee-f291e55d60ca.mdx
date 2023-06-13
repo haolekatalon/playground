@@ -1,0 +1,117 @@
+---
+id: concept-6639b3f8-9013-4468-91ee-f291e55d60ca
+slug: /create-tests/data-driven-testing/checkpoints
+---
+
+# Checkpoints
+
+Checkpoint is the **snapshot** of test data taken at a specific time. A checkpoint is used to verify whether the **current** state of the data source is different from its **previous** state.
+
+You can use checkpoints in database validation cases where value changes constantly by comparing the data snapshot with the state of the data source later. For more details, refer to [\[Common\] Verify Checkpoint keyword](/create-tests/keywords/keyword-description-in-katalon-studio/common-assertions/common-verify-checkpoint).
+
+This document shows you how to create checkpoints from test data files supported by Katalon Studio.
+
+## Create a checkpoint from Test Data
+
+You can create a checkpoint from test data files that have been defined in Katalon Studio. Do as follows:
+
+1.  Select **File** &gt; **New** &gt; **Checkpoint** from the main menu.
+
+2.  In the displayed **New Checkpoint** dialog, enter the checkpoint name and select **Excel File** as **Data Type**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-create-checkpoint-test-data.png" width={500} />
+
+    Click **Next**.
+
+3.  In the next dialog, click **Browse** to select from the list of data files defined in Katalon Studio, then click **Finish**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-config-test-data.png" width={500} />
+
+4.  Click **Take Snapshot** to take a snapshot of the test data. The state of the selected data source will be captured and displayed in the **preview section** as below.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-snapshot-test-data.png" width={600} />
+
+    The checkboxes for the data cells indicate whether they will be used when verifying against other states of this data source later.
+
+5.  Save the **Checkpoint** when you're done.
+
+
+## Create an Excel checkpoint
+
+To create a checkpoint with Excel data file, do as follows:
+
+1.  Select **File** &gt; **New** &gt; **Checkpoint** from the main menu.
+
+2.  In the displayed **New Checkpoint** dialog, enter the checkpoint name and select **Excel File** as **Data Type**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-create-checkpoint-excel.png" width={500} />
+
+    Click **Next**.
+
+3.  In the next dialog, click **Browse** to select the excel file. Specify the excel sheet to be loaded, then click **Finish**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-config-excel.png" width={500} />
+
+4.  Click **Take Snapshot** to take a snapshot of the test data. The state of the selected data source will be captured and displayed in the **preview section** as below.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-snapshot-excel.png" width={600} />
+
+    The checkboxes for the data cells indicate whether they will be used when verifying against other states of this data source later.
+
+5.  Save the **Checkpoint** when you're done.
+
+
+## Create a CSV checkpoint
+
+To create a checkpoint with CSV data file, do as follows:
+
+1.  Select **File** &gt; **New** &gt; **Checkpoint** from the main menu.
+
+2.  In the displayed **New Checkpoint** dialog, enter the checkpoint name and select **Excel File** as **Data Type**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-create-checkpoint-csv.png" width={500} />
+
+    Click **Next**.
+
+3.  In the next dialog, click **Browse** to select the CSV file. Specify the character to be used as the separator for CSV file then click **Finish**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-config-csv.png" width={500} />
+
+4.  Click **Take Snapshot** to take a snapshot of the test data. The state of the selected data source will be captured and displayed in the **preview section** as below.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-snapshot-csv.png" width={600} />
+
+    The checkboxes for the data cells indicate whether they will be used when verifying against other states of this data source later.
+
+5.  Save the **Checkpoint** when you're done.
+
+
+## Create a Database checkpoint
+
+To create a checkpoint with Database data file, do as follows:
+
+1.  Select **File** &gt; **New** &gt; **Checkpoint** from the main menu.
+
+2.  In the displayed **New Checkpoint** dialog, enter the checkpoint name and select **Excel File** as **Data Type**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-create-checkpoint-database.png" width={500} />
+
+    Click **Next**.
+
+3.  In the next dialog, enter the database connection details and data query, then click **Finish**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-config-database.png" width={400} />
+
+    
+    :::note
+
+    -   If the **User** and **Password** are already provided, the system will prioritize using these credentials for authentication. Otherwise, it will check the Connection Properties table for <code>user</code> and <code>password</code> properties.
+    :::
+
+4.  Click **Take Snapshot** to take a snapshot of the test data. The state of the selected data source will be captured and displayed in the **preview section** as below.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/manage-checkpoints/images/ks-865-checkpoint-snapshot-database.png" width={600} />
+
+    The checkboxes for the data cells indicate whether they will be used when verifying against other states of this data source later.
+
+5.  Save the **Checkpoint** when you're done.

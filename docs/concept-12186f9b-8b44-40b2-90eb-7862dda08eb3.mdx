@@ -1,0 +1,185 @@
+---
+id: concept-12186f9b-8b44-40b2-90eb-7862dda08eb3
+slug: /create-tests/keywords/custom-keywords/execute-test-with-katalon-studio-in-internet-explorer-ie-mode-in-microsoft-edge
+---
+
+# Execute test with Katalon Studio in Internet Explorer \(IE\) mode in Microsoft Edge
+
+As the Internet Explorer desktop application is determined to go out of support on June 15, 2022, Microsoft introduces IE mode in Microsoft Edge for organizations that still need Internet Explorer 11 for backward compatibility for legacy websites or apps. To learn more about IE mode, refer to this Microsoft document: [What is Internet Explorer \(IE\) mode?](https://docs.microsoft.com/en-us/deployedge/edge-ie-mode)
+
+This tutorial shows you how to use Katalon Studio to run test cases in IE mode in Microsoft Edge.
+
+In our example, we use a custom keyword called <code>openIEModeEdgeBrowser</code> to open Microsoft Edge in IE mode. To learn more about custom keywords in Katalon Studio, refer to this document: [Introduction to Custom Keywords](/create-tests/keywords/custom-keywords/introduction-to-custom-keywords-in-katalon-studio).
+
+You can find the sample project with the custom keyword in this GitHub repository: [Open IE Mode in Edge Chromium](https://github.com/katalon-studio-samples/open-ie-mode-sample-project).
+
+
+:::note
+
+-   You can execute tests in Internet Explorer \(IE\) mode in Microsoft Edge, but you cannot record new tests in IE mode in Microsoft Edge.
+
+:::
+
+## Configure Internet Options settings
+
+### Internet Explorer Configurations on Windows 10
+
+To run tests on Internet Explorer \(IE\), you need the following setups:
+
+1.  **Enable Protected Mode** must be disabled for all available zones. To do so, choose **Internet Options** from **Control Panel**, then switch to the **Security** tab. Uncheck the **Enable Protected Mode** option.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/ks-internet-properties.png" width={300} />
+
+2.  Zoom the IE browser to 100% so that native mouse events can be set to correct coordinates.
+
+3.  For IE 11, you also need to set a registry entry on the target computer so that the driver can maintain a connection to the Internet Explorer instances. To do so, follow these steps:
+
+    1.  To open the **Registry Editor**, type <code>regedit</code> into **Command Prompt**.
+
+    2.  Locate the **FEATURE\_BFCACHE** subkey. If you cannot find the **FEATURE\_BFCACHE** subkey, create one.
+
+        -   For 32-bit Windows, the key is at <code>HKEY&#95;LOCAL&#95;MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE&#95;BFCACHE</code>.
+        -   For 64-bit Windows, the key is at <code>HKEY&#95;LOCAL&#95;MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE&#95;BFCACHE</code>.
+    3.  Inside this subkey, create a **DWORD** value called <code>iexplore.exe</code> with the value of 0.
+
+        <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/registry-editor.png" width={600} />
+
+
+### Internet Explorer Configurations on Windows 11
+
+To run tests on Internet Explorer \(IE\), open **Control Panel** and go to **Network and Internet** &gt; **Internet Options**, then do as follows:
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/win11.png" width={500} />
+
+1.  In the **Internet Properties** dialog, select the **Security** tab.
+
+2.  Choose **Local intranet**.
+
+3.  Click on the **Sites** button.
+
+4.  Enable **Automatically detect intranet network**, then click **OK**.
+
+
+### Replace the IE WebDriver
+
+To run your test with IE mode, you need to manually replace the IE WebDriver in Katalon Studio configuration folder. Do as follows:
+
+1.  Download the 32 bit Windows Internet Explorer Driver Server from Selenium: [The Internet Explorer Driver Server](https://www.selenium.dev/downloads/).
+
+2.  Go to <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\iedriver&#95;win64</code> to replace the <code>driver.exe</code> file with the one you have downloaded.
+
+
+## Create the openIEModeEdgeBrowser custom keyword
+
+1.  Go to **Tests Explorer** &gt; **Keywords**, and create a new keyword package.
+
+    Here we name the package <code>com.example</code>.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/ks-855-new-keyword-package.png" width={500} />
+
+2.  Right-click on the newly created package and create a new keyword class.
+
+    We name the class <code>openIEModeEdgeBrowser</code>.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/ks-855-new-keyword-package.png" width={500} />
+
+    In the <code>openIEModeEdgeBrowser.groovy</code> file, copy and paste the following script and save it.
+
+    ```
+    package com.example
+    import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+    import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+    import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    
+    import com.kms.katalon.core.annotation.Keyword
+    import com.kms.katalon.core.checkpoint.Checkpoint
+    import com.kms.katalon.core.checkpoint.CheckpointFactory
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords
+    import com.kms.katalon.core.model.FailureHandling
+    import com.kms.katalon.core.testcase.TestCase
+    import com.kms.katalon.core.testcase.TestCaseFactory
+    import com.kms.katalon.core.testdata.TestData
+    import com.kms.katalon.core.testdata.TestDataFactory
+    import com.kms.katalon.core.testobject.ObjectRepository
+    import com.kms.katalon.core.testobject.TestObject
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
+    
+    import internal.GlobalVariable
+    
+    import org.openqa.selenium.WebElement
+    import org.openqa.selenium.ie.InternetExplorerDriver
+    import org.openqa.selenium.ie.InternetExplorerOptions
+    import org.openqa.selenium.WebDriver
+    import org.openqa.selenium.By
+    
+    import com.kms.katalon.core.mobile.keyword.internal.MobileDriverFactory
+    import com.kms.katalon.core.webui.driver.DriverFactory
+    
+    import com.kms.katalon.core.testobject.RequestObject
+    import com.kms.katalon.core.testobject.ResponseObject
+    import com.kms.katalon.core.testobject.ConditionType
+    import com.kms.katalon.core.testobject.TestObjectProperty
+    
+    import com.kms.katalon.core.mobile.helper.MobileElementCommonHelper
+    import com.kms.katalon.core.util.KeywordUtil
+    
+    import com.kms.katalon.core.webui.exception.WebElementNotFoundException
+    
+    
+    class openIEModeEdgeBrowser {
+        /**
+        * Open browser
+        */
+        @Keyword
+        def openBrowser(String url) {
+            System.setProperty("webdriver.ie.driver", DriverFactory.getIEDriverPath());
+            InternetExplorerOptions edgeIe11Options = new InternetExplorerOptions();
+            Map<String, Object> ops = (Map<String, Object>) edgeIe11Options.getCapability("se:ieOptions");
+            ops.put("ie.edgechromium", true);
+            ops.put("ie.edgepath", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+            edgeIe11Options.setCapability("ignoreProtectedModeSettings", true);
+            edgeIe11Options.setCapability("ignoreZoomSetting", true);
+            WebDriver driver = new InternetExplorerDriver(edgeIe11Options);
+            driver.get(url)
+            DriverFactory.changeWebDriver(driver)
+        }
+    }    
+    ```
+
+
+## Use the custom keyword to execute test cases in IE mode
+
+1.  In Katalon Studio, create a test case.
+
+2.  Modify the test case. Open the test case and use the custom keyword as the first test step to open Microsoft Edge in IE mode.
+
+    For example, we use the custom keyword at the beginning of the test case.
+
+    In **Manual** view:
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/ks-open-browser.png" width={700} />
+
+    In **Script** view:
+
+    ```
+    // Use the custom keyword and URL defined as global variable to open the site in Edge, with IE mode
+    CustomKeywords.'com.example.openIEModeEdgeBrowser.openBrowser'(GlobalVariable.G_SiteURL)
+    
+    ```
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/ks-custom-keyword-script-mode.png" width={700} />
+
+3.  Save your test case, then select the **IE** option to run the test.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/run-test-in-edge-with-IE-mode/KS-Run-dropdown-IE.png" alt="Run dropdown" />GTo run run yur
+
+
+Katalon Studio should open a Microsoft Edge browser session in IE mode.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/run-test-in-edge-with-IE-mode/AUT-opened-in-IE-mode.png" width={600} alt="Microsoft Edge browser session opened" />
+
+After the execution, open the **Log Viewer**. You can see that Katalon Studio successfully opened the browser in IE mode and the test case passed.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/run-test-in-edge-with-IE-mode/KS-Log-View-results.png" width={850} alt="Use keyword in test case" />

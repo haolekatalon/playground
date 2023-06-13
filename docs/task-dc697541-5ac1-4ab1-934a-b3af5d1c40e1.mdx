@@ -1,0 +1,70 @@
+---
+id: task-dc697541-5ac1-4ab1-934a-b3af5d1c40e1
+slug: /analyze/integration-for-test-analyzing/jira-integration/submit-an-issue-from-katalon-studio-to-jira
+---
+
+# Submit an issue from Katalon Studio to Jira
+
+-   You have enabled Jira integration in Katalon Studio. See: [Configure Jira integration in Katalon Studio](/organize/integration-for-organizing-tests/jira-integration/configure-jira-integration-in-katalon-studio).
+
+
+After executing a test suite in Katalon Studio, you can submit an issue to Jira directly from the test reports page of Katalon Studio.
+
+Follow these steps:
+
+1.  Go to **Reports** in the **Test Explorer** panel and double-click to open the test reports you want to review for issues.
+
+2.  In the opened test report, click *Bug* icon.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/ks-submit-bug.png" width={850} />
+
+    A **Linked Jira issues** dialog opens.
+
+3.  Click **Add** to choose your submit options.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/ks-linked-jira-issue.png" width={500} />
+
+    The submission options include:
+
+    -   **Create as New**: To create a new issue on Jira. After choosing this option:
+
+        1.  A **JIRA native submission form** opens in the pop-up browser. You might be prompted to sign in to your Atlassian account. You only have to do this once.
+
+        2.  After signing in, fill in the **JIRA native submission form** to submit the issue.
+
+            <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/ks-create-issue.png" width={850} />
+
+    -   **Create as Sub Issue**: To create a sub-task for an existing Jira issue. After choosing this option:
+
+        1.  A **Create as JIRA Sub Task** dialog opens. Fill in the **ID** of an existing Jira issue to create a sub-task within. Click **OK** to open **JIRA native submission form**.
+
+            <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/ks-create-as-jira-sub-task.png" width={500} />
+
+        2.  You might be prompted to sign in to your Atlassian account. You only have to do this once. After signing in, fill in the **JIRA native submission form** to submit the issue.
+
+            <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/jira-create-sub-task.png" width={850} />
+
+    -   **Link to existing Issue**: This option adds the execution details of the test to an existing JIRA issue. You need to provide the **ID** of the existing JIRA issue for this. After choosing this option:
+
+        1.  A **Link to JIRA Issue** dialog opens.
+
+            <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/ks-link-to-jira-issue.png" width={500} />
+
+        2.  Fill in the ID of an existing Jira issue.
+
+        3.  Click **OK**. The test case execution files will be attached to the linked JIRA Issue.
+
+    
+    :::note
+
+    -   When you submit issues to Jira, ensure that you enable file attachments. To do this, follow instructions as given in the Jira document: [Configuring file attachments](https://confluence.atlassian.com/adminjiraserver/configuring-file-attachments-938847851.html).
+    -   By default, the submitted ticket includes the **Summary**, **Description**, **Screenshots** and **Logs** of the test case. You can configure the default submission form from the **Submit Options** section in the Jira integration settings.
+    :::
+
+
+A JIRA issue is added to the list. Click **OK** to save.<img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Jira_integration/submit-jira-tickets/image/ks-linked-jira-issues.png" width={500} />
+
+**Related information**  
+
+
+[View Katalon Studio test results in Jira tickets](/analyze/integration-for-test-analyzing/jira-integration/view-katalon-studio-test-results-in-jira-tickets)

@@ -1,0 +1,127 @@
+---
+id: concept-6c8ecb9f-9567-4dc1-b0cf-d48993cd843c
+slug: /organize/manage-tests/test-suite/manage-test-suites-in-katalon-testops
+---
+
+# Manage test suites in Katalon TestOps
+
+You can create, update and manage test suites in Katalon TestOps.
+
+By doing so, you save time creating the test suite in Katalon Studio and uploading it to a Git script repository on TestOps.
+
+## Create a test suite
+
+-   You have at least one Katalon project.
+
+-   You have created a Git script repository in Katalon TestOps. See: [Upload Test Scripts from a Git Repository](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your project.
+
+2.  Go to **Test Management** &gt; **Test Suite**.
+
+3.  Click on **+ Test Suite**.
+
+    The **Create new Test Suite** dialog appears as below. <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps-create-new-test-suite-dialog.png" alt="create new test suite" />
+
+4.  Give your test suite a name. <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps-remove-test-case.png" width={600} alt="remove test case" />
+
+5.  Choose a **Script Repository** to retrieve your test cases. You can only add test cases from the script repository you have selected.
+
+6.  Choose test cases, then select **Add** to add them to your test suite.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TO-Create_test_suite-_select_test_cases.png" width={500} alt="select test cases to create test suite" />
+
+7.  Click **Create**.
+
+    
+    :::note
+
+    -   You can only choose one script repository for each test suite.
+
+    :::
+
+
+A test suite is created in Katalon TestOps. The newly-created test suite is stored in the **TestOps** folder under the relevant script repository. The TestOps folder is a default system-generated folder to store the test suite you have created in TestOps.
+
+<img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps-default-TESTOPS-folder.png" alt="TestOps folder" />
+
+
+:::note
+
+-   Katalon TestOps has a refresh feature where you can sync the latest version of your Git repository to TestOps. To ensure the default system **TestOps** folder remains unaffected by this feature, Katalon TestOps ignores any other folder named "TestOps" in your Git repository. Therefore, do not use "TestOps" when naming test suites in Katalon Studio or your script repositories. See more about the refresh feature here: [Sync your Git repository latest versions to Katalon TestOps](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops#).
+
+:::
+
+## Update a test suite
+
+You can rename a test suite and add/remove test cases in the test suite you have created in Katalon TestOps.
+
+
+:::note
+
+-   Katalon TestOps has a re-import feature where you can import test reports repeatedly. This feature only recognizes the original name of the test suite you have created. If you rename the test suite and then re-import reports, TestOps might not recognize the new test suite name, and consequently, fail to import the latest data. Therefore, rename your test suite with caution.
+
+
+:::
+
+1.  Go to **Test Management** &gt; **Test Suites**.
+
+2.  Find and click your desired script repository in the folder list on the left sidebar.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_test_suites_script_repository_folder.png" width={600} alt="Test Suites script repository folder" />
+
+3.  Select the script repository's sub-folder **Test Suites**, then **TestOps**.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_test_suites_script_repository_subfolder.png" alt="Test Suites script repository sub-folder" />
+
+4.  Click **Edit** in the top right corner of the test suite page.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_test_suite_page.png" alt="Test suite page edit button" />
+
+5.  Update the test suite.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_-_test_suite_edit_page.png" alt="Test suite edit page" />
+
+    -   You can edit the name in the **Test Suite Name** section.
+    -   You can search a test case in the **Test Cases** section, then click **Add** to add the test case.
+    -   You can remove a test case in the test case list by clicking **Remove**.
+6.  Click **Save** to save the changes you have made to the test suite.
+
+
+## Steps to delete a test suite
+
+To delete a test suite, follow these steps:
+
+1.  Log in TestOps, go to **Test Management** &gt; **Test Suite**.
+
+2.  Click the test suite to view its details.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_select_test_suite.png" alt="TestOps select test suite" />
+
+3.  Click the **Delete** button.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_test_suite_display.png" />
+
+4.  The **Confirmation** dialog box appears, click the **Delete** button in the dialog box to confirm.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_delete_test_suite_dialog.png" alt="delete test suite dialog" />
+
+
+## Steps to delete a test suite
+
+To delete a test suite, follow these steps:
+
+1.  Log in TestOps, go to **Test Management** &gt; **Test Suite**.
+
+2.  Click the test suite to view its details.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_select_test_suite.png" alt="TestOps select test suite" />
+
+3.  Click the **Delete** button.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_test_suite_display.png" />
+
+4.  The **Confirmation** dialog box appears, click the **Delete** button in the dialog box to confirm.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test_suite/manage-test-suite-in-TestOps/image/TestOps_delete_test_suite_dialog.png" alt="delete test suite dialog" />

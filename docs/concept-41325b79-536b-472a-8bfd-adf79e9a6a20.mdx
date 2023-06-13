@@ -1,0 +1,57 @@
+---
+id: concept-41325b79-536b-472a-8bfd-adf79e9a6a20
+slug: /create-tests/test-objects/api-test-objects/verification-snippets-in-katalon-studio
+---
+
+# Verification Snippets in Katalon Studio
+
+Katalon Studio supports the ability to write verification scripts directly in the details of the web service object. The **Verification Snippets** reduces the time of going back and forth between the test case and the request object to add test scripts. Verifying the response can be done instantaneously.
+
+To access the **Verification snippets**, click on the **Verification** tab of the web service request object.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/verification-snippets/ks-840-snippets.png" width={700} alt="Snippets" />
+
+## Using Verification Snippets
+
+When you click on one of the available snippets, Katalon Studio automatically generates a snippet for you.
+
+
+:::note
+
+-   The generated snippet is only an example. You should not try to use them immediately without making adjustments to match your needs.
+
+:::
+
+You can also verify the data of the XML or JSON response body. To add these verification scripts, in the **Response** panel, switch to JSON or XML response body, select the data, and press key combination <code>Ctrl</code> / <code>Command</code> + <code>K</code>.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/verification-snippets/ks-840-verify-json.png" width={700} alt="verify data of JSON response body" />
+
+Katalon Studio compares the values in the response body with the predefined values in verification scripts.
+
+Once the verification snippets are generated, you can use them in either your current web service request object or in your test case.
+
+-   In the web service request object, click on the drop-down of **Test Request** and select **Test Request and Verify**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/verification-snippets/ks-840-test-request-and-verify.png" width={700} alt="test request and verify" />
+
+    This action sends the current request and also executes verification snippets. Verification logs executed using verification snippets are displayed on the **Verification Log** tab. If you do not want to send a test request using current verification snippets, then just click on **Test Request**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/verification-snippets/ks-840-test-request.png" width={700} alt="test request" />
+
+-   In a test case, use the <code>WS.sendRequestAndVerify</code> keyword. This keyword also sends the current request and executes verification snippets. For example:
+
+    ```
+    WS.sendRequestAndVerify(findTestObject('Your_Test_Object'))
+    
+    ```
+
+    The execution results are displayed in the **Log Viewer** tab.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/verification-snippets/ks-840-send-request-and-verify.png" width={700} alt="send request and verify" />
+
+
+## List of Available Verification Snippets
+
+On the right panel of the **Verification** tab is the list of common pre-built snippets which can assist you in most of the verification cases.
+
+<table><tr><th>Snippet</th><th>Description</th></tr><tbody><tr><td>Get current response</td><td>Return response object after sending a request successfully.</td></tr><tr><td>Get current request</td><td>Return the current request object.</td></tr><tr><td>Get a global variable</td><td>Return the value of a global variable.</td></tr><tr><td>Get a variable</td><td>Return the value of a variable that you have created in the Web Service Test Object.</td></tr><tr><td>Response body: Contains string</td><td>Verify if a response body contains a specific string.</td></tr><tr><td>Response body: Convert to JSON Object</td><td>Convert a response body to JSON.</td></tr><tr><td>Response body: Is equal to a String</td><td>Verify if a response body is equal to s string.</td></tr><tr><td>Response body: JSON value check</td><td>Check for a JSON value in a response body.</td></tr><tr><td>Response headers: Content-Type header</td><td>Verify Content-Type header's value.</td></tr><tr><td>Status code: Code is 200</td><td>Verify if response's status code is 200 or no.</td></tr><tr><td>Status code: Successfully request</td><td>Verify if the request is sent successfully.</td></tr><tr><td>Request body: Validate GraphQL against schema</td><td>Validate the request body against a GraphQL schema.</td></tr><tr><td>Response body: Array contains</td><td>Verify specified arrays contain values.</td></tr><tr><td>Response body: Validate JSON against schema</td><td>Validate the response body against a JSON schema.</td></tr><tr><td>Response body: Validate XML against schema</td><td>Validate the response body against an XML schema.</td></tr></tbody></table>

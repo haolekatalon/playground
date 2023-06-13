@@ -1,0 +1,88 @@
+---
+id: concept-2b8fa157-227c-4eee-8ab4-32fdebaef4e6
+slug: /analyze/reports/upload-test-reports/upload-junit-and-report-files-to-using-command-line
+---
+
+# Upload JUnit and report files to using command line
+
+Katalon Report Uploader is a utility to upload reports to Katalon TestOps. At this moment it supports JUnit, Katalon Studio, and Katalon Recorder report format. It can be used with CLI, Docker, GitHub Action, and other cloud CIs.
+
+## Usage for CLI
+
+1.  Download [Reports Uploader](https://github.com/katalon-studio/report-uploader/releases) and install [Java JRE](https://www.java.com/en/download/manual.jsp) and [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+
+2.  Get the path to your Katalon Report folders, e.g. <code>C:\Users\alex\Katalon Studio\Web Sample\Reports\Test Suite\20190523&#95;143946</code>.
+
+3.  Start Command Prompt and use the following command to upload Katalon Report:
+
+    ```
+    java -jar katalon-report-uploader-0.0.5.jar --projectId=3 --path="d:\katalon-reports" --email=admin@mail.me --password=admin --type=katalon
+    
+    ```
+
+    -   <code>projectId</code>: Your project ID in Katalon TestOps.
+    -   <code>path</code>: The local path of Katalon Studio Reports folder identified in step 2.
+    -   <code>email</code>: The email registered for your Katalon account. **If an API Key is used as <code>password</code>, this field is not required**.
+    -   <code>password</code>: The password used for signing in Katalon TestOps or an API Key of that account. Using API Key is recommended as it will not expose your password.
+    -   <code>type</code>: One of the values "katalon", "junit", or "katalon\_recorder".
+    -   <code>server</code>: \(**Optional**\) The Katalon TestOps server endpoint, by default it is <code>https://analytics.katalon.com</code>.
+
+## Usage for Docker
+
+### Environment variables
+
+<code>SERVER</code> The URL of Katalon TestOps. Default <code>https://analytics.katalon.com</code>.
+
+<code>EMAIL</code> The email registered for your Katalon account.
+
+<code>PASSWORD</code> The password used for signing in Katalon TestOps or an API Key.
+
+<code>PROJECT&#95;ID</code> Your project ID in Katalon TestOps.
+
+<code>TYPE</code> One of the values including "katalon", "junit", or "katalon\_recorder".
+
+<code>REPORT&#95;PATH</code> The path of the report folder. The physical report folder should be mounted as a Docker volume first.
+
+### Example
+
+```
+docker run -t --rm -v <path>:/katalon/report -e PASSWORD=<APIKey> -e PROJECT_ID=<ProjectId>-e TYPE=katalon -e REPORT_PATH=/katalon/report katalonstudio/report-uploader:0.0.8
+```
+
+## Usage for Continuous Integration \(CI\) systems
+
+### Jenkins Pipeline
+
+Example on our GitHub repository: [Jenkinsfile](https://github.com/katalon-studio-samples/report-uploader-sample/blob/master/Jenkinsfile).
+
+### GitHub action
+
+Marketplace Listing on GitHub: [katalon-report-uploader](https://github.com/marketplace/actions/katalon-report-uploader).
+
+Example:
+
+```
+ - name: Katalon Report Uploader
+    uses: katalon-studio/report-uploader@v0.0.7.11
+    env:
+      PASSWORD: ${{ secrets.KATALON_API_KEY }}
+      PROJECT_ID: 50236
+      TYPE: junit
+      REPORT_PATH: ${{ github.workspace }}/junit-report-sample
+```
+
+### CircleCI
+
+Example on our GitHub repository: [circleci/config.yml](https://github.com/katalon-studio-samples/report-uploader-sample/blob/master/.circleci/config.yml).
+
+### GitLab CI
+
+Example on our GitHub repository: [.gitlab-ci.yml](https://github.com/katalon-studio-samples/report-uploader-sample/blob/master/.gitlab-ci.yml).
+
+### AWS Codebuild
+
+Example on our GitHub repository: [buildspec.yml](https://github.com/katalon-studio-samples/report-uploader-sample/blob/master/buildspec.yml).
+
+### Azure DevOps Pipeline
+
+Example on our GitHub repository: [azure-pipelines.yml](https://github.com/katalon-studio-samples/report-uploader-sample/blob/master/azure-pipelines.yml).

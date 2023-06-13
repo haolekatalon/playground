@@ -1,0 +1,88 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-27cecdb5-433d-45a2-96d1-7cfca7730dfd
+slug: /execute/cloud-based-test-execution/test-execution-with-testcloud/run-mobile-native-application-tests-on-testcloud
+---
+
+# Run mobile native application tests on TestCloud
+
+TestCloud allows you to perform automated tests on mobile native applications. You can upload a mobile application and tests developed locally in Katalon Studio to TestOps, and then use TestCloud to orchestrate test executions without having to set up local emulators or simulators.
+
+This guide shows you how to perform mobile native application testing on TestCloud.
+
+## Requirements
+
+-   An active Katalon TestCloud subscription or trial.
+
+-   A mobile application file in <code>.apk</code> or <code>.aab</code> format \(for Android\), or in <code>.ipa</code> format \(for iOS\).
+
+-   A mobile test project configured in TestOps.
+
+    -   To set up a sample project for iOS application testing, see [Open the sample iOS test project](/get-started/sample-projects/mobile/sample-ios-mobile-tests-project-in-katalon-studio#).
+
+    -   To set up a sample project for Android application testing, see [Open the sample Android test project](/get-started/sample-projects/mobile/sample-android-mobile-tests-project-in-katalon-studio#) .
+
+
+## Upload a mobile application to TestOps
+
+Follow these steps to upload a mobile application to TestOps.
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/) and go to your project.
+
+2.  Go to **Test Execution** &gt; **Application Repository**.
+
+3.  In the **Application Repository** page, click **Upload Application**.
+
+    <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/testcloud-mobile-native-app-testing/Images/Application_Repository_list.png" width={700} alt="Application Repository list in Katalon TestOps" />
+
+4.  In the Upload Application dialog box, click **Choose Files** and select the application you want to upload.
+
+    <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/testcloud-mobile-native-app-testing/Images/Select_application_file.png" width={500} alt="Choose application file to upload to Kataolon TestOps." />
+
+    
+    :::note
+
+    -   **Application Repository** supports uploading application files in <code>.apk</code>, <code>.aab</code>, and <code>.ipa</code>.
+    -   The size limit for the uploaded application is 500MB.
+
+    :::
+
+
+Your mobile application file is successfully uploaded to TestOps.
+
+## Schedule a mobile automated test on TestCloud
+
+With the mobile application uploaded and the associated mobile test project configured in TestOps, you can schedule automated test executions on the application with TestCloud.
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/) and go to your Project.
+
+2.  Go to **Test Execution** and click **Schedule Test Run**.
+
+    The **Schedule Test Run** dialog appears.
+
+3.  Select the repository containing the mobile test project you want to execute from **Script Repository**.
+
+4.  In the **Environment** section, click on the dropdown menu and select **More options**.
+
+5.  Switch to the **Mobile Native App** tab.
+
+6.  Select the desired mobile application.
+
+    <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/testcloud-mobile-native-app-testing/Images/tc-mobile-native-app-anno.png" width={700} alt="Assign test environment for test suite." />
+
+7.  Select the mobile environment for your tests.
+
+8.  Return to the **Schedule Test Run** dialog and click **Schedule**.
+
+    You are directed to the **Test Run List** page, where you can see the scheduled execution with the configured environment.
+
+    You can click on the *play* icon to manually trigger the test run.
+
+    To check the progress of your test runs, see: [View test results and execution logs in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops).
+
+
+You are directed to the **Test Run List** page, where you can see the scheduled execution with the configured environment.
+
+You can click on the *Play* icon to manually trigger the test run.
+
+To check the progress of your test runs, see [View test results and execution logs in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops).

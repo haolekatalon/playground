@@ -1,0 +1,36 @@
+---
+id: concept-31d3b1b1-39b8-4f54-97cb-89eb2ce362a5
+slug: /create-tests/test-objects/api-test-objects/import-web-service-objects/import-restful-from-postman-to-katalon-studio
+---
+
+# Import RESTful from Postman to Katalon Studio
+
+To import test requests from Postman, perform the following steps:
+
+1.  Export your Postman collection to JSON. See the instruction on Postman document: [Importing and exporting data](https://learning.getpostman.com/docs/postman/collections/data_formats/#exporting-and-importing-postman-data).
+
+2.  In Katalon Studio, with an API/Web Service project, click on the **Postman** icon.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/import-postman/postman.png" width={500} alt="api or web service project type" />
+
+    Alternately, from Katalon Studio 8.3.0 onwards, you can import test requests via:
+
+    -   The **Action** button in the top menu bar:
+
+        -   In the top menu bar, click **Action** &gt; **API/Web Service** &gt; **Import Postman**.
+
+            <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Import-Web-Service-Objects/import-postman/image/ks-852-action-import.png" width={350} alt="Import Postman" />
+
+    -   The **Tests Explorer** panel:
+
+        -   In **Tests Explorer**, right-click on **Object Repository** &gt; **Import** &gt; **From Postman**.
+
+            <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Import-Web-Service-Objects/import-postman/image/ks-import-object-repo.png" width={500} alt="Import Postman to object repository" />
+
+3.  In the dialog that displays, browse to your exported **Postman** local file and click **OK**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Import-Web-Service-Objects/import-postman/image/ks-import-postman-filled-dialog.png" width={500} alt="Import Postman dialog" />
+
+    The corresponding test requests are imported to Katalon Studio.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/new/version-615/img2.png" width={450} alt="imported test requests" />

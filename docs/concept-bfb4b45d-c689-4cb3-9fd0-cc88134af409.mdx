@@ -1,0 +1,47 @@
+---
+id: concept-bfb4b45d-c689-4cb3-9fd0-cc88134af409
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-get-har-file-generation
+---
+
+# \[WS\] Get HAR File Generation
+
+## Requirements
+
+-   Katalon Studio version 8.2.0 onwards.
+
+
+## Description
+
+With this keyword, you can check whether HAR file generation is enabled or disabled.
+
+Keyword name: <code>WS.getHarFileGeneration</code>
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td  colspan="1"  rowspan="1"  td>flowControl</td><td  colspan="0"  rowspan="1"  td>FailureHandling</td><td  colspan="-1"  rowspan="1"  td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+
+:::note
+
+-   If Katalon Studio could not get the setting, throw: <code>StepFailedException</code>.
+
+
+:::
+
+## Returns
+
+<table><tr><th>Parameter Type</th><th>Description</th></tr><tbody><tr><td  colspan="1"  rowspan="1"  td>boolean</td><td  colspan="0"  rowspan="1"  td><ul><li><code>true</code>: HAR file generation is enabled.</li></ul><ul><li><p><code>false</code>: HAR file generation is disabled.</p></li></ul></td></tr></tbody></table>
+
+## Example
+
+You have previously disabled the HAR file generation. Later, you want to check whether the HAR file generation is disabled or not.
+
+```
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+
+WS.getHarFileGeneration(false)
+
+'Get the status of generating a har file when sending a request is true or false' print(WS.getHarFileGeneration())
+```
+
+To enable or disable HAR file generation, see [\[WS\] Set HAR File Generation](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-set-har-file-generation).

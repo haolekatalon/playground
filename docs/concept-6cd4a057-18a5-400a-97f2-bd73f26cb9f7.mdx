@@ -1,0 +1,50 @@
+---
+id: concept-6cd4a057-18a5-400a-97f2-bd73f26cb9f7
+slug: /create-tests/manage-test-artifacts/test-artifacts-sharing-in-katalon-studio
+---
+
+# Test Artifacts Sharing in Katalon Studio
+
+Test artifacts sharing allows you to import and export test artifacts across Katalon Studio projects. These test artifacts include test cases, test objects, profiles, and custom keywords.
+
+## Requirements
+
+-   Katalon Studio version 7.0.0 onwards.
+
+-   An active Katalon Studio Enterprise license. To learn more about activating your licenses, you can refer to this document: Activate Katalon License.
+
+
+## Export test artifacts
+
+1.  From the main menu, **Tools &gt; Utility &gt; Export Test Artifact**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Test_Artifacts/Test_Artifact_Sharing/image/ks-855-export-ta.png" width={400} />
+
+2.  In the **Export Test Artifacts** window:
+
+    -   Add the test cases, test objects, profiles, and/or custom keywords that you wish to export.
+    -   Under **Export Location**, select the destination folder for the exported file\(s\).
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/import-export-test-artifact/export-test-artifacts.png" width={497} />
+
+3.  Click **OK** to export the selected test artifacts.
+
+
+## Import test artifacts
+
+
+:::note
+
+-   You can only import test artifacts exported from Katalon Studio. The format of the exported file name is <code>shared-[timestamp].zip</code>.
+
+
+:::
+
+1.  From the main menu, **Tools &gt; Utility &gt; Import Test Artifact**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Test_Artifacts/Test_Artifact_Sharing/image/ks-855-import-ta.png" width={400} />
+
+2.  In the **Import Test Artifacts** window, choose your desired file to import, test case import location, and test object import location.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/import-export-test-artifact/import-test-artifact.png" width={496} />
+
+3.  Click **OK**. Refresh the **Tests Explorer** by right-clicking &gt; **Refresh** to view them in the specified locations.

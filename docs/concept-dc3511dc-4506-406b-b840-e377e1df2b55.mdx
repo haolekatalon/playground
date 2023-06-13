@@ -1,0 +1,35 @@
+---
+id: concept-dc3511dc-4506-406b-b840-e377e1df2b55
+slug: /administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/configure-proxy-authentication
+---
+
+# Configure Proxy Authentication
+
+If you are behind a proxy server, before activating Katalon licenses, you need to configure the Authentication proxy settings. This guide will allow you to authenticate and activate your Katalon licenses while working behind a proxy server.
+
+To learn more about how to activate Katalon licenses, see [Activate Katalon License](/administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/activate-a-katalon-license).
+
+## Configure proxy
+
+1.  Open Katalon Studio. In the toolbar, click on the *Profile* button and select **Log out**. You will be logged out of your current account, and the **Katalon Studio Activation** dialog appears.
+
+    <img src="/doc_images/Documents/Administer/KSE-KRE-Licenses/configure-proxy/image/ks-pe-activation-dialog.png" width={500} />
+
+    
+    :::note
+
+    -   If you download Katalon Studio for the first time or are not logged in to any account in Katalon Studio, when you open Katalon Studio, the **Katalon Studio Activation** automatically pops up.
+
+    :::
+
+2.  Click **Configure Authentication Proxy** at the bottom of the Activation dialog box.
+
+    <img src="/doc_images/Documents/Administer/KSE-KRE-Licenses/configure-proxy/image/ks-pe-set-proxy.png" />
+
+    In the Proxy Settings dialog box, you can select one of the three options below.
+
+    -   **Use system proxy configuration**: Katalon Studio automatically syncs with the proxy server behind your system.
+    -   **No proxy**: There's no proxy.
+    -   **Manual proxy configuration**: You can manually set up your proxy.
+
+If you are in a highly secured environment, you might encounter a situation where you fail to execute test scripts or activate Katalon Studio. To fix this problem, you need to whitelist the domains listed in this document: [Network security errors](/administer/troubleshooting/troubleshooting-activation-problem/network-security-errors).

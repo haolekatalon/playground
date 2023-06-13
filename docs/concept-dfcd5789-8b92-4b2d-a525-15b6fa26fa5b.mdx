@@ -1,0 +1,47 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-dfcd5789-8b92-4b2d-a525-15b6fa26fa5b
+slug: /create-tests/create-test-cases/statements/method-call-statements
+---
+
+# Method Call Statements
+
+Method Call statement allows you to call other methods provided by the built-in libraries of Katalon Studio.
+
+
+:::note
+
+-   Once a test step is added as any of the control statements, it is not allowed to change into another keyword.
+
+
+:::
+
+## In manual view
+
+1.  Open a test case in **Manual** view. Click on the drop-down icon of the **Add** button, then choose **Method Call Statements**.
+
+2.  To add a keyword under a statement, select that statement, then click **Add** . A test step is created under that statement.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/method-call.png" width={300} alt="Method call statement" />
+
+    A test step representing a method call is added to the test case.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/830-method-call-statement.png" width={600} alt="add binary statement" />
+
+3.  Double-click on the **Input** cell to edit the called method.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/method-call-input.png" width={600} alt="Method call input" />
+
+4.  Save the test case when you're done.
+
+
+## In script view
+
+The **Script** view of a test case allows you to programmatically define and handle method calls using Groovy or Java language.
+
+For example:
+
+```
+WebUiBuiltInKeywords.openBrowser('', FailureHandling.STOP_ON_FAILURE) WebUiBuiltInKeywords.navigateToUrl(GlobalVariable.global_Gmail_Url, FailureHandling.STOP_ON_FAILURE) WebUiBuiltInKeywords.setText(ObjectRepository.findTestObject(null), 'varA'.toString(), FailureHandling.STOP_ON_FAILURE) Integer.notifyAll()
+            
+```

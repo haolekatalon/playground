@@ -1,0 +1,55 @@
+---
+id: concept-74ff8660-c5ba-4593-b721-c7b48b6077b3
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-toggle-airplane-mode
+---
+
+# \[Mobile\] Toggle Airplane Mode
+
+
+:::note
+
+-   This keyword has been disabled by Android OS since API level 24 \(Android 7\).
+-   To turn airplane mode on/off, you can open the Settings app or swipe down the Control Center, then click/tap the **Airplane Mode** button as a workaround.
+
+:::
+
+## Description
+
+-   Simulate toggling airplane mode on mobile devices.
+-   Support iOS real devices and Android emulators.
+
+
+:::note
+
+-   On iOS devices, **Access Within Apps** must be enabled. To enable the feature, refer to the following Apple document: [Edit Control Center on your iPhone, iPad, and iPod touch](https://support.apple.com/en-us/HT211812).
+
+:::
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>mode</td><td>String</td><td>Required</td><td>["yes", "on", "true"] to turn on airplane mode; otherwise, airplane mode is turn off.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. To learn more about failure handling settings, you can refer to this document: <p><a href="/maintain/configure-failure-handling-settings-in-katalon-studio#" >Failure handling</a></p>.</td></tr></tbody></table>
+
+## Example
+
+You want to turn on airplane mode.
+
+```
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.util.internal.PathUtil as PathUtil
+
+
+'Start the application on the currently selected Android device'
+Mobile.startApplication(GlobalVariable.G_AndroidApp, false)
+
+'Turn on airplane mode'
+Mobile.toggleAirplaneMode('yes')
+
+'Close application on the currently selected Android device'
+Mobile.closeApplication()
+
+```

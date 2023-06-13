@@ -1,0 +1,127 @@
+---
+id: concept-f4443441-b624-4511-a309-24c43a5412a3
+slug: /execute/ci-cd-integrations/aws-codebuild-integration
+---
+
+# AWS CodeBuild Integration
+
+AWS CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy.
+
+This document shows you how to run your Katalon project on AWS CodeBuild.
+
+## Requirements
+
+-   An active Katalon Runtime Engine license.
+
+-   A Katalon project stored on AWS CodeCommit, GitHub, or Bitbucket.
+
+
+## Configure the buildspec file
+
+A buildspec \(build specification\) file is a collection of build commands and related settings, in YAML format, that CodeBuild uses to run a build. This section shows you some configurations you need to add to your buildspec file.
+
+To learn more about buildspec, refer to AWS documentation:
+
+-   [Build specification reference for CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-syntax)
+
+-   [Create the buildspec file](https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started-create-build-spec-console.html)
+
+
+1.  In the repository containing your Katalon project, create the buildspec.yml file in the root \(top-level\) directory.
+
+    Below is our sample buildspec. You can get this sample buildspec file from our GitHub repository: [buildspec.yml](https://github.com/katalon-studio-samples/ci-samples/blob/master/buildspec.yml).
+
+    ```
+    version: 0.2
+    env:
+      parameter-store:
+       KATALON_API_KEY: /CodeBuild/KATALON_API_KEY
+    phases:
+      pre_build:
+        commands:
+          - docker pull katalonstudio/katalon
+      build:
+        commands:
+          - docker run -t --rm -v "$(pwd)":/katalon/katalon/source katalonstudio/katalon katalon-execute.sh -apiKey=$KATALON_API_KEY -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"
+    artifacts:
+      files:
+        - report/*
+    reports: #New
+      KatalonTestReports: # CodeBuild will create a report group called "KatalonTestReports".
+        files: #Store all of the files
+          - 'report/JUnit_Report.xml'
+    
+    
+    ```
+
+2.  You need a valid Katalon API key to run Katalon tests. Refer to [Generate a Katalon API Key](/administer/settings/katalon-api-key-in-katalon-testops#) for more information about Katalon API key generation.
+
+    To protect your Katalon API key, you can store your Katalon API key in Parameter Store or in Secrets Manager.
+
+    For example:
+
+    -   In Parameter Store:
+
+        ```
+        env:
+          parameter-store:
+           KATALON_API_KEY: /CodeBuild/KATALON_API_KEY
+        ```
+
+    -   In Secrets Manager:
+
+        ```
+        env:
+          secrets-manager:
+           KATALON_API_KEY: CodeBuildDemo:KATALON_API_KEY
+        ```
+
+        To learn more about environment variables, refer to the following AWS documentation: [Environment Variable](https://docs.aws.amazon.com/codebuild/latest/APIReference/API_EnvironmentVariable.html).
+
+3.  In the <code>pre-build</code> phase, you can specify the version of Katalon Studio to run your test with the syntax <code>katalonstudio/katalon:&lt;version&#95;tag&gt;</code>, for example <code>katalonstudio/katalon:8.1.2</code>. If you leave as <code>katalonstudio/katalon</code>, this build uses the latest version of Katalon Studio.
+
+4.  In the <code>build</code> phase, you can input your desired katalonc commands. All of katalonc supported arguments can be found in this document: [Command-line syntax in Katalon Runtime Engine](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine).
+
+
+## Create an AWS build project
+
+To create an AWS build project, do as follows:
+
+1.  Sign in to [Amazon Web Services](http://console.aws.amazon.com) and go to the CodeBuild service.
+
+2.  In **CodeBuild** &gt; **Build projects**, click **Create build project**.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/aws-build-project.png" width={850} />
+
+3.  Give your project a name.
+
+4.  In **Source**, select a source provider and specify the repository that contains your Katalon project.
+
+    For example, we connect with a repository on **GitHub** using a personal access token.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/aws-github-source.png" width={500} />
+
+5.  Specify the environment. Make sure that you select the **Privileged** checkbox if you wish to build Docker images or provide your builds with elevated privileges.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/aws-environment.png" width={600} />
+
+6.  In the Additional configuration of **Environment**, the **Timeout** and **Queued timeout** fields are pre-populated and you can change them according to what your needs are.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/aws-additional-configuration.png" width={500} />
+
+    In **Environment variables**, you can add your Katalon API key as a parameter here.<img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/aws-environment-variable.png" width={500} />
+
+7.  In **Buildspec**, choose **Use a buildspec file**.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/buildspec.png" width={600} />
+
+8.  When you are done, scroll to the bottom of the page and select **Create build project**.
+
+9.  In the newly created build project, select **Start build**.
+
+
+The build starts immediately. You can click on **Build logs** to monitor the build progress.
+
+<img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/aws-run-test.png" width={850} />If your project is integrated with Katalon TestOps, you can go to [Katalon TestOps](https://testops.katalon.io/) to view your reports.
+
+<img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/to-view-report.png" width={850} /><img src="/doc_images/Documents/Execute/CICD_Integrations/aws-codebuild-docker-image-integration/Pictures/to-view-report-2.png" width={850} />

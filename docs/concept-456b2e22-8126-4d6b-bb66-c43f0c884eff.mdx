@@ -1,0 +1,166 @@
+---
+id: concept-456b2e22-8126-4d6b-bb66-c43f0c884eff
+slug: /create-tests/test-objects/web-test-objects/manage-web-test-objects-in-katalon-studio
+---
+
+# Manage Web Test Objects in Katalon Studio
+
+## In Manual View
+
+### Create a test object
+
+You can create a test object in two ways:
+
+-   From the main menu, select **File** &gt; **New** &gt; **Test Object**
+-   Or: Right-click on **Object Repository** and select **New** &gt; **Test Object**
+
+In the displayed **New Test Object** dialog, provide a name for the new test object, then click **OK**. The new test object is created under the **Object Repository** of Katalon Studio.
+
+Moreover, you can capture objects using [Spy Web Utility in Katalon Studio](/create-tests/record-and-spy/webui-record-and-spy-utilities/spy-web-utility-in-katalon-studio) or [Record web utility in Katalon Studio](/create-tests/record-and-spy/webui-record-and-spy-utilities/record-web-utility-in-katalon-studio).
+
+### Create an object's locator
+
+You can add multiple locators to an object but you must select one of them as a default locator. The default locator is used for detecting the object during test execution. From version 7.6.0, you can use [Self-healing mechanism](/maintain/self-healing-tests-in-katalon-studio) to utilize multiple locators of an object.
+
+Katalon Studio supports the [following selection methods](/create-tests/test-objects/web-test-objects/selection-methods-for-web-tests-in-katalon-studio): XPath, Attributes, CSS and Image. You can freely switch from one selection method to another. The detailed content of each selection method is saved automatically.
+
+-   **XPath/CSS**: Enter a desired XPath locator in **Selected Locator**.
+-   **Image**: Browse an image to compose an image locator for the object. [Learn more](/create-tests/test-objects/web-test-objects/web-image-based-testing-in-katalon-studio)
+-   **Attributes**: Check on one or multiple **Detect object by** in the **Object's Properties** table to compose a **Selected Locator** of this method for the object.
+
+    You can add multiple object properties to the **Object's Properties** table. The object properties cannot share the same name in an object.
+
+
+1.  In a **Test Object**'s view, select **Attributes** as the default **Selection Method**.
+
+2.  In the **Object's Properties** table, click **Add**.
+
+3.  In the displayed **Add property** dialog, specify the required information:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-add-property-dialog.png" width={500} />
+
+    -   **Name**: The object property's name. You can select one of the provided options \(class, css, id, name, title, xpath\) or enter a name manually.
+    -   **Match condition**: The condition is used for detecting the target object during execution.
+    -   **Value**: The value to complete a match condition.
+
+        The new property is added to the properties list as configured above. You can also change the properties' values here.
+
+
+## Manage parent object
+
+Nowadays, there are many web applications rendering elements in an [iframe](https://www.w3schools.com/tags/tag_iframe.asp). Therefore, you have to tell your script how to traverse a website's **iframes** and select the correct **iframe** where the text and its object are present. To do so, you have to use the [Switch To Frame](https://docs.katalon.com/display/KD/%5BWebUI%5D+Switch+To+Frame) keyword before interacting with the elements.
+
+Katalon Studio supports an ability to define parent iframe object within the test object view, so you only need to select the parent iframe, and the execution automatically switches to that iframe.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-parent-iframe.png" width={400} />
+
+## In script view
+
+**Script View** allows defining **Test Objects** programmatically.
+
+The following example shows you how to define the **Medicare** option with the Attributes, XPath and CSS selection methods.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-medicare.png" width={500} />
+
+1.  Create a new object programmatically using the <code>TestObject</code> class:
+
+    ```
+    // Create a new object programmatically
+    TestObject myNewObject = new TestObject('ObjectID')
+    
+    ```
+
+2.  Add an object locator
+
+-   With the **Attributes** selection method, add a property to an object using the <code>addProperty()</code> method:
+
+    ```
+    //Attributes
+    //Add property to Test Object, a property is defined by:
+    // property name,
+    // condition type,
+    // property value,
+    // a boolean value to indicate if the property will be used to identify the object during execution
+    myNewObject.setSelectorMethod(SelectorMethod.BASIC)
+    myNewObject.addProperty('xpath', "//*[@id=\"appointment\"]/div/div/form/div[3]/div/label[1]", true) //Medicare
+    
+    ```
+
+-   With **XPath** or **CSS** selection method: Specify a selection method and set a value to the locator:
+
+    ```
+    //XPATH
+    myNewObject.setSelectorValue(SelectorMethod.XPATH,"//*[@id=\"appointment\"]/div/div/form/div[3]/div/label[1]") //Medicare
+    myNewObject.setSelectorMethod(SelectorMethod.XPATH)
+    
+    ```
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-select-method-xpath.png" width={350} alt="Selection method set as XPath" />
+
+    ```
+    //CSS
+    myNewObject.setSelectorValue(SelectorMethod.CSS,"#appointment > div > div > form > div:nth-child(3) > div > label:nth-child(1)") //Medicare
+    myNewObject.setSelectorMethod(SelectorMethod.CSS)
+    
+    ```
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-select-method-css-locator.png" width={400} alt="Selection method set as CSS locator" />
+
+
+The following classes and methods might be useful when working with test objects:
+
+<table><tr><th>Class</th><th>Method</th><th>Description</th></tr><tbody><tr><td  rowspan="4"  td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html" >Test Object</a></td><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#addProperty(java.lang.String,%20com.kms.katalon.core.testobject.ConditionType,%20java.lang.String)" >addProperty</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> name, <a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/ConditionType.html" >ConditionType</a> condition, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> value)</td><td>Add a new property to the test object.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#setProperties(List)" >setProperties</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html" >List</a>&lt;<a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObjectProperty.html" >TestObjectProperty</a>&gt; properties)</td><td>Set the properties of the test object.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#getObjectId()" >getObjectId()</a></td><td>Get an object ID.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#findPropertyValue(java.lang.String,%20boolean)" >findPropertyValue</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> name, boolean caseSensitive)</td><td>Find the value of a property using the property name.</td></tr></tbody></table>
+
+## Validate a test object
+
+You can add test objects to the **Web Object Spy** dialog to verify the detection in the application under test. To add an object to **Web Object Spy**, right-click on the item to open its context menu and select the option.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-852-add-to-web-object-spy.png" width={500} />
+
+### Verify and Highlight
+
+Katalon Studio **Object Properties** has a built-in **Verify and Highlight** feature to help users double-check if the web objects can be located. Katalon Studio will display the message on how many elements are **found** or **NOT found** with generated XPath locator. If the object is **found**, it is be highlighted with the **red** border.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-verify-n-highlight.png" />
+
+Once finished, click **Save** to add the object to **Object Repository** as normal.
+
+## Visual object recognition
+
+Image locators allow you to identify test objects with images and perform web image-based testing. Learn more at [Web Image-based Testing](/create-tests/test-objects/web-test-objects/web-image-based-testing-in-katalon-studio).
+
+### Enable image-based object recognition
+
+From version 7.6.0 onwards, image-based object recognition is enabled by default for web test execution in **Project** &gt; **Settings** &gt; **Self-healing** &gt; **Web UI****.**See [Self-healing tests in Katalon Studio](/maintain/self-healing-tests-in-katalon-studio).
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-web-ui.png" />
+
+### Capture screenshot and create screenshot property of an object
+
+The ingredients required for the image-based object location to work include:
+
+-   Target screenshots of a web element
+-   The screenshot property of that element
+
+There are two ways to create the required ingredients:
+
+-   [Using the built-in feature in Web Recorder and Spy](/create-tests/test-objects/web-test-objects/web-image-based-testing-in-katalon-studio)
+-   [Using a manual way](/create-tests/test-objects/web-test-objects/web-image-based-testing-in-katalon-studio)
+
+In Tests Explorer, under the **Screenshots** folder, you can see the **Matched Elements** and **Targets** folders.
+
+-   The **Matched Elements** folder contains objects that are located by Katalon Studio based on the target images.
+-   The **Targets** folder is for containing the images that Katalon Studio uses for locating objects. <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/image-based-web-elements-recognition/folders.png" width={493} />
+
+
+:::note
+
+-   For a sample project, download from our GitHub repository: [image-recognition-web](https://github.com/katalon-studio-samples/image-recognition-web)
+
+:::
+
+### Factors affecting image comparison
+
+**Screen Resolution**: The screen resolutions of tests executing machines and screenshots capturing machines may affect the effectiveness of image comparison. We recommend capturing screenshots and executing tests on the same machine for a better result.
+
+**Capture Tool**: To capture screenshots associated with your preferred web elements, we recommend using the built-in screen-capturing feature in Web Recorder and Spy Tools. Particularly, on the expanded view after clicking **Show Captured Objects**, select the **Add Screenshot** button on the bottom right corner. <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-add-screenshot.png" />

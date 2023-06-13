@@ -1,0 +1,39 @@
+---
+id: concept-32768822-6e4c-4d24-9944-0ecdb0711120
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-take-screenshot
+---
+
+# \[Mobile\] Take Screenshot
+
+## Description
+
+Take a screenshot of the current device screen.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>fileName</td><td>String</td><td>Optional</td><td>The absolute path of the saved screenshot image file. If the fileName is not specified, Katalon Studio saves the screenshot with the current timestamp as its name, and under the current report folder location.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specifies the <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Example
+
+You want to take a screenshot of the current device screen and save it to another location.
+
+```
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.util.internal.PathUtil as PathUtil
+
+
+'Start application on current selected android\'s device'
+Mobile.startApplication(GlobalVariable.G_AndroidApp, false)
+
+'Take screenshot of current device screen'
+Mobile.takeScreenshot("D:\\screenshot.png")
+
+'Close application on current selected android\'s device'
+Mobile.closeApplication()
+
+```

@@ -1,0 +1,37 @@
+---
+id: concept-dac7bcdc-dfa8-4398-a42a-25fcd15348ff
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-start-existing-application
+---
+
+# \[Mobile\] Start Existing Application
+
+## Description
+
+This keyword is to start an Appium driver and to activate an installed application by its given application ID.
+
+-   Keyword name: **startExistingApplication**
+
+-   Keyword syntax: <code>Mobile.startExistingApplication(appId)</code>
+
+
+
+:::note
+
+The <code>startExistingApplication</code> keyword is not supported by TestCloud.
+
+:::
+
+## Parameters
+
+**AppId**:
+
+-   Description: ID of the tested application that’s either the package name of an Android app or the bundle identifier of an iOS app.
+-   Parameter Type: String
+-   Mandatory: Required
+
+## Example
+
+```
+'Start an installed Facebook app on the selected Android device'
+Mobile.startExistingApplication("com.facebook.katana")
+```

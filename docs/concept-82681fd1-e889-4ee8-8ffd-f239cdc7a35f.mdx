@@ -1,0 +1,58 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-82681fd1-e889-4ee8-8ffd-f239cdc7a35f
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-send-request-and-verify
+---
+
+# \[WS\] Send Request And Verify
+
+## Description
+
+<code>sendRequestAndVerify(RequestObject request, FailureHandling flowControl)</code>
+
+Send an HTTP request to a web server and verify its response.
+
+## Parameters
+
+<table><tr><th>Parameters</th><th>Parameter type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>response</td><td>RequestObject</td><td>Required</td><td>The object that represents an HTTP response.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Parameter type</th><th>Description</th></tr><tbody><tr><td>ResponseObject</td><td>A response object</td></tr></tbody></table>
+
+## Example
+
+Given the following sample <code>POST a new user</code> POST request. We have added some verification codes to verify the response in the <code>Verification</code> tab of the request.
+
+<img src="/doc_images/Documents/Create_tests/Keywords/Keywords_Description_In_Katalon_Studio/Web-Service-Keywords/ws-send-request-and-verify/KS-8.3.5-Sample-POST-request.png" alt="Sample POST request" />
+
+Next, we want to send the request and verify its response. We use the <code>WS.sendRequestAndVerify</code> keyword as follows:
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+
+'Send a POST request and verify its response'
+response = WS.sendRequestAndVerify(findTestObject('POST a new user'))
+
+```
+
+The keyword sends the request and verifies its response using the verification code in the <code>Verification</code> tab of the request object. You can see the <code>Verification</code> step the <code>Log Viewer</code> as follows:
+
+<img src="/doc_images/Documents/Create_tests/Keywords/Keywords_Description_In_Katalon_Studio/Web-Service-Keywords/ws-send-request-and-verify/KS-8.3.5-Verification-step-log-viewer-.png" alt="View the verification steps in the log viewer" />

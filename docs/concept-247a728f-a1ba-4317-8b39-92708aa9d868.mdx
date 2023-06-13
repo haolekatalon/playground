@@ -1,0 +1,46 @@
+---
+id: concept-247a728f-a1ba-4317-8b39-92708aa9d868
+slug: /supported-technologies/supported-technologies-for-katalon-studio
+---
+
+# Supported Technologies for Katalon Studio
+
+This document gives you information on the supported technologies in Katalon Studio. For the supported environments \(including browsers and operating systems\), see: [Supported environments for Katalon Studio and Katalon Runtime Engine](/supported-execution-environments/supported-environments-for-katalon-studio-and-katalon-runtime-engine-kre).
+
+## Supported Application Under Test \(AUT\)
+
+<table><tbody><tr><td><strong>WebUI</strong></td><td><strong>Mobile</strong></td></tr><tr><td><ul><li>Support all front-end frameworks: ReactJS, AngularJS, VueJS</li><li>Cross-browser compatibility: Chrome, Firefox, Safari, Edge</li></ul></td><td><ul><li>Android & iOS</li><li>Native application</li><li>Web mobile</li><li>Hybrid (&lt;)</li></ul></td></tr><tr><td><strong>API</strong></td><td><strong>Windows</strong></td></tr><tr><td><ul><li>REST: <a href="/create-tests/test-objects/api-test-objects/import-web-service-objects/import-restful-requests-with-openapi-specification-2-0-swagger-to-katalon-studio" >Swagger</a>, <a href="/create-tests/test-objects/api-test-objects/import-web-service-objects/import-rest-api-with-openapi-specification-3-0-to-katalon-studio" >OpenAPI 3.0</a> & <a href="/create-tests/test-objects/api-test-objects/import-web-service-objects/import-restful-requests-from-wadls-to-katalon-studio" >WADL</a></li><li>SOAP (SOAP 1.1 & 1.2)</li><li><p><a href="/create-tests/test-objects/api-test-objects/graphql-in-katalon-studio" >GraphQL</a></p></li><li>Authentication: <a href="/create-tests/test-objects/api-test-objects/authorization/basic-authentication-in-katalon-studio" >Basic</a>, <a href="/create-tests/test-objects/api-test-objects/authorization/bearer-authentication-in-katalon-studio" >Bearer</a>, <a href="/create-tests/test-objects/api-test-objects/authorization/authorization-oauth-1-0-in-katalon-studio" >OAuth 1.0</a>, <a href="/create-tests/test-objects/api-test-objects/authorization/authorization-oauth-2-0-in-katalon-studio" >OAuth 2.0</a>, and <a href="/create-tests/test-objects/api-test-objects/authorization/ntlm-authentication-in-katalon-studio" >NTLM</a></li></ul></td><td><ul><li>Universal Windows Platform (UWP)</li><li>Windows Forms (WinForms)</li><li>Windows Presentation Foundation (WPF)</li><li>Classic Windows (Win32) apps on Windows 10 PCs</li></ul></td></tr></tbody></table>
+
+\(\*\) *Limitations: Elements inside embedded web views cannot be captured automatically by Record&Spy utilities.*
+
+## Programming skill & Language
+
+<table><tbody><tr><td>Low-code</td><td>Rich set of utilities to generate and maintain automated script without programming experience</td></tr><tr><td>Groovy</td><td>v2.4.x+</td></tr><tr><td>Java</td><td>From Java 8 (Java 1.8) onwards</td></tr></tbody></table>
+
+## Testing methodologies
+
+<table><tbody><tr><td  rowspan="4"  td><a href="https://docs.katalon.com/docs/katalon-studio-enterprise/test-execution/data-driven-testing/data-driven-testing-with-katalon-studio" >Data-driven testing - DDT</a></td><td><strong>Built-in Database</strong></td><td><strong>Version</strong></td><td><strong>Katalon Studio Versions</strong></td><td><strong>Katalon Studio Enterprise Versions</strong></td></tr><tr><td>PostgreSQL</td><td>v42.2.17</td><td>v7.0.0+</td><td>v7.0.0+</td></tr><tr><td>Oracle SQL</td><td>v12.1.0.2</td><td>Not supported</td><td>v7.0.0+</td></tr><tr><td>SQL Server</td><td>v6.2.2</td><td>Not supported</td><td>v7.0.0+</td></tr><tr><td  colspan="3"  td><a href="https://docs.katalon.com/docs/katalon-studio-enterprise/test-design/bdd-testing-framework-cucumber-integration/bdd-testing-framework-cucumber-integration-in-katalon-studio" >Behavior-driven development - BDD</a></td><td>v7.0.0+</td><td>v7.0.0+</td></tr><tr><td  colspan="3"  td>Keyword-driven testing - KDT</td><td>v7.0.0+</td><td>v7.0.0+</td></tr></tbody></table>
+
+## Testing capabilities
+
+<table><tr><th><strong>Testing Capabilities</strong></th><th><strong>Supported Katalon Studio versions</strong></th></tr><tbody><tr><td>Integration Testing</td><td>v7.8.0+</td></tr><tr><td>Functional Testing</td><td>v7.8.0+</td></tr><tr><td>E-2-E Testing</td><td>v7.8.0+</td></tr><tr><td><a href="https://github.com/katalon-studio-samples/web-visual-testing-samples" >Visual Testing</a></td><td>v7.8.0+</td></tr></tbody></table>
+
+## Katalon Studio capabilities
+
+This section shows you capabilities unique to Katalon Studio.
+
+<table><tr><th>Capability</th><th>Description</th><th>Supported Katalon Studio versions</th></tr><tbody><tr><td>Application Under Test (AUT) Testing Combination</td><td><span>Katalon Studio</span> allows combining multiple application types (Web UI, API, Mobile & Desktop) in one project and execution flow. You can test this capability using our <a href="https://github.com/katalon-studio-samples" >GitHub sample projects</a>.</td><td>v7.0.0 and later</td></tr><tr><td>Flexible test design options</td><td><span>Katalon Studio</span> test scripts are interchangeable between two interfaces: manual and script editors. This enables a team with a mixed level of automation testing skills to work effectively and efficiently in the same project.</td><td>v7.0.0 and later</td></tr><tr><td>Self-healing</td><td>The self-healing mechanism deals with broken locators during execution to reduce the test maintenance effort. For more details, see <a href="/maintain/self-healing-tests-in-katalon-studio" >Self-healing tests</a>.</td><td>v7.6.0 and later</td></tr><tr><td>Smart Wait</td><td>Smart Wait "tells" the WebDriver to wait for the web page to become static before performing any operations. This reduces the risk of test failures caused when the page has not fully loaded. For more details, see <a href="/create-tests/record-and-spy/webui-record-and-spy-utilities/smart-wait-function" >Smart Wait function</a>.</td><td>v7.0.0 and later</td></tr><tr><td>Time Capsule</td><td>Time Capsule enables you to restore the Application Under Test to its previous state before the test failed, for example if locators did not find the expected Web UI objects. <a href="/maintain/fix-broken-web-test-objects-with-time-capsule-in-katalon-studio" >Learn more about this capability</a>.</td><td>v7.8.0 and later</td></tr></tbody></table>
+
+## Reports
+
+<table><tr><th><strong>Types of Reports</strong></th><th><strong>Supported Katalon Studio versions</strong></th></tr><tbody><tr><td><a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-test-suite-and-test-suite-collection-reports-in-katalon-studio#" >HTML, PDF, CSV</a></td><td>v7.0.0+</td></tr><tr><td><a href="/analyze/reports/manage-reports/share-test-reports-via-email-in-katalon-studio" >Dynamic email configuration</a></td><td>v7.5.0+</td></tr><tr><td><a href="/analyze/reports/generate-test-reports/generate-screen-based-videos-in-katalon-studio-reports#" >Release/build-based reports</a></td><td>v7.8.0+</td></tr><tr><td><a href="/get-started/set-up-your-workspace/integrate-katalon-testops-and-katalon-testcloud-with-katalon-studio" >Performance, Trending & Insights reports</a> (&lt;)</td><td>v7.6.2+</td></tr></tbody></table>
+
+\(\*\) *Requirements: Katalon TestOps integration.*
+
+## Offerings
+
+<table><tr><th>Offerings</th><th>Supported Katalon Studio versions</th></tr><tbody><tr><td>Community package (<a href="https://www.katalon.com/pricing/" >Comparison</a>)</td><td>v7.0.0+</td></tr><tr><td>Enterprise packages</td><td>v7.0.0+</td></tr></tbody></table>
+
+## Support
+
+<table><tr><th>Support</th><th><strong>Supported Katalon Studio versions</strong></th></tr><tbody><tr><td><a href="https://forum.katalon.com/" >Katalon forum</a></td><td>v7.0.0+</td></tr><tr><td><a href="https://www.katalon.com/pricing/" >Exclusive Support Service</a></td><td>v7.0.0+</td></tr></tbody></table>

@@ -1,0 +1,95 @@
+---
+id: concept-6ea67c84-01e6-47a6-94d0-fa410c291446
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops
+---
+
+# View test results and execution logs in Katalon TestOps
+
+Katalon TestOps allows you to centralize and track execution data including test results, execution logs, and test report files. This article will shows you different ways to view test results and execution logs in Katalon TestOps.
+
+## View test run results and execution logs in Katalon TestOps
+
+To view details of a test run result, click the test run ID. Here, we click ID **3020**.
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-Click-test-run-ID.png" alt="Click test run ID" />
+
+A **Test Run: \#&lt;ID&gt;** page appears \(e.g, **Test Run: \#3020**\). In the **Summary** tab, you can see the following information:
+
+**The summary bar**
+
+This bar shows the total number of test results including: **Passed**, **Failed**, **Error**, **Imcomplete**, **Skipped** status in the test run.
+
+**Previous Test Runs**
+
+This section gives you a brief look of how your test scripts perform overtime. In the following example, a scheduled test run **AWS - SSRF - Local Agent - Test Suite - Flag ON** was triggered on 29/08/2022 with a duration of 250ms. On 13/09/2022, the test run was triggered again but hanged on and finally timed out. This might indicate flakiness in your test scripts.
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results_and_execution_logs/Image/KT-Previous-test-runs.png" alt="Previous test runs" />
+
+**Sessions**
+
+If you have run with an agent, you can see the sessions results in this section. To view the session logs, click the session ID. Here, we click session ID **2285**.
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-View-session-logs.png" alt="View session logs" />
+
+The **Session: \#&lt;Session-ID&gt;** page opens. You can see the full session log, along with the run command in this page. If you want to re-run the test run, click **Run** at the right upper corner.
+
+**Failed Test Results**
+
+If the test run has failed test cases, you can see the failed test cases and the corresponding error in this section. To view the error and further analysis, click the test result ID. Here we click test result ID **102282108**.
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-Test-results-ID.png" alt="Click failed test results ID" />
+
+The **Test Result** page opens. In the **Result** page, you can see:
+
+-   **Error message**: This returns the specific reason why the execution fails.
+
+-   **Attachments**: This attaches the captured screenshots and/or recorded videos to see what went wrong with failed tests.
+
+-   **Failed Assertions**: When you run tests with Katalon Studio, if you have used built-in assertion keywords with the <code>verify</code> prefix \(e.g, <code>WebUI.verifyElementPresent</code>\) or custom assertion keywords such as <code>KeywordUtil.markPassed(message)</code>, <code>KeywordUtil.markFailed(message)</code>, <code>KeywordUtil.markFailedAndStop(message)</code>, you can see the failed assertions in this section.
+
+-   **Errors**: This shows the full error log. You can download this file.
+
+-   **Logs**: This shows the execution logs in each test step and the step status. This allows you to quickly troubleshoot which steps cause test failure. You can view this log in text view or tree view.
+
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results_and_execution_logs/Image/KT-Failed-test-results.png" alt="The failed test results page" />
+
+Besides the execution log, TestOps also provides additional analysis, including:
+
+-   **Similar Failures**: TestOps analyzes all existing failed test results and identifies similar failures. By having failed test results centralized in one place, you can quickly compare and pinpoint the root cause of any issues.
+
+-   **Failure Reason**: TestOps automatically assigns failure reason to the corresponding top-level exception of failed test results. Here, you click on the drop-down and change the suggested reason to a different category. You can also click on the **Suggested Solution** link to open the document for troubleshooting the failure.
+
+    
+    :::note
+
+    -   The **Failure Reason** capability is limited to the Premium and Ultimate plans of Katalon Platform. See: [Katalon Platform Plans](/administer/katalon-platform-packages/katalon-platform-plans).
+
+    :::
+
+-   **Jira Defects**: You can link the test failure to Jira defects for test management. See: [Link test runs to Jira defects in Katalon TestOps](/analyze/integration-for-test-analyzing/jira-integration/link-test-runs-to-jira-defects-in-katalon-testops).
+
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results_and_execution_logs/Image/Test_Result_tab_failure_reason.png" width={400} alt="Additional failure analysis" />
+
+**Test Suites**
+
+This section contains the execution information including the test suite name, execution profile, operating system and browser, duration and executed date. When you click the hyperlinked test suite name, you are navigated to its information page where you can see:
+
+-   The test cases of the test suite
+
+-   Execution history of the test suite
+
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-View-test-suite-information.png" alt="View test suite information" />
+
+## Add custom fields and tags to test results
+
+You can add custom fields and tags to test results. To understand more about custom fields and tags or how to create them, see [Custom Fields and Tags](/organize/custom-field-and-tags/custom-fields-and-tags).
+
+1.  Navigate to a test run result by clicking its ID number. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-Click-test-run-ID.png" alt="click test run ID" />
+
+2.  Navigate to the Custom Fields and Tags section, you can select from the dropdown list the custom fields and tags to assign to your test result. You can also see [Add Custom Fields and Tags to test cases](/organize/manage-tests/test-case/add-custom-fields-and-tags-to-test-cases) for references on how to add or remove custom fields and tags. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/TO-Reports-Test_Run_detail-_custom_fields_and_tags.png" alt="Test result custom fields and tags" />
+
+
+Your test result is successfully assigned with custom fields and tags.

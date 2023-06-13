@@ -1,0 +1,49 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-cb17d3a6-168f-4f36-ab66-cd0db7eec41a
+slug: /integrations/unsupported-integrations/microsoft-dynamics-365
+---
+
+# Microsoft Dynamics 365
+
+
+:::note
+
+-   Please note that the use case presented here is a suggestion only and should be implemented with caution. It has not undergone quality assurance testing and is not officially supported by our platform.
+
+
+:::
+
+This project demonstrates how Katalon Studio helps users automate Microsoft Dynamic 365 applications. It contains some test cases for PowerBI. Because of the very dynamic nature of the PowerBI DOM structure, you might need to make some necessary changes before recording the test cases.
+
+## Use case
+
+-   Create and Delete a lead in Microsoft 365 account.
+
+
+## Automate Microsoft Dynamics 365 applications
+
+-   Katalon Studio
+
+-   You should have an active Microsoft 365 account.
+
+
+-   [Sample Git repository for this project.](https://github.com/katalon-studio-samples/katalon-microsoft365-sample.git)
+
+-   You can refer to [video demonstration](https://academy.katalon.com/katalon-demo-and-integration/?video=36516) of the steps below.
+
+
+1.  Customize Setting before recording a test case:
+
+    Go to **Project** &gt; **Settings** &gt; **Test Design** &gt; **Web UI** and [change the priority of Xpath Locators](/maintain/self-healing-tests-in-katalon-studio).<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Microsoft_Dynamics_365/image/KS_change_priority_of_XPath_Locators.png" alt="change Xpath Locators priority in Katalon Studio project settings" />
+
+2.  Record test script via Katalon Recorder and save test objects and test cases. You can refer to [Record web utility in Katalon Studio](/create-tests/record-and-spy/webui-record-and-spy-utilities/record-web-utility-in-katalon-studio).
+
+3.  Update the application URL, username, and password inside the Default profile. <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Microsoft_Dynamics_365/image/KS-update_URL_username_password_in_Default_profile.png" alt="Update URL, username, password in the Default profile" />
+
+4.  Run the test execution. You can refer to [Execute tests with Katalon Studio overview](/execute/execute-tests-with-katalon-studio/execute-tests-with-katalon-studio-overview).
+
+5.  Verify the test execution result. You can refer to [View test results and execution logs in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops).
+
+
+If the test execution fails because of "Element not interactable" exception, you can change the keyword <code>Click</code> to <code>Enhanced Click</code>.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Microsoft_Dynamics_365/image/KS_keyword_enhanced_click.png" alt="Katalon Studio keyword enhanced click" />

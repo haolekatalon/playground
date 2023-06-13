@@ -1,0 +1,27 @@
+---
+id: task-d3ce99cc-3cc2-485e-b9ab-b9b86efb2fa5
+slug: /analyze/integration-for-test-analyzing/jira-integration/view-katalon-studio-test-results-in-jira-tickets
+---
+
+# View Katalon Studio test results in Jira tickets
+
+-   You have enabled Jira integration in Katalon Studio. See [Configure Jira integration in Katalon Studio](/organize/integration-for-organizing-tests/jira-integration/configure-jira-integration-in-katalon-studio).
+
+
+With Jira integration, after a test suite execution Katalon Studio automatically uploads the latest test results and attaches a <code>.zip</code> file that contains test reports to the linked Jira ticket.
+
+1.  To view the test results, open the linked Jira ticket, click **Open Test Results** in the **Details** group.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/configure-jira-integration/KS-JIRA-Open-test-results-2.png" alt="Click on the Open test results in the Jira issue" />
+
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/configure-jira-integration/KS-JIRA-View-results-on-Jira.png" alt="See results of test case in the Jira issue" />
+
+-   You can quickly find the test execution status via the JQL query. The syntax is as follows: <code>"Katalon Status"=status</code>
+-   For example, to search for all issues that have failed in the Katalon Studio test execution, type <code>"Katalon Status"=FAIL</code> in the search bar. Katalon Studio supports five test statuses: **Passed**, **Failed**, **Incomplete**, **Error**, and **Skipped**.
+-   When you view test results in Jira, ensure that you enable file attachments. To do this, follow instructions as given in the Jira document: [Configuring file attachments](https://confluence.atlassian.com/adminjiraserver/configuring-file-attachments-938847851.html).
+
+**Related information**  
+
+
+[Submit an issue from Katalon Studio to Jira](/analyze/integration-for-test-analyzing/jira-integration/submit-an-issue-from-katalon-studio-to-jira)

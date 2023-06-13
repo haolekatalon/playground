@@ -1,0 +1,22 @@
+---
+id: concept-bb6538f5-7dd1-45ca-a78c-41a78afd68a4
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-bdd-reports-in-katalon-studio
+---
+
+# View BDD reports in Katalon Studio
+
+After execution, there are two places for you to view BDD reports: in Katalon Studio and in Katalon TestOps.
+
+There is no custom report for executing feature file. Katalon Studio uses only generated Cucumber reports for test suite and test suite collection execution level, in which the test cases contain the Cucumber Features file.
+
+The generated Cucumber reports of test suite and test suite collection are located in the same folder of Katalon Studio report folder. In Katalon Studio Tests Explorer, right-click at the desired **Report** folder and choose **Open Containing Folder**. Katalon Studio redirects you to the local folder where Cucumber Reports are stored.
+
+Katalon Studio supports three formats for Cucumber reports: JSON, XML, HTML.
+
+<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_test_reports_in_Studio/BDD-report-in-Studio/ks-840-cucumber-report-folder.png" width={750} alt="report folder" />
+
+You can also view BDD test reports in Katalon TestOps.
+
+[Katalon TestOps](https://docs.katalon.com/katalon-analytics/docs/overview.html) is an enterprise-ready platform for QA Orchestration, test analytics, and reporting.
+
+By default, the BDD test report feature on Katalon TestOps is disabled to avoid mixing the BDD and Katalon Studio formatted data. To enable the feature, you can refer to this guide: [View BDD Test Results in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-bdd-test-results-in-testops).

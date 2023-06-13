@@ -1,0 +1,52 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-3b5b25b6-6e66-4b07-ab20-4aea72059f4d
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-get-response-status-code
+---
+
+# \[WS\] Get Response Status Code
+
+## Description
+
+<code>getResponseStatusCode(ResponseObject responseObject, FailureHandling flowControl)</code>
+
+Get status code in the returned response from a web service call.
+
+## Parameters
+
+<table><tr><th>Parameters</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>response</td><td>ResponseObject</td><td>Required</td><td>The object that represents an HTTP response.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. To learn more about failure handling settings, you can refer to this document: <p><a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >Failure handling.</a></p></td></tr></tbody></table>
+
+## Returns
+
+The HTTP response status code.
+
+## Example
+
+We want to get the response status code of the <code>POST a new user</code> POST request, we use the <code>WS.getResponseStatusCode</code> as follows:
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+
+'Send a POST request and return its response'
+def response = WS.sendRequest(findTestObject('POST a new user'))
+
+'Get the status code in the response'
+statusCode = WS.getResponseStatusCode(response)
+```

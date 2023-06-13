@@ -1,0 +1,48 @@
+---
+id: concept-5803067b-cab3-4984-a9c8-3797da1141ca
+slug: /execute/schedule-test-execution/test-suite-collection-scheduler-for-katalon-studio
+---
+
+# Test Suite Collection Scheduler for Katalon Studio
+
+This document shows you how to schedule a test suite collection execution in Katalon Studio using the **Test Suite Collection Scheduler** plugin from the Katalon Store.
+
+## Install the Test Suite Collection Scheduler plugin
+
+To enable **Test Suite Scheduling View** in Katalon Studio, you need to install the Test Suite Collection Scheduler plugin.
+
+1.  Go to Katalon Store and install this plugin: [Test Suite Collection Scheduler](https://store.katalon.com/product/74/Test-Suite-Collection-Scheduler).
+
+2.  Open Katalon Studio and go to **Account** &gt; **Reload Plugins**
+
+
+The Test Suite Collection Scheduler plugin is installed successfully.
+
+## Schedule a test suite collection execution
+
+After you have installed the **Test Suite Collection Scheduler** plugin, you can now schedule your test suite collection in Katalon Studio. Do as follows:
+
+1.  Open a test suite collection.
+
+2.  Expand **Test Suite Scheduling View**.
+
+    <img src="/doc_images/Documents/Execute/Schedule_test_executions/Test-Suite-Collection-Scheduler-plugin-Studio/image/ks-tsc-scheduler-view.png" width={850} alt="test suite scheduling view" />
+
+3.  Input the time that you want to schedule for the next run.
+
+4.  Click **Schedule**.
+
+    A new test run is scheduled. The **Next run** field contains the date of the upcoming execution of this test suite collection. You need to keep Katalon Studio open until the time you scheduled.
+
+    <img src="/doc_images/Documents/Execute/Schedule_test_executions/Test-Suite-Collection-Scheduler-plugin-Studio/image/ks-success.png" width={700} alt="success message" />
+
+5.  Optional: To reschedule, input a new time and click **Schedule** again.
+
+    You can only schedule one test run at a time, so the new time overrides the previous one that you scheduled.
+
+    <img src="/doc_images/Documents/Execute/Schedule_test_executions/Test-Suite-Collection-Scheduler-plugin-Studio/image/ks-tsc-override.png" width={700} alt="info message" />
+
+
+When the schedule time comes, Katalon Studio automatically triggers the test run. You can see the detailed information of this schedule event in the **Event Log**.
+
+<img src="/doc_images/Documents/Execute/Schedule_test_executions/Test-Suite-Collection-Scheduler-plugin-Studio/image/ks-plugin.png" width={500} alt="event log" />

@@ -1,0 +1,48 @@
+---
+id: concept-f2dcf7ce-9f2f-478b-92e6-0408f713eadb
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-send-keys
+---
+
+# \[Windows\] Send Keys
+
+## Requirements
+
+-   Katalon Studio version 7.0.0 onwards.
+
+
+## sendKeys
+
+-   **Description**: Simulate keystroke events on the specified element by pressing a key or a combination of keys.
+-   **Keyword name**: sendKeys
+-   **Keyword syntax**: sendKeys\(windowsObject,strKeys\)
+-   **Parameters**:
+
+    -   Name: windowsObject
+    -   Description: An object that describes the locator and locator strategy to find Windows Element.
+    -   Parameter Type: WindowsTestObject
+    -   Mandatory: Required
+    -   Name: strKeys
+    -   Description: A combination of keys to press.
+    -   Parameter Type: String
+    -   Mandatory: Required
+
+## Method Keys.chord
+
+For pressing a combination of keys, the <code>Keys.chord</code> method is used along with the <code>sendKeys</code> keyword.
+
+-   **Description**: <code>chord() of org.openqa.selenium.Keys</code>
+
+    Simulate pressing many keys at once in a "chord". Takes a sequence of Keys.XXXX or strings; appends each of the values to a string, and adds the chord termination key \(<code>Keys.NULL</code>\) and returns the resultant string. Note: When the low-level webdriver key handlers see <code>Keys.NULL</code>, active modifier keys \(CTRL/ALT/SHIFT/etc\) release via a keyup event.
+
+    Please see [this document](https://www.codota.com/code/java/methods/org.openqa.selenium.Keys/chord) for further instructions and examples.
+
+-   **Method name**: Keys.chord
+-   **Method syntax**: Keys.chord\(...\)
+
+## Example
+
+```
+//Press Ctrl+A on the Edit element
+Windows.sendKeys(findWindowsObject('Object Repository/Notepad/Edit'),Keys.chord(Keys.CONTROL,'a'))
+
+```

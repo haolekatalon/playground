@@ -1,0 +1,32 @@
+---
+id: concept-3aed08f2-0d83-4604-b8b7-d4714ad2c68c
+slug: /execute/execute-tests-with-katalon-studio/headless-browsers-execution-in-katalon-studio
+---
+
+# Headless Browsers Execution in Katalon Studio
+
+​In essence, headless browser testing is testing the functionality of a Web page without the presence of a GUI. ​ ​
+
+One of the major advantages of using a headless browser and performing headless testing is that you can run tests more quickly in a real browser environment. Headless browsers can save project teams a tremendous amount of time and smoothly integrate into the CI/CD process.​ ​
+
+Katalon Studio supports headless browser execution for both Chrome and Firefox. To learn more about headless browsers, see Chrome Developers document: [Getting Started with Headless Chrome.](https://developer.chrome.com/blog/headless-chrome/)
+
+You can execute test cases, test suites, test suite collections, and execute tests using console mode execution with a headless browser. The step-by-step guide to executing tests using headless browsers is the same as executing with other environments, you only need to choose Chrome \(headless\) or Firefox \(headless\) from the test environment list.
+
+## Configuring headless browsers
+
+This tutorial shows you how to add additional configurations when executing using headless browser.
+
+By default, when executing automation tests using one of these headless browsers: Firefox or Chrome, you do not need to add any additional configurations.
+
+In case you need to add more desired capabilities to those headless browsers:
+
+1.  Go to **Project** &gt; **Settings** &gt; **Desired Capabilities** &gt; **WebUI** &gt; **Chrome \(headless\)**/ **Firefox \(headless\)**.
+
+2.  Add your desired capabilities.
+
+    For example, to make your Chrome \(headless\) start with a smaller Window size: <code>--window-size=300,400</code>.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/headless-browsers-execution/KS-HEADLESS-Set-DC.png" width={850} alt="Set up desired capabilities for Chrome/Firefox (headless)" />
+
+    You can learn more about desired capabilities in this document: [Desired capabilities](/create-tests/manage-projects/project-settings/desired-capabilities/introduction-to-desired-capabilities-in-katalon-studio).

@@ -1,0 +1,53 @@
+---
+id: concept-72b0dc34-9ce5-4934-8f5e-e2f2e28b5cec
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-verify-element-not-present
+---
+
+# \[Windows\] Verify Element Not Present
+
+
+:::note
+
+-   From version 7.6.0, this keyword is available.
+
+
+:::
+
+## verifyElementNotPresent
+
+-   **Description**: Wait until the given element to not present \(disappear\) within the given time in the second unit.
+-   **Keyword name**: verifyElementNotPresent
+-   **Keyword syntax**:
+
+    ```
+    Windows.verifyElementNotPresent(windowsObject, timeout)
+    ```
+
+-   **Parameters**:
+
+    -   Name: windowsObject
+
+        -   Description: An object that describes locator and locator strategy of the target element that needs to wait for
+        -   Parameter Type: WindowsTestObject
+        -   Mandatory: Required
+    -   Name: timeout
+
+        -   Description: System will wait at most timeout \(seconds\) to return the result
+
+            -   If timeout = 0, Katalon Studio will use the default page load timeout
+            -   If timeout &lt; 0, throws IllegalArgumentException
+        -   Parameter Type: Integer
+        -   Mandatory: Required
+-   **Return value**:
+
+    -   Description: true if the element does not present; otherwise, false
+    -   Type: Boolean
+-   **Example**:
+
+
+```
+"Verify to expect the edit panel presents with verifyElementNotPresent keyword"
+def isNotPresent = Windows.verifyElementNotPresent(findWindowsObject('Object Repository/Edit') 10)
+assert !isNotPresent
+
+```

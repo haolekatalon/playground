@@ -1,0 +1,128 @@
+---
+id: concept-7efd22ee-8740-48f6-a002-fcc80eb8b274
+slug: /create-tests/data-driven-testing/execution-profile
+---
+
+# Execution profile
+
+An execution profile is where you define global variables that configure the testing environment in terms of data and behaviors. These variables can be used to execute automation test scripts in multiple and different environments. To learn more about global variables, see [Global variables](/create-tests/data-driven-testing/global-variables).
+
+This document shows you how to work with execution profile in Katalon Studio.
+
+## Create a profile
+
+Depending on the project purposes, you can create as many profiles as you want to.
+
+1.  In the **Tests Explorer** tab, right-click on **Profiles** &gt; **New** &gt; **Execution Profile**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-855-exe-profile.png" width={400} />
+
+    Enter a name for the profile in the **New Execution Profile** dialog.
+
+2.  In the profile manual view, click **Add**.
+
+    You need to define the profile content by adding global variables.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-865-add-global-variable.png" width={250} />
+
+3.  Specify details for the variable in the **New Variable** dialog, then click **OK**.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-855-new-var.png" width={400} />
+
+4.  The variable is added to the profile accordingly.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/variable-types/default-profile.png" width={600} />
+
+
+You have created a new execution profile.
+
+## View a profile
+
+Execution profile is provided with **Manual view** and **Script view**.
+
+In the **Script view**, an XML editor is available for adding variables via script. To ensure consistency in testing different environments, you can copy and paste the list of global variables from one profile to another.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/profile-script-view.png" width={500} />
+
+## Use a profile
+
+By default, Katalon Studio uses the **default** profile for executing tests, as indicated on the main toolbar. You can select available execution profiles from the drop-down menu.
+
+<img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-860-profile-toolbar.png" width={400} />
+
+There are three ways you can select execution profiles:
+
+-   **For test cases and test suites**: Select your desired profile from the main toolbar. This setting applies to all test cases and test suites within your project.
+-   **For test suite collection**: Select your desired profile to execute with your test suite\(s\) in the **Profile** column. This setting applies to selected test suite\(s\).
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-855-profile-tsc.png" width={600} />
+
+-   **For Console Mode execution**: Select your desired profile in the **Profile** field of Command Builder.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-855-console-profile.png" width={600} />
+
+    You can also manually change the <code>executionProfile</code> argument in the generated command.
+
+
+## Set default profile at project level
+
+
+:::note
+
+From Katalon Studio v7.4.2, you can set a default profile at the project level.
+
+:::
+
+A default profile is where you store commonly used global variables. Other profiles can either inherit or override the global variables stored in the default one.
+
+You may have multiple profiles for executing your tests, for instance, *staging* and *production* profiles. It would be convenient to set a profile as your default one in every execution of a project.
+
+Right-click on your desired execution profile and select **Set as default Execution Profile**.
+
+<img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-865-set-default-execution-profile.png" width={300} />
+
+The selected profile becomes a default execution profile for test case, test suite, and test suite collection in that project.
+
+<img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/ks-865-TSC-default-profile.png" width={600} />
+
+The setting is also applied to Command Builder for Katalon Runtime Engine.
+
+<img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/kre-865-default-profile.png" width={500} />
+
+## Inherit profile
+
+Profile inheritance reduces your effort spent on modification and recreation of the same global variables in derived profiles. Suppose Katalon Studio does not find variables used in the test within the designated profile \(any profiles but default\). In that case, it will look into the default profile and use its variables to execute the test.
+
+Commonly used global variables should be stored in the **default** profile. The following examples illustrate how the profile inheritance feature works.
+
+-   Given the following test case:
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/inherit-sample.png" width={600} />
+
+-   Execution default profile in use:
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/inherit-default-profile.png" width={600} />
+
+    The result is shown as below:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/inherit-console-default.png" width={600} />
+
+-   Execute staging and production profile with the given test case:
+
+    When executing the staging and production profiles, the **name**, **serveURL**, and **credential** variables are overridden \(highlighted in red\), while the **usage** and **reference** variables are inherited \(highlighted in blue\) from the global variables in the default profile.
+
+    -   Staging profile:
+
+        <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/inherit-stagging-profile.png" width={600} />
+
+        The result is shown as below:
+
+        <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/inherit-console-stagging.png" width={600} />
+
+    -   Production profile:
+
+        <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/execution-profile/image/inherit-production-profile.png" width={600} />
+
+        The result is shown as below:
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-profile-v54/inherit-console-production.png" width={600} />

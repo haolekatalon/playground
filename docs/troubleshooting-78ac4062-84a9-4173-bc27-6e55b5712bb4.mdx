@@ -1,0 +1,20 @@
+---
+id: troubleshooting-78ac4062-84a9-4173-bc27-6e55b5712bb4
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/no-chromedriver-found-that-can-automate-chrome-chrome-version
+---
+
+# No Chromedriver found that can automate Chrome '&lt;chrome\_version&gt;'
+
+While testing web apps on mobile browsers, you might encounter a ChromeDriver related error:
+
+```
+error: No Chromedriver found that can automate Chrome_version
+```
+
+1.  To fix this, download the compatible version of ChromeDriver with the Chrome browser version on your testing mobile devices. Download ChromeDriver from the [Chromium website](https://chromedriver.chromium.org/downloads).
+
+2.  Add the newly downloaded ChromeDriver to the following folders:
+
+    -   macOS: go to <code>/usr/local/lib/node&#95;modules/appium/node&#95;modules/appium-chromedriver/chromedriver/mac</code> \(You might need to create the chromedriver/mac subfolder manually\).
+
+    -   Windows: go to <code>C:\Users\&lt;user&#95;name&gt;\AppData\Roaming\npm\node&#95;modules\appium\node&#95;modules\appium-chromedriver\chromedriver\win</code> \(You might need to create the chromedriver\\win subfolder manually\).

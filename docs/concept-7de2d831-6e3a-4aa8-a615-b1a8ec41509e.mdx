@@ -1,0 +1,131 @@
+---
+id: concept-7de2d831-6e3a-4aa8-a615-b1a8ec41509e
+slug: /organize/integration-for-organizing-tests/testlink-integration
+---
+
+# TestLink Integration
+
+## TestLink Installation
+
+-   Download XAMPP from Apache Friends: [XAMPP](https://www.apachefriends.org/download.html).
+
+-   Upon successful installation, Tomcat will be started by default.
+
+-   Start the Apache and MySQL services from XAMPP Control Panel.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/1-XAMPP-control-panel.png" width={700} alt="TestLink Installation" />
+
+
+-   Download the TestLink from SourceForge: [TestLink](https://sourceforge.net/projects/testlink/files/TestLink%201.9/). You can use the latest version for the integration.
+
+-   Extract TestLink and place it on <code>XAMPP/htdocs</code> directory.
+
+-   Enter this URL in any browser: <code>http://localhost/phpmyadmin/</code>
+
+-   Create a new database called <code>testlink</code> from the database menu.
+
+-   Add a user account from the **Privileges** tab under **More** options for **testlink** database.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/2-Add-user-1.png" width={700} alt="Add user account in TestLink" />
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/3-Add-user-2.png" width={700} alt="Add user account in TestLink" />
+
+
+-   Enter this URL in any browser to open the TestLink installation setup: <code>http://localhost/testlink-1.9.16/install/index.php</code>
+
+-   Check the **I agree to the terms set out in this license** checkbox and click **Continue**.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/4-Agree-term.png" width={600} alt="Agree terms in TestLink" />
+
+
+-   The below permissions will be failed.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/5-Testlink-package.png" width={600} alt="Failed terms in the TestLink package" />
+
+-   Navigate to the TestLink package and open the <code>config.inc.php</code> file.
+
+-   Update the parameters as below:
+
+    ```
+    $tlCfg->log_path = 'D:/xampp/htdocs/testlink-1.9.16/logs/'; (Path of testlink package)
+    $grepositoryPath = 'D:/xampp/htdocs/testlink-1.9.16/uploadarea/'; (Path of testlink package)
+    
+    ```
+
+
+-   Refresh the page and the above “failed” status will be resolved.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/6-Failed-permission.png" width={700} alt="Resolve failed terms in the TestLink package" />
+
+-   Click **Continue**.
+
+-   Enter the Database name as <code>testlink</code>.
+
+-   Enter the Database admin login and password as <code>admin</code>.
+
+-   Enter your database username and password for “TestLink DB login and password”.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/7-Process-testlink-setup.png" width={500} alt="Set up Testlink" />
+
+
+-   Click **Process TestLink Setup!**.
+
+-   Once the installation is completed, a window displays to notify that the installation is successful.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/8-Successful.png" width={600} alt="Successfully install Testlink" />
+
+
+## TestLink Login
+
+-   Enter the belowEnter this URL to login to TestLink: <code>http://localhost/testlink-1.9.16/</code>
+
+-   Enter the Login Name and Password as <code>admin</code> to login as admin.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/9-Testlink-login.png" width={500} alt="Login Testlink" />
+
+
+-   Once you login to TestLink, it prompts to create a Test Project.
+
+-   Create a Test Plan, Build, Test suite with Test cases by selecting the corresponding links from the Dashboard.
+
+
+## Test Project Creation
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/10-Test-project-creation.png" alt="Create test project in Testlink" />
+
+## Test Plan Creation
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/11-Test-plan-creation.png" alt="Create test plan in Testlink" />
+
+## Build Creation
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/12-Build-creation.png" alt="Build creation in Testlink" />
+
+## Test Suite Creation
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/13-Test-suite-creation.png" alt="Test suite creation in Testlink" />
+
+## Test Case Creation
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/14-Test-case-creation.png" alt="Test case creation in Testlink" />
+
+## API Key Generation and Execution Type Changes on TestLink
+
+1.  Generate the API Key on TestLink as below.
+
+    -   Click on **My Settings**.
+    -   Personal API access Key will be **none** under the **API Interface** section.
+    -   Click **Generate a new key**.
+    -   Key will be generated from **Personal API access key**.
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/15-API-key.png" alt="Create API key in Testlink" />
+
+2.  After generating a key, update the test execution status as **Automated** as below.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/16-Automated-status.png" width={700} alt="Create API key in Testlink" />
+
+## Integration of Katalon test scripts with TestLink
+
+First, go to Katalon Store and install the plugin: [TestLink Integration](https://store.katalon.com/product/71/TestLink-Integration). Then, open Katalon Studio and reload plugin. See [Reload your plugins in Katalon Studio](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/installing-plugin-offline-in-katalon-studio#).
+
+Make a note of the TestLink Key, TestLink Url, Project Name, Test Plan Name, and Build Name created on TestLink. These details need to be used in our configuration in below:
+
+Go to **Project &gt; Settings &gt; Plugins &gt; TestLink Integration** and setup these following configurations:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/KS-TESTLINK-Enable-Testlink.png" alt="Enable TestLink Integration" />
+
+This plugin provides the only custom keyword <code>updateResults</code> to update the test results on TestLink.
+
+## Test Execution Results update on TestLink
+
+Before execution, the test status will be **Not Run** on TestLink. If the test case is passed, the status will be updated as **Passed**.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/18-Passed.png" width={500} alt="View test results in Testlink" />
+
+If the test case is failed, the status will be updated as **Failed**.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Testlink/19-Failed.png" width={500} alt="View test results in Testlink" />

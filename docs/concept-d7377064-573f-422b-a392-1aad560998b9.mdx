@@ -1,0 +1,211 @@
+---
+id: concept-d7377064-573f-422b-a392-1aad560998b9
+slug: /create-tests/manage-projects/project-settings/git-integration/work-with-git-in-katalon-studio-platform-edition
+---
+
+# Work with Git in Katalon Studio - Platform Edition
+
+In Katalon Studio - Platform Edition, Git integration is enabled by default. You cannot disable Git integration in Katalon Studio - Platform Edition.
+
+A Git repository URL is required to open a project in Katalon Studio - Platform Edition. See: [Open a project in Katalon Studio - Platform Edition](/create-tests/manage-projects/manage-test-projects/open-a-test-project-in-katalon-studio-platform-edition#).
+
+You can view your Git repository URL in **Project Information**. See: [Project Information in Katalon Studio - Platform Edition](/create-tests/manage-projects/project-settings/view-and-edit-your-project-information-in-katalon-studio#).
+
+This document shows you how to work with Git in Katalon Studio - Platform Edition versions 8.5.0 and 8.5.5. From version 8.6.0 onwards, see [Work with Git in Katalon Studio](/create-tests/manage-projects/project-settings/git-integration/work-with-git-in-katalon-studio).
+
+## Log in to Git account in Katalon Studio - Platform Edition
+
+If your Git personal access token expires, you can update the new token in Katalon Studio - Platform Edition. Do as follows:
+
+1.  Click on the dropdown of the **Profile** icon and choose **Log in to Git**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-850-pe-git.png" width={400} />
+
+2.  In the **Log in to Git** dialog, enter your Git **Username** and Git **Personal Access Token**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-850-pe-log-in-to-git.png" width={500} />
+
+    Granting the Write permission for this token is recommended. You can click **Save authentication** to remember this credentials for the next time opening this project.
+
+3.  Click **Log in**.
+
+
+You've successfully updated your Git personal access token in Katalon Studio - Platform Edition.
+
+## Set remote connection timeout for Git
+
+To set remote connection timeout for Git in Katalon Studio - Platform Edition, do as follows:
+
+1.  From the main menu, go to **Preferences** &gt; **Katalon** &gt; **Git**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-850-pe-git-preferences.png" width={700} />
+
+2.  Enter the amount of time in second for remote connection timeout.
+
+3.  Click **Apply**.
+
+
+## Commit
+
+The **Commit** option allows users to view all current changes and decide which changes are stored in the local branch. For more information on the commit command, refer to this Git document: [Git commit](https://git-scm.com/docs/git-commit).
+
+Do as follows:
+
+1.  In the main toolbar, click on **Git** dropdown arrow &gt; **Commit**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/Platform-Edition/image/ks-850-pe-commit.png" width={250} alt="Git commit" />
+
+2.  The **Git Staging** tab is displayed for configuration.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-commit.png" width={700} alt="Git staging" />
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>Unstaged Changes</td><td>Changes which have been made.</td></tr><tr><td>Staged Changes</td><td>Selected changes from Unstaged Changes. These changes are committed.</td></tr>    </tbody></table>
+
+3.  From the **Unstaged Changes** list, select the changes to be committed, then right-click on them and select **Add To Index**. You can also drag and drop items from the Unstaged Changes to the Staged Changes.
+
+    Selected changes are added to the **Staged Changes** list.
+
+4.  Enter your comments into the **Commit Message**.
+
+5.  Click on **Commit** to store your staged changes into the local branch.
+
+
+## Manage Branches
+
+### New Branch
+
+To create a new branch, do as follows:
+
+1.  In the main toolbar, click on **Git** dropdown arrow &gt; **Manage Branches** &gt; **New Branch**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/Platform-Edition/image/ks-pe-new-branch.png" width={300} />
+
+2.  The **Create Branch** dialog displays.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-create-new-branch.png" width={500} alt="Create branch dialog" />
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>Source</td><td>Select either remote or local branch, which is your source branch.<p><img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-select-source.png" width={500} alt="Select source dialog" /></p></td></tr><tr><td>Branch name</td><td>The name to be used for the new branch.</td></tr><tr><td>Checkout new branch</td><td>Option to let <span>Katalon Studio</span> checkout that branch after created.</td></tr>    </tbody></table>
+
+3.  Click **Finish** to create a new branch.
+
+
+### Checkout Branch
+
+The **Checkout Branch** option allows you to switch from one branch to another.
+
+Do as follows:
+
+1.  **Manage Branches** &gt; **Checkout Branch**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-check-out-branch.png" width={300} alt="Checkout branch" />
+
+2.  The **Select Source** dialog displays.
+
+    Select the local branch you want to check out to be the current branch. The branch with a **√** icon is your current local branch.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-select-source-branch.png" width={500} alt="Select source dialog" />
+
+3.  Click **OK** when you finish.
+
+
+### Delete Branch
+
+To delete a branch, do as follows:
+
+1.  In the main toolbar, click on **Git** dropdown arrow &gt; **Manage Branches** &gt; **Delete Branch**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-delete-branch.png" width={300} />
+
+2.  In the **Delete Branch** dialog, both local and remote branches are displayed. Select a branch to delete.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-delete-branch-dialog.png" width={500} alt="Delete branch dialog" />
+
+3.  Click **OK** when you finish.
+
+
+## Push
+
+
+:::note
+
+-   Before doing any push, you need to commit your changes.
+
+:::
+
+You can use push command to upload the local branch to the remote branch. For more information on the push command, refer to this Git document: [Git push](https://git-scm.com/docs/git-push).
+
+Do as follows:
+
+1.  In the main toolbar, click on **Git** dropdown arrow &gt; **Push**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/Platform-Edition/image/ks-pe-850-push.png" width={250} />
+
+    The **Push Branch master** dialog appears.
+
+2.  Choose from the **Remote branch** list which branch to be updated \(All remote branches in your Git repository are listed here\).
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-push-branch.png" width={500} />
+
+    Click **Next** after finishing selecting your remote branch.
+
+    
+    :::note
+
+    -   If you enter a name besides the listed branches, a new remote branch with that name is created accordingly.
+    :::
+
+3.  The **Push Confirmation** dialog appears with details of your commit.
+
+4.  Click **Finish** to push your commits to the remote repository.
+
+
+## Pull
+
+You can use the pull command to incorporate changes from a remote repository into the current branch. For more information on the pull command, refer to this Git document: [Git pull](https://git-scm.com/docs/git-pull).
+
+Do as follows:
+
+1.  In the main toolbar, click on **Git** dropdown arrow &gt; **Pull**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/Platform-Edition/image/ks-pe-850-pull.png" width={250} />
+
+    The **Pull** dialog appears.
+
+2.  Select the remote branch to be pulled into your local branch.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-remote-branch.png" width={500} />
+
+3.  Click **Finish**.
+
+4.  The **Pull Result** dialog displays information about pulling requests on the selected branch.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-pull-result.png" width={350} alt="Pull result dialog" />
+
+5.  Click **OK** when you finish.
+
+
+## Fetch
+
+You can retrieve all information about changes that have occurred in remote branches. For more information on the fetch command, refer to this Git document: [Git fetch](https://git-scm.com/docs/git-fetch).
+
+Do as follows:
+
+1.  In the main toolbar, click on **Git** dropdown arrow &gt; **Fetch**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/Platform-Edition/image/ks-pe-850-fetch.png" width={250} alt="Git Fetch" />
+
+2.  The **Fetch Results** dialog appears.
+
+    Remote branches, tags, and remote changes are fetched automatically.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-fetch-result.png" width={500} alt="Fetch results dialog" />
+
+3.  In the main toolbar, click **Show History**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/Platform-Edition/image/ks-pe-850-show-history.png" width={250} />
+
+4.  The **History** tab appears.
+
+    Details regarding all the branches and tags you've just fetched are displayed.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration/image/ks-840-history.png" width={750} alt="History tab" />

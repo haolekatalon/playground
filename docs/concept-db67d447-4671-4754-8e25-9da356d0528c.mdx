@@ -1,0 +1,295 @@
+---
+id: concept-db67d447-4671-4754-8e25-9da356d0528c
+slug: /execute/ci-cd-integrations/jenkins-integration/execute-katalon-tests-on-jenkins-with-testcloud-environment
+---
+
+# Execute Katalon tests on Jenkins with TestCloud environment
+
+Jenkins is an automation engine that supports a number of automation patterns. You can execute Katalon tests on Jenkins with the TestCloud environment using Katalon TestOps or Katalon Runtime Engine.
+
+This document shows you how to:
+
+-   Install the Katalon plugin on Jenkins
+
+-   Schedule a Katalon execution from TestOps and execute it on Jenkins with the TestCloud environment
+
+-   Execute a Jenkins freestyle project with the TestCloud environment
+
+-   Execute a Jenkins pipeline project with the TestCloud environment
+
+
+## Requirements
+
+-   An active Katalon TestCloud subscription or trial. See [TestCloud Trial](/administer/katalon-platform-packages/testcloud-feature-comparison#).
+
+-   You have downloaded and installed [Jenkins](https://jenkins.io/download/).
+
+
+## Install the Katalon plugin on Jenkins
+
+To run Katalon tests on Jenkins, you need to install the Katalon plugin on Jenkins. Do as follows:
+
+1.  Sign in to Jenkins and go to **Manage Jenkins** &gt; **Manage Plugins**.
+
+    The **Plugin Manager** page appears.
+
+2.  Click on the **Available** tab and search for the Katalon plugin.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Integration/image/jenkins-install-plugin.png" width={850} alt="plugin-manager" />
+
+3.  Select the plugin and choose **Install without restart**.
+
+
+## Run tests on Jenkins with TestOps
+
+To run tests on Jenkins with TestOps, you first need to schedule test executions on TestOps, select the TestCloud environment, and then link and execute them on Jenkins.
+
+### Configure a test run on TestOps with TestCloud environment
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your Project.
+
+2.  Go to **Test Execution** and click **Schedule Test Run**. The **Schedule Test Run** dialog pops up:
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/Schedule_Test_Run_popup.png" width={600} alt="TestOps schedule test run pop-up" />
+
+3.  Give your test run a name, then select your script repository.
+
+4.  Choose **Test Suite** or **Test Suite Collection** in the **Type** section, then select a test suite within **Test Suite** section, or **Test Suite Collection** according to your choice.
+
+5.  In the **Where to run** section, choose **TestCloud Test Environment** from **Test Environment Type** dropdown list.
+
+6.  Select the OS and browsers you want to test in the **TestCloud** dropdown list.
+
+7.  Switch off the **Repeat** toggle, then select **Save Configurations** instead of **Schedule Automated Test**.
+
+8.  Click **Save**.
+
+
+### Execute a Katalon TestOps plan on Jenkins
+
+1.  Sign in to your Jenkins portal.
+
+    The Jenkins **Dashboard** page appears.
+
+2.  Select **New Item** on the left side bar. Select **Freestyle project**, then enter a name for your project and click **OK**.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins-create-freestyle-project.png" alt="Jenkins-create-freestyle-project" />
+
+3.  You are navigated to your project page as below. Click on **Build Steps**. <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins_Build_Step.png" alt="Jenkins build step" />
+
+4.  Click **Add Build Step**, then select **Execute Katalon TestOps Plan** from the dropdown menu. <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/Jenkins_-_Execute_Katalon_TestOps_Plan.png" alt="Jenkins Execute Katalon TestOps Plan" />The new **Execute Katalon TestOps Plan** dialog appears underneath **Build Steps**.
+
+5.  Fill in the required information.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins-execute-katalon-testops-plan-information.png" alt="Jenkins execute Katalon TestOps plan information" />
+
+    -   In the Server URL section, enter <code>https://testops.katalon.io</code>.
+
+    -   In the **Credentials** section, click **Add** &gt; **Jenkins** to add a new credential. The **Add Credentials** dialog appears as below.<img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins-add-credentials.png" alt="Jenkins add credentials" />
+
+    -   In the **Kind** section, select **Secret text** from the dropdown list.
+
+    -   In the **Secret** section, enter a Katalon TestOps API Key. See: [API Keys](/administer/settings/katalon-api-key-in-katalon-testops#).
+
+    -   In the **ID** section, give a name for the new credential \(e.g., **katalon-api-key-test**\).
+
+    -   Click **Add** to finish. You have added a new credential. You will be automatically navigated back to the **Credentials** section, where you can select the newly-added credential in the **- none -**box.
+
+6.  Click **Test Connection**. Jenkins retrieves Projects and Test Runs from Katalon TestOps.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins-test-connection-successful.png" alt="Jenkins test connection successful" />
+
+    
+    :::note
+
+    -   If the test connection is successful, you will see **Success!** on the screen \(highlighted in the image above\).
+
+    :::
+
+7.  Within the **Project** dropdown menu, select your TestOps project. After that, within the **Choose Test Plan** dropdown menu, select the test plan you have created on TestOps previously.
+
+8.  Click **Save**. You will be navigated back to the Jenkins **Dashboard** page.
+
+9.  Select **Build Now** on the left side bar to run the job.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins_build_now.png" alt="Jenkins build now" />
+
+
+## Run tests in a Jenkins Freestyle project using KRE commands
+
+Another way to execute Katalon tests on Jenkins is by running Katalon Runtime Engine \(KRE\) commands within the Jenkins interface. There are two approaches to do that: setting up a Jenkins Freestyle or Jenkins Pipeline project. This article describes the first approach.
+
+
+:::note
+
+-   An active Katalon Runtime Engine \(KRE\) license.
+
+
+:::
+
+1.  Sign in to Jenkins. The Jenkins's Dashboard page appears.
+
+2.  Select **New Item** on the left side bar and select **Freestyle project**, then enter a name for your project, and select **OK**.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins-create-freestyle-project.png" alt="Jenkins freestyle project" />
+
+3.  In the **Build** section, click **Add build step** and choose **Execute Katalon Studio Tests**. The **Execute Katalon Studio Tests** box opens, asking you to input the Katalon Runtime Engine \(KRE\) version and command arguments. If you haven't downloaded KRE, you can input the KRE version you wish to execute within the Download Katalon Studio version box.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/Jenkins_-_Execute_Katalon_Studio_Tests.png" alt="Jenkins Execute Katalon Studio Tests" />
+
+4.  Specify the Katalon Studio version you wish to execute with:
+
+    -   If you haven't downloaded Katalon Runtime Engine \(KRE\), you can input the KRE version you wish to execute with in the **Download Katalon Studio version** box. KRE will be downloaded and deployed automatically. You can retrieve the list of all releases on our GitHub repository: [Releases](https://github.com/katalon-studio/katalon-studio/releases).
+    -   If you want to use a pre-installed version, manually input the KRE version you have installed in the **Use pre-installed Katalon Studio** box with the following command line:
+
+        ```
+        <KRE stored folder>-<KRE pre-installed-version>
+        
+        ```
+
+        For example: <code>/Users/USERNAME/Downloads/Katalon&#95;Studio&#95;Engine&#95;MacOS-8.1.0</code>.
+
+5.  Input your command in the **Command arguments** box:
+
+    Here is a sample of command arguments to run test with TestCloud configurations:
+
+    ```
+    -projectPath=/tmp/project -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -browserType="TestCloud" -testcloudEnvironmentId="87" -testcloudTunnel="false" -apikey=<INPUT_YOUR_API_KEY_HERE>
+    ```
+
+    You can generate the command arguments for tests with TestCloud configurations by using [the Katalon Studio command builder](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#). To understand more about the command syntax, see [Katalon Runtime Engine command-line syntax](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine). <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Katalon_TestOps/image/jenkins_freestyle_command_arguments.png" alt="Jenkins build command arguments" />
+
+    
+    :::note
+
+    -   When you use the Katalon plugin on Jenkins, or copy commands generated by the command builder from Katalon Studio, you need to remove the arguments -noSplash and -runMode=console.
+
+    :::
+
+    
+    :::note
+
+    -   From version 7.7.0 onwards, if you belong to more than one Organization subscribing to Runtime Engine licenses, you can choose which Organization validates your license usage with the following command line: -orgID=&lt;Katalon\_OrgID&gt;.
+
+    :::
+
+6.  After you are done with the configuration, click **Save**, then click **Build Now** to run the project.
+
+
+## Run tests in a Jenkins Pipeline project using KRE commands
+
+This article describes how to set a Jenkins project as a Jenkins Pipeline project.
+
+1.  Open Jenkins and create a new Pipeline project<img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/run-jenkins-with-testcloud/image/Jenkins_pipeline_project.png" alt="Jenkins pipeline project" />
+
+2.  Build the Jenkins Pipeline project
+
+    In the **Definition** dropdown list, select **Pipeline Script**.<img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/run-jenkins-with-testcloud/image/jenkin_pipeline_script.png" alt="Jenkins pipeline script" />
+
+    In **Pipeline**, copy and paste the following command-line arguments in the Script box, make adjustment in parameters such as your local path to Katalon Runtime Engine \(KRE\), projectPath, testSuitePath, testcloudEnvironmentId, and others as you need:
+
+    For Windows:
+
+    -   Script template:
+
+        ```
+        pipeline {
+            agent any
+            stages {
+                stage('Test') {
+                    steps {
+                        bat """
+                        cd  <KRE installed folder>
+                        katalonc  -projectPath="<projectpath>" -browserType="TestCloud" -testcloudEnvironmentId="<string value>" -testcloudTunnel="<true or false>" -retry=<number of retry times> -statusDelay=<seconds> -testSuitePath="<path>" -apiKey="<user API key>" -orgID=<Katalon_OrgID>
+                        """
+        
+                    }
+        
+                }
+        
+            }
+        
+        }
+        
+        ```
+
+    -   Script sample:
+
+        ```
+        pipeline {
+            agent any
+            stages {
+                stage('Test') {
+                    steps {
+                        bat """
+                        cd  C:\Users\NAH\Desktop\Katalon_Studio_Engine_Windows_64-8.1.0
+                        katalonc  -projectPath="C:\Users\NAH\Desktop\ci-samples-master\test.prj" -browserType="TestCloud" -testcloudEnvironmentId="87" -testcloudTunnel="true" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -apiKey="<user API key>" -orgID=<Katalon_OrgID> 
+                        """
+        
+                    }
+        
+                }
+        
+            }
+        
+        }
+        ```
+
+    For macOS/Linux:
+
+    -   Script template:
+
+        ```
+        pipeline {
+            agent any
+            stages {
+                stage('Test') {
+                    steps {
+                        sh '''
+                        cd  <KRE installed folder>
+                        ./katalonc  -projectPath="<projectpath>" -browserType="TestCloud" -testcloudEnvironmentId="<string value>" -testcloudTunnel="<true or false>" -retry=<number of retry time> -statusDelay=<seconds> -testSuitePath="<path>" -apiKey="<user API key>" -orgID=<Katalon_OrgID>
+                        '''
+        
+                    }
+        
+                }
+        
+            }
+        
+        }
+        ```
+
+    -   Script sample:
+
+        ```
+        pipeline {
+            agent any
+            stages {
+                stage('Test') {
+                    steps {
+                        sh '''
+                        cd  /Users/john.doe/Downloads/Katalon_Studio_Engine_MacOS-8.1.0/Katalon\\ Studio\\ Engine.app/Contents/MacOS
+                        ./katalonc  -projectPath="/Users/john.doe/Downloads/ci-samples-master/test.prj" -browserType="TestCloud" -testcloudEnvironmentId="87" -testcloudTunnel="false" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -apiKey="<user API key>" -orgID=<Katalon_OrgID>
+                        '''
+        
+                    }
+        
+                }
+        
+            }
+        
+        }
+        ```
+
+3.  After you are done with the configuration, click **Save**, then click **Build Now** to run the project.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/run-jenkins-with-testcloud/image/Jenkins_build_now.png" alt="Jenkins build now" />
+
+
+## Review the test results on Jenkins and TestOps
+
+To observe the test run results in the Jenkins portal, go to the Jenkins **Build History**, then select a build number.
+
+Select **Console Output** on the left hand side menu to see the test run result within the console output.<img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/run-jenkins-with-testcloud/image/Jenkins_test_run_successfully.png" alt="Jenkins Pipeline test run successfully" />
+
+If you are using Katalon platform edition or your project is integrated with Katalon TestOps, the test run results are automatically uploaded to Katalon TestOps. You can review the test run results in the TestOps portal. Go to **Reports** &gt; **Test Runs**.<img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/run-jenkins-with-testcloud/image/Jenkins_test_run_results_.png" alt="Jenkins test run results" />

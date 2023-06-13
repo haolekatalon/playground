@@ -1,0 +1,63 @@
+---
+id: concept-b1e8da56-e3cd-47f0-b3b0-1aef24ca0c93
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-an-xml-string-against-a-schema
+---
+
+# \[WS\] Validate an XML string against a schema
+
+## Requirements
+
+-   Katalon Studio version 8.4.0 onwards.
+
+
+## Description
+
+Validate an XML response body, request body, or string against an XML schema. The XML schema input can be an XML string, URL, or file path.
+
+Keyword name: <code>WS.validateXmlAgainstSchema</code>
+
+## Parameters
+
+### Validate an XML Object against an XML Schema
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>xmlObject</td><td>String</td><td>Required</td><td>Specify the XML object that needs to be validated.</td></tr><tr><td>xmlSchema</td><td>String</td><td>Required</td><td>Specify the XML schema used to validate the XML object.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+### Validate the Response against an XML Schema
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>response</td><td>ResponseObject</td><td>Required</td><td>Specify the response object that needs to be validated.</td></tr><tr><td>xmlSchema</td><td>String</td><td>Required</td><td>Specify the XML schema used to validate the response object.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Parameter Type</th><th>Description</th></tr><tbody><tr><td>boolean</td><td><ul><li><code>true</code>: the response passes the validation.</li><li><code>false</code>: the response doesn't pass the validation.</li></ul></td></tr></tbody></table>
+
+
+:::note
+
+-   If Katalon Studio cannot find the schema file or the response doesn't pass the validation, throw: <code>StepFailedException</code>.
+
+:::
+
+### Example
+
+```
+res = WS.sendRequest(findTestObject('XML'))
+
+String xml = '''<?xml version="1.0" encoding="utf-8"?>
+<List>
+    <item>
+        <id>3</id>
+        <username>James Johnson</username>
+        <password>789</password>
+        <gender>FEMALE</gender>
+        <age>75</age>
+        <avatar/>
+    </item>
+</List>'''
+
+String xmlFile = FileUtils.readFileToString(new File("example/xml/person.xml"));
+
+WS.validateXmlAgainstSchema(res, "example/xml/person.xsd");
+WS.validateXmlAgainstSchema(xml, "example/xml/person.xsd");
+WS.validateXmlAgainstSchema(xmlFile, "http://localhost:8080/api/users/xsd", FailureHandling.STOP_ON_FAILURE);
+
+```

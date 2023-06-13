@@ -1,0 +1,30 @@
+---
+id: concept-be3b5a86-cc74-48f1-9668-a6f1b9ac4655
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-switch-to-desktop
+---
+
+# \[Windows\] Switch To Desktop
+
+
+:::note
+
+-   Starting from **version 7.0.0**, Windows desktop application testing is available on Katalon Studio.
+
+
+:::
+
+## switchToDesktop
+
+-   **Description**: Switch from the current running driver to a desktop session of the Windows Driver. This keyword initializes another Windows Driver with the <code>app: Root</code> \(the whole desktop\) desired capability and the same WinAppDriver URL and Proxy settings of the application driver. All of Windows built-in keywords now are manipulated by the desktop Windows Driver.
+-   **Keyword name**: switchToDesktop
+-   **Keyword syntax**: Windows.switchToDesktop\(\)
+-   **Example**:
+
+```
+"Start the note pad application"
+Windows.startApplication('C:\\Windows\\System32\\notepad.exe')
+
+"Switch to control the Desktop"
+Windows.switchToDesktop()
+
+```

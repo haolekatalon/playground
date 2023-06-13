@@ -1,0 +1,39 @@
+---
+id: troubleshooting-6e89459b-e8e1-43a4-b0bf-d9e6eb08199f
+slug: /administer/troubleshooting/troubleshooting-activation-problem/the-number-of-the-licenses-cannot-exceed-the-license-quota
+---
+
+# The number of the licenses cannot exceed the license quota
+
+This exception indicates that the number of licenses in use exceeds the total number of licenses available to your organization.
+
+This can be caused by multiple reasons. For example, your organization not having enough licenses, having failed executions, or encountering unsuccessful terminations. All of which will block your license from being used for your subsequent execution.
+
+Check that you have not exceeded any quotas.
+
+-   [License Quota exceeded](/administer/troubleshooting/troubleshooting-activation-problem/license-quota-exceeded)
+
+-   [Machine Quota exceeded](/administer/troubleshooting/troubleshooting-activation-problem/machine-quota-exceeded)
+
+
+Check that you have enough licenses for all users: [View the license information](/administer/administration-tasks/license-management/manage-katalon-licenses#).
+
+If all of these are not the cause of the issue, then try: [Remove a registered machine ID](/administer/administration-tasks/license-management/remove-a-license#). Doing so will release your license from its current state of use.
+
+For Katalon Runtime Engine \(KRE\), you can insert the parameters <code>-licenseRelease=true -orgID=xxxxxx</code> into the KRE command line to clear any machine IDs currently attached to your license. Read more about KRE's command-line syntax here: [Optional arguments](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine#).
+
+This only applies to KRE v8.0.0 onwards and will only work if the cleared license is on the same machine ID.
+
+If the executions are on different machines, then use the fix for dynamic machine IDs below. Dynamic machine IDs require manual removal.
+
+Follow these steps:
+
+1.  Go to the Katalon Platform homepage.
+
+2.  Go to **Settings** &gt; **License Management**.
+
+3.  Select your affected license type.
+
+4.  Remove both **Registered Machines** and **Online Licenses**, as shown below:
+
+    <img src="/doc_images/Documents/Administer/Troubleshooting/Troubleshoot/troubleshoot-activation-problems/Troubleshooting/image/The_number_of_the_licenses_cannot_exceed_the_license_quota.jpeg" width={800} alt="Removing licenses manually on Katalon Platform." />

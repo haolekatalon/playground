@@ -1,0 +1,33 @@
+---
+id: task-c3752297-bd71-43e4-89e9-29a60ec37470
+slug: /create-tests/manage-projects/set-up-projects/api-testing/use-client-certificate-for-requests-in-api-projects-in-katalon-studio
+---
+
+# Use client certificate for requests in API projects in Katalon Studio
+
+-   You need an active Katalon Studio Enterprise license.
+
+-   This setting is only applied for requests in API/Web Services projects.
+
+
+Katalon Studio can be configured to use the client certificate for all requests. You can configure the client certificate by navigating to **Project** &gt; **Settings** &gt; **Network** &gt; **Client certificate settings**. To sign all the requests from Katalon Studio, you need to specify the full path to your **KeyStore** file and the **KeyStore Password**. The recommended key store format is **PKCS \#12** \(.p12\).
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/API_Testing/Client_Certificate_Settings/ks-841-client-certificate-settings.png" width={700} alt="client certificate settings" />
+
+To generate public and private key pairs \(KeyStore and KeyStore Password\) for the above configuration, you can use the *keytool* utility that is included in the JDK installation. Do as follows:
+
+1.  Open the command prompt and navigate to the bin folder in the JDK folder.
+
+2.  Run this command to create a **KeyStore**:
+
+    ```
+    keytool -genkey -alias katalon -keyalg RSA -keystore katalon.keystore
+    ```
+
+3.  Enter a password for the new **KeyStore** and provide the utility with the required information: your name, the name of your organization, etc.
+
+4.  To export a certificate with your public key, run this command:
+
+    ```
+    keytool -export -alias katalon -file katalon.cer -keystore katalon.keystore
+    ```

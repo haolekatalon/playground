@@ -1,0 +1,39 @@
+---
+id: concept-b30efb36-c8c7-41b6-8a7a-adf1f079d374
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-tap-on-image
+---
+
+# \[Mobile\] Tap on Image
+
+
+:::note
+
+-   This keyword, available in version 7.2.0+, is for Katalon Studio Enterprise users only.
+
+
+:::
+
+## tapOnImage
+
+-   **Description**: Find the mobile element that is recognized by the given image and taps on the found element's location.
+-   **Keyword syntax**: <code>tapOnImage(imageFilePath,flowControl)</code>
+-   **Parameters**:
+
+    -   Name: imageFilePath
+    -   Description: Absolute path of the image
+    -   Parameter Type: String
+    -   Mandatory: Required
+
+    -   Name: flowControl
+
+    -   Description: Control the execution flow if the step fails
+    -   Parameter Type: FailureHandling
+    -   Mandatory: Optional
+-   **Return**: true if the image presents. Otherwise, false.
+
+-   **Example**:
+
+    ```
+    Mobile.tapOnImage("/Users/myaccount/Desktop/image.png")
+    
+    ```

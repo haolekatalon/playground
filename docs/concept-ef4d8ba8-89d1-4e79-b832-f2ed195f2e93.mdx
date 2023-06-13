@@ -1,0 +1,53 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-ef4d8ba8-89d1-4e79-b832-f2ed195f2e93
+slug: /create-tests/create-test-cases/working-with-sensitive-text-in-katalon-studio
+---
+
+# Working with sensitive text in Katalon Studio
+
+Katalon Studio supports text encryption directly inside the test script. This feature is helpful in case the project team needs to share tests containing sensitive information with other team members or key stakeholders. There are two ways to leverage this feature: in **Manual view** and **Script view**.
+
+## In manual view
+
+1.  Open your desired test case in manual mode.
+
+2.  Click **Add** and select the <code>Set Encrypted Text</code> built-in keywords. To learn more about this keyword, see [\[WebUI\] Set Encrypted Text](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-set-encrypted-text).
+
+3.  In the <code>Set Encrypted Text</code> test step, double-click on the **Input** field. The **Input** dialog appears to help you encrypt any raw text.
+
+4.  Double-click on the **Value** field. Enter the **Raw Text**. The **Encrypted Text** is generated accordingly.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Working_With_Sensitive_Text/Images/encrypted-text-manual.png" width={600} alt="Sensitive text in manual view" />
+
+5.  When you are done, click **Insert**. The **Encrypted Text** then closes. In the **Input** dialog, you can now see the **Value** is added. Click **OK**.
+
+
+## In script view
+
+
+:::note
+
+-   Raw text must be encrypted before using in Script Mode.
+
+
+:::
+
+1.  Open your desired Katalon project.
+
+2.  In the main menu, go to **Help** &gt; **Encrypted Text**. The **Encrypted Text** dialog appears.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Working_With_Sensitive_Text/Images/encrypted-text-script-mode.png" width={400} alt="Sensitive text in script mode" />
+
+3.  Enter the **Raw Text**. The **Encrypted Text** is generated accordingly.
+
+4.  When you are done, click **Copy and Close**.
+
+5.  Open your test case in script mode, paste the encrypted text as a param of the <code>setEncryptedText</code> built-in keywords. To learn more about this keyword, see [\[WebUI\] Set Encrypted Text](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-set-encrypted-text).
+
+    For example:
+
+    ```
+    'Input password'
+    WebUI.setEncryptedText(findTestObject('Page_Login/txt_Password'), 'g3/DOGG74jC3Flrr3yH+3D/yKbOqqUNM')
+    ```

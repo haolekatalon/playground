@@ -1,0 +1,73 @@
+---
+id: concept-947b165a-66b2-47e5-9bb6-ac4470527530
+slug: /execute/ci-cd-integrations/katalon-studio-github-action
+---
+
+# Katalon Studio GitHub Action
+
+Use Actions on GitHub to automate your development workflow. The Katalon Studio GitHub Action available on the GitHub marketplace allows you to automate your Katalon Studio project execution. Access Katalon Studio GitHub Action from GitHub marketplace: [Katalon Studio GitHub Action](https://github.com/marketplace/actions/katalon-studio).
+
+## Requirements
+
+-   You need an active Katalon Runtime Engine \(KRE\) license.
+-   You must be on Katalon Studio version 7.0.0 or later.
+-   You have already set up your Katalon API key using a GitHub encrypted secret named <code>API&#95;KEY</code>. To learn how to use Katalon API keys, see [Katalon API Keys](/administer/settings/katalon-api-key-in-katalon-testops). To learn more about GitHub encrypted secrets, see GitHub document [Encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
+
+
+## Variables
+
+To run the Katalon Studio GitHub Action, define the variables in the action metadata file.
+
+Below is an example of how the action metadata file looks like. You do not need to create action metadata files when using Katalon Studio GitHub Action:
+
+```
+name: 'Katalon-Studio'
+description: 'Execute Katalon Studio projects'
+inputs:
+      version:
+            description: 'Which version of Katalon Studio to run'
+            required: true
+            default: ''
+
+      projectPath:
+            description: 'Where the Katalon Studio project is checked out'
+            required: true
+            default: ''
+
+      args:
+            description: 'What arguments to run Katalon Studio project'
+            required: true
+            default: ''
+
+runs:
+      using: 'node16'
+      main: 'index.js'
+
+```
+
+## Usage Example
+
+```
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.1
+    - name: Katalon Studio Github Action
+      uses: katalon-studio/katalon-studio-github-action@v2
+      with:
+          version: '7.5.5'
+          projectPath: '${{ github.workspace }}'
+          args: '-noSplash -retry=0 -testSuiteCollectionPath="Test Suites/Simple Test Suite Collection" -apiKey= ${{ secrets.API_KEY }} --config -webui.autoUpdateDrivers=true'
+
+```
+
+You can find the CI samples for macOS and Windows on our GitHub repository: [ci-samples/.github/workflows/](https://github.com/katalon-studio-samples/ci-samples/tree/master/.github/workflows).

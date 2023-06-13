@@ -1,0 +1,48 @@
+---
+id: concept-50d8c4bb-c714-44a2-81b4-f2f16b5bc3fd
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-wait-for-element-not-present
+---
+
+# \[Mobile\] Wait For Element Not Present
+
+## Description
+
+Wait for the given element to NOT be present within the given time \(in seconds\).
+
+
+:::note
+
+-   Katalon Studio version 8.1.0 onwards.
+
+
+:::
+
+## Parameters
+
+<table><tbody><tr><td><strong>Parameter</strong></td><td><strong>Parameter Type</strong></td><td><strong>Mandatory</strong></td><td><strong>Description</strong></td></tr><tr><td><code>to</code></td><td>TestObject</td><td>Required</td><td>Represent a mobile element.</td></tr><tr><td><code>timeout</code></td><td>Integer</td><td>Required</td><td><p>The maximum period of time in <strong>seconds</strong> that system will wait to return a result.</p> <ul><li><p>If timeout &gt; 0, Katalon Studio waits <code>timeout</code> to return a result.</p></li><li><p>If timeout = 0, Katalon Studio uses the default wait for element timeout in Project Settings.</p></li><li><p>If timeout &lt; 0, Katalon Studio throws <code>IllegalArgumentException</code>.</p></li></ul></td></tr><tr><td><code>flowControl</code></td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+See also: [Understand waiting keywords](/create-tests/keywords/using-keywords-in-katalon-studio/web-testing/understand-waiting-keywords-in-katalon-studio)
+
+## Returns
+
+<table><tr><th>Parameter Type</th><th>Description</th></tr><tbody><tr><td  colspan="1"  rowspan="1"  td>boolean</td><td  colspan="0"  rowspan="1"  td><ul><li><p><code>true</code><strong>:</strong> the element is <strong>NOT</strong> present within the given timeout.</p></li><li><p><code>false</code><strong>:</strong>the element is present within the given timeout.</p></li></ul></td></tr></tbody></table>
+
+## Example
+
+In this example, Studio waits for the Accessibility element to be gone within 10 seconds then continues testing. If the Accessibility element is still present, the keyword returns **False** and throws a warning message, and goes on with the following steps.
+
+```
+//Start Application
+Mobile.startApplication(GlobalVariable.G_AndroidApp, false)
+// Wait for the first element to present 
+Mobile.waitForElementPresent(findTestObject('Application/android.widget.TextView - Accessibility'), 10)
+// Verify if the element's text is correct
+Mobile.verifyElementText(findTestObject('Application/android.widget.TextView - Accessibility'), 'Accessibility', FailureHandling.CONTINUE_ON_FAILURE)
+//Tap on OS
+Mobile.tap(findTestObject('Object Repository/Application/android.widget.TextView - OS'), 0)
+//Wait for the Accessibility element to be gone on the next screen
+Mobile.waitForElementNotPresent(findTestObject('Application/android.widget.TextView - Accessibility'), 10)
+//Then tap on MMS Messaging element
+Mobile.tap(findTestObject('Object Repository/Application/android.widget.TextView - MMS Messaging '), 0)
+
+```

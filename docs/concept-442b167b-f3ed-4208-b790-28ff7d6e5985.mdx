@@ -1,0 +1,135 @@
+---
+id: concept-442b167b-f3ed-4208-b790-28ff7d6e5985
+slug: /create-tests/test-objects/api-test-objects/schema-compliance-testing-in-katalon-studio
+---
+
+# Schema compliance testing in Katalon Studio
+
+Schema compliance testing is to assert whether a request or a response follows the associated schema definition. Validating API requests and responses against schemas is an efficient and effective way to make sure that APIs are working as expected.
+
+This document shows you how to validate a response body, request body, or string against schemas for API testing in Katalon Studio. You can find a sample project for this feature on our GitHub repository: [Validate against schemas sample project](https://github.com/katalon-studio-samples/studio-schema-validation-example).
+
+With this feature, you can:
+
+-   Use JSON schema to validate RESTful request and response body content.
+-   Use XML schema to validate RESTful and SOAP request and response body content.
+-   Use GraphQL schema to validate GraphQL request body content. To learn more about GraphQL, you can refer to this document: [GraphQL](/create-tests/test-objects/api-test-objects/graphql-in-katalon-studio).
+
+
+## Requirements
+
+-   Katalon Studio version 8.4.0 onwards.
+
+
+## What is a schema?
+
+A schema concisely describes the structure of other instances, which can be used to require that an instance satisfies a certain number of criteria. The document being validated or described is called the instance, and the document containing the description is called the schema. A schema validation asserts constraints on the structure of the instance data. Recently, there has been a lot of interest in using schemas, such as a JSON or XML schema, as a basis for contract testing. You can learn more about the reason why we need to maintain the schema during the testing process in this document: [Update the Schema of API testing](/create-tests/introduction-to-test-creation/introduction-to-api-testing-in-katalon-studio#).
+
+The infographic below demonstrates the role of JSON/XML schema in API testing:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/schema-validation/Validate-Format.png" width={500} alt="Infographic" />
+
+*Infographic based on the Automation Step By Step course: What is JSON Schema*
+
+Learn more from the JSON Schema documentation: [What is a schema?](https://json-schema.org/understanding-json-schema/about.html#about)
+
+## Validate against a schema in the web service request
+
+This section walks you through adding validation to a web service request and viewing results.
+
+
+:::note
+
+-   Make sure that you declare the JSON schema used in that URL or file. For more information, you can refer to JSON schema document: [$schema](https://json-schema.org/understanding-json-schema/reference/schema.html#schema).
+
+
+:::
+
+1.  In an API tests project, open or create a new **Web Service Request**. To create a new **Web Service Request**, go to **Test Explorer** &gt; **Object Repository**. Right-click and choose **New** &gt; **Web Service Request**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/schema-validation/new-web-service-request.png" width={500} alt="new web service request" />
+
+2.  In the object editor view, switch to the **Validation** tab.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/schema-validation-for-api-testing/ks-840-validation-tab.png" alt="validation tab" />
+
+3.  To add new validation, click on **Add** and input the below information:
+
+    <table><tr><th>Option</th><th>Description</th></tr><tbody><tr><td>Name</td><td>Name of the validation.</td></tr><tr><td>Target</td><td><ul><li>Response: check the response body.</li><li>Request: check the request body.</li></ul></td></tr><tr><td>Schema Type</td><td><ul><li>JSON</li><li>XML</li><li><p>GraphQL</p></li><li>Auto Detect</li></ul></td></tr><tr><td>Input Type</td><td><ul><li>URL</li><li>File</li><li>Auto detect</li></ul></td></tr><tr><td>Location/Value</td><td>Input an URL to a schema, or file path to a schema. If the <strong>Input Type</strong> is a file, you can click on <strong>Browse</strong> on the <strong>Location/Value</strong> cell to browse to the schema file location.</td></tr><tr><td>Validate</td><td>Select which schemas to validate against.</td></tr>    </tbody></table>
+
+4.  Validate against the schema:
+
+    When you are done adding validation, click **Save**. Then, click on the dropdown menu of the **Test Request** and choose **Test Request And Verify**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/schema-validation/test-request-and-verify.png" width={250} alt="test request and verify" />
+
+5.  View validation results:
+
+    In the **Response** section, switch to the **Validation Log** tab. The validation results appear:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/schema-validation-for-api-testing/ks-840-validation-log.png" alt="validation log" />
+
+    **Result**:
+
+    -   **PASSED**: All the requests/ responses passed the validation.
+    -   **FAILED**: At least one of the request/ response failed the validation.
+    Click on each line of the **Result** table to view **Problem details**. The **Problem details** section appears with a list of issues. For example: <code>$[0].password: string found, integer expected</code>, or <code>$[0].username: string found, integer expected</code>.
+
+
+You have successfully validated requests/ responses against schemas using Katalon Studio.
+
+## Validate against schemas in a test case
+
+To validate against schemas in a specific test case, you can add these keywords directly:
+
+-   [\[WS\] Validate a JSON string against a schema](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-json-string-against-a-schema)
+-   [\[WS\] Validate an XML string against a schema](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-an-xml-string-against-a-schema)
+-   [\[WS\] Validate GraphQL request against a GraphQL schema](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-graphql-request-against-a-graphql-schema)
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/schema-validation-for-api-testing/ks-840-validate-xml-in-tc.png" alt="validate XML schema in a test case" />
+
+View the test case in script view:
+
+```
+res = WS.sendRequest(findTestObject('XML'))
+
+String xml = '''<?xml version="1.0" encoding="utf-8"?>
+<List>
+    <item>
+        <id>3</id>
+        <username>James Johnson</username>
+        <password>789</password>
+        <gender>FEMALE</gender>
+        <age>75</age>
+        <avatar/>
+    </item>
+</List>'''
+
+String xmlFile = FileUtils.readFileToString(new File("example/xml/person.xml"), "utf-16");
+
+WS.validateXmlAgainstSchema(res, "example/xml/person.xsd");
+WS.validateXmlAgainstSchema(xml, "example/xml/person.xsd");
+WS.validateXmlAgainstSchema(xmlFile, "http://localhost:8080/api/users/xsd", FailureHandling.STOP_ON_FAILURE);
+
+```
+
+
+:::note
+
+-   You can also add the <code>sendRequestAndVerify</code> keyword as a test step. This action also sends the current request and executes verification snippets. Learn more about this keyword at our javadoc [Send Request And Verify](https://api-docs.katalon.com/com/kms/katalon/core/webservice/keyword/builtin/SendRequestAndVerifyKeyword.html) and [Verification Snippets](/create-tests/test-objects/api-test-objects/verification-snippets-in-katalon-studio).
+
+:::
+
+When you execute your test, in the **Log Viewer**, you can see the result of those validation steps and a list of issues \(if any\).
+
+-   Validation passed:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/schema-validation-for-api-testing/ks-840-validation-passed.png" alt="validation passed" />
+
+-   Validation failed:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/schema-validation-for-api-testing/ks-840-validation-failed.png" alt="validation failed" />
+
+-   Send request failed with root causes:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/schema-validation-for-api-testing/ks-840-send-request-failed.png" alt="send request failed with root cause" />

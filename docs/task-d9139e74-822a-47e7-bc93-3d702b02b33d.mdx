@@ -1,0 +1,29 @@
+---
+id: task-d9139e74-822a-47e7-bc93-3d702b02b33d
+slug: /create-tests/manage-projects/set-up-projects/mobile-testing/android/configure-fingerprint-setting-in-an-android-emulator
+---
+
+# Configure fingerprint setting in an Android emulator
+
+-   Here is the [sample app](https://drive.google.com/file/d/1KTWwUFEeHuC0OUZjm_MQ4V1G5osQVCsy/view?usp=sharing) for this guide.
+
+-   You can also see this [video](https://drive.google.com/file/d/1OgEnrctf5l9daqn2T9UV_YleQal7qhcf/view?usp=sharing) for demonstration.
+
+
+1.  Create an emulator with Fingerprint settings, for instance Pixel 3 API 30.<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/Android/Configure_fingerprint_in_an_Android_emulator/Pixel_3_emulator_fingerprint_setting.jpeg" width={300} alt="Pixel 3 emulator fingerprint" />
+
+2.  We can select any of the options below for the screen lock setting.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/Android/Configure_fingerprint_in_an_Android_emulator/Pixel_3_screenlock_settings.jpeg" width={300} alt="fingerprint setting" />
+
+3.  Use the adb command to emulate finger touching action.
+
+    ```
+    //Open terminal
+    adb -e emu finger touch <finger ID>
+    //finger ID from 1 to 10
+    Ex: adb -e emu finger touch 10
+    ```
+
+
+The fingerprint emulation is accomplished. <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/Android/Configure_fingerprint_in_an_Android_emulator/Pixel_3_emulator_finger_touch.jpeg" />

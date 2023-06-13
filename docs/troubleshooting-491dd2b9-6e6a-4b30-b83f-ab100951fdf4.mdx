@@ -1,0 +1,12 @@
+---
+id: troubleshooting-491dd2b9-6e6a-4b30-b83f-ab100951fdf4
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/element-click-intercepted-exception
+---
+
+# Element click intercepted exception
+
+When you encounter the following exception: <code>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point</code>
+
+1.  If the test case fails because there is another object covering the target element, for example, a pop-up dialog, you can add actions to remove the object before the **Click**action.
+
+2.  From Katalon Studio version 8.2.0 onwards, if the **Default wait for element timeout** setting is not long enough for Katalon to click on the target element behind an overlay, you can add the <code>WebUI.waitForElementClickable</code> keyword before the **Click** action. To learn more about using the <code>WebUI.waitForElementClickable</code> keyword, you can refer to this document here: [\[WebUI\] Wait For Element Clickable](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-clickable).

@@ -1,0 +1,67 @@
+---
+id: concept-d973ecd3-e837-4fe3-b471-379cd999d78f
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-perform-touch-id
+---
+
+# \[Mobile\] Perform Touch ID
+
+
+:::note
+
+-   Katalon Studio version 8.3.0 onwards.
+
+:::
+
+## Description
+
+Simulate a Touch ID event on iOS simulators.
+
+
+:::note
+
+-   To enable this keyword, Touch ID on the simulator must be enrolled.
+-   Touch ID and Face ID are available on certain iPhone and iPad models. To learn more about supported iPhone and iPad models, refer to the following Apple documents: [iPhone models](https://support.apple.com/en-us/HT201296) and [iPad models](https://support.apple.com/en-us/HT201471).
+
+:::
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td><code>match</code></td><td>Boolean</td><td>Yes</td><td>Simulate a successful touch (true) or a failed touch (false).</td></tr><tr><td><code>flowControl</code></td><td>FailureHandling</td><td>No</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. Refer to: <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >Failure Handling</a>.</td></tr></tbody></table>
+
+## Exceptions
+
+<table><tr><th>Throw</th><th>Precondition</th><th>Message</th></tr><tbody><tr><td><code>StepFailedException</code></td><td>If Touch ID on the simulator is not enrolled.</td><td>To enable this keyword, touch ID on the simulator must be enrolled.</td></tr><tr><td><code>StepFailedException</code></td><td>If the <code>performTouchID</code> keyword is not performed on an iOS simulator.</td><td>The <code>performTouchID</code> keyword supports iOS simulators only.</td></tr><tr><td><code>Warning</code></td><td>If the <code>performTouchID</code> keyword is run on unsupported environments.</td><td>The <code>performTouchID</code> keyword is not available for physical mobile devices.</td></tr></tbody></table>
+
+## Example
+
+In this example, we want to open the <code>Authentication.app</code> application using Touch ID.
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint 
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase 
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData 
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject 
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject 
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint 
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW 
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile 
+import com.kms.katalon.core.model.FailureHandling as FailureHandling 
+import com.kms.katalon.core.testcase.TestCase as TestCase 
+import com.kms.katalon.core.testdata.TestData as TestData 
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW 
+import com.kms.katalon.core.testobject.TestObject as TestObject 
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS 
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI 
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows 
+import internal.GlobalVariable as GlobalVariable 
+import org.openqa.selenium.Keys as Keys
+
+'Start application with Touch ID enrolled on the current selected iOS simulator'
+Mobile.startApplication('/Users/katalon/Library/Developer/Xcode/DerivedData/Authenticate_asgsg/Build/Products/Debug-iphonesimulator/Authentication.app', true)
+
+'Perform a successful Touch ID event'
+Mobile.performTouchID(true)
+
+'Close application on the current selected iOS simulator'
+Mobile.closeApplication()
+```

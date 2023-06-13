@@ -1,0 +1,163 @@
+---
+id: concept-2db1ed01-ca9c-41f4-b84c-2453eaa2a42c
+slug: /execute/schedule-test-execution/schedule-test-runs-in-testops
+---
+
+# Schedule Test Runs in TestOps
+
+## Requirements
+
+-   You have created a [Local Test Environment with Agent](/execute/cloud-based-test-execution/test-execution-with-testops/local-test-environments/create-a-local-test-environment-with-an-agent) or you have already created a different Test Environment \(Docker, Kubernetes, etc.\).
+
+-   You have created a Git script repository and linked it to your project on TestOps. For more information, see [Upload test scripts from the Git repository to TestOps](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+
+## Schedule Test Runs
+
+Follow these steps:
+
+1.  Go to your Project and select the **Test Execution** tab.
+
+    The **Test Run Calendar** page appears as below.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-june-schedule-test-runs/schedule-test-run-button.png" alt="test run page" />
+
+2.  Click on the **Schedule Test Run** button.
+
+    The **Schedule Test Run** dialog appears as below.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-june-schedule-test-runs/kt-schedule-test-run-page-ui-jun22.png" alt="schedule test run page ui jun22" /><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-june-schedule-test-runs/kt-schedule-test-run-page-visual-testing-section-ui-jun22.png" alt="schedule test run page visual testing section ui jun22" />
+
+3.  Fill in the information.
+
+    -   In the **General Information** section, create a name for the schedule.
+    -   In the **What to run** section, fill in the following information:
+
+        -   **Script Repository**: select your repository in the dropdown list.
+
+            
+            :::note
+
+            -   Katalon TestOps currently supports test scripts from Katalon Studio and Git Repositories \(Azure Repos, Bitbucket, GitHub and GitLab\). See: [Upload Test Scripts from a Git Repository](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+            :::
+
+        -   **Type**: choose between **Test Suite**, **Test Suite Collection**, **Katalon Command** and **Generic Command** to run your tests.
+
+            
+            :::note
+
+            -   You choose **Test Suite** if you want to run test suites created in TestOps or from Katalon Studio \(KS\).
+
+                -   Make sure you download a new local agent to execute test suites in the local environment. See: [Create a Local Test Environment with an Agent](/execute/cloud-based-test-execution/test-execution-with-testops/local-test-environments/create-a-local-test-environment-with-an-agent).
+
+                -   Make sure Kobiton integration is disabled because you can only execute test suites on desktop applications \(browsers\). You can toggle **Kobiton** off in advanced settings. See: [Advanced settings](/execute/schedule-test-execution/schedule-test-runs-in-testops#).
+
+                -   Once you have chosen **Test Suite**, the **Run with** section appears. The default browser is Chrome. You can select a different browser in the **Run with** section.
+
+            -   You choose **Test Suite Collection** if you want to select the Test Suite Collections directly from KS. Katalon TestOps will automatically fetch your Test Suite Collections.
+
+            -   The **Visual Testing** option is enabled.
+
+                -   You can specify an existing baseline collection in the **Visual Testing** section to associate it with the scheduled test runs.
+
+                -   If you do not specify a baseline collection, TestOps automatically generates a new baseline collection when the test run schedule is executed.
+
+                -   For more information on visual testing, see: [TestOps Visual Testing](/analyze/analytics/visual-testing/visual-testing-overview#) and [Use TestOps Visual Testing](/analyze/analytics/visual-testing/use-testops-visual-testing).
+
+            -   You choose **Generic Command** if you want to execute tests with other frameworks outside KS \(e.g., Pytest\).
+            -   You choose **Katalon Command** if you want to execute tests with KS. The Katalon commands can be generated from KS \(in the **Command Generator** dialog\). See: [Command Syntax](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine).
+            :::
+
+    -   In the **Where to run** section, fill in the following information:
+
+        -   **Test Environment Type**: choose among **Local Test Environment**, **TestCloud Test Environment**, **Kubernetes Test Environment** or **CircleCI Test Environment**.
+
+            
+            :::note
+
+            -   If you are using Katalon Runtime Engine \(KRE\), check the **Katalon Runtime Engine Version** box and select the version you are using from the dropdown list.
+
+            -   If you choose **Test Cloud Environment** to run test suites, the browser options in the **TestCloud** section correspond to the browser you have selected in the **Run with** section \(when selecting **Test Suite** as **Type** in the **What to run** section\). For example, if the selected browser is Chrome, the available options in the **TestCloud** section are: Window - Chrome and Linux - Chrome. See also: [Integrate TestCloud with TestOps](/execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-testops).
+
+            :::
+
+        -   **Test Environments**: select the Agents you want to use for test executions.
+
+    -   In the **When to run** section, you have the following options:
+
+        -   If you want to run tests periodically, select **Trigger Automated Test**, turn the **Repeat** toggle on, set the time period and the interval you want to run the tests \(e.g., run tests every **2 days** from **09/21/2021 10:49** to **10/20/2021 11:00**\), then click **Schedule**. You have created a trigger to run tests automatically.
+
+            <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-june-schedule-test-runs/kt-schedule-test-run-page-ui-jun22.png" alt="schedule test run page ui jun22" />
+
+        -   If you want to run tests immediately, select **Trigger Automated Test**, turn the **Repeat** toggle off, then click **Run**. You have run the tests manually.
+
+            <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-june-schedule-test-runs/kt-schedule-test-run-repeat-off-ui-jun22.png" alt="schedule test run page repeat off ui jun22" />
+
+        -   If you want to save what you have configured so far without running tests, select **Save Configurations**, then click **Save**. You then can come back another time to run tests manually. See: [Execute Test Runs manually](/execute/schedule-test-execution/execute-test-runs-manually-in-testops).
+
+            <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-june-schedule-test-runs/kt-schedule-test-run-save-configuration-ui-jun22.png" alt="schedule test run page save configuration ui jun22" />
+
+
+## Advanced settings
+
+You can optimize your configurations in the **Advanced settings** section of the **Schedule Test Run** dialog.
+
+When you open the **Schedule Test Run** dialog, at the bottom left corner, click **Advanced settings**.
+
+<img src="/doc_images/Documents/Execute/Schedule_test_executions/Schedule-test-runs-in-testops/image/tc-schedule-test-run.png" width={850} alt="Schedule test run advanced settings" />
+
+The dialog displays with the following settings:
+
+<img src="/doc_images/Documents/Execute/Schedule_test_executions/Schedule-test-runs-in-testops/image/tc-advanced-setting.png" />
+
+-   **Visual Testing**: select a Baseline Collection ID or generate a new Baseline Collection to compare with the captured images.
+
+-   **Katalon Runtime Engine Version**: choose a Katalon Runtime Engine version to run your test.
+
+-   **Execution Mode**: choose between **Sequential** \(run one test after another\) or **Parallel** \(run tests at the same time\). See: [Run multiple Test Suites in parallel with Agents](/execute/cloud-based-test-execution/test-execution-with-testops/local-test-environments/run-multiple-test-suites-in-parallel-with-agents).
+
+    
+    :::note
+
+    -   You can only run test suites in a sequential mode. If you choose **Test Suite**, there is no **Parallel** option.
+    :::
+
+-   **Integration**:
+
+    -   For **Xray Test Plan** and **Xray Push Mechanism**: see [Link a Katalon test run with an Xray test plan](/organize/integration-for-organizing-tests/xray-integration/link-a-katalon-test-run-with-an-xray-test-plan).
+    -   For **Kobiton**: switch the **Kobiton** toggle on to enable the integration, then enter your Kobiton Device ID to run tests on that device. See: [How to configure Kobiton integration with Katalon TestOps](/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/kobiton-integration/kobiton-integration-with-testops).
+-   **Custom Field** & **Tag**: assign custom fields and tags to your test run schedule. See: [Custom Fields and Tags](/organize/custom-field-and-tags/custom-fields-and-tags).
+
+-   **Release Version**: select the release version you want to link your test runs to. See: [Manage Test Runs by Release](/plan/create-and-edit-releases-in-testops).
+
+-   **Timeout in Minutes**: define the time after which test execution is canceled. Add more minutes to this limit to avoid test executions getting timed out before completion.
+
+
+After creating the schedule, Katalon TestOps automatically directs you to the **Test Run List** page.
+
+The **Test Run List** page shows you a collection of Test Runs with the same configurations \(Test Environment, Script Repository\).
+
+## View test run types in Katalon Studio
+
+-   This feature is available from Katalon Studio version 7.9.1 onwards.
+-   You have enabled TestOps integration in Katalon Studio. See: Katalon Studio Integration.
+
+The **Test Run List** in TestOps is equivalent to the **Test Run Types** in Katalon Studio.
+
+Follows these steps:
+
+1.  Open your project in Katalon Studio.
+
+2.  In the **Tests Explorer** sidebar, go to **TestOps** &gt; **Test Run Types**.
+
+    You can view a summary of Test Run Types that have been configured in TestOps.
+
+    <img src="/doc_images/Documents/Execute/Schedule_test_executions/Schedule-test-runs-in-testops/image/KS-TESTOPS-Test-run-types.png" width={850} />
+
+3.  Click on one of the Test Run names. This opens the Test Runs Summary page in Katalon TestOps.
+
+    <img src="/doc_images/Documents/Execute/Schedule_test_executions/Schedule-test-runs-in-testops/image/detail-of-test-run-type-on-testops-2.png" width={850} />
+
+
+You've successfully viewed the test run types.

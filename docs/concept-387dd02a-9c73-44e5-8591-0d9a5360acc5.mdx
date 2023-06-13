@@ -1,0 +1,27 @@
+---
+id: concept-387dd02a-9c73-44e5-8591-0d9a5360acc5
+slug: /plugins-and-add-ons/katalium-server/katalium-server-execute-katalon-studio-s-scripts-on-remote-machines
+---
+
+# Katalium Server - Execute Katalon Studio's scripts on Remote Machines
+
+You can execute your scripts in Katalon Studio on remote machines by using [Katalium Server](/plugins-and-add-ons/katalium-server/katalium-server-overview).
+
+1.  Follow [this user guide](/plugins-and-add-ons/katalium-server/get-started-with-katalium-server) to set up and activate Katalium Server.
+
+2.  Configure the desired capabilities for a remote machine. Open Katalon Studio. Navigate to **Project** &gt; **Settings** &gt; **Desired Capabilities** &gt; **Remote** &gt; Enter required information and then click **OK**.
+
+    -   **Remote Server URL** should be in the format of <code>http://&lt;hub-ip-address&gt;:&lt;port&gt;/wd/hub</code>. E.g.: http://192.168.37.35:45339/wd/hub.
+    -   **Remote Server type**: Selenium.
+    -   **Add properties**. Currently, all [desired capabilities](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities#used-by-the-selenium-server-for-browser-selection) of the Selenium Server will be supported by Katalon Studio.
+
+        
+        :::note
+
+        The value of properties is case sensitive.
+
+        :::
+
+3.  In the drop-down list of the **Run** button, select **Remote**.
+
+4.  If you're executing Katalium Server in the Grid mode, you can view all session details. Refer to [Sessions monitoring](/plugins-and-add-ons/katalium-server/sessions-monitoring-for-katalium-server) for further instructions.

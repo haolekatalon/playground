@@ -1,0 +1,66 @@
+---
+id: concept-4973fb4f-6a90-4e34-8c03-c7785b0b1446
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/utilities-keywords/common-call-test-case
+---
+
+# \[Common\] Call Test Case
+
+## Description
+
+Call another test case and execute it separately.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>arg0</td><td>TestCase</td><td>Required</td><td>Represent the called test case's path.</td></tr><tr><td>arg1</td><td>Map</td><td>Required</td><td>Represent the list of parameters will be used in the called test case.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Param Type</th><th>Description</th></tr><tbody><tr><td>Object</td><td>Value of called test case if any.</td></tr></tbody></table>
+
+## Example
+
+You want to verify if the returned message after logging in successfully does not match the expected message.
+
+-   Manual view
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/common-call-test-case/image2017-3-3-173A493A2.png" />
+
+-   Script view
+
+    ```
+    import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+    import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+    import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+    import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+    import com.kms.katalon.core.model.FailureHandling as FailureHandling
+    import com.kms.katalon.core.testcase.TestCase as TestCase
+    import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+    import com.kms.katalon.core.testdata.TestData as TestData
+    import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+    import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+    import com.kms.katalon.core.testobject.TestObject as TestObject
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    import internal.GlobalVariable as GlobalVariable
+    'Use WebUI keyword'
+    WebUI.callTestCase(findTestCase('DDR_NavigateToPageThenVerifyPageTitle'), ['p_Protocol' : null, 'p_DomainName' : null, 'p_Path' : null
+            , 'p_WindowTitle' : null])
+    
+    'Use Mobile keyword'
+    Mobile.callTestCase(findTestCase('DDR_NavigateToPageThenVerifyPageTitle'), ['p_Protocol' : null, 'p_DomainName' : null, 'p_Path' : null
+            , 'p_WindowTitle' : null])
+    
+    'Use WS keyword'
+    WS.callTestCase(findTestCase('DDR_NavigateToPageThenVerifyPageTitle'), ['p_Protocol' : null, 'p_DomainName' : null, 'p_Path' : null
+            , 'p_WindowTitle' : null])
+    
+    
+    
+    
+    ```

@@ -1,0 +1,20 @@
+---
+id: troubleshooting-e8646f9e-8c6f-4faa-afc3-d1207d193ea0
+slug: /execute/troubleshooting/tests-not-loading-when-executing-with-chrome-version-92-93-94-in-windows
+---
+
+# Tests not loading when executing with Chrome version 92, 93, 94 in Windows
+
+When executing tests in KRE in console mode on Windows with Chrome version 92.x, 93.x or 94.x, you might come across the following error: <code>SessionNotCreatedException: Message: session not created from timeout: Timed out receiving message from renderer: 600.000</code>.
+
+This is an issue from Chrome version 93.x and 94.x that doesn't allow the ChromeDriver to start as a Windows service. Here are two workarounds for this issue:
+
+1.  Set <code>--disable-gpu</code> for the desired capability in **Project** &gt; **Settings** &gt; **Desired Capabilities** &gt; **Web UI** &gt; **Chrome**. Click **Add**, then input as follows:
+
+    <table><tr><th>Name</th><th>Type</th><th>Value</th></tr><tbody><tr><td>args</td><td>List</td><td>--disable-gpu</td></tr>    </tbody></table>
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/troubleshoot/TC-TROUBLESHOOT-Set-desired-capability.png" alt="Set desired capabilities in chrome" />
+
+    OR
+
+    Downgrade to Chrome of lower version. To downgrade ChromeDriver versions, you can refer to this guide: [Update or Downgrade WebDrivers](/create-tests/manage-projects/set-up-projects/web-testing/handle-webdrivers/upgrade-or-downgrade-webdrivers-in-katalon-studio#).

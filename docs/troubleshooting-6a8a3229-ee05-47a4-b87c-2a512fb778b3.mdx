@@ -1,0 +1,20 @@
+---
+id: troubleshooting-6a8a3229-ee05-47a4-b87c-2a512fb778b3
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-windows-automated-testing/timeout-when-launching-windows-application
+---
+
+# Timeout when launching Windows application
+
+When you reach timeout when launching Windows applications, try one of the following ways:
+
+1.  Close all unneeded apps and opened folders. Open Katalon Studio only.
+
+2.  Remove unused shortcuts on your desktop and your taskbar.
+
+3.  Use <code>Windows.startApplication(…)</code> instead of <code>Windows.startApplicationWithTitle(…)</code>.
+
+    For example:
+
+    ```
+    Windows.startApplication('C:\\Users\\katalon\\Desktop\\Demo\\WindowsFormsApp.exe') Windows.switchToWindowTitle('Main App Title') // Replace this by your main window title
+    ```

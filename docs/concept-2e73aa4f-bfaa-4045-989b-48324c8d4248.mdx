@@ -1,0 +1,98 @@
+---
+author: Trinh Huynh <trinh.huynh@katalon.com>
+id: concept-2e73aa4f-bfaa-4045-989b-48324c8d4248
+slug: /proof-of-concept/autonomous-test-generation-with-katalon-ai
+---
+
+# Autonomous test generation with Katalon AI
+
+
+:::note
+
+-   This proof of concept \(PoC\) is for a closed beta feature and is not ready for production use.
+
+
+:::
+
+Katalon Autonomous Test Generation \(ATG\) is an AI-augmented test automation solution that automatically discovers, models, generates, and maintains user-journey test cases. Katalon ATG provides a streamlined test generation process, saving time and improving testing efficiency.
+
+Katalon ATG requires installing the Katalon AI agent by adding a Javascript code snippet in the head element of the AUT. After installation, Katalon AI will study user flows, generate test cases, and store the tests in a Git-based repository. These test cases can be used for regression testing in a CI/CD pipeline to identify impacts on product functionalities.
+
+This document shows you how to configure autonomous test generation in Katalon Platform, and explains how test cases are generated with Katalon AI.
+
+
+:::note
+
+You must be the Admin of your Katalon Account. See: [Administrative Roles and Permissions](/administer/administration-roles/administrative-roles-and-permissions).
+
+:::
+
+## Add application under test
+
+To configure autonomous test generation, first you need to define an AUT. The AUT specifies the production environment where Katalon AI can track all user interactions and leverage them in generating test cases.
+
+Follow these steps:
+
+1.  Log in to [TestOps](https://testops.katalon.io/).
+
+2.  On the top right corner, select **Settings** &gt; **Autonomous Testing**.
+
+    The **Autonomous Testing** menu displays as below.<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/ATG_autonomous_testing_menu.png" width={700} alt="autonomous testing menu" />
+
+3.  Click **Add Application Under Test**. In the displayed dialog, provide the information of your AUT.
+
+    -   **Name**: The displayed name of your application.
+
+    -   **Application Domain**: The domain of your deployed applications. A user journey can involve multiple domains.
+
+    -   **Description**: The description for your application.
+
+4.  Click **Add**.
+
+
+Your application under test is successfully added.
+
+## Configure the application under test
+
+After the AUT is defined, you need to install the event tracking agent in your application, provide the development environment and associate the test project.
+
+Select the AUT you want to configure. The configuration menu appears with three installation steps.<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/ATG_configuration_menu.png" width={700} alt="ATG Configuration menu" />
+
+1.  **Activate Traffic Agent**.
+
+    A developer or someone with access to the codebase of the AUT must add the tracking code snippet provided by Katalon. The code snippet should be pasted into the &lt;HEAD&gt; element of the HTML code of the AUT. Once the code snippet is added, the AUT should be saved, built, and deployed to the production environment.
+
+    It is important that the tracking code is added correctly to collect data from all user interactions. This will allow the Katalon AI to collect and model user journeys accurately and generate test cases.
+
+2.  **Add Test Environment\(s\)**.
+
+    Click on the **Add Test Environment** button. In the opened dialog, you need to provide the test environment for the test execution. You can name the environment, specify its URL and provide login credentials for accessing that environment if necessary.
+
+    <img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/ATG_add_test_environment.png" width={400} alt="Add test environment dialog" />
+
+    Katalon AI will explore the test environment following the paths identified from user activities on the production environment and generate test cases accordingly. This activity will ensure the test cases generated can be later executable on the test environment.
+
+3.  **Link Project\(s\)**.
+
+    Click on the **Link Project** button to specify the test project and script repository. The test cases will be committed and pushed to the script repository, which can then be executed as Katalon test scripts. <img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/ATG_link_project.png" width={500} alt="Link project dialog" />
+
+
+The application under test is configured for autonomous test generation.
+
+## Generate test cases with Katalon AI
+
+After setting up the traffic agent, Katalon AI collects and models user journeys that will in turn enable the generation of relevant test cases.
+
+Katalon AI uses the [MutationObserver API](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) and [Javascript Listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) to track user interactions on the AUT. Katalon AI can detect actions such as clicks, inputs, and selections by monitoring changes to the DOM and attaching a listener to DOM elements. The technology combination allows Katalon AI to collect detailed data on user behavior. Katalon AI then uses the data to generate user journey maps and test cases for the most common user flows in your AUT.
+
+To view the list of application domains with generated user journey map, go to **Planning**, and select **User Journeys**.
+
+<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/testops-user-journey-map.png" width={700} />
+
+The generated test cases are stored in the registered script repository: <img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/ATG_generated_test_cases.png" width={700} />
+
+The default user journey map is generated with data collected within 24 hours. You can generate a new user journey map by clicking **Generate New User Journey Map** and select appropriate time period \(last 7/30/90 days, or custom date\)<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Autonomous_Test_generation/images/ATG_generate_new_user_journey_map.png" width={500} />
+
+The user account that triggers to generate a new map will receive a notification email when the generation is finished.
+
+When the new map is generated with up to 50 test cases, the previous maps are treated as the old ones. Test cases of the old maps are overwritten and cannot be accessed.

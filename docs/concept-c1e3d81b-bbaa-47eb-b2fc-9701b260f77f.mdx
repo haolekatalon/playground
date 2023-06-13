@@ -1,0 +1,166 @@
+---
+id: concept-c1e3d81b-bbaa-47eb-b2fc-9701b260f77f
+slug: /create-tests/test-objects/windows-test-objects/windows-test-objects-in-katalon-studio
+---
+
+# Windows Test Objects in Katalon Studio
+
+## Manage Windows Test Objects
+
+### Create a Windows test object
+
+1.  Select **File &gt; New &gt; Windows Object** from the main menu. The **New Windows Object** dialog is displayed.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/create-new-object.png" />
+
+2.  Provide a name for the new test object, then click **OK** button to create a new object under the **Object Repository** of Katalon Studio.
+
+
+### Locator strategy for detecting an object
+
+Built upon Windows Application Driver, Katalon Studio supports 6 locator strategies to identify UI elements of a Desktop application. You can choose different ways to locate a Windows test object.
+
+-   **Accessibility ID**: The AutomationId of an object
+
+    -   E.x.: <code>AppNameTitle</code> <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/accessibility-id.png" />
+-   **Class Name**: The ClassName property of an object
+
+    -   E.x.: TextBlock <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/class-name.png" />
+-   **ID**: The unique runtime ID of an object
+
+    -   E.x.: 42.333896.3.1 <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/runtime-id.png" />
+-   **Name**: The name of an object
+
+    -   E.x.: Calculator <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/name.png" />
+-   **Tag Name**: The tag name \(aka the element type\) of an object
+
+    -   E.x.: <code>Text</code>
+-   **XPath**
+
+    -   E.x.: <code>//Button[0]</code>
+
+### Test Objects in Script View
+
+The Script View of a test script allows you to define Windows objects programmatically. Below are the code snippets of an object with different locator strategies.
+
+**ACCESSIBILITY\_ID**
+
+```
+WindowsTestObject wo = new WindowsTestObject('')
+wo.setLocatorStrategy(LocatorStrategy.ACCESSIBILITY_ID)
+wo.setLocator("accessibility id value here")
+
+```
+
+**CLASS\_NAME**
+
+```
+WindowsTestObject wo = new WindowsTestObject('')
+wo.setLocatorStrategy(LocatorStrategy.CLASS_NAME)
+wo.setLocator("classname value here")
+
+```
+
+**ID**
+
+```
+WindowsTestObject wo = new WindowsTestObject('')
+wo.setLocatorStrategy(LocatorStrategy.ID)
+wo.setLocator("id here")
+
+```
+
+**NAME**
+
+```
+WindowsTestObject wo = new WindowsTestObject('')
+wo.setLocatorStrategy(LocatorStrategy.NAME)
+wo.setLocator("name here")
+
+```
+
+**TAG\_NAME**
+
+```
+WindowsTestObject wo = new WindowsTestObject('')
+wo.setLocatorStrategy(LocatorStrategy.TAG_NAME)
+wo.setLocator("tag name here")
+
+```
+
+**XPATH**
+
+```
+WindowsTestObject wo = new WindowsTestObject('')
+wo.setLocatorStrategy(LocatorStrategy.XPATH)
+wo.setLocator("XPATH here")
+
+```
+
+### Verify and Highlight
+
+Katalon Studio Windows Object Spy and Recorder have a built-in **Highlight** feature that allows double-checking if the Windows objects are able to be located.
+
+Katalon Studio displays a message on how many elements are found or NOT found with the selected locator strategy and locator. If the object is found, it will be highlighted with the **green** border.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/name-highlight.png" />
+
+## Parameterize Windows Test Objects
+
+
+:::note
+
+Parameterizing Windows test objects is available in version 7.3.0+.
+
+:::
+
+The benefit of parameterizing test objects in general is to handle object with dynamic properties \([Read more](/create-tests/test-objects/web-test-objects/manage-web-test-objects-in-katalon-studio)\). With this feature, you can update test objects' locators dynamically by using either local or global variables.
+
+Here are the steps demonstrating how to use this feature:
+
+1.  Select a Windows object you want to parameterize
+2.  Capture its locator with Katalon Studio Windows Object Spy or Recorder and create a variable with this syntax <code>$&#10100;variable&#95;name&#10101;</code> as a place holder for its dynamic locator. For example, we create the <code>$&#10100;xpath&#10101;</code> variable for the XPATH locator strategy. You can parameterize test objects with other locator strategies as well.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/step2.png" />
+
+3.  Use the parameterized test object.
+
+
+### In Manual View
+
+Open your Test Case in the **Manual** View and double-click on the object that you want to parameterize its locator.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/img_manual.png" />
+
+In the displayed **Test Object Input** dialog, declare the expected dynamic locator as a variable in the **Variables** panel.
+
+-   **Param Type**: the variable type \(The default type is String\).
+-   **Param**: the variable name.
+-   **Value Type**: the type of the variable's value.
+-   **Value**: a specific value of that variable.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/img_test_object_input.png" />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/img_variables.png" />
+
+For instance, Katalon Studio uses the <code>xpath</code> variable created in step 2, with its specific value as <code>//Button[0]</code> to find the **btn\_Login** object.
+
+### In Script View
+
+Once the locator is declared, you can switch to the **Script** View and modify the perceived value of the locator. Typically, users want to pass the locator value as a variable or refer to data files.
+
+The general syntax to find a Windows test object using a dynamic locator is as follows:
+
+```
+findWindowsObject('{your test object}', [('{variable}') : '{value of variable}'])
+
+```
+
+For example:
+
+```
+findWindowsObject('Object Repository/btn_Login', [('xpath') : '//Button[0]'])
+
+```
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/windows-test-objects/img_script_view.png" />

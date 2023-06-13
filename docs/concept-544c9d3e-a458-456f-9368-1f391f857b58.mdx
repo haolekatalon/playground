@@ -1,0 +1,58 @@
+---
+id: concept-544c9d3e-a458-456f-9368-1f391f857b58
+slug: /create-tests/manage-projects/set-up-projects/web-testing/internet-explorer-configurations-for-katalon-studio
+---
+
+# Internet Explorer Configurations for Katalon Studio
+
+
+:::note
+
+-   Katalon Studio only supports Internet Explorer 9,10,11 in Windows.
+-   You can configure Internet Explorer at the project level with desired capabilities here: [Desired capabilities for IE](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-desired-capabilities-for-webui-testing-in-katalon-studio#).
+
+:::
+
+**Next step**  
+
+
+[Record web utility in Katalon Studio](/create-tests/record-and-spy/webui-record-and-spy-utilities/record-web-utility-in-katalon-studio)
+
+[Spy Web Utility in Katalon Studio](/create-tests/record-and-spy/webui-record-and-spy-utilities/spy-web-utility-in-katalon-studio)
+
+## Internet Explorer Configurations on Windows 10
+
+To run tests on Internet Explorer \(IE\), you need the following setups:
+
+1.  **Enable Protected Mode** must be disabled for all available zones. To do so, choose **Internet Options** from **Control Panel**, then switch to the **Security** tab. Uncheck the **Enable Protected Mode** option.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/ks-internet-properties.png" width={300} />
+
+2.  Zoom the IE browser to 100% so that native mouse events can be set to correct coordinates.
+
+3.  For IE 11, you also need to set a registry entry on the target computer so that the driver can maintain a connection to the Internet Explorer instances. To do so, follow these steps:
+
+    1.  To open the **Registry Editor**, type <code>regedit</code> into **Command Prompt**.
+
+    2.  Locate the **FEATURE\_BFCACHE** subkey. If you cannot find the **FEATURE\_BFCACHE** subkey, create one.
+
+        -   For 32-bit Windows, the key is at <code>HKEY&#95;LOCAL&#95;MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE&#95;BFCACHE</code>.
+        -   For 64-bit Windows, the key is at <code>HKEY&#95;LOCAL&#95;MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE&#95;BFCACHE</code>.
+    3.  Inside this subkey, create a **DWORD** value called <code>iexplore.exe</code> with the value of 0.
+
+        <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/registry-editor.png" width={600} />
+
+
+## Internet Explorer Configurations on Windows 11
+
+To run tests on Internet Explorer \(IE\), open **Control Panel** and go to **Network and Internet** &gt; **Internet Options**, then do as follows:
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Internet_Explorer_Configurations/image/win11.png" width={500} />
+
+1.  In the **Internet Properties** dialog, select the **Security** tab.
+
+2.  Choose **Local intranet**.
+
+3.  Click on the **Sites** button.
+
+4.  Enable **Automatically detect intranet network**, then click **OK**.

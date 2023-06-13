@@ -1,0 +1,44 @@
+---
+id: concept-cd4fe955-da35-4e9f-b527-5fdff8b78c1c
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-set-encrypted-text
+---
+
+# \[WebUI\] Set Encrypted Text
+
+## Description
+
+Set encrypted text into an input field. It also clears the previous value of the input field. To encrypt raw text, go to **Help &gt; Encrypt Text**.
+
+***Manual mode***
+
+The pop-up dialog has been shown when calling keyword "**Set Encrypted Text**". Input raw text and select insert.
+
+***Script Mode***
+
+Go to **Help &gt; Encrypt Text**, input raw text to encrypt. Next, copy and paste encrypted text into the test scripts.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>to</td><td>TestObject</td><td>Required</td><td>Represent a web element.</td></tr><tr><td>text</td><td>String</td><td>Required</td><td>The encrypted text.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Example
+
+Set the encrypted text to txt\_Password of a login form.
+
+```
+'Open browser and navigate to AUT'
+WebUI.openBrowser('http://demoaut.katalon.com/profile.php#login')
+
+'Input username'
+WebUI.setText(findTestObject('Page_Login/txt_UserName'), 'John Doe')
+
+'Input password'
+WebUI.setEncryptedText(findTestObject('Page_Login/txt_Password'), 'g3/DOGG74jC3Flrr3yH+3D/yKbOqqUNM')
+
+'Click on "Login" button'
+WebUI.click(findTestObject('Page_Login/btn_Login'))
+
+'Close browser'
+WebUI.closeBrowser()
+
+```

@@ -1,0 +1,42 @@
+---
+id: concept-87a4b30f-12dd-4883-b54f-438d4abc1712
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-long-press
+---
+
+# \[Mobile\] Long Press
+
+
+:::note
+
+-   Starting from **version 7.2.0**, this keyword is available for Mobile testing on Katalon Studio.
+
+
+:::
+
+## longPress
+
+-   **Description**: Perform a long press action on a mobile element.
+-   **Method**: longPress
+-   **Keyword syntax**: Mobile.longPress\(testObject, timeout, flowControl\)
+-   **Parameters**:
+
+    -   Name: testObject
+    -   Description: Represent a mobile element.
+    -   Parameter Type: TestObject
+    -   Mandatory: Required
+    -   Name: timeout
+    -   Description: System will wait at most *timeout* \(seconds\) to return a result.
+    -   Parameter Type: int
+    -   Mandatory: Required
+    -   Name: flowControl
+    -   Description: Used to control the step if the step failed.
+    -   Parameter Type: FailureHandling
+    -   Mandatory: Optional
+-   **Returns**: void.
+-   **Throw**: **StepFailedException** if Katalon Studio could not find the specified element.
+-   **Example**:
+
+    ```
+    Mobile.longPress(findTestObject('android.widget.Button0 - NEXT'), 0)
+    
+    ```

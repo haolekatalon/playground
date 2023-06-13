@@ -1,0 +1,103 @@
+---
+id: concept-2a301168-97cb-4033-a4a3-6f98bac0a6b3
+slug: /execute/cloud-based-test-execution/test-execution-with-testcloud/schedule-test-runs-with-testcloud-tunnel
+---
+
+# Schedule test runs with TestCloud Tunnel
+
+Follow these steps:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your Project.
+
+2.  Go to **Test Execution** &gt; **Schedule Test Run**.
+
+    The **Schedule Test Run** dialog pops up.
+
+3.  Select **TestCloud Test Environment** from the dropdown list in the **Test Environment Type** section.
+
+4.  Switch the toggle **Use TestCloud Tunnel** on.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/testops-integration/private-domains/beta-switch-testcloud-tunnel-on.png" width={700} alt="test run types page run with testcloud successfully" />
+
+5.  Select the OS and browsers in the **TestCloud** section.
+
+6.  Click **Schedule**.
+
+    You are directed to the **Test Run List** page, where you can see the newly-added TestCloud Test Environment.
+
+7.  Follow the below guidelines to configure TestCloud Tunnel.
+
+
+## Schedule test runs with TestCloud Tunnel
+
+Follow these steps to schedule test runs using the TestCloud Tunnel.
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your Project.
+
+2.  Go to **Test Execution** &gt; **Schedule Test Run**.
+
+    The **Schedule Test Run** dialog appears.
+
+3.  In the **Environment** section, click on the drop-down menu and select **More options**.
+
+    The dialog displays as below.
+
+    <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/integrate-testcloud-with-testops/Images/tc-environment-more-options-anno.png" width={850} />
+
+4.  Switch the **Use TestCloud Tunnel** toggle on.
+
+5.  Select the testing environment in the **TestCloud** section.
+
+6.  Return to the **Schedule Test Run** dialog, then click **Schedule**.
+
+7.  Follow the guidelines below on how to configure **TestCloud Tunnel**.
+
+
+## Configure TestCloud Tunnel
+
+
+:::note
+
+-   To allow User Datagram Protocol \(UDP\) connections, the proxy must be configured.
+-   If you use a Man-in-the-Middle \(MITM\) proxy, it must be configured to allow Transport Layer Security \(TLS\) connections.
+
+For detailed information on TestCloud Tunnel and how to use it, see [TestCloud Tunnel](/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-tunnel).
+
+:::
+
+After scheduling your test runs using TestCloud Tunnel, you need to activate the TestCloud Tunnel to start test executions in private domains.
+
+1.  Go to **Configurations** &gt; **TestCloud Tunnels**.
+
+    The **TestCloud Tunnels** page appears.
+
+2.  Switch to the **Setup** tab.
+
+    You will see an on-screen step-by-step instruction on how to set up your TestCloud Tunnel.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/testops-integration/private-domains/beta-activate-tescloud-tunnel-in-kt-configuration.png" width={700} alt="testcloud tunnel page" />
+
+    Follow the on-screen instructions:
+
+    1.  Select your OS, download the binary file, and unzip the file.
+    2.  Right-click on the file to open it in the terminal \(for macOS\), or open the file in cmd.exe \(for Windows\).
+    3.  Copy the command in the **Generate configuration** section, and open a Terminal or Command Prompt to run the command.
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/testops-integration/private-domains/beta-open-termina-for-configuring-testcloud-tunnel.png" width={700} alt="configure testcloud tunnel" />
+
+    4.  Copy the command in the **Start a tunnel** section, and open a Terminal or Command Prompt to run the command.
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/testops-integration/private-domains/beta-open-termina-for-starting-testcloud-tunnel.png" width={700} alt="configure testcloud tunnel" />
+
+    You have successfully configured the **TestCloud Tunnel**.
+
+3.  To validate your **TestCloud Tunnel** configuration, go to the **TestCloud Tunnels** page and select the **Tunnels** tab.
+
+    The TestCloud Tunnel should be in *Active* status as shown below.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/testops-integration/private-domains/beta-testcloud-tunnel-active.png" width={700} alt="configure testcloud tunnel" />
+
+4.  Go to the **Test Run List** page and click on the *Play* icon to run your tests.
+
+
+You have successfully run your tests in private domains using the TestCloud Test Environment.
+
+To check the progress of your test runs, see: [View Logs](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops).

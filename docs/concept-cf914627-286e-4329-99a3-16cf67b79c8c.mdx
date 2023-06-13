@@ -1,0 +1,28 @@
+---
+id: concept-cf914627-286e-4329-99a3-16cf67b79c8c
+slug: /plugins-and-add-ons/katalon-recorder-extension/get-your-job-done/export-scenarios/writing-custom-script-formatter-in-katalon-recorder
+---
+
+# Writing Custom Script Formatter in Katalon Recorder
+
+## Introduction
+
+Starting from version 3.4.0, Katalon Recorder provides a plugin platform for people to extend its capabilities.
+
+## List of Plugins
+
+PHPUnit formatter for Katalon Recorder \([Bitbucket](https://bitbucket.org/inventis/phpunit-formatter-katalon-recorder/src/master/)\) by Jan Esser. Selenide formatter for Katalon Recorder \([Chrome](https://chrome.google.com/webstore/detail/selenide-exporter-for-kat/mkbfcgpbkcaieiajhllpdocjfnfcbmlm)\) by John Pratt.
+
+## Sample
+
+This is a sample plugin for Katalon Recorder [https://github.com/katalon-studio/katalon-recorder-sample-plugin](https://github.com/katalon-studio/katalon-recorder-sample-plugin). This sample plugin adds plain text format, e.g.
+
+```
+open | https://katalon-test.s3.amazonaws.com/demo-aut/dist/html/form.html | 
+click | id=first-name | 
+type | id=first-name | Alex 
+type | id=last-name | Smith
+
+```
+
+See the following demos for Chrome and Firefox.

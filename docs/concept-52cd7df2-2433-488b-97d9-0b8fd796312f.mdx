@@ -1,0 +1,123 @@
+---
+id: concept-52cd7df2-2433-488b-97d9-0b8fd796312f
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-json-string-against-a-schema
+---
+
+# \[WS\] Validate JSON string against a schema
+
+## Requirements
+
+-   Katalon Studio version 8.4.0 onwards.
+
+
+## Description
+
+Validate a JSON response body, request body, or string against a JSON schema. The JSON schema input can be a JSON string, URL, or file path.
+
+Keyword name: <code>WS.validateJsonAgainstSchema</code>
+
+## Parameters
+
+### Validate a JSON Object against a JSON Schema
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>jsonObject</td><td>String</td><td>Required</td><td>Specify the JSON object that needs to be validated</td></tr><tr><td>jsonSchema</td><td>String</td><td>Required</td><td>Specify the JSON schema used to validate the JSON object.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+### Validate the Response against a JSON Schema
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>response</td><td>ResponseObject</td><td>Required</td><td>Specify the response object that needs to be validated</td></tr><tr><td>jsonSchema</td><td>String</td><td>Required</td><td>Specify the JSON schema used to validate the response object.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Parameter Type</th><th>Description</th></tr><tbody><tr><td>boolean</td><td><ul><li><code>true</code>: the response passes the validation.</li><li><p><code>false</code>: the response doesn't pass the validation.</p></li></ul></td></tr></tbody></table>
+
+
+:::note
+
+-   If Katalon Studio cannot find the schema file or the response doesn't pass the validation, throw: <code>StepFailedException</code>.
+
+
+:::
+
+## Example
+
+### Validate a JSON Object against a schema
+
+```
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+
+String jsonPass =
+"""
+{
+  "\$id": "https://example.com/person.schema.json",
+  "\$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "description": "The person's first name."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "The person's last name."
+    },
+    "age": {
+      "description": "Age in years which must be equal to or greater than zero.",
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
+"""
+
+String jsonObject = 
+"""
+{
+  "firstName": "White",
+  "lastName": "Walter",
+  "age": 52
+}
+
+"""
+
+boolean successful = WS.validateJsonAgainstSchema(jsonObject,jsonPass)
+
+```
+
+### Validate a Response against a schema
+
+```
+import com.kms.katalon.core.testobject.ResponseObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webservice.verification.WSResponseManager
+
+ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
+
+String jsonPass =
+"""
+{
+  "\$id": "https://example.com/person.schema.json",
+  "\$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "description": "The person's first name."
+    },
+    "lastName": {
+      "type": "string",
+      "description": "The person's last name."
+    },
+    "age": {
+      "description": "Age in years which must be equal to or greater than zero.",
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}
+"""
+
+boolean successful = WS.validateJsonAgainstSchema(response,jsonPass)
+
+```

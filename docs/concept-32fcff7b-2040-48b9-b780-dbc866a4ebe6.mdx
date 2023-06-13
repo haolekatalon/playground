@@ -1,0 +1,68 @@
+---
+id: concept-32fcff7b-2040-48b9-b780-dbc866a4ebe6
+slug: /administer/administration-tasks/product-utilization/view-test-usage-and-balance-in-the-usage-dashboard
+---
+
+# View Test Usage and Balance in the Usage Dashboard
+
+Organizations in Katalon Platform are limited in how many tests can be run monthly, defined as your monthly *quota*. This quota is defined by the license plan of your Account. You can view the current test execution quota, usage, and remaining balance in the **Usage Dashboard**.
+
+
+:::note
+
+-   Katalon Platform subscription.
+-   Owner or Admin role in an Organization.
+
+Find out more about the licensing model and test execution quota here: [Katalon Platform Plans](/administer/katalon-platform-packages/katalon-platform-plans).
+
+:::
+
+## Navigate to the Usage Dashboard
+
+To navigate to the **Usage Dashboard**, follow these steps:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/) and select your Organization.
+
+2.  Click on the *Settings* button on the top right corner and select **Product Utilization**. The **Admin** page appears.
+
+3.  Under the **Product Utilization** section, select **Katalon Platform**.
+
+
+The **Usage Dashboard** appears as below.
+
+<img src="/doc_images/Documents/Administer/Administrative_Tasks/Product_Utilization/test-usage-balance-usage-dashboard/TestOps-Katalon-Platform-Usage-dashboard.png" width={700} alt="Katalon Platform usage dashboard" />
+
+## Test Results Panel
+
+The **Test Results** panel displays a test result counter and your monthly quota. To view your remaining balance, hover your cursor over the panel.
+
+<img src="/doc_images/Documents/Administer/Administrative_Tasks/Product_Utilization/test-usage-balance-usage-dashboard/Katalon-Platform-Test-Result-panel.png" width={500} alt="Katalon Platform Test Results panel" />
+
+The **Test Results** here refers to execution result of test runs scheduled and executed on Katalon TestOps. One test run usually encompasses multiple test cases and therefore, multiple test results. As illustrated in the screenshot below, test runs and test results are two different metrics. The difference in terminology can also be found in [Terminology and Formulas](https://docs.katalon.com/docs/get-started/terminology-and-formulas#test-execution). <img src="/doc_images/Documents/Administer/Administrative_Tasks/Product_Utilization/test-usage-balance-usage-dashboard/TO-_project_dashboard.png" alt="Project dashboard on TestOps" />
+
+
+:::note
+
+-   When you reach your monthly quota, you cannot run any more tests on TestOps, but you can still upload your test results from Katalon Studio.
+-   For the first 3 months of any billing plan, including the free plan, you can fill 130% of your maximum quota at no extra cost.
+-   Your test executions counter is reset to 0 every month, starting from the first day of your free plan, or from the last time you upgraded your subscription plan.
+-   Upgrading your subscription renews your balance and sets the new date as the first day of the first month of your new billing plan. You can once again use 130% of your maximum quota for 3 months.
+
+:::
+
+## Test Activities Panel
+
+The **Test Activities** panel displays your weekly testing activity as a bar chart. Data includes tests run on Katalon TestOps as well as uploaded test results.
+
+<img src="/doc_images/Documents/Administer/Administrative_Tasks/Product_Utilization/test-usage-balance-usage-dashboard/Katalon-Platform-Test-Activities-panel.png" width={700} alt="Test Activities panel" />
+
+Two numbers are displayed on the right side of the bar chart:
+
+-   **Test Results** represents the total number of tests executed the preceding week.
+
+-   **Test Duration** represents the total time spent executing tests the preceding week.
+
+
+Learn more about uploading test results to TestOps: [Upload Test Results to Katalon TestOps from Katalon Studio](/analyze/reports/upload-test-reports/upload-test-results-from-katalon-studio-to-katalon-testops-manually).
+
+See also: [Upgrade Katalon Platform Subscription](/administer/administration-tasks/subscription-management/katalon-platform-subscription/upgrade-katalon-platform-subscription#).

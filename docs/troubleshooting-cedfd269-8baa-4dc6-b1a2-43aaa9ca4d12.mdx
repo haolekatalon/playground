@@ -1,0 +1,20 @@
+---
+id: troubleshooting-cedfd269-8baa-4dc6-b1a2-43aaa9ca4d12
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/unable-to-start-application-while-running-android-tests-on-a-windows-machine
+---
+
+# Unable to Start Application while running Android tests on a Windows machine
+
+1.  Upgrade to the latest version of Appium.
+
+2.  In Katalon Studio, go to **Project Settings &gt; Desired Capabilities &gt; Mobile &gt; Android** and add this desired capabilities:
+
+    -   Name: <code>appWaitActivity</code>.
+
+    -   Type: String.
+
+    -   Value: \*
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/roubleshooting-automated-mobile-testing/android-error.png" alt="desired capabilities" />
+
+3.  Click **Apply** to save, then run the test again.

@@ -1,0 +1,3548 @@
+---
+id: concept-d0a2b097-1193-4025-a940-58d22b600914
+slug: /plugins-and-add-ons/katalon-recorder-extension/get-your-job-done/automate-scenarios/selenese-selenium-ide-commands-reference
+---
+
+# Selenese \(Selenium IDE\) Commands Reference
+
+Katalon Automation Recorder provides various Selenium Commands \(Selenese\) to help automate web application testing. These commands stimulate actions on the application under test \(AUT\) and create automation test scripts.
+
+The below table is the list of all supported Selenese Commands.
+
+## addLocationStrategy
+
+addLocationStrategy\(strategyName, functionDefinition\)
+
+**Arguments:**
+
+strategyName - the name of the strategy to define; this should use only letters \[a-zA-Z\] with no spaces or other punctuation.
+
+functionDefinition - a string defining the body of a function in JavaScript. For example:
+
+```
+return inDocument.getElementById(locator);
+```
+
+Defines a new function for Selenium to locate elements on the page. For example, if you define the strategy "foo", and someone runs click\("foo=blah"\), we'll run your function, passing you the string "blah", and click on the element that your function returns, or throw an "Element not found" error if your function returns null. We'll pass three arguments to your function:
+
+-   locator: the string the user passed in
+-   inWindow: the currently selected window
+-   inDocument: the currently selected document
+
+The function must return null if the element can't be found.
+
+## addLocationStrategyAndWait
+
+addLocationStrategyAndWait\(strategyName, functionDefinition\)
+
+Generated from addLocationStrategy\(strategyName, functionDefinition\)
+
+**Arguments:**
+
+-   strategyName - the name of the strategy to define; this should use only letters \[a-zA-Z\] with no spaces or other punctuation.
+-   functionDefinition - a string defining the body of a function in JavaScript. For example:
+
+    ```
+    return inDocument.getElementById(locator);
+    ```
+
+
+Defines a new function for Selenium to locate elements on the page. For example, if you define the strategy "foo", and someone runs click\("foo=blah"\), we'll run your function, passing you the string "blah", and click on the element that your function returns, or throw an "Element not found" error if your function returns null. We'll pass three arguments to your function:
+
+-   locator: the string the user passed in
+-   inWindow: the currently selected window
+-   inDocument: the currently selected document
+
+The function must return null if the element can't be found.
+
+## addScript
+
+addScript\(scriptContent, scriptTagId\)
+
+**Arguments:**
+
+\*scriptcontent - the Javascript content of the script to add
+
+\*scriptTagId - \(optional\) the id of the new script tag. If specified, and an element with this id already exists, this operation will fail.
+
+Loads script content into a new script tag in the Selenium document. This differs from the runScript command in that runScript adds the script tag to the document of the AUT, not the Selenium document. The following entities in the script content are replaced by the characters they represent: &lt; &gt; & The corresponding remove command is removeScript.
+
+## addScriptAndWait
+
+addScriptAndWait\(scriptContent, scriptTagId\) Generated from addScript\(scriptContent, scriptTagId
+
+**Arguments**:
+
+\*scriptContent - the Javascript content of the script to add \*scriptTagId - \(optional\) the id of the new script tag. If specified, and an element with this id already exists, this operation will fail. Loads script content into a new script tag in the Selenium document. This differs from the runScript command in that runScript adds the script tag to the document of the AUT, not the Selenium document. The following entities in the script content are replaced by the characters they represent: &lt; &gt; & The corresponding remove command is removeScript.
+
+## addSelection
+
+addSelection\(locator, optionLocator
+
+**Arguments**:
+
+\*locator - an element locator identifying a multi-select box \*optionLocator - an option locator \(a label by default\)
+
+Add a selection to the set of selected options in a multi-select element using an option locator. @see \#doSelect for details of option locators
+
+## addSelectionAndWait
+
+addSelectionAndWait\(locator, optionLocator\)
+
+Generated from addSelection\(locator, optionLocator
+
+**Arguments**:
+
+\*locator - an element locator identifying a multi-select box \*optionLocator - an option locator \(a label by default\)
+
+Add a selection to the set of selected options in a multi-select element using an option locator. @see \#doSelect for details of option locators
+
+## ajaxWait
+
+ajaxWait
+
+## ajaxWaitAndWait
+
+ajaxWaitAndWait
+
+## allowNativeXpath
+
+allowNativeXpath\(allow
+
+**Arguments**:
+
+\*allow - boolean, true means we'll prefer to use native XPath; false means we'll only use JS XPath
+
+Specifies whether Selenium should use the native in-browser implementation of XPath \(if any native version is available\); if you pass "false" to this function, we will always use our pure-JavaScript xpath library. Using the pure-JS xpath library can improve the consistency of xpath element locators between different browser vendors, but the pure-JS version is much slower than the native implementations.
+
+## allowNativeXpathAndWait
+
+allowNativeXpathAndWait\(allow\)
+
+Generated from allowNativeXpath\(allow
+
+**Arguments**:
+
+\*allow - boolean, true means we'll prefer to use native XPath; false means we'll only use JS XPath
+
+Specifies whether Selenium should use the native in-browser implementation of XPath \(if any native version is available\); if you pass "false" to this function, we will always use our pure-JavaScript xpath library. Using the pure-JS xpath library can improve the consistency of xpath element locators between different browser vendors, but the pure-JS version is much slower than the native implementations.
+
+## altKeyDown
+
+altKeyDown\(\)
+
+Press the alt key and hold it down until doAltUp\(\) is called or a new page is loaded.
+
+## altKeyDownAndWait
+
+altKeyDownAndWait\(\) Generated from altKeyDown\(\)
+
+Press the alt key and hold it down until doAltUp\(\) is called or a new page is loaded.
+
+## altKeyUp
+
+altKeyUp\(\)
+
+Release the alt key.
+
+## altKeyUpAndWait
+
+altKeyUpAndWait\(\)
+
+Generated from altKeyUp\(\)
+
+Release the alt key.
+
+## answerOnNextPrompt
+
+answerOnNextPrompt\(answer
+
+**Arguments**:
+
+\*answer - the answer to give in response to the prompt pop-up Instructs Selenium to return the specified answer string in response to the next JavaScript prompt \[window.prompt\(\)\].
+
+## assertAlert
+
+assertAlert\(pattern\)
+
+Generated from getAlert\(\).
+
+Returns: The message of the most recent JavaScript alert
+
+Retrieves the message of a JavaScript alert generated during the previous action, or fail if there were no alerts.
+
+Getting an alert has the same effect as manually clicking OK. If an alert is generated but you do not consume it with getAlert, the next Selenium action will fail.
+
+Under Selenium, JavaScript alerts will NOT pop up a visible alert dialog.
+
+Selenium does NOT support JavaScript alerts that are generated in a page's onload\(\) event handler. In this case, a visible dialog WILL be generated and Selenium will hang until someone manually clicks OK.
+
+## assertAlertAndWait
+
+assertAlertAndWait\(pattern\)
+
+Generated from getAlert\(\).
+
+Returns: The message of the most recent JavaScript alert
+
+Retrieves the message of a JavaScript alert generated during the previous action, or fail if there were no alerts.
+
+Getting an alert has the same effect as manually clicking OK. If an alert is generated but you do not consume it with getAlert, the next Selenium action will fail.
+
+Under Selenium, JavaScript alerts will NOT pop up a visible alert dialog.
+
+Selenium does NOT support JavaScript alerts that are generated in a page's onload\(\) event handler. In this case a visible dialog WILL be generated and Selenium will hang until someone manually clicks OK.
+
+## assertAlertNotPresent
+
+assertAlertNotPresent\(\)
+
+Generated from isAlertPresent\(\).
+
+Returns: true if there is an alert
+
+Has an alert occurred?
+
+This function never throws an exception
+
+## assertAlertPresent
+
+assertAlertPresent\(\)
+
+Generated from isAlertPresent\(\).
+
+Returns: true if there is an alert
+
+Has an alert occurred?
+
+This function never throws an exception
+
+## assertAllButtons
+
+assertAllButtons\(pattern\)
+
+Generated from getAllButtons\(\).
+
+Returns: the IDs of all buttons on the page
+
+Returns the IDs of all buttons on the page.
+
+If a given button has no ID, it will appear as "" in this array.
+
+## assertAllFields
+
+assertAllFields\(pattern\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## assertAllLinks
+
+assertAllLinks\(pattern\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## assertAllWindowIds
+
+assertAllWindowIds\(pattern\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## assertAllWindowNames
+
+assertAllWindowNames\(pattern\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## assertAllWindowTitles
+
+assertAllWindowTitles\(pattern\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## assertAttribute
+
+assertAttribute\(attributeLocator, pattern\) Generated from getAttribute\(attributeLocator\) Arguments: \*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specified attr
+
+## assertAttributeFromAllWindows
+
+assertAttributeFromAllWindows\(attributeName, pattern\) Generated from getAttributeFromAllWindows\(attributeName
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows . Returns: the set of values of this attribute from all known windows.
+
+## assertBodyText
+
+assertBodyText\(pattern\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## assertChecked
+
+assertChecked\(locator\) Generated from isChecked\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button . Returns: true if the checkbox is checked, false otherwise
+
+## assertConfirmation
+
+assertConfirmation\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## assertConfirmationAndWait
+
+assertConfirmationAndWait\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## assertConfirmationNotPresent
+
+assertConfirmationNotPresent\(\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## assertConfirmationPresent
+
+assertConfirmationPresent\(\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## assertCookie
+
+assertCookie\(pattern\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## assertCookieByName
+
+assertCookieByName\(name, pattern\) Generated from getCookieByName\(name
+
+**Arguments**:
+
+\*name - the name of the cookie. Returns: the value of the cookie
+
+## assertCookieNotPresent
+
+assertCookieNotPresent\(name\) Generated from isCookiePresent\(name
+
+**Arguments**:
+
+\*name - the name of the cookie. Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## assertCookiePresent
+
+assertCookiePresent\(name\) Generated from isCookiePresent\(name
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## assertCssCount
+
+assertCssCount\(css, pattern\) Generated from getCssCount\(css
+
+**Arguments**:
+
+\*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specified css select
+
+## assertCursorPosition
+
+assertCursorPosition\(locator, pattern\) Generated from getCursorPosition\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea. Returns: the numerical position of the cursor in the field
+
+## assertEditable
+
+assertEditable\(locator\) Generated from isEditable\(locator
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the input element is editable, false otherwise
+
+## assertElementHeight
+
+assertElementHeight\(locator, pattern\) Generated from getElementHeight\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element. Returns: height of an element in pixels
+
+## assertElementIndex
+
+assertElementIndex\(locator, pattern\) Generated from getElementIndex\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element. Returns: of relative index of the element to its parent \(starting from 0\)
+
+## assertElementNotPresent
+
+assertElementNotPresent\(locator\) Generated from isElementPresent\(locator
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the element is not present, false otherwise
+
+## assertElementPositionLeft
+
+assertElementPositionLeft\(locator, pattern\) Generated from getElementPositionLeft\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself. Returns: of pixels from the edge of the frame.
+
+## assertElementPositionTop
+
+assertElementPositionTop\(locator, pattern\) Generated from getElementPositionTop\(locator\) ****Arguments:****\*locator - an element locator pointing to an element OR an element itself. Returns: of pixels from the edge of the frame.
+
+## assertElementPresent
+
+assertElementPresent\(locator\) Generated from isElementPresent\(locator
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the element is present, false otherwise
+
+## assertElementWidth
+
+assertElementWidth\(locator, pattern\) Generated from getElementWidth\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: width of an element in pixels
+
+## assertEval
+
+assertEval\(script, pattern\) Generated from getEval\(script
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run. Returns: the results of evaluating the snippet
+
+## assertExpression
+
+assertExpression\(expression, pattern\) Generated from getExpression\(expression
+
+**Arguments**:
+
+\*expression - the value to return. Returns: the value passed in
+
+## assertHtmlSource
+
+assertHtmlSource\(pattern\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## assertLocation
+
+assertLocation\(pattern\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## assertMouseSpeed
+
+assertMouseSpeed\(pattern\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## assertNotAlert
+
+assertNotAlert\(pattern\) Generated from getAlert\(\). Returns: The message of the most recent JavaScript alert
+
+## assertNotAllButtons
+
+assertNotAllButtons\(pattern\) Generated from getAllButtons\(\). Returns: the IDs of all buttons on the page
+
+## assertNotAllFields
+
+assertNotAllFields\(pattern\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## assertNotAllLinks
+
+assertNotAllLinks\(pattern\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## assertNotAllWindowIds
+
+assertNotAllWindowIds\(pattern\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## assertNotAllWindowNames
+
+assertNotAllWindowNames\(pattern\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## assertNotAllWindowTitles
+
+assertNotAllWindowTitles\(pattern\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## assertNotAttribute
+
+assertNotAttribute\(attributeLocator, pattern\) Generated from getAttribute\(attributeLocator
+
+**Arguments**:
+
+\*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specifie
+
+## assertNotAttributeFromAllWindows
+
+assertNotAttributeFromAllWindows\(attributeName, pattern\) Generated from getAttributeFromAllWindows\(attributeName
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows . Returns: the set of values of this attribute from all known windows.
+
+## assertNotBodyText
+
+assertNotBodyText\(pattern\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## assertNotChecked
+
+assertNotChecked\(locator\) Generated from isChecked\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button. Returns: true if the checkbox is checked, false otherwise
+
+## assertNotConfirmation
+
+assertNotConfirmation\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## assertNotCookie
+
+assertNotCookie\(pattern\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## assertNotCookieByName
+
+assertNotCookieByName\(name, pattern\) Generated from getCookieByName\(name
+
+**Arguments**:
+
+\*name - the name of the cookie. Returns: the value of the cookie
+
+## assertNotCssCount
+
+assertNotCssCount\(css, pattern\) Generated from getCssCount\(css\)
+
+**Arguments**:
+
+\*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specified css sel
+
+## assertNotCursorPosition
+
+assertNotCursorPosition\(locator, pattern\) Generated from getCursorPosition\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea . Returns: the numerical position of the cursor in the field
+
+## assertNotEditable
+
+assertNotEditable\(locator\) Generated from isEditable\(locator\) **Arguments:** \*locator - an element locator. Returns: true if the input element is editable, false otherwise
+
+## assertNotElementHeight
+
+assertNotElementHeight\(locator, pattern\) Generated from getElementHeight\(locator\) **Arguments:** \*locator - an element locator pointing to an element. Returns: height of an element in pixels
+
+## assertNotElementIndex
+
+assertNotElementIndex\(locator, pattern\) Generated from getElementIndex\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: of relative index of the element to its parent \(starting from 0\)
+
+## assertNotElementPositionLeft
+
+assertNotElementPositionLeft\(locator, pattern\) Generated from getElementPositionLeft\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## assertNotElementPositionTop
+
+assertNotElementPositionTop\(locator, pattern\) Generated from getElementPositionTop\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself. Returns: of pixels from the edge of the frame.
+
+## assertNotElementWidth
+
+assertNotElementWidth\(locator, pattern\) Generated from getElementWidth\(locator
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element. Returns: width of an element in pixels
+
+## assertNotEval
+
+assertNotEval\(script, pattern\) Generated from getEval\(script
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run . Returns: the results of evaluating the snippet
+
+## assertNotExpression
+
+assertNotExpression\(expression, pattern\) Generated from getExpression\(expression
+
+**Arguments**:
+
+\*expression - the value to return. Returns: the value passed in
+
+## assertNotHtmlSource
+
+assertNotHtmlSource\(pattern\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## assertNotLocation
+
+assertNotLocation\(pattern\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## assertNotMouseSpeed
+
+assertNotMouseSpeed\(pattern\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## assertNotOrdered
+
+assertNotOrdered\(locator1, locator2\) Generated from isOrdered\(locator1, locator2
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element . Returns: true if element1 is the
+
+## assertNotPrompt
+
+assertNotPrompt\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## assertNotSelectOptions
+
+assertNotSelectOptions\(selectLocator, pattern\) Generated from getSelectOptions\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all option labels in the specified select drop-down
+
+## assertNotSelectedId
+
+assertNotSelectedId\(selectLocator, pattern\) Generated from getSelectedId\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option ID in the specified select drop-down
+
+## assertNotSelectedIds
+
+assertNotSelectedIds\(selectLocator, pattern\) Generated from getSelectedIds\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option IDs in the specified select drop-down
+
+## assertNotSelectedIndex
+
+assertNotSelectedIndex\(selectLocator, pattern\) Generated from getSelectedIndex\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option index in the specified select drop-down
+
+## assertNotSelectedIndexes
+
+assertNotSelectedIndexes\(selectLocator, pattern\) Generated from getSelectedIndexes\(selectLocator\) **Arguments:** \*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option indexes in the specified select dro
+
+## assertNotSelectedLabel
+
+assertNotSelectedLabel\(selectLocator, pattern\) Generated from getSelectedLabel\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option label in the specified select drop-down
+
+## assertNotSelectedLabels
+
+assertNotSelectedLabels\(selectLocator, pattern\) Generated from getSelectedLabels\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all selected option labels in the specified select drop-d
+
+## assertNotSelectedValue
+
+assertNotSelectedValue\(selectLocator, pattern\) Generated from getSelectedValue\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option value in the specified select drop-down
+
+## assertNotSelectedValues
+
+assertNotSelectedValues\(selectLocator, pattern\) Generated from getSelectedValues\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option values in the specified select drop-
+
+## assertNotSomethingSelected
+
+assertNotSomethingSelected\(selectLocator\) Generated from isSomethingSelected\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: true if some option has been selected, false otherwise
+
+## assertNotSpeed
+
+assertNotSpeed\(pattern\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## assertNotTable
+
+assertNotTable\(tableCellAddress, pattern\) Generated from getTable\(tableCellAddress
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## assertNotText
+
+assertNotText\(locator, pattern\) Generated from getText\(locator
+
+**Arguments**:
+
+\*locator - an element locator Returns: the text of the element
+
+## assertNotTitle
+
+assertNotTitle\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## assertNotValue
+
+assertNotValue\(locator, pattern\) Generated from getValue\(locator
+
+**Arguments**:
+
+\*locator - an element locator. Returns: the element value, or "on/off" for checkbox/radio elements
+
+## assertNotVisible
+
+assertNotVisible\(locator\) Generated from isVisible\(locator
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the specified element is visible, false otherwise
+
+## assertNotWhetherThisFrameMatchFrameExpression
+
+assertNotWhetherThisFrameMatchFrameExpression\(currentFrameString, target, pattern\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be r
+
+## assertNotWhetherThisWindowMatchWindowExpression
+
+assertNotWhetherThisWindowMatchWindowExpression\(currentWindowString, target, pattern\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which m
+
+## assertNotXpathCount
+
+assertNotXpathCount\(xpath, pattern\) Generated from getXpathCount\(xpath
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the spe
+
+## assertOrdered
+
+assertOrdered\(locator1, locator2\) Generated from isOrdered\(locator1, locator2
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element. Returns: true if elemen
+
+## assertPrompt
+
+assertPrompt\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## assertPromptAndWait
+
+assertPromptAndWait\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## assertPromptNotPresent
+
+assertPromptNotPresent\(\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## assertPromptPresent
+
+assertPromptPresent\(\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## assertSelectOptions
+
+assertSelectOptions\(selectLocator, pattern\) Generated from getSelectOptions\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all option labels in the specified select drop-down
+
+## assertSelectedId
+
+assertSelectedId\(selectLocator, pattern\) Generated from getSelectedId\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option ID in the specified select drop-down
+
+## assertSelectedIds
+
+assertSelectedIds\(selectLocator, pattern\) Generated from getSelectedIds\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option IDs in the specified select drop-down
+
+## assertSelectedIndex
+
+assertSelectedIndex\(selectLocator, pattern\) Generated from getSelectedIndex\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option index in the specified select drop-down
+
+## assertSelectedIndexes
+
+assertSelectedIndexes\(selectLocator, pattern\) Generated from getSelectedIndexes\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option indexes in the specified select drop-
+
+## assertSelectedLabel
+
+assertSelectedLabel\(selectLocator, pattern\) Generated from getSelectedLabel\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option label in the specified select drop-down
+
+## assertSelectedLabels
+
+assertSelectedLabels\(selectLocator, pattern\) Generated from getSelectedLabels\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option labels in the specified select drop-dow
+
+## assertSelectedValue
+
+assertSelectedValue\(selectLocator, pattern\) Generated from getSelectedValue\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option value in the specified select drop-down
+
+## assertSelectedValues
+
+assertSelectedValues\(selectLocator, pattern\) Generated from getSelectedValues\(selectLocator
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option values in the specified select drop-dow
+
+## assertSomethingSelected
+
+assertSomethingSelected\(selectLocator\)
+
+Generated from isSomethingSelected\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu .
+
+Returns: true if some option has been selected, false otherwise
+
+## assertSpeed
+
+assertSpeed\(pattern\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## assertTable
+
+assertTable\(tableCellAddress, pattern\) Generated from getTable\(tableCellAddress\)
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## assertText
+
+assertText\(locator, pattern\)
+
+Generated from getText\(locator\)
+
+Arguments:
+
+\*locator - an element locator .
+
+Returns: the text of the element
+
+## assertTextAndWait
+
+assertTextAndWait\(locator, pattern\) Generated from getText\(locator\) Arguments: \*locator - an element locator . Returns: the text of the element
+
+## assertTextNotPresent
+
+assertTextNotPresent\(pattern\) This command is deprecated. Use the assertNotText command with an element locator instead. Generated from isTextPresent\(pattern\) Arguments: \*pattern - a pattern to match with the text of the page . Returns: true if the patt
+
+## assertTextPresent
+
+assertTextPresent\(pattern\) This command is deprecated. Use the assertText command with an element locator instead. Generated from isTextPresent\(pattern\) Arguments: \*pattern - a pattern to match with the text of the page . Returns: true if the pattern m
+
+## assertTitle
+
+assertTitle\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## assertTitleAndWait
+
+assertTitleAndWait\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## assertValue
+
+assertValue\(locator, pattern\) Generated from getValue\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: the element value, or "on/off" for checkbox/radio elements
+
+## assertVisible
+
+assertVisible\(locator\) Generated from isVisible\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the specified element is visible, false otherwise
+
+## assertWhetherThisFrameMatchFrameExpression
+
+assertWhetherThisFrameMatchFrameExpression\(currentFrameString, target, pattern\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target\)
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be rela
+
+## assertWhetherThisWindowMatchWindowExpression
+
+assertWhetherThisWindowMatchWindowExpression\(currentWindowString, target, pattern\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target\)
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which migh
+
+## assertXpathCount
+
+assertXpathCount\(xpath, pattern\) Generated from getXpathCount\(xpath\)
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specif
+
+## assignId
+
+assignId\(locator, identifier\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element \*identifier - a string to be used as the ID of the specified element
+
+## assignIdAndWait
+
+assignIdAndWait\(locator, identifier\) Generated from assignId\(locator, identifier\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element \*identifier - a string to be used as the ID of the specified element
+
+## break
+
+break\(\)
+
+## captureEntirePageScreenshot
+
+captureEntirePageScreenshot\(filename, kwargs\) **Arguments**: \*filename - the path to the file to persist the screenshot as. No filename extension will be appended by default. Directories will not be created if they do not exist, and an ex
+
+## captureEntirePageScreenshotAndWait
+
+captureEntirePageScreenshotAndWait\(filename, kwargs\) Generated from captureEntirePageScreenshot\(filename, kwargs\)
+
+**Arguments**:
+
+\*filename - the path to the file to persist the screenshot as. No filename extension will be appended by default. Directories w
+
+## check
+
+check\(locator\) **Arguments**: \*locator - an element locator
+
+## checkAndWait
+
+checkAndWait\(locator\) Generated from check\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## chooseCancelOnNextConfirmation
+
+chooseCancelOnNextConfirmation\(\)
+
+## chooseCancelOnNextPrompt
+
+chooseCancelOnNextPrompt
+
+## chooseCancelOnNextPromptAndWait
+
+chooseCancelOnNextPromptAndWait
+
+## chooseOkOnNextConfirmation
+
+chooseOkOnNextConfirmation\(\)
+
+## chooseOkOnNextConfirmationAndWait
+
+chooseOkOnNextConfirmationAndWait\(\) Generated from chooseOkOnNextConfirmation\(\)
+
+## click
+
+click\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+Clicks on a link, button, checkbox or radio button. If the click action causes a new page to load \(like a link usually does\), call waitForPageToLoad.
+
+## clickAndWait
+
+clickAndWait\(locator\)
+
+Generated from click\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+Clicks on a link, button, checkbox or radio button. If the click action causes a new page to load \(like a link usually does\), call waitForPageToLoad.
+
+## clickAt
+
+clickAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+Clicks on a link, button, checkbox or radio button. If the click action causes a new page to load \(like a link usually does\), call waitForPageToLoad.
+
+## clickAtAndWait
+
+clickAtAndWait\(locator, coordString\)
+
+Generated from clickAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+Clicks on a link, button, checkbox or radio button. If the click action causes a new page to load \(like a link usually does\), call waitForPageToLoad.
+
+## close
+
+close\(\)
+
+## contextMenu
+
+contextMenu\(locator\) **Arguments**: \*locator - an element locator
+
+## contextMenuAndWait
+
+contextMenuAndWait\(locator\) Generated from contextMenu\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## contextMenuAt
+
+contextMenuAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## contextMenuAtAndWait
+
+contextMenuAtAndWait\(locator, coordString\) Generated from contextMenuAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the
+
+## controlKeyDown
+
+controlKeyDown\(\)
+
+## controlKeyDownAndWait
+
+controlKeyDownAndWait\(\) Generated from controlKeyDown\(\)
+
+## controlKeyUp
+
+controlKeyUp\(\)
+
+## controlKeyUpAndWait
+
+controlKeyUpAndWait\(\) Generated from controlKeyUp\(\)
+
+## createCookie
+
+createCookie\(nameValuePair, optionsString\)
+
+**Arguments**:
+
+\*nameValuePair - name and value of the cookie in a format "name=value" \*optionsString - options for the cookie. Currently supported options include 'path', 'max\_age' and 'domain'. the optionsString'
+
+## createCookieAndWait
+
+createCookieAndWait\(nameValuePair, optionsString\) Generated from createCookie\(nameValuePair, optionsString\)
+
+**Arguments**:
+
+\*nameValuePair - name and value of the cookie in a format "name=value" \*optionsString - options for the cookie. Currently supported
+
+## deleteAllVisibleCookies
+
+deleteAllVisibleCookies\(\)
+
+## deleteAllVisibleCookiesAndWait
+
+deleteAllVisibleCookiesAndWait\(\) Generated from deleteAllVisibleCookies\(\)
+
+## deleteCookie
+
+deleteCookie\(name, optionsString\)
+
+**Arguments**:
+
+\*name - the name of the cookie to be deleted \*optionsString - options for the cookie. Currently supported options include 'path', 'domain' and 'recurse.' The optionsString's format is "path=/path/, domain=.f
+
+## deleteCookieAndWait
+
+deleteCookieAndWait\(name, optionsString\) Generated from deleteCookie\(name, optionsString\)
+
+**Arguments**:
+
+\*name - the name of the cookie to be deleted \*optionsString - options for the cookie. Currently supported options include 'path', 'domain' and 'recur
+
+## deselectPopUp
+
+deselectPopUp\(\)
+
+## deselectPopUpAndWait
+
+deselectPopUpAndWait\(\) Generated from deselectPopUp\(\)
+
+## domWait
+
+domWait
+
+## domWaitAndWait
+
+domWaitAndWait
+
+## doubleClick
+
+doubleClick\(locator\) **Arguments**: \*locator - an element locator
+
+## doubleClickAndWait
+
+doubleClickAndWait\(locator\) Generated from doubleClick\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## doubleClickAt
+
+doubleClickAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## doubleClickAtAndWait
+
+doubleClickAtAndWait\(locator, coordString\) Generated from doubleClickAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the
+
+## dragAndDrop
+
+dragAndDrop\(locator, movementsString\)
+
+**Arguments**:
+
+\*locator - an element locator \*movementsString - offset in pixels from the current location to which the element should be moved, e.g., "+70,-300"
+
+## dragAndDropAndWait
+
+dragAndDropAndWait\(locator, movementsString\) Generated from dragAndDrop\(locator, movementsString\)
+
+**Arguments**:
+
+\*locator - an element locator \*movementsString - offset in pixels from the current location to which the element should be moved, e.g., "+70,-
+
+## dragAndDropToObject
+
+dragAndDropToObject\(locatorOfObjectToBeDragged, locatorOfDragDestinationObject\)
+
+**Arguments**:
+
+\*locatorOfObjectToBeDragged - an element to be dragged \*locatorOfDragDestinationObject - an element whose location \(i.e., whose center-most pixel\) will be the po
+
+## dragAndDropToObjectAndWait
+
+dragAndDropToObjectAndWait\(locatorOfObjectToBeDragged, locatorOfDragDestinationObject\) Generated from dragAndDropToObject\(locatorOfObjectToBeDragged, locatorOfDragDestinationObject\)
+
+**Arguments**:
+
+\*locatorOfObjectToBeDragged - an element to be dragged \*lo
+
+## echo
+
+echo\(message\) **Arguments**: \*message - the message to print
+
+## echoAndWait
+
+echoAndWait\(message\) Generated from echo\(message\)
+
+**Arguments**:
+
+\*message - the message to print
+
+## editContent
+
+editContent
+
+## editContentAndWait
+
+editContentAndWait
+
+## fireEvent
+
+fireEvent\(locator, eventName\)
+
+**Arguments**:
+
+\*locator - an element locator \*eventName - the event name, e.g. "focus" or "blur"
+
+## fireEventAndWait
+
+fireEventAndWait\(locator, eventName\) Generated from fireEvent\(locator, eventName\)
+
+**Arguments**:
+
+\*locator - an element locator \*eventName - the event name, e.g. "focus" or "blur"
+
+## focus
+
+focus\(locator\) **Arguments**: \*locator - an element locator
+
+## focusAndWait
+
+focusAndWait\(locator\) Generated from focus\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## goBack
+
+goBack\(\)
+
+## goBackAndWait
+
+goBackAndWait\(\) Generated from goBack\(\)
+
+## highlight
+
+highlight\(locator\) Arguments: \*locator - an element locator
+
+## highlightAndWait
+
+highlightAndWait\(locator\) Generated from highlight\(locator\) Arguments: \*locator - an element locator
+
+## ignoreAttributesWithoutValue
+
+ignoreAttributesWithoutValue\(ignore\) **Arguments**: \*ignore - boolean, true means we'll ignore attributes without value at the expense of xpath "correctness"; false means we'll sacrifice speed for correctness.
+
+## ignoreAttributesWithoutValueAndWait
+
+ignoreAttributesWithoutValueAndWait\(ignore\) Generated from ignoreAttributesWithoutValue\(ignore\)
+
+**Arguments**:
+
+\*ignore - boolean, true means we'll ignore attributes without value at the expense of xpath "correctness"; false means we'll sacrifice speed for
+
+## keyDown
+
+keyDown\(locator, keySequence\) This command is deprecated. Use the sendKeys command instead.
+
+**Arguments**:
+
+\*locator - an element locator \*keySequence - Either be a string\("\\" followed by the numeric keycode of the keytobe pressed, normally theASCIIvalu
+
+## keyDownAndWait
+
+keyDownAndWait\(locator, keySequence\) This command is deprecated. Use the sendKeysAndWait command instead. Generated from keyDown\(locator, keySequence\)
+
+**Arguments**:
+
+\*locator - an element locator \*keySequence - Either be a string\("\\" followed by the numeric
+
+## keyPress
+
+keyPress\(locator, keySequence\) This command is deprecated. Use the sendKeys command instead.
+
+**Arguments**:
+
+\*locator - an element locator \*keySequence - Either be a string\("\\" followed by the numeric keycode of the keytobe pressed, normally the ASCIIval
+
+## keyPressAndWait
+
+keyPressAndWait\(locator, keySequence\) This command is deprecated. Use the sendKeysAndWait command instead. Generated from keyPress\(locator, keySequence\)
+
+**Arguments**:
+
+\*locator - an element locator \*keySequence - Either be a string\("\\" followed bythenumer
+
+## keyUp
+
+keyUp\(locator, keySequence\) This command is deprecated. Use the sendKeys command instead.
+
+**Arguments**:
+
+\*locator - an element locator \*keySequence - Either be a string\("\\" followed by the numeric keycode of the key to be pressed, normally the ASCII value
+
+## keyUpAndWait
+
+keyUpAndWait\(locator, keySequence\) This command is deprecated. Use the sendKeysAndWait command instead. Generated from keyUp\(locator, keySequence\)
+
+**Arguments**:
+
+\*locator - an element locator \*keySequence - Either be a string\("\\" followed by the numeric ke
+
+## metaKeyDown
+
+metaKeyDown\(\)
+
+## metaKeyDownAndWait
+
+metaKeyDownAndWait\(\) Generated from metaKeyDown\(\)
+
+## metaKeyUp
+
+metaKeyUp\(\)
+
+## metaKeyUpAndWait
+
+metaKeyUpAndWait\(\) Generated from metaKeyUp\(\)
+
+## mouseDown
+
+mouseDown\(locator\) **Arguments**: \*locator - an element locator
+
+## mouseDownAndWait
+
+mouseDownAndWait\(locator\) Generated from mouseDown\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## mouseDownAt
+
+mouseDownAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## mouseDownAtAndWait
+
+mouseDownAtAndWait\(locator, coordString\) Generated from mouseDownAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by
+
+## mouseDownRight
+
+mouseDownRight\(locator\) Arguments: \*locator - an element locator
+
+## mouseDownRightAndWait
+
+mouseDownRightAndWait\(locator\) Generated from mouseDownRight\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## mouseDownRightAt
+
+mouseDownRightAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## mouseDownRightAtAndWait
+
+mouseDownRightAtAndWait\(locator, coordString\) Generated from mouseDownRightAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element re
+
+## mouseMove
+
+mouseMove\(locator\) **Arguments**: \*locator - an element locator
+
+## mouseMoveAndWait
+
+mouseMoveAndWait\(locator\) Generated from mouseMove\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## mouseMoveAt
+
+mouseMoveAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## mouseMoveAtAndWait
+
+mouseMoveAtAndWait\(locator, coordString\) Generated from mouseMoveAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by
+
+## mouseOut
+
+mouseOut\(locator\) **Arguments**: \*locator - an element locator
+
+## mouseOutAndWait
+
+mouseOutAndWait\(locator\) Generated from mouseOut\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## mouseOver
+
+mouseOver\(locator\) **Arguments**: \*locator - an element locator
+
+## mouseOverAndWait
+
+mouseOverAndWait\(locator\) Generated from mouseOver\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## mouseUp
+
+mouseUp\(locator\) **Arguments**: \*locator - an element locator
+
+## mouseUpAndWait
+
+mouseUpAndWait\(locator\) Generated from mouseUp\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator
+
+## mouseUpAt
+
+mouseUpAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## mouseUpAtAndWait
+
+mouseUpAtAndWait\(locator, coordString\) Generated from mouseUpAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the
+
+## mouseUpRight
+
+mouseUpRight\(locator\) **Arguments**: \*locator - an element locator
+
+## mouseUpRightAndWait
+
+mouseUpRightAndWait\(locator\) Generated from mouseUpRight\(locator\) Arguments: \*locator - an element locator
+
+## mouseUpRightAt
+
+mouseUpRightAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element returned by the locator.
+
+## mouseUpRightAtAndWait
+
+mouseUpRightAtAndWait\(locator, coordString\) Generated from mouseUpRightAt\(locator, coordString\)
+
+**Arguments**:
+
+\*locator - an element locator \*coordString - specifies the x,y position \(i.e. - 10,20\) of the mouse event relative to the element return
+
+## open
+
+open\(url\) **Arguments**: \*url - the URL to open; may be relative or absolute
+
+## openWindow
+
+openWindow\(url, windowID\)
+
+**Arguments**:
+
+\*url - the URL to open, which can be blank \*windowID - the JavaScript window ID of the window to select
+
+## openWindowAndWait
+
+openWindowAndWait\(url, windowID\) Generated from openWindow\(url, windowID\)
+
+**Arguments**:
+
+\*url - the URL to open, which can be blank \*windowID - the JavaScript window ID of the window to select
+
+## pageWait
+
+pageWait
+
+## pageWaitAndWait
+
+pageWaitAndWait
+
+## pause
+
+pause\(waitTime\) Arguments: \*waitTime - the amount of time to sleep \(in milliseconds\)
+
+## prePageWait
+
+prePageWait
+
+## prePageWaitAndWait
+
+prePageWaitAndWait
+
+## refresh
+
+refresh\(\)
+
+## refreshAndWait
+
+refreshAndWait\(\) Generated from refresh\(\)
+
+## removeAllSelections
+
+removeAllSelections\(locator\) **Arguments**: \*locator - an element locator identifying a multi-select box
+
+## removeAllSelectionsAndWait
+
+removeAllSelectionsAndWait\(locator\) Generated from removeAllSelections\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator identifying a multi-select box
+
+## removeScript
+
+removeScript\(scriptTagId\) **Arguments**: \*scriptTagId - the id of the script element to remove.
+
+## removeScriptAndWait
+
+removeScriptAndWait\(scriptTagId\) Generated from removeScript\(scriptTagId\)
+
+**Arguments**:
+
+\*scriptTagId - the id of the script element to remove.
+
+## removeSelection
+
+removeSelection\(locator, optionLocator\)
+
+**Arguments**:
+
+\*locator - an element locator identifying a multi-select box \*optionLocator - an option locator \(a label by default\)
+
+## removeSelectionAndWait
+
+removeSelectionAndWait\(locator, optionLocator\) Generated from removeSelection\(locator, optionLocator\)
+
+**Arguments**:
+
+\*locator - an element locator identifying a multi-select box \*optionLocator - an option locator \(a label by default\)
+
+## rollup
+
+rollup\(rollupName, kwargs\)
+
+**Arguments**:
+
+\*rollupName - the name of the rollup command \*kwargs - keyword arguments string that influences how the rollup expands into commands
+
+## rollupAndWait
+
+rollupAndWait\(rollupName, kwargs\) Generated from rollup\(rollupName, kwargs\)
+
+**Arguments**:
+
+\*rollupName - the name of the rollup command \*kwargs - keyword arguments string that influences how the rollup expands into commands
+
+## runScript
+
+runScript\(script\) **Arguments**: \*script - the JavaScript snippet to run
+
+## runScriptAndWait
+
+runScriptAndWait\(script\) Generated from runScript\(script\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run
+
+## select
+
+select\(selectLocator, optionLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu \*optionLocator - an option locator \(a label by default\)
+
+## selectAndWait
+
+selectAndWait\(selectLocator, optionLocator\) Generated from select\(selectLocator, optionLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu \*optionLocator - an option locator \(a label by default\)
+
+## selectFrame
+
+selectFrame\(locator\) **Arguments**: \*locator - an element locator identifying a frame or iframe
+
+## selectPopUp
+
+selectPopUp\(windowID\) **Arguments**: \*windowID - an identifier for the popup window, which can take on a number of different meanings
+
+## selectPopUpAndWait
+
+selectPopUpAndWait\(windowID\) Generated from selectPopUp\(windowID\)
+
+**Arguments**:
+
+\*windowID - an identifier for the popup window, which can take on a number of different meanings
+
+## selectWindow
+
+selectWindow\(windowID\) **Arguments**: \*windowID - the JavaScript window ID of the window to select
+
+## sendKeys
+
+sendKeys\(locator, value\)
+
+**Arguments**:
+
+\*locator - an element locator \*value - the value to type
+
+## sendKeysAndWait
+
+sendKeysAndWait\(locator, value\) Generated from sendKeys\(locator, value\)
+
+**Arguments**:
+
+\*locator - an element locator \*value - the value to type
+
+## setCursorPosition
+
+setCursorPosition\(locator, position\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea \*position - the numerical position of the cursor in the field; position should be 0 to move the position to the beginning of the
+
+## setCursorPositionAndWait
+
+setCursorPositionAndWait\(locator, position\) Generated from setCursorPosition\(locator, position\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea \*position - the numerical position of the cursor in the field; positio
+
+## setMouseSpeed
+
+setMouseSpeed\(pixels\) **Arguments**: \*pixels - the number of pixels between "mousemove" events
+
+## setMouseSpeedAndWait
+
+setMouseSpeedAndWait\(pixels\) Generated from setMouseSpeed\(pixels\)
+
+**Arguments**:
+
+\*pixels - the number of pixels between "mousemove" events
+
+## setSpeed
+
+setSpeed\(value\) **Arguments**: \*value - the number of milliseconds to pause after operation
+
+## setSpeedAndWait
+
+setSpeedAndWait\(value\) Generated from setSpeed\(value\)
+
+**Arguments**:
+
+\*value - the number of milliseconds to pause after operation
+
+## setTimeout
+
+setTimeout\(timeout\) **Arguments**: \*timeout - a timeout in milliseconds, after which the action will return with an error
+
+## shiftKeyDown
+
+shiftKeyDown\(\)
+
+## shiftKeyDownAndWait
+
+shiftKeyDownAndWait\(\) Generated from shiftKeyDown\(\)
+
+## shiftKeyUp
+
+shiftKeyUp\(\)
+
+## shiftKeyUpAndWait
+
+shiftKeyUpAndWait\(\) Generated from shiftKeyUp\(\)
+
+## showElement
+
+showElement
+
+## showElementAndWait
+
+showElementAndWait
+
+## store
+
+store\(expression, variableName\)
+
+**Arguments**:
+
+\*expression - the value to store \*variableName - the name of a variable in which the result is to be stored.
+
+## storeAlert
+
+storeAlert\(variableName\) Generated from getAlert\(\). Returns: The message of the most recent JavaScript alert
+
+## storeAlertPresent
+
+storeAlertPresent\(variableName\) Generated from isAlertPresent\(\). Returns: true if there is an alert
+
+## storeAllButtons
+
+storeAllButtons\(variableName\) Generated from getAllButtons\(\). Returns: the IDs of all buttons on the page
+
+## storeAllFields
+
+storeAllFields\(variableName\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## storeAllLinks
+
+storeAllLinks\(variableName\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## storeAllWindowIds
+
+storeAllWindowIds\(variableName\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## storeAllWindowNames
+
+storeAllWindowNames\(variableName\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## storeAllWindowTitles
+
+storeAllWindowTitles\(variableName\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## storeAndWait
+
+storeAndWait\(expression, variableName\) Generated from store\(expression, variableName\)
+
+**Arguments**:
+
+\*expression - the value to store \*variableName - the name of a variable in which the result is to be stored.
+
+## storeAttribute
+
+storeAttribute\(attributeLocator, variableName\) Generated from getAttribute\(attributeLocator\)
+
+**Arguments**:
+
+\*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specifie
+
+## storeAttributeFromAllWindows
+
+storeAttributeFromAllWindows\(attributeName, variableName\) Generated from getAttributeFromAllWindows\(attributeName\)
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows . Returns: the set of values of this attribute from all known windows.
+
+## storeBodyText
+
+storeBodyText\(variableName\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## storeChecked
+
+storeChecked\(locator, variableName\) Generated from isChecked\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button . Returns: true if the checkbox is checked, false otherwise
+
+## storeConfirmation
+
+storeConfirmation\(variableName\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## storeConfirmationPresent
+
+storeConfirmationPresent\(variableName\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## storeCookie
+
+storeCookie\(variableName\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## storeCookieByName
+
+storeCookieByName\(name, variableName\) Generated from getCookieByName\(name\)
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: the value of the cookie
+
+## storeCookiePresent
+
+storeCookiePresent\(name, variableName\) Generated from isCookiePresent\(name\)
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## storeCssCount
+
+storeCssCount\(css, variableName\) Generated from getCssCount\(css\)
+
+**Arguments**:
+
+\*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specified css sel
+
+## storeCursorPosition
+
+storeCursorPosition\(locator, variableName\) Generated from getCursorPosition\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea . Returns: the numerical position of the cursor in the field
+
+## storeEditable
+
+storeEditable\(locator, variableName\) Generated from isEditable\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator . Returns: true if the input element is editable, false otherwise
+
+## storeElementHeight
+
+storeElementHeight\(locator, variableName\) Generated from getElementHeight\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: height of an element in pixels
+
+## storeElementIndex
+
+storeElementIndex\(locator, variableName\) Generated from getElementIndex\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: of relative index of the element to its parent \(starting from 0\)
+
+## storeElementPositionLeft
+
+storeElementPositionLeft\(locator, variableName\) Generated from getElementPositionLeft\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## storeElementPositionTop
+
+storeElementPositionTop\(locator, variableName\) Generated from getElementPositionTop\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## storeElementPresent
+
+storeElementPresent\(locator, variableName\) Generated from isElementPresent\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator . Returns: true if the element is present, false otherwise
+
+## storeElementWidth
+
+storeElementWidth\(locator, variableName\) Generated from getElementWidth\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: width of an element in pixels
+
+## storeEval
+
+storeEval\(script, variableName\) Generated from getEval\(script\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run . Returns: the results of evaluating the snippet
+
+## storeExpression
+
+storeExpression\(expression, variableName\) Generated from getExpression\(expression\)
+
+**Arguments**:
+
+\*expression - the value to return . Returns: the value passed in
+
+## storeHtmlSource
+
+storeHtmlSource\(variableName\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## storeLocation
+
+storeLocation\(variableName\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## storeMouseSpeed
+
+storeMouseSpeed\(variableName\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## storeOrdered
+
+storeOrdered\(locator1, locator2, variableName\) Generated from isOrdered\(locator1, locator2\)
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element . Returns: true
+
+## storePrompt
+
+storePrompt\(variableName\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## storePromptPresent
+
+storePromptPresent\(variableName\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## storeSelectOptions
+
+storeSelectOptions\(selectLocator, variableName\) Generated from getSelectOptions\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all option labels in the specified select drop-down
+
+## storeSelectedId
+
+storeSelectedId\(selectLocator, variableName\) Generated from getSelectedId\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option ID in the specified select drop-down
+
+## storeSelectedIds
+
+storeSelectedIds\(selectLocator, variableName\) Generated from getSelectedIds\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option IDs in the specified select drop-down
+
+## storeSelectedIndex
+
+storeSelectedIndex\(selectLocator, variableName\) Generated from getSelectedIndex\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option index in the specified select drop-down
+
+## storeSelectedIndexes
+
+storeSelectedIndexes\(selectLocator, variableName\) Generated from getSelectedIndexes\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option indexes in the specified selec
+
+## storeSelectedLabel
+
+storeSelectedLabel\(selectLocator, variableName\) Generated from getSelectedLabel\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option label in the specified select drop-down
+
+## storeSelectedLabels
+
+storeSelectedLabels\(selectLocator, variableName\) Generated from getSelectedLabels\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option labels in the specified select d
+
+## storeSelectedValue
+
+storeSelectedValue\(selectLocator, variableName\) Generated from getSelectedValue\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option value in the specified select drop-down
+
+## storeSelectedValues
+
+storeSelectedValues\(selectLocator, variableName\) Generated from getSelectedValues\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option values in the specified select d
+
+## storeSomethingSelected
+
+storeSomethingSelected\(selectLocator, variableName\) Generated from isSomethingSelected\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: true if some option has been selected, false otherwise
+
+## storeSpeed
+
+storeSpeed\(variableName\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## storeTable
+
+storeTable\(tableCellAddress, variableName\) Generated from getTable\(tableCellAddress\)
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## storeText
+
+storeText\(locator, variableName\) Generated from getText\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: the text of the element
+
+## storeTextAndWait
+
+storeTextAndWait\(locator, variableName\) Generated from getText\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: the text of the element
+
+## storeTextPresent
+
+storeTextPresent\(pattern, variableName\) This command is deprecated. Use the storeText command with an element locator instead. Generated from isTextPresent\(pattern\)
+
+**Arguments**:
+
+\*pattern - a pattern to match with the text of the page . Returns: true i
+
+## storeTitle
+
+storeTitle\(variableName\) Generated from getTitle\(\). Returns: the title of the current page
+
+## storeTitleAndWait
+
+storeTitleAndWait\(variableName\) Generated from getTitle\(\). Returns: the title of the current page
+
+## storeValue
+
+storeValue\(locator, variableName\) Generated from getValue\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: the element value, or "on/off" for checkbox/radio elements
+
+## storeVisible
+
+storeVisible\(locator, variableName\) Generated from isVisible\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: true if the specified element is visible, false otherwise
+
+## storeWhetherThisFrameMatchFrameExpression
+
+storeWhetherThisFrameMatchFrameExpression\(currentFrameString, target, variableName\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target\)
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be
+
+## storeWhetherThisWindowMatchWindowExpression
+
+storeWhetherThisWindowMatchWindowExpression\(currentWindowString, target, variableName\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target\)
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which
+
+## storeXpathCount
+
+storeXpathCount\(xpath, variableName\) Generated from getXpathCount\(xpath\)
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the spe
+
+## submit
+
+submit\(formLocator\) **Arguments**: \*formLocator - an element locator for the form you want to submit
+
+## submitAndWait
+
+submitAndWait\(formLocator\) Generated from submit\(formLocator\)
+
+**Arguments**:
+
+\*formLocator - an element locator for the form you want to submit
+
+## type
+
+type\(locator, value\)
+
+**Arguments**:
+
+\*locator - an element locator \*value - the value to type
+
+## typeAndWait
+
+typeAndWait\(locator, value\) Generated from type\(locator, value\)
+
+**Arguments**:
+
+\*locator - an element locator \*value - the value to type
+
+## typeKeys
+
+typeKeys\(locator, value\) This command is deprecated. Use the sendKeys command instead.
+
+**Arguments**:
+
+\*locator - an element locator \*value - the value to type
+
+## typeKeysAndWait
+
+typeKeysAndWait\(locator, value\) This command is deprecated. Use the sendKeysAndWait command instead. Generated from typeKeys\(locator, value\)
+
+**Arguments**:
+
+\*locator - an element locator \*value - the value to type
+
+## uncheck
+
+uncheck\(locator\) **Arguments**: \*locator - an element locator
+
+## uncheckAndWait
+
+uncheckAndWait\(locator\) Generated from uncheck\(locator\) Arguments: \*locator - an element locator
+
+## useXpathLibrary
+
+useXpathLibrary\(libraryName\) **Arguments**: \*libraryName - name of the desired library Only the following three can be chosen: "ajaxslt" - Google's library, "javascript-xpath" - Cybozu Labs' faster library, "default" - The defau
+
+## useXpathLibraryAndWait
+
+useXpathLibraryAndWait\(libraryName\) Generated from useXpathLibrary\(libraryName\)
+
+**Arguments**:
+
+\*libraryName - name of the desired library Only the following three can be chosen: "ajaxslt" - Google's library, "javascript-xpath" - Cybozu La
+
+## verifyAlert
+
+verifyAlert\(pattern\) Generated from getAlert\(\). Returns: The message of the most recent JavaScript alert
+
+## verifyAlertNotPresent
+
+verifyAlertNotPresent\(\) Generated from isAlertPresent\(\). Returns: true if there is an alert
+
+## verifyAlertPresent
+
+verifyAlertPresent\(\) Generated from isAlertPresent\(\). Returns: true if there is an alert
+
+## verifyAllButtons
+
+verifyAllButtons\(pattern\) Generated from getAllButtons\(\). Returns: the IDs of all buttons on the page
+
+## verifyAllFields
+
+verifyAllFields\(pattern\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## verifyAllLinks
+
+verifyAllLinks\(pattern\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## verifyAllWindowIds
+
+verifyAllWindowIds\(pattern\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## verifyAllWindowNames
+
+verifyAllWindowNames\(pattern\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## verifyAllWindowTitles
+
+verifyAllWindowTitles\(pattern\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## verifyAttribute
+
+verifyAttribute\(attributeLocator, pattern\) Generated from getAttribute\(attributeLocator\)
+
+**Arguments**:
+
+\*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specified a
+
+## verifyAttributeFromAllWindows
+
+verifyAttributeFromAllWindows\(attributeName, pattern\) Generated from getAttributeFromAllWindows\(attributeName\)
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows. Returns: the set of values of this attribute from all known windows.
+
+## verifyBodyText
+
+verifyBodyText\(pattern\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## verifyChecked
+
+verifyChecked\(locator\) Generated from isChecked\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button . Returns: true if the checkbox is checked, false otherwise
+
+## verifyConfirmation
+
+verifyConfirmation\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## verifyConfirmationNotPresent
+
+verifyConfirmationNotPresent\(\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## verifyConfirmationPresent
+
+verifyConfirmationPresent\(\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## verifyCookie
+
+verifyCookie\(pattern\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## verifyCookieByName
+
+verifyCookieByName\(name, pattern\) Generated from getCookieByName\(name\)
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: the value of the cookie
+
+## verifyCookieNotPresent
+
+verifyCookieNotPresent\(name\) Generated from isCookiePresent\(name\) Arguments: \*name - the name of the cookie . Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## verifyCookiePresent
+
+verifyCookiePresent\(name\) Generated from isCookiePresent\(name\)
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## verifyCssCount
+
+verifyCssCount\(css, pattern\) Generated from getCssCount\(css\)
+
+**Arguments**:
+
+\*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specified css select
+
+## verifyCursorPosition
+
+verifyCursorPosition\(locator, pattern\) Generated from getCursorPosition\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea . Returns: the numerical position of the cursor in the field
+
+## verifyEditable
+
+verifyEditable\(locator\) Generated from isEditable\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: true if the input element is editable, false otherwise
+
+## verifyElementHeight
+
+verifyElementHeight\(locator, pattern\) Generated from getElementHeight\(locator\) Arguments: \*locator - an element locator pointing to an element . Returns: height of an element in pixels
+
+## verifyElementIndex
+
+verifyElementIndex\(locator, pattern\) Generated from getElementIndex\(locator\) Arguments: \*locator - an element locator pointing to an element . Returns: of relative index of the element to its parent \(starting from 0\)
+
+## verifyElementNotPresent
+
+verifyElementNotPresent\(locator\) Generated from isElementPresent\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: true if the element is not present, false otherwise
+
+## verifyElementPositionLeft
+
+verifyElementPositionLeft\(locator, pattern\) Generated from getElementPositionLeft\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## verifyElementPositionTop
+
+verifyElementPositionTop\(locator, pattern\) Generated from getElementPositionTop\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## verifyElementPresent
+
+verifyElementPresent\(locator\) Generated from isElementPresent\(locator\) Arguments: \*locator - an element locator Returns: true if the element is present, false otherwise
+
+## verifyElementWidth
+
+verifyElementWidth\(locator, pattern\) Generated from getElementWidth\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: width of an element in pixels
+
+## verifyEval
+
+verifyEval\(script, pattern\) Generated from getEval\(script\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run . Returns: the results of evaluating the snippet
+
+## verifyExpression
+
+verifyExpression\(expression, pattern\) Generated from getExpression\(expression\)
+
+**Arguments**:
+
+\*expression - the value to return . Returns: the value passed in
+
+## verifyHtmlSource
+
+verifyHtmlSource\(pattern\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## verifyLocation
+
+verifyLocation\(pattern\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## verifyMouseSpeed
+
+verifyMouseSpeed\(pattern\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## verifyNotAlert
+
+verifyNotAlert\(pattern\) Generated from getAlert\(\). Returns: The message of the most recent JavaScript alert
+
+## verifyNotAllButtons
+
+verifyNotAllButtons\(pattern\) Generated from getAllButtons\(\). Returns: the IDs of all buttons on the page
+
+## verifyNotAllFields
+
+verifyNotAllFields\(pattern\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## verifyNotAllLinks
+
+verifyNotAllLinks\(pattern\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## verifyNotAllWindowIds
+
+verifyNotAllWindowIds\(pattern\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## verifyNotAllWindowNames
+
+verifyNotAllWindowNames\(pattern\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## verifyNotAllWindowTitles
+
+verifyNotAllWindowTitles\(pattern\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## verifyNotAttribute
+
+verifyNotAttribute\(attributeLocator, pattern\) Generated from getAttribute\(attributeLocator\)
+
+**Arguments**:
+
+\*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specifie
+
+## verifyNotAttributeFromAllWindows
+
+verifyNotAttributeFromAllWindows\(attributeName, pattern\) Generated from getAttributeFromAllWindows\(attributeName\)
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows . Returns: the set of values of this attribute from all known windows.
+
+## verifyNotBodyText
+
+verifyNotBodyText\(pattern\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## verifyNotChecked
+
+verifyNotChecked\(locator\) Generated from isChecked\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button . Returns: true if the checkbox is checked, false otherwise
+
+## verifyNotConfirmation
+
+verifyNotConfirmation\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## verifyNotCookie
+
+verifyNotCookie\(pattern\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## verifyNotCookieByName
+
+verifyNotCookieByName\(name, pattern\) Generated from getCookieByName\(name\)
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: the value of the cookie
+
+## verifyNotCssCount
+
+verifyNotCssCount\(css, pattern\) Generated from getCssCount\(css\)
+
+**Arguments**:
+
+\*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specified css sel
+
+## verifyNotCursorPosition
+
+verifyNotCursorPosition\(locator, pattern\) Generated from getCursorPosition\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an input element or textarea . Returns: the numerical position of the cursor in the field
+
+## verifyNotEditable
+
+verifyNotEditable\(locator\) Generated from isEditable\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: true if the input element is editable, false otherwise
+
+## verifyNotElementHeight
+
+verifyNotElementHeight\(locator, pattern\) Generated from getElementHeight\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: height of an element in pixels
+
+## verifyNotElementIndex
+
+verifyNotElementIndex\(locator, pattern\) Generated from getElementIndex\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: of relative index of the element to its parent \(starting from 0\)
+
+## verifyNotElementPositionLeft
+
+verifyNotElementPositionLeft\(locator, pattern\) Generated from getElementPositionLeft\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## verifyNotElementPositionTop
+
+verifyNotElementPositionTop\(locator, pattern\) Generated from getElementPositionTop\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## verifyNotElementWidth
+
+verifyNotElementWidth\(locator, pattern\) Generated from getElementWidth\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: width of an element in pixels
+
+## verifyNotEval
+
+verifyNotEval\(script, pattern\) Generated from getEval\(script\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run . Returns: the results of evaluating the snippet
+
+## verifyNotExpression
+
+verifyNotExpression\(expression, pattern\) Generated from getExpression\(expression\)
+
+**Arguments**:
+
+\*expression - the value to return . Returns: the value passed in
+
+## verifyNotHtmlSource
+
+verifyNotHtmlSource\(pattern\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## verifyNotLocation
+
+verifyNotLocation\(pattern\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## verifyNotMouseSpeed
+
+verifyNotMouseSpeed\(pattern\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## verifyNotOrdered
+
+verifyNotOrdered\(locator1, locator2\) Generated from isOrdered\(locator1, locator2\)
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element . Returns: true if elemen
+
+## verifyNotPrompt
+
+verifyNotPrompt\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## verifyNotSelectOptions
+
+verifyNotSelectOptions\(selectLocator, pattern\) Generated from getSelectOptions\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all option labels in the specified select drop-down
+
+## verifyNotSelectedId
+
+verifyNotSelectedId\(selectLocator, pattern\) Generated from getSelectedId\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option ID in the specified select drop-down
+
+## verifyNotSelectedIds
+
+verifyNotSelectedIds\(selectLocator, pattern\) Generated from getSelectedIds\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option IDs in the specified select drop-down
+
+## verifyNotSelectedIndex
+
+verifyNotSelectedIndex\(selectLocator, pattern\) Generated from getSelectedIndex\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option index in the specified select drop-down
+
+## verifyNotSelectedIndexes
+
+verifyNotSelectedIndexes\(selectLocator, pattern\) Generated from getSelectedIndexes\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option indexes in the specified select
+
+## verifyNotSelectedLabel
+
+verifyNotSelectedLabel\(selectLocator, pattern\) Generated from getSelectedLabel\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option label in the specified select drop-down
+
+## verifyNotSelectedLabels
+
+verifyNotSelectedLabels\(selectLocator, pattern\) Generated from getSelectedLabels\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option labels in the specified select dr
+
+## verifyNotSelectedValue
+
+verifyNotSelectedValue\(selectLocator, pattern\) Generated from getSelectedValue\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option value in the specified select drop-down
+
+## verifyNotSelectedValues
+
+verifyNotSelectedValues\(selectLocator, pattern\) Generated from getSelectedValues\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option values in the specified select dr
+
+## verifyNotSomethingSelected
+
+verifyNotSomethingSelected\(selectLocator\) Generated from isSomethingSelected\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: true if some option has been selected, false otherwise
+
+## verifyNotSpeed
+
+verifyNotSpeed\(pattern\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## verifyNotTable
+
+verifyNotTable\(tableCellAddress, pattern\) Generated from getTable\(tableCellAddress\)
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## verifyNotText
+
+verifyNotText\(locator, pattern\) Generated from getText\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator . Returns: the text of the element
+
+## verifyNotTitle
+
+verifyNotTitle\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## verifyNotValue
+
+verifyNotValue\(locator, pattern\) Generated from getValue\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator . Returns: the element value, or "on/off" for checkbox/radio elements
+
+## verifyNotVisible
+
+verifyNotVisible\(locator\) Generated from isVisible\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator . Returns: true if the specified element is visible, false otherwise
+
+## verifyNotWhetherThisFrameMatchFrameExpression
+
+verifyNotWhetherThisFrameMatchFrameExpression\(currentFrameString, target, pattern\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target\)
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be r
+
+## verifyNotWhetherThisWindowMatchWindowExpression
+
+verifyNotWhetherThisWindowMatchWindowExpression\(currentWindowString, target, pattern\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target\)
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which m
+
+## verifyNotXpathCount
+
+verifyNotXpathCount\(xpath, pattern\) Generated from getXpathCount\(xpath\)
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the spe
+
+## verifyOrdered
+
+verifyOrdered\(locator1, locator2\) Generated from isOrdered\(locator1, locator2\)
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element . Returns: true if element1
+
+## verifyPrompt
+
+verifyPrompt\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## verifyPromptNotPresent
+
+verifyPromptNotPresent\(\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## verifyPromptPresent
+
+verifyPromptPresent\(\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## verifySelectOptions
+
+verifySelectOptions\(selectLocator, pattern\) Generated from getSelectOptions\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all option labels in the specified select drop-down
+
+## verifySelectedId
+
+verifySelectedId\(selectLocator, pattern\) Generated from getSelectedId\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option ID in the specified select drop-down
+
+## verifySelectedIds
+
+verifySelectedIds\(selectLocator, pattern\) Generated from getSelectedIds\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option IDs in the specified select drop-down
+
+## verifySelectedIndex
+
+verifySelectedIndex\(selectLocator, pattern\) Generated from getSelectedIndex\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option index in the specified select drop-down
+
+## verifySelectedIndexes
+
+verifySelectedIndexes\(selectLocator, pattern\) Generated from getSelectedIndexes\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option indexes in the specified select dr
+
+## verifySelectedLabel
+
+verifySelectedLabel\(selectLocator, pattern\) Generated from getSelectedLabel\(selectLocator\) Arguments: \*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option label in the specified select drop-down
+
+## verifySelectedLabels
+
+verifySelectedLabels\(selectLocator, pattern\) Generated from getSelectedLabels\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option labels in the specified select drop-
+
+## verifySelectedValue
+
+verifySelectedValue\(selectLocator, pattern\) Generated from getSelectedValue\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option value in the specified select drop-down
+
+## verifySelectedValues
+
+verifySelectedValues\(selectLocator, pattern\) Generated from getSelectedValues\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option values in the specified select drop-
+
+## verifySomethingSelected
+
+verifySomethingSelected\(selectLocator\) Generated from isSomethingSelected\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: true if some option has been selected, false otherwise
+
+## verifySpeed
+
+verifySpeed\(pattern\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## verifyTable
+
+verifyTable\(tableCellAddress, pattern\) Generated from getTable\(tableCellAddress\)
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## verifyText
+
+verifyText\(locator, pattern\) Generated from getText\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: the text of the element
+
+## verifyTextAndWait
+
+verifyTextAndWait\(locator, pattern\) Generated from getText\(locator\) Arguments: \*locator - an element locator Returns: the text of the element
+
+## verifyTextNotPresent
+
+verifyTextNotPresent\(pattern\) This command is deprecated. Use the verifyNotText command with an element locator instead. Generated from isTextPresent\(pattern\)
+
+**Arguments**:
+
+\*pattern - a pattern to match with the text of the page . Returns: true if the
+
+## verifyTextPresent
+
+verifyTextPresent\(pattern\) This command is deprecated. Use the verifyText command with an element locator instead. Generated from isTextPresent\(pattern\)
+
+**Arguments**:
+
+\*pattern - a pattern to match with the text of the page . Returns: true if the patter
+
+## verifyTitle
+
+## verifyTitleAndWait
+
+verifyTitleAndWait\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## verifyValue
+
+verifyValue\(locator, pattern\) Generated from getValue\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: the element value, or "on/off" for checkbox/radio elements
+
+## verifyVisible
+
+verifyVisible\(locator\) Generated from isVisible\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator Returns: true if the specified element is visible, false otherwise
+
+## verifyWhetherThisFrameMatchFrameExpression
+
+verifyWhetherThisFrameMatchFrameExpression\(currentFrameString, target, pattern\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target\)
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be rela
+
+## verifyWhetherThisWindowMatchWindowExpression
+
+verifyWhetherThisWindowMatchWindowExpression\(currentWindowString, target, pattern\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target\)
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which migh
+
+## verifyXpathCount
+
+verifyXpathCount\(xpath, pattern\) Generated from getXpathCount\(xpath\)
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specif
+
+## waitForAlert
+
+waitForAlert\(pattern\) Generated from getAlert\(\). Returns: The message of the most recent JavaScript alert
+
+## waitForAlertNotPresent
+
+waitForAlertNotPresent\(\) Generated from isAlertPresent\(\). Returns: true if there is an alert
+
+## waitForAlertPresent
+
+waitForAlertPresent\(\) Generated from isAlertPresent\(\). Returns: true if there is an alert
+
+## waitForAllButtons
+
+waitForAllButtons\(pattern\) Generated from getAllButtons\(\). Returns: the IDs of all buttons on the page
+
+## waitForAllFields
+
+waitForAllFields\(pattern\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## waitForAllLinks
+
+waitForAllLinks\(pattern\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## waitForAllWindowIds
+
+waitForAllWindowIds\(pattern\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## waitForAllWindowNames
+
+waitForAllWindowNames\(pattern\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## waitForAllWindowTitles
+
+waitForAllWindowTitles\(pattern\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## waitForAttribute
+
+waitForAttribute\(attributeLocator, pattern\) Generated from getAttribute\(attributeLocator\)
+
+**Arguments**:
+
+\*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specified
+
+## waitForAttributeFromAllWindows
+
+waitForAttributeFromAllWindows\(attributeName, pattern\) Generated from getAttributeFromAllWindows\(attributeName\)
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows . Returns: the set of values of this attribute from all known windows.
+
+## waitForBodyText
+
+waitForBodyText\(pattern\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## waitForChecked
+
+waitForChecked\(locator\) Generated from isChecked\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button . Returns: true if the checkbox is checked, false otherwise
+
+## waitForCondition
+
+waitForCondition\(script, timeout\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run \*timeout - a timeout in milliseconds, after which this command will return with an error
+
+## waitForConfirmation
+
+waitForConfirmation\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## waitForConfirmationNotPresent
+
+waitForConfirmationNotPresent\(\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## waitForConfirmationPresent
+
+waitForConfirmationPresent\(\) Generated from isConfirmationPresent\(\). Returns: true if there is a pending confirmation
+
+## waitForCookie
+
+waitForCookie\(pattern\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## waitForCookieByName
+
+waitForCookieByName\(name, pattern\) Generated from getCookieByName\(name\) Arguments: \*name - the name of the cookie . Returns: the value of the cookie
+
+## waitForCookieNotPresent
+
+waitForCookieNotPresent\(name\) Generated from isCookiePresent\(name\) Arguments: \*name - the name of the cookie . Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## waitForCookiePresent
+
+waitForCookiePresent\(name\) Generated from isCookiePresent\(name\) Arguments: \*name - the name of the cookie . Returns: true if a cookie with the specified name is present, or false otherwise.
+
+## waitForCssCount
+
+waitForCssCount\(css, pattern\) Generated from getCssCount\(css\) Arguments: \*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. . Returns: the number of nodes that match the specified css selecto
+
+## waitForCursorPosition
+
+waitForCursorPosition\(locator, pattern\) Generated from getCursorPosition\(locator\) Arguments: \*locator - an element locator pointing to an input element or textarea . Returns: the numerical position of the cursor in the field
+
+## waitForEditable
+
+waitForEditable\(locator\) Generated from isEditable\(locator\) Arguments: \*locator - an element locator . Returns: true if the input element is editable, false otherwise
+
+## waitForElementHeight
+
+waitForElementHeight\(locator, pattern\) Generated from getElementHeight\(locator\) Arguments: \*locator - an element locator pointing to an element . Returns: height of an element in pixels
+
+## waitForElementIndex
+
+waitForElementIndex\(locator, pattern\) Generated from getElementIndex\(locator\) Arguments: \*locator - an element locator pointing to an element . Returns: of relative index of the element to its parent \(starting from 0\)
+
+## waitForElementNotPresent
+
+waitForElementNotPresent\(locator\) Generated from isElementPresent\(locator\) Arguments: \*locator - an element locator . Returns: true if the element is not present, false otherwise
+
+## waitForElementPositionLeft
+
+waitForElementPositionLeft\(locator, pattern\) Generated from getElementPositionLeft\(locator\) Arguments: \*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## waitForElementPositionTop
+
+waitForElementPositionTop\(locator, pattern\) Generated from getElementPositionTop\(locator\) Arguments: \*locator - an element locator pointing to an element OR an element itself . Returns: of pixels from the edge of the frame.
+
+## waitForElementPresent
+
+waitForElementPresent\(locator\) Generated from isElementPresent\(locator\) Arguments: \*locator - an element locator . Returns: true if the element is present, false otherwise
+
+## waitForElementWidth
+
+waitForElementWidth\(locator, pattern\) Generated from getElementWidth\(locator\) Arguments: \*locator - an element locator pointing to an element . Returns: width of an element in pixels
+
+## waitForEval
+
+waitForEval\(script, pattern\) Generated from getEval\(script\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run . Returns: the results of evaluating the snippet
+
+## waitForExpression
+
+waitForExpression\(expression, pattern\) Generated from getExpression\(expression\) Arguments: \*expression - the value to return . Returns: the value passed in
+
+## waitForFrameToLoad
+
+waitForFrameToLoad\(frameAddress, timeout\)
+
+**Arguments**:
+
+\*frameAddress - FrameAddress from the server side \*timeout - a timeout in milliseconds, after which this command will return with an error
+
+## waitForHtmlSource
+
+waitForHtmlSource\(pattern\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## waitForLocation
+
+waitForLocation\(pattern\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## waitForMouseSpeed
+
+waitForMouseSpeed\(pattern\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## waitForNotAlert
+
+waitForNotAlert\(pattern\) Generated from getAlert\(\). Returns: The message of the most recent JavaScript alert
+
+## waitForNotAllButtons
+
+waitForNotAllButtons\(pattern\) Generated from getAllButtons\(\). Returns: the IDs of all buttons on the page
+
+## waitForNotAllFields
+
+waitForNotAllFields\(pattern\) Generated from getAllFields\(\). Returns: the IDs of all field on the page
+
+## waitForNotAllLinks
+
+waitForNotAllLinks\(pattern\) Generated from getAllLinks\(\). Returns: the IDs of all links on the page
+
+## waitForNotAllWindowIds
+
+waitForNotAllWindowIds\(pattern\) Generated from getAllWindowIds\(\). Returns: Array of identifiers of all windows that the browser knows about.
+
+## waitForNotAllWindowNames
+
+waitForNotAllWindowNames\(pattern\) Generated from getAllWindowNames\(\). Returns: Array of names of all windows that the browser knows about.
+
+## waitForNotAllWindowTitles
+
+waitForNotAllWindowTitles\(pattern\) Generated from getAllWindowTitles\(\). Returns: Array of titles of all windows that the browser knows about.
+
+## waitForNotAttribute
+
+waitForNotAttribute\(attributeLocator, pattern\) Generated from getAttribute\(attributeLocator\)
+
+**Arguments**:
+
+\*attributeLocator - an element locator followed by an @ sign and then the name of the attribute, e.g. "foo@bar" . Returns: the value of the specifi
+
+## waitForNotAttributeFromAllWindows
+
+waitForNotAttributeFromAllWindows\(attributeName, pattern\) Generated from getAttributeFromAllWindows\(attributeName\)
+
+**Arguments**:
+
+\*attributeName - name of an attribute on the windows . Returns: the set of values of this attribute from all known windows.
+
+## waitForNotBodyText
+
+waitForNotBodyText\(pattern\) Generated from getBodyText\(\). Returns: the entire text of the page
+
+## waitForNotChecked
+
+waitForNotChecked\(locator\) Generated from isChecked\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to a checkbox or radio button . Returns: true if the checkbox is checked, false otherwise
+
+## waitForNotConfirmation
+
+waitForNotConfirmation\(pattern\) Generated from getConfirmation\(\). Returns: the message of the most recent JavaScript confirmation dialog
+
+## waitForNotCookie
+
+waitForNotCookie\(pattern\) Generated from getCookie\(\). Returns: all cookies of the current page under test
+
+## waitForNotCookieByName
+
+waitForNotCookieByName\(name, pattern\) Generated from getCookieByName\(name\)
+
+**Arguments**:
+
+\*name - the name of the cookie . Returns: the value of the cookie
+
+## waitForNotCssCount
+
+waitForNotCssCount\(css, pattern\) Generated from getCssCount\(css\)
+
+**Arguments**:
+
+\*css - the css selector to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the specified css se
+
+## waitForNotCursorPosition
+
+waitForNotCursorPosition\(locator, pattern\) Generated from getCursorPosition\(locator\) Arguments: \*locator - an element locator pointing to an input element or textarea. Returns: the numerical position of the cursor in the field
+
+## waitForNotEditable
+
+waitForNotEditable\(locator\) Generated from isEditable\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the input element is editable, false otherwise
+
+## waitForNotElementHeight
+
+waitForNotElementHeight\(locator, pattern\) Generated from getElementHeight\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: height of an element in pixels
+
+## waitForNotElementIndex
+
+waitForNotElementIndex\(locator, pattern\) Generated from getElementIndex\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element . Returns: of relative index of the element to its parent \(starting from 0\)
+
+## waitForNotElementPositionLeft
+
+waitForNotElementPositionLeft\(locator, pattern\) Generated from getElementPositionLeft\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself. Returns: of pixels from the edge of the frame.
+
+## waitForNotElementPositionTop
+
+waitForNotElementPositionTop\(locator, pattern\) Generated from getElementPositionTop\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element OR an element itself. Returns: of pixels from the edge of the frame.
+
+## waitForNotElementWidth
+
+waitForNotElementWidth\(locator, pattern\) Generated from getElementWidth\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator pointing to an element. Returns: width of an element in pixels
+
+## waitForNotEval
+
+waitForNotEval\(script, pattern\) Generated from getEval\(script\)
+
+**Arguments**:
+
+\*script - the JavaScript snippet to run. Returns: the results of evaluating the snippet
+
+## waitForNotExpression
+
+waitForNotExpression\(expression, pattern\) Generated from getExpression\(expression\)
+
+**Arguments**:
+
+\*expression - the value to return. Returns: the value passed in
+
+## waitForNotHtmlSource
+
+waitForNotHtmlSource\(pattern\) Generated from getHtmlSource\(\). Returns: the entire HTML source
+
+## waitForNotLocation
+
+waitForNotLocation\(pattern\) Generated from getLocation\(\). Returns: the absolute URL of the current page
+
+## waitForNotMouseSpeed
+
+waitForNotMouseSpeed\(pattern\) Generated from getMouseSpeed\(\). Returns: the number of pixels between "mousemove" events during dragAndDrop commands \(default=10\)
+
+## waitForNotOrdered
+
+waitForNotOrdered\(locator1, locator2\) Generated from isOrdered\(locator1, locator2\)
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element. Returns: true if element1 is the
+
+## waitForNotPrompt
+
+waitForNotPrompt\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## waitForNotSelectOptions
+
+waitForNotSelectOptions\(selectLocator, pattern\) Generated from getSelectOptions\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all option labels in the specified select drop-down
+
+## waitForNotSelectedId
+
+waitForNotSelectedId\(selectLocator, pattern\) Generated from getSelectedId\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option ID in the specified select drop-down
+
+## waitForNotSelectedIds
+
+waitForNotSelectedIds\(selectLocator, pattern\) Generated from getSelectedIds\(selectLocator\) Arguments: \*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all selected option IDs in the specified select drop-down
+
+## waitForNotSelectedIndex
+
+waitForNotSelectedIndex\(selectLocator, pattern\) Generated from getSelectedIndex\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option index in the specified select drop-down
+
+## waitForNotSelectedIndexes
+
+waitForNotSelectedIndexes\(selectLocator, pattern\) Generated from getSelectedIndexes\(selectLocator\) Arguments: \*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all selected option indexes in the specified select drop
+
+## waitForNotSelectedLabel
+
+waitForNotSelectedLabel\(selectLocator, pattern\) Generated from getSelectedLabel\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option label in the specified select drop-down
+
+## waitForNotSelectedLabels
+
+waitForNotSelectedLabels\(selectLocator, pattern\) Generated from getSelectedLabels\(selectLocator\) Arguments: \*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all selected option labels in the specified select drop-d
+
+## waitForNotSelectedValue
+
+waitForNotSelectedValue\(selectLocator, pattern\) Generated from getSelectedValue\(selectLocator\) Arguments: \*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option value in the specified select drop-down
+
+## waitForNotSelectedValues
+
+waitForNotSelectedValues\(selectLocator, pattern\) Generated from getSelectedValues\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all selected option values in the specified select drop-
+
+## waitForNotSomethingSelected
+
+waitForNotSomethingSelected\(selectLocator\) Generated from isSomethingSelected\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: true if some option has been selected, false otherwise
+
+## waitForNotSpeed
+
+waitForNotSpeed\(pattern\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## waitForNotTable
+
+waitForNotTable\(tableCellAddress, pattern\) Generated from getTable\(tableCellAddress\)
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## waitForNotText
+
+waitForNotText\(locator, pattern\) Generated from getText\(locator\) Arguments: \*locator - an element locator. Returns: the text of the element
+
+## waitForNotTitle
+
+waitForNotTitle\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## waitForNotValue
+
+waitForNotValue\(locator, pattern\) Generated from getValue\(locator\) Arguments: \*locator - an element locator. Returns: the element value, or "on/off" for checkbox/radio elements
+
+## waitForNotVisible
+
+waitForNotVisible\(locator\) Generated from isVisible\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the specified element is visible, false otherwise
+
+## waitForNotWhetherThisFrameMatchFrameExpression
+
+waitForNotWhetherThisFrameMatchFrameExpression\(currentFrameString, target, pattern\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target\)
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be
+
+## waitForNotWhetherThisWindowMatchWindowExpression
+
+waitForNotWhetherThisWindowMatchWindowExpression\(currentWindowString, target, pattern\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target\)
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which
+
+## waitForNotXpathCount
+
+waitForNotXpathCount\(xpath, pattern\) Generated from getXpathCount\(xpath\)
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the sp
+
+## waitForOrdered
+
+waitForOrdered\(locator1, locator2\) Generated from isOrdered\(locator1, locator2\)
+
+**Arguments**:
+
+\*locator1 - an element locator pointing to the first element \*locator2 - an element locator pointing to the second element . Returns: true if element1 is the p
+
+## waitForPageToLoad
+
+waitForPageToLoad\(timeout\) **Arguments**: \*timeout - a timeout in milliseconds, after which this command will return with an error
+
+## waitForPopUp
+
+waitForPopUp\(windowID, timeout\) **Arguments**: \*windowID - the JavaScript window "name" of the window that will appear \(not the text of the title bar\) If unspecified, or specified as "null", this command will wait for the first non-top window to appear \(don
+
+## waitForPrompt
+
+waitForPrompt\(pattern\) Generated from getPrompt\(\). Returns: the message of the most recent JavaScript question prompt
+
+## waitForPromptNotPresent
+
+waitForPromptNotPresent\(\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## waitForPromptPresent
+
+waitForPromptPresent\(\) Generated from isPromptPresent\(\). Returns: true if there is a pending prompt
+
+## waitForSelectOptions
+
+waitForSelectOptions\(selectLocator, pattern\) Generated from getSelectOptions\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all option labels in the specified select drop-down
+
+## waitForSelectedId
+
+waitForSelectedId\(selectLocator, pattern\) Generated from getSelectedId\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option ID in the specified select drop-down
+
+## waitForSelectedIds
+
+waitForSelectedIds\(selectLocator, pattern\) Generated from getSelectedIds\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu. Returns: an array of all selected option IDs in the specified select drop-down
+
+## waitForSelectedIndex
+
+waitForSelectedIndex\(selectLocator, pattern\) Generated from getSelectedIndex\(selectLocator\) Arguments: \*selectLocator - an element locator identifying a drop-down menu. Returns: the selected option index in the specified select drop-down
+
+## waitForSelectedIndexes
+
+waitForSelectedIndexes\(selectLocator, pattern\) Generated from getSelectedIndexes\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option indexes in the specified select drop
+
+## waitForSelectedLabel
+
+waitForSelectedLabel\(selectLocator, pattern\) Generated from getSelectedLabel\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option label in the specified select drop-down
+
+## waitForSelectedLabels
+
+waitForSelectedLabels\(selectLocator, pattern\) Generated from getSelectedLabels\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option labels in the specified select drop-do
+
+## waitForSelectedValue
+
+waitForSelectedValue\(selectLocator, pattern\) Generated from getSelectedValue\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: the selected option value in the specified select drop-down
+
+## waitForSelectedValues
+
+waitForSelectedValues\(selectLocator, pattern\) Generated from getSelectedValues\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: an array of all selected option values in the specified select drop-do
+
+## waitForSomethingSelected
+
+waitForSomethingSelected\(selectLocator\) Generated from isSomethingSelected\(selectLocator\)
+
+**Arguments**:
+
+\*selectLocator - an element locator identifying a drop-down menu . Returns: true if some option has been selected, false otherwise
+
+## waitForSpeed
+
+waitForSpeed\(pattern\) Generated from getSpeed\(\). Returns: the execution speed in milliseconds.
+
+## waitForTable
+
+waitForTable\(tableCellAddress, pattern\) Generated from getTable\(tableCellAddress\)
+
+**Arguments**:
+
+\*tableCellAddress - a cell address, e.g. "foo.1.4" . Returns: the text from the specified cell
+
+## waitForText
+
+waitForText\(locator, pattern\) Generated from getText\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: the text of the element
+
+## waitForTextNotPresent
+
+waitForTextNotPresent\(pattern\) This command is deprecated. Use the waitForNotText command with an element locator instead. Generated from isTextPresent\(pattern\)
+
+**Arguments**:
+
+\*pattern - a pattern to match with the text of the page . Returns: true if the
+
+## waitForTextPresent
+
+waitForTextPresent\(pattern\) This command is deprecated. Use the waitForText command with an element locator instead. Generated from isTextPresent\(pattern\)
+
+**Arguments**:
+
+\*pattern - a pattern to match with the text of the page . Returns: true if the patter
+
+## waitForTitle
+
+waitForTitle\(pattern\) Generated from getTitle\(\). Returns: the title of the current page
+
+## waitForValue
+
+waitForValue\(locator, pattern\) Generated from getValue\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: the element value, or "on/off" for checkbox/radio elements
+
+## waitForVisible
+
+waitForVisible\(locator\) Generated from isVisible\(locator\)
+
+**Arguments**:
+
+\*locator - an element locator. Returns: true if the specified element is visible, false otherwise
+
+## waitForWhetherThisFrameMatchFrameExpression
+
+waitForWhetherThisFrameMatchFrameExpression\(currentFrameString, target, pattern\) Generated from getWhetherThisFrameMatchFrameExpression\(currentFrameString, target\)
+
+**Arguments**:
+
+\*currentFrameString - starting frame \*target - new frame \(which might be rel
+
+## waitForWhetherThisWindowMatchWindowExpression
+
+waitForWhetherThisWindowMatchWindowExpression\(currentWindowString, target, pattern\) Generated from getWhetherThisWindowMatchWindowExpression\(currentWindowString, target\)
+
+**Arguments**:
+
+\*currentWindowString - starting window \*target - new window \(which mig
+
+## waitForXpathCount
+
+waitForXpathCount\(xpath, pattern\) Generated from getXpathCount\(xpath\)
+
+**Arguments**:
+
+\*xpath - the xpath expression to evaluate. do NOT wrap this expression in a 'count\(\)' function; we will do that for you. Returns: the number of nodes that match the speci
+
+## waitPreparation
+
+waitPreparation
+
+## waitPreparationAndWait
+
+waitPreparationAndWait
+
+## windowFocus
+
+windowFocus\(\)
+
+## windowFocusAndWait
+
+windowFocusAndWait\(\) Generated from windowFocus\(\)
+
+## windowMaximize
+
+windowMaximize\(\)
+
+## windowMaximizeAndWait
+
+windowMaximizeAndWait\(\) Generated from windowMaximize\(\)

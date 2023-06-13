@@ -1,0 +1,21 @@
+---
+id: concept-f7d027ba-9ca1-47bf-a56f-6073abcc5b56
+slug: /create-tests/manage-projects/project-settings/desired-capabilities/manage-android-s-permission-in-katalon-studio
+---
+
+# Manage Android's permission in Katalon Studio
+
+To manage Android's permission, you need to set the value of 'autoGrantPermissions' desired capabilities:
+
+```
+/**
+* Enable all permission
+* 
+* @param isEnable
+*/
+@Keyword
+public static void EnablePermission(boolean isEnable) {
+    DesiredCapabilities.android().setCapability("autoGrantPermissions", isEnable);
+}
+
+```

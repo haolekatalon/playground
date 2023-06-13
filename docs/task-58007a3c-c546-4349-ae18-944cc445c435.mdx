@@ -1,0 +1,73 @@
+---
+id: task-58007a3c-c546-4349-ae18-944cc445c435
+slug: /create-tests/record-and-spy/mobile-record-and-spy-utilities/spy-mobile-utility-in-katalon-studio
+---
+
+# Spy mobile utility in Katalon Studio
+
+Katalon Studio fully supports selector strategies supported by Appium except for Android Data Matcher. To learn more about locator strategies, see [Locator strategies for detecting a mobile object](/create-tests/test-objects/mobile-test-objects/locators-and-object-identification-in-katalon-studio#).
+
+-   Katalon Studio version 7.6 onwards.
+
+-   You have configured the environment for mobile testing. See [\[Mobile\] Android Setup in Katalon Studio](/create-tests/manage-projects/set-up-projects/mobile-testing/android/mobile-android-setup-in-katalon-studio).
+
+
+This tutorial helps you get familiar with capturing Mobile objects on an application by using **Spy Mobile Utility**.
+
+1.  From the main Toolbar, click on the **Spy Mobile** icon and select your device type, for instance, **Android Devices**.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-select-spy-mobile.png" width={300} />
+
+2.  In the displayed **Mobile Object Spy** dialog, specify the following information at the **Configurations** section:
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-spy-config.png" width={300} />
+
+    -   **Device Name**: A mobile device where Katalon Studio launches the application. All of your connected devices should be displayed in this list
+
+    -   **Start with**: In the drop-down list, you can select either Application File or Application ID
+
+        -   **Application File**: Browse your tested application \(<code>.apk</code> file for Android, <code>.ipa</code> for iOS\)
+
+        -   **Application ID**: Specify the application ID of your tested application, which is either the package name of an Android app or the bundle identifier of an iOS app
+
+3.  Click **Start** to begin spying the application under test \(AUT\). Wait until the AUT is launched, and the **Device View** and **All Objects** are ready for you to capture objects of the AUT.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-spy-mobile-dialog.png" width={700} />
+
+4.  You can click on any object either in the tree of **All Objects** or in **Device View**. Katalon Studio highlights their counterpart accordingly for verification.
+
+    -   **Device View** is a simulator of the device's screen.
+
+    -   **All Objects** captures and organizes all the displayed mobile objects of **Device View** in a tree.
+
+        <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-all-object-device-view.png" width={500} />
+
+    To make sure the **Device View** displays the current screen of the AUT on the device, you can click on the **Capture Object** button to reload **Device View** and refresh **All Objects**.
+
+5.  Tick on any object checkbox in **All Objects**. Katalon Studio captures the selected objects and displays objects' properties in the **Object Properties** table.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-spy-mobile-object-properties.png" width={700} />
+
+    The most important property of an object is its locator strategy and value. The default locator is a unique value in detecting that object. If you prefer another locator strategy among the provided option, you can choose it and generate a new locator. Then click **Highlight** to see if your newly updated locator can detect the target object on its screen correctly.
+
+6.  Click **Add to Object Repository** to save them to Katalon Studio.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-spy-add-object.png" width={300} />
+
+7.  In the displayed **Folder Browser** dialog, you can decide where to save the captured objects. Select your preferred location then click **OK**.
+
+    The captured objects will be added to **Object Repository** accordingly.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-folder-browser.png" width={250} />
+
+    You can continue with the current mobile screen or navigate to other interfaces as needed.
+
+    
+    :::note
+
+    -   **Appium known limitation:**You may get incorrect object highlighting when rotating the device to landscape view.
+    -   **Workaround:** After rotating, you need to click on the **Capture Object** button to refresh the **All Objects** tree, then the highlighting will work normally.
+
+        <img src="/doc_images/Documents/Create_tests/Record_And_Spy/Mobile_Record_And_Spy_Utilities/Mobile_Spy_Utility/images/ks-capture-object-button.png" width={300} />
+
+    :::

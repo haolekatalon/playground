@@ -1,0 +1,35 @@
+---
+id: concept-09234a36-5321-4a58-997d-ec52f471efeb
+slug: /create-tests/data-driven-testing/perform-data-driven-testing-in-a-dynamic-test-suite
+---
+
+# Perform data-driven testing in a dynamic test suite
+
+You can perform data-driven testing by running a dynamic test suite with multiple data points.
+
+
+:::note
+
+-   Katalon Studio Enterprise version 8.3.0 onwards.
+
+:::
+
+Follow these steps:
+
+1.  Configure data binding for the test cases. See: [Data-driven testing at the test case level](/create-tests/data-driven-testing/data-driven-testing-at-the-test-case-level-in-katalon-studio).
+
+2.  Add the associated test cases to a dynamic test suite via a search query. See above: [Add test cases to a dynamic test suite](/organize/manage-tests/dynamic-test-suite/manage-dynamic-test-suites-in-katalon-studio#).
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/ddt-test-case-level/KS-DDT-Dynamic-Test-suite.png" width={700} alt="Test cases added by query" />
+
+3.  Hit **Run** to execute the dynamic test suite. Test cases in the dynamic test suite are then executed with the configured test data.
+
+4.  Verify the data binding and test execution results in **Log Viewer**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/dynamic-test-suite-ks/KS-DYNAMIC-DDT-Log-Viewer.png" alt="Test cases added by query" />
+
+
+**See also**
+
+-   [View and Customize Execution Log](/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-and-customize-execution-log-in-katalon-studio#)
+-   [Query Test Cases linked to TestRail in Dynamic Test Suite](/organize/integration-for-organizing-tests/query-test-cases-linked-to-testrail-in-a-dynamic-test-suite)

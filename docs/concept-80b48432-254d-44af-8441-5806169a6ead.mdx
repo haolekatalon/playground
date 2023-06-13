@@ -1,0 +1,63 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-80b48432-254d-44af-8441-5806169a6ead
+slug: /maintain/auto-healing-smart-xpath-in-katalon-studio
+---
+
+# Auto-healing Smart XPath in Katalon Studio
+
+From version 7.6.0, Katalon Studio launches Self-healing to replace Auto-healing Smart XPath for Web test execution. See [Self-healing](/maintain/self-healing-tests-in-katalon-studio).
+
+
+:::note
+
+This documentation is for the Katalon Studio version before 7.6.0.
+
+:::
+
+Download the latest version of Katalon Studio: [Katalon Studio](https://www.katalon.com/download/).
+
+## Install Auto-healing Smart XPath plugin
+
+1.  Go to Katalon Store and download the plugin: [Auto-healing Smart XPath](https://store.katalon.com/product/5/Auto-healing-Smart-XPath).
+
+2.  After successfully installing the plugin, open Katalon Studio. Click on the dropdown icon of the *Profile* button and choose **Reload Plugins**. To learn more about plugin installation, see [Reload plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/installing-plugin-offline-in-katalon-studio#).
+
+3.  In the main toolbar, click on the **Auto-healing Smart XPath** button. If you see the **Smart XPath Disable**, the **Auto-healing Smart XPath** is currently enabled. <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath_03.png" />
+
+
+## Configure XPath
+
+Go to **Project Settings** &gt; **Test Design** &gt; **Web Locators**. Choose the **XPath** option.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath_01.png" alt="choose XPath" />
+
+The list contains XPath generator providers which generate the corresponding XPath values for Katalon Studio test objects. You can drag and drop to change XPath priority.
+
+Learn more about XPath locators here: [Web Selection Method: Configure XPath](/create-tests/test-objects/web-test-objects/selection-methods-for-web-tests-in-katalon-studio#).
+
+## Create test objects by Recording/Spying
+
+Once test objects in test cases are created by the Recording or Spying feature in Katalon Studio, a set of XPath values are generated in the prioritized order of the XPath generator provider list. The first value in the list is the default XPath value of the test objects.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath-update-1.png" alt="object view" />
+
+## Execute test cases with Auto Healing, supported by Smart XPath
+
+During execution, if a default XPath value fails to detect a test object, other XPath options in the list are automatically applied until successfully find the test object. The execution continues as if no failed detection has happened. This helps significantly save time updating test cases, especially when the test cases are executed in batch overnight.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath-update-2.png" alt="log viewer" />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath-update-3.png" />
+
+## Update to the new stable XPath values
+
+After execution, you can update the proposed XPath values to the test objects. Go to **Smart Xpath &gt; Xpath Auto-healing logs**.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath-update-4.png" alt="xpath auto-healing logs" />
+
+Check the **Approve** box, then click OK to update the value. If you wish to update all values, click **Approve all**.
+
+After approval, close the object and refresh the Object Repository to see the updated XPath values.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/auto-healing-smart-xpath/xpath-update-5.png" alt="updated xpath values" />

@@ -1,0 +1,133 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-648ff3b1-dcf0-4649-b7b7-94f38a0bd3c5
+slug: /proof-of-concept/execute-mobile-tests-with-appium-2-x-in-katalon-studio-poc
+---
+
+# Execute mobile tests with Appium 2.x in Katalon Studio \(PoC\)
+
+
+:::note
+
+-   This Proof of Concept \(PoC\) is not ready for production use. We recommend using this PoC for evaluation purposes only.
+
+
+:::
+
+Katalon Studio supports seamless integration with Appium 1.x for mobile testing. With the new major release of Appium 2.0, this proof of concept \(PoC\) provides you the option to execute mobile tests with Appium 2.x. This PoC also contains support for Xcode 14.
+
+When you install Appium 1.x, all available drivers will be installed at the same time as the main Appium server.
+
+In Appium 2.x, one major change is the independence of drivers. The tools and requirements for building and using drivers for different platforms are completely different. The ability to install and work with decoupled web drivers based on your application platform \(iOS, Android, etc.\) can reduce your setup time and improve mobile testing performance in Katalon Studio.
+
+If your team is migrating from Appium 1.x to Appium 2.x, the changes in Appium 2.0 are not primarily related to changes in automation behaviors for specific platforms.
+
+This document will guide you through configuration steps to execute mobile tests with Appium 2.x.
+
+## Requirements
+
+-   Download from our GitHub repository: [Katalon Studio 8.5.4.alpha](https://github.com/katalon-studio/katalon-studio/releases/tag/v8.5.4.alpha)
+-   [Node.js 14+](https://nodejs.org/en/)
+-   [Node Package Manager 8+ \(NPM\)](https://www.npmjs.com/). This is usually bundled with Node.js, but you can upgrade independently.
+
+## Install Appium 2.x and execute mobile tests
+
+This section shows you how to install Appium 2x, install the required drivers for mobile execution in Katalon Studio, and execute tests using Appium 2.x.
+
+1.  Install Appium 2.x via NPM using the following command:
+
+    ```
+    npm i -g appium@next
+    ```
+
+    
+    :::note
+
+    -   Running <code>npm install -g appium</code> will still install Appium 1 as version 2 is in its late beta stage.
+
+    :::
+
+2.  Installing Appium 2.0 only installs the Appium server, but not the drivers since all drivers have been isolated from the Appium server app. Install the Appium XCUITest Driver for iOS and Appium UiAutomator2 Driver for Android.
+
+    -   The Appium XCUITest Driver, which is based on the Apple XCTest framework, is used for iOS native and web apps \(via hybrid mode\), and can only be used on macOS. To learn more about Appium XCUITest Driver, refer to the Appium repository on GitHub: [appium-xcuitest-driver](https://github.com/appium/appium-xcuitest-driver).
+
+        To install the latest versions of the Appium XCUITest driver, run the following command:
+
+        ```
+        appium driver install xcuitest
+        ```
+
+        
+        :::note
+
+        -   If you are using Appium 2.0 and Xcode 14 to run mobile tests with physical iOS devices, you need to manually install WebDriverAgent. See the following article for more information: [Building WebDriverAgent for real iOS devices with Appium 2.0 and Xcode 14](/proof-of-concept/execute-mobile-tests-with-appium-2-x-in-katalon-studio-poc#).
+
+        :::
+
+    -   The Appium UiAutomator2 Driver for Android native and web apps \(via hybrid mode\) is based on the Google UiAutomator framework. To learn more about Appium UiAutomator2 Driver, refer to the Appium repository on GitHub: [appium-uiautomator2-driver](https://github.com/appium/appium-uiautomator2-driver).
+
+        To install the latest versions of the Appium UiAutomator2 driver, run the following command:
+
+        ```
+        appium driver install uiautomator2
+        
+        ```
+
+3.  In Katalon Studio, select which Appium version to execute your test with. Go to **Project Settings** &gt; **Execution** &gt; **Mobile** and select the option **Appium version 2.x \(Beta\)**.<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Appium_2x/image/ks-854-setting-appium-2.0.png" width={600} alt="Appium 2.0 option in Project Settings" />
+
+    Click **Apply and Close**.
+
+4.  Execute your mobile test.
+
+
+After you executed your test in Katalon Studio, switch to the **Console** tab to check whether Katalon Studio detects the NodeJS location, starts Appium, and loads all drivers you installed as shown below:
+
+<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Appium_2x/image/ks-854-console.png" />
+
+In **Log Viewer**, the example below shows that Katalon Studio has successfully started the application with Appium version 2.x:
+
+<img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Appium_2x/image/ks-854-log-viewer.png" />
+
+To learn more about execution logs in Katalon Studio, refer to the following document: [View and customize execution log in Katalon Studio](/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-and-customize-execution-log-in-katalon-studio).
+
+For troubleshooting, refer to the following document: [Unable to Start Application on this device: Appium directory is invalid](/create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/unable-to-start-application-on-this-device-appium-directory-is-invalid).
+
+## Building WebDriverAgent for real iOS devices with Appium 2.0 and Xcode 14
+
+-   You have installed Appium XCUITest Driver. See [Install Appium 2.x and execute mobile tests](/proof-of-concept/execute-mobile-tests-with-appium-2-x-in-katalon-studio-poc#).
+
+
+If you are using Appium 2.0 and Xcode 14 to run mobile tests with real iOS devices, you need to manually install WebDriverAgent on Xcode.
+
+1.  Open Xcode. In **Xcode** &gt; **Preferences** &gt; **Account**, click **Add \(+\)** to enter your Apple Developer Account ID and password.
+
+2.  After installing the Appium XCUITest Driver, navigate to the <code>WebDriverAgent</code> folder in this directory: <code>/Users/&lt;username&gt;/.appium/node&#95;modules/appium-xcuitest-driver/node&#95;modules/appium-webdriveragent</code>
+
+    Double-click on the **WebDriverAgent.xcodeproj** file in the selected folder to open it in Xcode.
+
+3.  Build the **IntegrationApp** target with the following steps:
+
+    1.  Select the **IntegrationApp** target. In the **Signing & Capabilities** section, check the **Automatically manage signing** box, then choose a team added in Step 1.
+
+        <img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Appium_2x/image/xcode-integration-build.png" />
+
+    2.  On the menu bar, select **Product** &gt; **Build**.
+
+4.  Build the **WebDriverAgentLib** target with the following steps:
+
+    1.  Select the **WebDriverAgentLib** target. In the **Signing & Capabilities** section, check the **Automatically manage signing** box, then choose a team added in Step 1.
+
+        <img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Appium_2x/image/xcode-web-driver-agent-lib-build.png" />
+
+    2.  On the menu bar, select **Product** &gt; **Build**.
+
+5.  Build the **WebDriverAgentRunner** target with the following steps:
+
+    1.  Select the **WebDriverAgentRunner** target. In the **Signing & Capabilities** section, check the **Automatically manage signing** box, then choose a team added in Step 1.
+
+        <img src="/doc_images/Documents/General_Information/Proof_Of_Concept/Appium_2x/image/xcode-web-driver-agent-runner.png" />
+
+    2.  On the menu bar, select **Product** &gt; **Build**.
+
+
+You have successfully installed the WebDriverAgent manually.

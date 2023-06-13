@@ -1,0 +1,62 @@
+---
+id: concept-369e89ce-f98a-4b25-8e22-a5f4090fce30
+slug: /supported-execution-environments/supported-environments-for-katalon-studio-and-katalon-runtime-engine-kre
+---
+
+# Supported environments for Katalon Studio and Katalon Runtime Engine \(KRE\)
+
+
+:::note
+
+-   Katalon Studio \(KS\) provides free, basic tools suitable for the testing needs of individuals. For an advanced business solution, you can purchase Katalon Studio Enterprise \(KSE\) licenses. To compare features between Katalon Studio and KSE, you can refer to this document: [Katalon Studio vs Katalon Studio Enterprise Features](/administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/katalon-studio-vs-katalon-studio-enterprise-features).
+-   Katalon Runtime Engine \(KRE\) is the test execution add-on of Katalon Studio. KRE allows you to execute tests in a command-line interface \(CLI\).
+
+:::
+
+
+:::note
+
+-   We recommend using the latest version of Katalon Studio. Download the latest version from the Katalon website: [Katalon products](https://www.katalon.com/download/).
+-   From Katalon Studio version 7.9.0 onwards, we do not support 32-bit processors.
+
+:::
+
+## System requirements
+
+<table><tr><th></th><th> </th><th><span>Katalon Studio</span></th><th><span>Katalon Runtime Engine</span></th></tr><tbody><tr><td  rowspan="3"  td>Operating System</td><td>Windows</td><td  colspan="2"  td>Windows 7, Windows 8, Windows 10, Windows 11, Windows Server 2016, Windows Server 2019, Windows Server 2022</td></tr><tr><td>macOS</td><td  colspan="2"  td>OS X El Capitan 10.11, macOS Sierra 10.12, macOS High Sierra 10.13, macOS Mojave 10.14, macOS Catalina 10.15, macOS Big Sur 11, macOS Monterey 12, macOS Ventura 13.2</td></tr><tr><td>Linux</td><td><ul><li>Make sure you install OpenJDK 8.0. For further details, you can refer to this document: <a href="/get-started/katalon-studio-installation/install-katalon-studio-for-linux-gui" >Install Katalon Studio for Linux</a>.</li><li>The latest version of Linux distribution that supports Gnome, KDE, or Unity DE.</li><li>Tested on Ubuntu 20.04.</li></ul></td><td><ul><li>Make sure you install OpenJDK 8.0. For further details, you can refer to this document: <a href="/get-started/katalon-studio-installation/install-katalon-studio-for-linux-gui" >Install Katalon Runtime Engine for Linux</a>.</li><li>Debian, Ubuntu, RHEL, Fedora, and CentOS-based distribution.</li><li>Tested on Ubuntu 20.04.</li></ul></td></tr><tr><td  colspan="2"  td>GUI components</td><td>Required for all operating systems.</td><td><span>Katalon Runtime Engine (KRE)</span> doesn't have GUI components. For further information about executing with KRE, you can refer to this document: <a href="/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#" >Execution on KRE</a>.</td></tr><tr><td  colspan="2"  td>CPU</td><td  colspan="2"  td>Minimum: 2 GHz or faster 32-bit (x86) or 64-bit (x64) processor</td></tr><tr><td  colspan="2"  td>Memory</td><td>Minimum: 2 GB available RAM (32-bit) or 4 GB available RAM (64-bit) Recommended: 4 GB available RAM (32-bit) or 8 GB available RAM (64-bit).<a href="#fntarg_1" >1</a></td><td>Minimum: 2 GB available RAM (32-bit) or 4 GB available RAM (64-bit) Recommendation for concurrent executions (and execution with Docker): the number of concurrent sessions x 2GB. For example: Recommended RAM for 3 concurrent execution sessions is 6GB (3 x 2GB).</td></tr><tr><td  colspan="2"  td>Hard Drive</td><td  colspan="2"  td>At least 1 GB available hard disk space. Extra disk space is required depending on project source codes and generated execution reports.</td></tr></tbody></table>
+
+## Supported browsers
+
+<table><tr><th>Desktop Browsers</th><th>Version on Windows</th><th>Version on macOS</th><th>Version on Linux</th><th>Note</th></tr><tbody><tr><td>Internet Explorer (IE)</td><td>9, 10, 11</td><td>N/A</td><td>N/A</td><td>Required IE configurations: <a href="/create-tests/manage-projects/set-up-projects/web-testing/internet-explorer-configurations-for-katalon-studio" >Internet Explorer Configurations</a>.</td></tr><tr><td>Microsoft Edge</td><td>18</td><td>N/A</td><td>N/A</td><td> </td></tr><tr><td>Microsoft Edge (Chromium)</td><td>80+</td><td>80+</td><td>N/A</td><td>Supported in Katalon Studio v7.3.0+</td></tr><tr><td>Firefox</td><td>56+</td><td>56+</td><td>56+</td><td>To use Firefox 57 with Katalon Studio, install Katalon Studio v5.1.0+</td></tr><tr><td>Google Chrome</td><td>58+</td><td>58+</td><td>58+</td><td> </td></tr><tr><td>Opera</td><td>N/A</td><td>N/A</td><td>N/A</td><td> </td></tr><tr><td>Safari</td><td>N/A</td><td>12+</td><td>enN/A</td><td> </td></tr></tbody></table>
+
+## Supported mobile operating systems \(OS\)
+
+<table><tr><th>Installation</th><th>Version on Windows</th><th>Version on macOS</th><th>Appium</th><th>Native App support?</th><th>Hybrid App support?(&lt;)</th><th>Mobile Browser support</th><th>Xcode</th></tr><tbody><tr><td>Android</td><td>6.x, 7.x, 8.x, 9.x, 10.x, 11.x, 12.x</td><td>6.x, 7.x, 8.x, 9.x, 10.x, 11.x, 12.x</td><td>1.x (1.12.1+)</td><td>Yes</td><td>No(&lt;&lt;)</td><td>Yes</td><td>N/A</td></tr><tr><td>iOS</td><td>N/A</td><td>9, 10, 11, 12, 13, 14, 15</td><td>1.x (1.12.1+)</td><td>Yes</td><td>No</td><td>Yes</td><td>v9.4.1-13.4.1</td></tr></tbody></table>
+
+
+:::note
+
+-   iOS 16 requires Appium 2.x and Xcode 14.
+
+-   Appium 2.x and Xcode 14 are not officially supported at the moment. You can download the Proof of Concept for Appium 2.x and Xcode 14 from our GitHub repository: [8.5.4.alpha](https://github.com/katalon-studio/katalon-studio/releases/tag/v8.5.4.alpha). For more details, refer to [Execute mobile tests with Appium 2.x in Katalon Studio \(PoC\)](/proof-of-concept/execute-mobile-tests-with-appium-2-x-in-katalon-studio-poc).
+
+
+:::
+
+\(\*\) To handle hybrid apps, refer to the Appium article here: [Automating hybrid apps](http://appium.io/docs/en/writing-running-appium/web/hybrid/#automating-hybrid-apps).
+
+\(\*\*\) Refer to the following workarounds when handling hybrid apps:
+
+-   [Capture elements in hybrid Android apps](/create-tests/record-and-spy/mobile-record-and-spy-utilities/hybrid-mobile-apps-testing/capture-elements-in-hybrid-android-apps-in-katalon-studio)
+-   [Flutter-based application testing with custom SetText keyword](/create-tests/keywords/custom-keywords/flutter-based-application-testing-with-custom-settext-keyword-in-katalon-studio)
+
+## Supported Windows platforms
+
+Katalon Studio fully supports automation testing for desktop apps written in the following platforms:
+
+-   Universal Windows Platform \(UWP\)
+-   Windows Forms \(WinForms\)
+-   Windows Presentation Foundation \(WPF\)
+-   Classic Windows \(Win32\)
+
+[1](#fnsrc_1) Available RAM means free GB of RAM that other applications do not use concurrently with Katalon Studio. For tips to free up more RAM for Katalon Studio, see: [How to free up more available RAM for Katalon Studio](/execute/troubleshooting/how-to-free-up-more-available-ram-for-katalon-studio).

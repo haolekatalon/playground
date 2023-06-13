@@ -1,0 +1,201 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-62d684d9-22b4-4296-a02d-343e63096b55
+slug: /execute/ci-cd-integrations/harness-integration
+---
+
+# Harness Integration
+
+Harness is a CI/CD service platform that provides a simple and secure way for engineering and DevOps teams to release applications faster, safer, and more secure. Harness automates the entire CI/CD process, which helps build, test, and deploy improved features more quickly. To learn more about key concepts of Harness, you can refer to this Harness document: [Harness Key Concepts](https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts).
+
+If you are an automation tester and using Harness CI, you might want to integrate Katalon Runtime Engine \(KRE\) and create a CI/CI pipeline to execute your tests.
+
+This tutorial shows you how to set up a Workflow with Harness to build your Katalon tests with the Katalon Docker image, which contains KRE, and execute the tests in a Kubernetes cluster farm.
+
+The integration in this tutorial is performed on Harness FirstGen.
+
+## Requirements
+
+With the proposed scenario, you need to first configure the following components to work with Harness:
+
+-   An active Katalon Runtime Engine license.
+
+-   A Harness account.
+
+-   Docker is installed and running.
+
+-   Kubernetes is installed and running.
+
+-   Kubernetes manifest files to configure the build for your Katalon Docker image. You can refer to the sample manifest files in our GitHub repository: [Sample manifests](https://github.com/katalon-studio-samples/ci-samples/tree/master/.harness).
+
+
+## Set up your Harness Account
+
+Before creating a Workflow in Harness, you need to set up your Account.
+
+Follow these steps:
+
+1.  Set up a **Harness Delegate**.
+
+    For detailed instructions, see Harness document: [Harness Delegate Installation](https://docs.harness.io/article/h9tkwmkrm7-delegate-installation).
+
+2.  Set up a **Cloud Provider**.
+
+    For detailed instructions on adding a Kubernetes Cloud Provider, see Harness document: [Add Kubernetes Cluster Cloud Provider](https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider).
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/Harness-Cloud-Provider.png" width={600} alt="Harness Kubernetes Cloud Provider" />
+
+3.  Add an **Artifact Server**.
+
+    To add a Docker Registry Artifact Server for the Katalon Docker image, see Harness document: [Add Docker Registry Artifact Server](https://docs.harness.io/article/tdj2ghkqb0-add-docker-registry-artifact-servers).
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/Harness-Docker-Registry-Artifact-Server.png" width={600} alt="Harness Docker Registry Artifact Server" />
+
+4.  Add a **Source Repo Provider**.
+
+    To add a GitHub Source Repo Provider, see Harness document: [Add a GitHub Repo](https://docs.harness.io/article/sip9rr6ogy-add-github-repo).
+
+    Here we add a GitHub Source Repo Provider with the GitHub repository URL: <code>https://github.com/katalon-studio-samples/ci-samples</code>. You can fork this repository and provide your own GitHub Personal Access Token when you configure the Source Repo Provider.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/Harness-Source-Repo-Provider.png" width={600} alt="Harness GitHub Source Repo Provider" />
+
+
+## Set up a Harness Application
+
+A Harness Application represents a group of microservices, their deployment pipelines, and all the building blocks for those pipelines. Harness represents your microservice using a logical group of one or more entities: Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners.
+
+Here we set up an Application with the necessary configurations to create Workflow for our pipeline.
+
+### Add a Harness Application
+
+1.  To add a Harness Application, you can refer to this Harness document: [Set up Harness Application](https://docs.harness.io/article/bucothemly-application-configuration#step_1_set_up_the_application).
+
+
+### Add a Service to the Application
+
+Services represent your microservices/apps. You define where the artifacts for those microservices come from, and the container specs, configuration variables, and files for those microservices.
+
+Here we add a Service and configure it with the defined Artifact Server and manifest files.
+
+Follow these steps:
+
+1.  In your Application, click **Service** &gt; **Add Service**.
+
+2.  In the opened **Add Service** dialog, specify the name and deployment type.
+
+    As we use a Kubernetes Cloud Provider, we specify the Kubernetes Deployment Type. <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/Harness-add-a-service.png" width={500} alt="Add Service dialog" />
+
+3.  Click **Submit**.
+
+4.  Add an Artifact Source. In the **Service Overview** section of the new Service, click **Add Artifact Source** &gt; **Docker Registry**.
+
+    Here we specify the Artifact Source with our Docker Registry Artifact Server and the name of the Katalon Docker image \(<code>katalonstudio/katalon</code>\).
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-service-add-artifact-source.png" width={500} alt="Artifact Source - Docker Registry dialog" />
+
+5.  Link manifest files to the Service. In the **Manifests** section of the Service, click on the *option* icon \(top-right corner\) and select **Link Remote Manifests**.
+
+    Here we specify the Source Repository with our GitHub Source Repo Provider and the branch, folder path that contains the manifest files \(<code>.harness</code>\).
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-link-remote-manifests.png" width={500} alt="Remote Manifests dialog" />
+
+6.  Defined a variable for Katalon API Key. In the **Configuration** / **Config Variables**, click **Add Variable** and define a variable representing the Katalon API Key.
+
+    In the sample manifest files, we create a variable named <code>apiKey</code> to represent the Katalon API Key. Therefore, in the Service we need to define the variable and provide the value \(our Katalon API Key\).<img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-manifest-values-file.png" width={500} alt="Sample manifest files with apiKey variable" />
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-config-variable-blurred.png" width={500} alt="Config Variable dialog" />
+
+    To get your Katalon API Key, see: [Generate a Katalon API Key](/administer/settings/katalon-api-key-in-katalon-testops#)
+
+
+The Service is then configured with an Artifact Source, Kubernetes manifests stored in our GitHub repository, and a variable representing the Katalon API Key.
+
+<img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-service-configured-blurred.png" width={700} alt="Harness Service configured" />
+
+### Add an Environment to the Application
+
+You define your target deployment infrastructure using a Harness Environment. Environments represent your deployment infrastructures, such as Dev, QA, Stage, Production, etc.
+
+In our case, we add an Environment that uses the Kubernetes Cloud Provider.
+
+Follow these steps:
+
+1.  In your Application, click **Environments** &gt; **Add Environment** and create a new Environment.
+
+2.  In the created Environment, click **Add Infrastructure Definition** and specify the properties for your infrastructure.
+
+    As we want to execute our tests in a Kubernetes cluster, which is defined in the Kubernetes Cloud Provider, we specify the Infrastructure as follows.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-infrastructure-definition.png" width={600} alt="Harness Infrastructure Definition" />
+
+3.  Click **Submit**.
+
+
+## Create a Harness Workflow
+
+Workflows define the deployment orchestration steps, including how a Service is deployed, verified, rolled back, and more.
+
+Here we create a Workflow that includes steps to build, execute our tests, and finally clean up the deployed workload.
+
+### Add a Workflow
+
+To add a Workflow, follow these steps:
+
+1.  In your Application, click **Workflows** &gt; **Add Workflow**.
+
+2.  In the opened dialog, specify the properties for your Workflow.
+
+    Here we create a Rolling Deployment with our defined Environment, Service, and Infrastructure.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/Harness-add-workflow.png" width={500} alt="Harness Workflow dialog" />
+
+3.  Click **Submit**.
+
+
+### Add a Workflow Variable
+
+In the sample manifest files, we create a Job named <code>test</code>, so we need to add a Workflow Variable to help Harness Workflow identify the Job that needs executing.
+
+<img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-manifest-values-file.png" width={600} alt="Harness manifest file" />
+
+To add a Workflow Variable, follow these steps:
+
+1.  Open the created Workflow and select **Workflow Variables**.
+
+2.  In the opened dialog, define a variable with type <code>text</code> and provide the default value \(the Job name\).
+
+    In our case, the value is <code>test</code>.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-workflow-variable.png" width={600} alt="Harness Workflow Variables dialog" />
+
+
+### Configure the Workflow
+
+After setting up the Workflow Variable, we configure the Workflow to deploy the test build with the included Kubernetes manifests.
+
+Follow these steps:
+
+1.  In the **Deploy** stage of the Workflow, add an Apply step.
+
+    This step applies our Kubernetes manifest file \(<code>test.yaml</code>\) to build and execute our tests.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-workflow-add-apply.png" width={500} alt="Harness Apply step" />
+
+2.  In the **Wrap Up** stage of the Workflow, add a Delete step.
+
+    The Delete step helps clean up the workload deployed by the Deploy stage.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-delete-step.png" width={500} alt="Harness Delete step" />
+
+3.  Add a Rollback step. In the **Rollback Steps** / **Deploy** stage, add a Delete step as in **Wrap Up** stage.
+
+    The Rollback steps initiate a rollback of your most-recent successful deployment.
+
+
+Your Workflow is now configured with an Apply step, a Delete step, and Rollback steps.
+
+<img src="/doc_images/Documents/Execute/CICD_Integrations/harness-integration/Images/harness-workflow-configured.png" width={600} alt="Harness Workflow configured" />
+
+### Deploy the Workflow
+
+1.

@@ -1,0 +1,23 @@
+---
+id: concept-b85220e2-82ea-46c4-acfa-219a7c930cba
+slug: /create-tests/test-objects/api-test-objects/authorization/authorization-in-katalon-studio
+---
+
+# Authorization in Katalon Studio
+
+APIs use authorization to make sure that client requests access data securely. Authorization involves authenticating and confirming that the sender of a request have the permission to access or manipulate the relevant data.
+
+You can add your authorization information the **Authorization** tab of a **Web Service Request**.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/bearer-authorization/ks-840-authorization-type.png" alt="Authorization tab" />
+
+The following types of authorizations are supported in Katalon Studio:
+
+-   [Bearer](/create-tests/test-objects/api-test-objects/authorization/bearer-authentication-in-katalon-studio#) \(version 8.4.0 onwards\)
+-   [Basic](/create-tests/test-objects/api-test-objects/authorization/basic-authentication-in-katalon-studio)
+-   [OAuth 1.0](/create-tests/test-objects/api-test-objects/authorization/authorization-oauth-1-0-in-katalon-studio)
+-   [OAuth 2.0](/create-tests/test-objects/api-test-objects/authorization/authorization-oauth-2-0-in-katalon-studio)
+-   [NTLM](/create-tests/test-objects/api-test-objects/authorization/ntlm-authentication-in-katalon-studio) \(version 8.4.0 onwards\)
+
+
+To use current authentication information, make sure that you click on **Update to HTTP Header**. Katalon Studio appends these information to the **HTTP Header** of the web service request.

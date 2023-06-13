@@ -1,0 +1,103 @@
+---
+id: concept-6da17f4c-bd54-4f3d-bca7-6f3127862ba3
+slug: /create-tests/record-and-spy/webui-record-and-spy-utilities/how-to-use-synchronization-commands-while-recording-in-katalon-studio
+---
+
+# How to use synchronization commands while recording in Katalon Studio
+
+## What is Synchronization?
+
+Synchronization is a mechanism which allows multiple threads to work in parallel. In test automation, the application under test \(AUT\) and the automation tool we employ should collaborate to progress the test execution. In order to achieve this and avoid execution failures, we need to use synchronization commands. This tutorial shows you how to do just that.
+
+### Scenario: Login with valid credentials
+
+1.  Launch the application under test with this sample URL: http://demoaut.katalon.com/
+2.  Use **Wait For Page Load** keyword
+3.  Use **Wait For Element Visible** keyword for Make Appointment button
+4.  Click on Make Appointment
+5.  Use **Wait For Element Visible** for Login button
+6.  Enter a valid username and password, then click on the Login button
+
+At runtime recording, we can add synchronization commands to wait for page load, wait for element present, wait for element visible, etc.
+
+**Step 1:** Launch Katalon Studio and click on the **Create New Test Case** button from the main toolbar. Provide a name for your test case and click **OK**. An empty test case is created.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-create-a-new-test-case.png" width={500} alt="create a new test case" />
+
+**Step 2:** Click on **Record Web** from the main toolbar.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-840-record-web.png" width={350} alt="record web" />
+
+**Step 3:** The **Record** dialog displays, where recorded actions show.
+
+Provide the URL of the application under test.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/create_test_case_using_record_playback/image/ks-855-recorder-dialog.png" width={700} alt="record web" />
+
+**Step 4:** Select a browser and click on the **Record** button to start recording the test case
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/create_test_case_using_record_playback/image/ks-855-select-browser.png" width={600} alt="select browser" />
+
+**Step 5:** Once your application is launched, move the cursor to **Make Appointment** and click on the button. You need to wait for the login page to load.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/create_test_case_using_record_playback/image/ks-make-appointment.png" width={700} alt="make appointment" />
+
+**Step 6:** You can add synchronization commands in runtime recording in the **Recorded Actions** pane. Select a step at which the synchronization commands will be added. Click on **Add**.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-855-add-kw.png" width={700} alt="add" />
+
+**Step 7:** Double-click on the newly added keyword and type **Wait For Page Load** keyword. Then, double click on the **Input** cell and set the value to 45 seconds.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-855-wait-for-page-load-kw.png" width={700} alt="add input" />
+
+Now Katalon Studio will wait 45 seconds for the page to get fully loaded to execute the next command. These synchronization commands avoid execution failures.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-855-wait-kw.png" width={700} alt="wait for page load" />
+
+You can pause and resume the recording whenever you need it. Let us continue with recording a few more actions. Switch to the browser in which you are recording, move to **Make Appointment** button and click on **Make Appointment** button.
+
+**Step 8:** Now to wait for a specific element to be loaded and to perform an action, we need to add the **Wait for Element Present** command before clicking on the **Make Appointment** button.
+
+To do so, right click on the element, then choose **Katalon Studio** &gt; **Wait For Element Present**.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-wait-for-element-present.png" width={700} alt="add wait keyword" />
+
+So here, we have added two wait commands, one is to wait till the page gets loaded and other is to wait till the element gets displayed**.** The reason behind adding these keywords is that, even though the page has been loaded, sometimes elements will not be present in the DOM \(referring to Ajax-based applications mainly\).
+
+**Step 9:** We need to provide the expected time as an input for all the wait commands. Tap on the **Wait For Element Present** step and provide 15 seconds as the expected time interval.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-wait-15.png" width={600} alt="add wait for element present" />
+
+**Step 10:** You can also add the **Wait For Element Visible** command on the **Login** button. Once you are done, click on **Stop** and save the recorded actions into Katalon Studio. You are prompted to save captured objects into the **Object Repository**, which can be reused whenever needed**.** You can also create a folder to maintain page objects in desired structure.
+
+Your recorded test script should be as shown below.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/synchronization_commands_recording/image/ks-recorded-test-case.png" width={600} alt="test case" />
+
+Click on **Script** tab to view the generated code. You can also modify the script from the script mode. All the recorded actions can be modified in script mode.
+
+**Script code:**
+
+```
+WebUI.openBrowser('')
+ 
+WebUI.navigateToUrl('http://demoaut.katalon.com/')
+ 
+WebUI.waitForPageLoad(45)
+ 
+WebUI.waitForElementPresent(findTestObject('Page_CURA Healthcare Service/a_Make Appointment'), 15)
+ 
+WebUI.click(findTestObject('Page_CURA Healthcare Service/a_Make Appointment'))
+ 
+WebUI.waitForElementVisible(findTestObject('Page_CURA Healthcare Service (1)/button_Login'), 45)
+ 
+WebUI.click(findTestObject('Page_CURA Healthcare Service (1)/button_Login'))
+ 
+WebUI.closeBrowser()
+
+
+```
+
+It is recommended to add synchronization while recording automation test cases in the [manual mode](/create-tests/create-test-cases/generate-test-steps-in-katalon-studio-manual-view) or [script mode](/create-tests/create-test-cases/generate-test-steps-in-katalon-studio-script-view). It is also a good practice to use wait commands to avoid execution failures. Download source code [here](https://github.com/katalon-studio/katalon-web-automation).
+
+For further instructions and help, you can refer to [Recording WebUI Test](/create-tests/create-test-cases/create-test-case-overview) tutorial.

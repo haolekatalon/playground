@@ -1,0 +1,51 @@
+---
+id: concept-101b870d-031d-4d63-883e-8b0d788f80d1
+slug: /execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/kobiton-integration/kobiton-integration-with-testops
+---
+
+# Kobiton Integration with TestOps
+
+Kobiton allows you to test your apps on real devices to enhance your mobile testing experiences. By integrating Kobiton with Katalon TestOps, you can now plan your tests and run them on Kobiton's devices, leveraging your mobile testing activities.
+
+
+:::note
+
+-   You have already registered a [Kobiton](https://kobiton.com/) account.
+
+:::
+
+## Integrate Kobiton with Katalon TestOps
+
+Follow these steps:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your Project.
+2.  Go to **Configurations** &gt; **Integrations**.
+
+    The **Integrations** page appears.
+
+3.  Select **Kobiton** from the dropdown list.
+
+4.  Fill in the required information.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-oct-kobiton-integration/kobiton-integration-page-fillin-2.png" alt="kobiton integration page" />
+
+    -   **Kobiton Device URL**: enter your Kobiton Device URL.
+    -   **Username**: enter your Kobiton username.
+    -   **Kobiton's API Key**: enter your Kobiton's API key.
+5.  Click **Test Connection**, then click **Save**.
+
+
+You have enabled Kobiton integration. Now you can run tests with a Kobiton device in Katalon TestOps.
+
+## Run tests with a Kobiton device
+
+
+:::note
+
+-   You have created a Script Repository on Katalon TestOps. See: [Upload Test Scripts from a Git Repository](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+:::
+
+After creating a Script Repository, you can schedule test runs with a Kobiton device by configuring the advanced settings in the **Schedule Test Runs** dialog. See: [Schedule Test Runs](/execute/schedule-test-execution/schedule-test-runs-in-testops#).
+
+You can also execute test runs manually. See: [Execute Test Runs manually](/execute/schedule-test-execution/execute-test-runs-manually-in-testops).

@@ -1,0 +1,96 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-dc1b8a88-edb0-4b63-96b1-df42cf1ac1aa
+slug: /integrations/unsupported-integrations/accessibility-test-automation-in-katalon
+---
+
+# Accessibility Test Automation in Katalon
+
+
+:::note
+
+-   Please note that the use case presented here is a suggestion only and should be implemented with caution. It has not undergone quality assurance testing and is not officially supported by our platform.
+
+
+:::
+
+This document provides you with the step-by-step guide to achieve accessibility testing using Katalon Automation Platform on your website. [Axe](https://www.deque.com/axe/) is a fast and lightweight accessibility testing tool that checks the entire document against the rules and generates a report with all violations, passes, etc.It checks if your website follows the WCAG and other guidelines \(as supported by axe-core library\).
+
+In this guide, you will learn:
+
+-   How axe-core library is used with Katalon Studio to achieve Accessibility testing.
+
+-   What are the components of the generated report
+
+
+## How to run Accessibility Test Automation in Katalon
+
+-   Download the [axe-core jar](https://mvnrepository.com/artifact/com.deque.html.axe-core/selenium) file and save it in your local system and add it to **Katalon Studio Project** &gt; **Settings** &gt; **Library Management**. You will use this file to import required packages in the sample code snippets. <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Accessibility_Testing/KS-Library_Management.png" alt="Katalon Studio Library management" />
+
+-   Our [sample project repository](https://github.com/RupeshSanjaySawant/katalon-accessibility-testing-project.git) for your reference.
+
+
+1.  You can add the following custom keyword script, the accessibility checks are invoked using the axe-core library in this script. The generated report is saved in a JSON and TXT file format as per the path provided in the script \(In Runtime report Folder\).
+
+    ```
+    import com.kms.katalon.core.util.KeywordUtil
+    import java.text.SimpleDateFormat;
+    import com.deque.html.axecore.results.Results;
+    import com.deque.html.axecore.results.Rule;
+    import com.deque.html.axecore.selenium.AxeBuilder;
+    import com.deque.html.axecore.selenium.AxeReporter;
+    import com.deque.html.axecore.selenium.ResultType;
+    import static com.deque.html.axecore.selenium.AxeReporter.getReadableAxeResults;
+    import com.kms.katalon.core.annotation.Keyword
+    import com.kms.katalon.core.configuration.RunConfiguration
+    import com.kms.katalon.core.webui.driver.DriverFactory
+    class Sample {
+    	@Keyword
+     	def checkAccessibility() {
+      		Results results = new AxeBuilder().analyze(DriverFactory.getWebDriver())
+    		List<Rule> violations = results.getViolations()
+    		if(violations.size()==0){
+    		KeywordUtil.logInfo("No Violation Found")
+    		}
+    		String AxeReportPath = RunConfiguration.getReportFolder()+ File.separator
+    		String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new
+    java.util.Date())
+    		String AxeViolationReportPath=AxeReportPath + "AccessibilityViolations_" + timeStamp
+    		AxeReporter.writeResultsToJsonFile(AxeViolationReportPath,results)
+    		KeywordUtil.logInfo("Violation Report Path"+ AxeViolationReportPath)
+    if(getReadableAxeResults(ResultType.Violations.getKey(),DriverFactory.getWebDriver(),violations) ){
+    		AxeReporter.writeResultsToTextFile(AxeViolationReportPath,
+    		AxeReporter.getAxeResultString())
+    		}
+    	}
+    }
+    ```
+
+    
+    :::note
+
+    -   You can also write assertions in your script based on the violations in report.json and mark your test passed or failed based on these assertions.
+
+    :::
+
+2.  You can use this custom keyword in the test case **Add** &gt; **Custom Keyword** after you have navigated to your desired pages on the website. You can use this keyword for different pages of the website as you navigate as per your flow. You can execute on any browser \(Chrome, Mozilla Firefox, Edge Chromium, Safari\).
+
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Accessibility_Testing/KS-Add_keyword.png" alt="Add custom keyword in Katalon Studio" />
+
+3.  After adding the test case in the test suite, You can execute and see the accessibility results in JSON and TXT format will get generated in the report folder, the same can get uploaded in TestOps as well.
+
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Accessibility_Testing/TO-_reports.png" alt="TestOps reports" />
+
+4.  After you successfully run the test script, a text and a json file are generated as per the path set in the script.
+
+    -   The report in TXT file contains the violation information: <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Accessibility_Testing/violations_in_txt_file.png" alt="report in txt file" />
+
+    -   JSON file contains the following accessibility test information: <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Accessibility_Testing/JSON_file_.png" />
+
+        -   violations \(array\): These results indicate what elements failed in the rules.
+
+        -   passes \(array\): These results indicate what elements passed in the rules.
+
+        -   incomplete \(array\): It contains results that were aborted and require further testing. This can happen either because of technical restrictions to what the rule can test or because of a javascript error that occurred.
+
+        -   inapplicable \(array\): These results indicate rules that did not run because no matching content was found on the page. For example, if no video exists, those rules won't run.

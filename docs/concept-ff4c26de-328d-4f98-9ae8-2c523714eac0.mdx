@@ -1,0 +1,64 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-ff4c26de-328d-4f98-9ae8-2c523714eac0
+slug: /create-tests/create-test-cases/statements/binary-statements
+---
+
+# Binary Statements
+
+A Binary statement represents a dual expression consisting of two single **expressions** \(variables, strings, numbers, methods...\) and an operator, for example: +, -, \*, &lt;, &lt;=, !, etc.\). For more details about using operators in Groovy, refer to this Groovy documentation: [Operators](http://groovy-lang.org/operators.html).
+
+
+:::note
+
+-   Once a test step is added as any of the control statements, it is not allowed to change into another keyword.
+
+
+:::
+
+## In manual view
+
+1.  Open a test case in **Manual** view. Click on the drop-down icon of the **Add** button, then choose **Binary Statements**.
+
+2.  To add a keyword under a statement, select that statement, then click **Add**. A test step is created under that statement.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/set-binary-statement.png" width={300} alt="binary statement" />
+
+    A test step representing a binary statement is added to the test case.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/830-binary-statements.png" width={600} alt="add binary statement" />
+
+3.  Double-click on the **Input** cell to edit those required components.
+
+    Binary statements are normally used to assign either values to test objects
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/Binary-Statement.png" width={600} alt="Binary statement" />
+
+    or test objects to variables to take the next steps.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/BS-2.png" width={600} alt="Binary statement" />
+
+4.  Save the test case when you're done.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/830-binary-statement-steps.png" width={600} alt="Binary statements step" />
+
+
+## In script view
+
+### In Script view
+
+The **Script** view of a test case allows you to programmatically define and handle binary statements using Groovy or Java languages.
+
+For example :
+
+-   To assign a value to a test object
+
+    ```
+    myText = 'Welcome to Katalon Studio'
+    ```
+
+-   To assign a test object to a variable
+
+    ```
+    myObject = findTestObject('my object') WebUI.setText(myObject, 'Welcome to Katalon Studio') WebUI.verifyTextPresent('Welcome to Katalon Studio', false)
+    ```

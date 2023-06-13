@@ -1,0 +1,69 @@
+---
+id: concept-fa6e8ea6-5214-4fef-9217-8a045ac21bc1
+slug: /execute/configurations-for-test-execution/specify-a-path-to-android-sdk-root-folder
+---
+
+# Specify a path to Android SDK root folder
+
+
+:::note
+
+-   Katalon Studio version 8.1.0 onwards
+-   Katalon Runtime Engine version 8.1.0 onwards
+
+:::
+
+You can use a custom Android SDK location instead of the Katalon Studio default location. From version 8.1.0 onwards, Katalon Runtime Engine supports the **ANDROID\_HOME** environment variable to specify a path to Android SDK root folder. To configure environment variable with KRE commands, see: .
+
+## Specify a path to Android SDK root folder
+
+By default, the Android SDK root folder is located at **~/.katalon/tools/android*sdk*. You can rename or move your Android SDK root folder to another location and use the** ANDROIDHOME environment variable to point the path to that new location. See also: [\[Mobile\] Android Setup](/create-tests/manage-projects/set-up-projects/mobile-testing/android/mobile-android-setup-in-katalon-studio#).
+
+### Command-line Option
+
+Start Katalon Studio with this command-line option instead of double-clicking on the **Katalon** app:
+
+-   For Linux and macOS:
+
+    ```
+    $ export ANDROID_HOME=<Your Android SDK
+                      location>
+    ```
+
+    For example:
+
+    ```
+    $ export ANDROID_HOME=/opt/dev/android-sdk-linux
+    $ ./katalon <arguments>
+    
+    ```
+
+-   For Windows:
+
+    1. In the Windows explorer search bar, search for **Edit the system environment variables**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/how-to-guides/android-home-path/KS-android-home-edit-environment-variables.png" alt="Edit the system environment variable" />
+
+    The **System Properties** dialog appears. Click **Environment Variables**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/how-to-guides/android-home-path/KS-android-home-environment.png" alt="system properties" />
+
+    2. In the **System variables**, click **New** to create a new environment variable like so:
+
+    -   **Variable**: **ANDROID\_HOME**
+    -   **Value**: your custom path to the Android SDK root folder
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/how-to-guides/android-home-path/KS-android-home-new.png" alt="new" />
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/how-to-guides/android-home-path/KS-android-home-value.png" alt="Window Environment Variable" />
+
+
+
+:::note
+
+For Appium to locate the tools, keep the ADB file and these folders as their original names:
+
+-   build-tools
+-   platform-tools
+-   tools
+
+:::

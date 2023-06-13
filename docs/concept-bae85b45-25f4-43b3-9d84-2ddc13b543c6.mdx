@@ -1,0 +1,226 @@
+---
+id: concept-bae85b45-25f4-43b3-9d84-2ddc13b543c6
+slug: /create-tests/test-objects/web-test-objects/automation-testing-of-shadow-dom-elements-with-katalon-studio
+---
+
+# Automation testing of shadow DOM elements with Katalon Studio
+
+
+:::note
+
+-   Chrome browser from version 53 onwards.
+
+:::
+
+Shadow DOM allows DOM elements to contain child nodes and CSS, which helps web developers by better encapsulating their code. But this creates challenges for automation testing, because elements inside a shadow root technically do not exist in the main DOM.
+
+This article shows you how to test shadow DOM elements in Katalon Studio.
+
+In this demonstration, we use the demo site [Books](https://books-pwakit.appspot.com/explore?q=): <code>https://books-pwakit.appspot.com/explore?q=</code>. All the elements in this demo website are under a shadow root. The first step is to identify shadow DOM objects, then verify them by successfully inputting: "hello World" into the website search bar.
+
+## Identify shadow DOM objects
+
+In the demo website, navigate to the search bar. Right-click on the page and choose **Inspect**. The Chrome Developer tool opens and highlights the selected element.
+
+At this point, there are two shadow DOM elements that you need to identify in the Chrome Developer tool:
+
+-   The property of the parent object. The parent object is the shadow host. Shadow host is the regular DOM node that the shadow DOM is attached to. In this demo site, <code>book-app</code> is the parent object. <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/book-app.png" width={800} />
+-   The property of the child object. The child object is the shadow DOM elements we are inspecting. In this example, we look at the property of the search bar's elements. <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/search-inspect.png" width={800} />
+
+    You can learn more about object properties from the Mozilla developer documentation: [Working with objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects).
+
+
+## Define object properties
+
+After identifying the property of the parent object and the child object, return to Katalon Studio to define object properties. Katalon Studio supports the following selection methods to create the object's properties: Attributes, XPath, CSS, Image. In this example, we use the Attributes method.
+
+To learn more about selection method for object properties, see: [Selection Methods for Web Tests in Katalon Studio](/create-tests/test-objects/web-test-objects/selection-methods-for-web-tests-in-katalon-studio).
+
+### Create the parent object
+
+1.  In the **Tests Explorer** panel, right-click on the **Object Repository** folder, then select **New** &gt; **Test Object**.
+
+    <img src="/doc_images/Global_reuse/Images_warehouse/Katalon_Studio/Tests_Explorer/KS-8.2.5-create-a-test-object.png" width={500} alt="Create a new test object" />
+
+    Alternatively, you can also go to **File** &gt; **New** &gt; **Test Object** from the main menu.
+
+    
+    :::tip
+
+    -   For better management, you can also create a new folder by selecting **Test Suites** &gt; **New** &gt; **Folder**, then create new test suites inside that folder.
+
+    :::
+
+2.  Name the object as <code>book&#95;app</code>.
+
+3.  In the **Object's Properties** section, click **Add**. The **Add Property** dialog opens. Fill in the following information:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-add-property.png" width={500} />
+
+    -   Name: apptitle
+
+    -   Match condition: equal
+
+    -   Value: BOOKS
+
+4.  Click **OK**. The <code>apptitle</code> property appears in the **Object's Properties** section.
+
+5.  Check the **Detect object by?** box in the <code>apptitle</code> property line to generate a **Selected Locator** for the object.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-detect-object-by.png" width={700} />
+
+
+### Create the child object
+
+1.  In the **Tests Explorer** panel, right-click on the **Object Repository** folder, then select **New** &gt; **Test Object**.
+
+    <img src="/doc_images/Global_reuse/Images_warehouse/Katalon_Studio/Tests_Explorer/KS-8.2.5-create-a-test-object.png" width={500} alt="Create a new test object" />
+
+    Alternatively, you can also go to **File** &gt; **New** &gt; **Test Object** from the main menu.
+
+    
+    :::tip
+
+    -   For better management, you can also create a new folder by selecting **Test Suites** &gt; **New** &gt; **Folder**, then create new test suites inside that folder.
+
+    :::
+
+2.  Name the object as <code>input</code>.
+
+3.  In the **Object's Properties** section, click **Add**. The **Add Property** dialog opens. Fill in the following information:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-add-property-input.png" width={500} />
+
+    -   Name: id
+
+    -   Match condition: equal
+
+    -   Value: input
+
+4.  Click **OK**. The <code>input</code> property appears in the **Object's Properties** section.
+
+5.  Check the **Detect object by?** box in the <code>input</code> property line to generate a **Selected Locator** for the object.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-input-locator.png" width={700} />
+
+6.  After defining the property, in the **Settings** section, choose the **Shadow Root Parent** option, then click **Browse**. The **Object Repository Browser** dialog opens.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/shadow-root-parent.png" width={700} />
+
+7.  In the open dialog, choose the <code>book&#95;app</code> object as the parent object. Click **OK**.
+
+
+The input object identifies <code>book&#95;app</code> as its **Shadow Root Parent**.
+
+## Create a test case with shadow DOM objects
+
+1.  From the main toolbar, click **Create new Test Case**.
+
+    Or, in the **Tests Explorer** panel, right-click the **Test Case** folder then select **New** &gt; **Test Case**.
+
+    <img src="/doc_images/Global_reuse/Images_warehouse/Katalon_Studio/Tests_Explorer/KS-8.3.5-Create-new-tc.png" width={500} alt="Create new test case" />
+
+    Alternatively, you can also go to **File** &gt; **New** &gt; **Test Case** from the main menu.
+
+    
+    :::tip
+
+    -   For better management, you can also create a new folder by selecting **Test Cases** &gt; **New** &gt; **Folder**, then create new test cases inside that folder.
+
+    :::
+
+2.  In the new test case, switch to the **Script** tab, copy and paste the following script into the test script.
+
+    ```
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    
+    //Open browser and navigate to the AUT website
+    WebUI.openBrowser('https://books-pwakit.appspot.com/explore?q=')
+    
+    //Input text into the search bar
+    WebUI.setText(findTestObject('Object Repository/input'), 'hello World')
+    
+    //Delay 5s to view the result
+    WebUI.delay(5)
+    
+    //Close the browser to clean up
+    WebUI.closeBrowser()
+    
+    ```
+
+    In **Script** mode:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-tc-script.png" width={600} />
+
+    In **Manual** mode:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-tc-manual-mode.png" width={600} />
+
+3.  Save and run the test case.
+
+    
+    :::note
+
+    -   For Katalon Studio versions before 8.6.0, when testing with shadow DOM objects, you can reduce the default timeout period that Katalon Studio waits for the application under test to be loaded when executing the automation test. You can find this option in **Project Settings** &gt; **Execution** &gt; **Default wait for element timeout \(in seconds\)**.<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/shadow_dom_elements_testing/image/ks-tip-shadow-dom.png" width={700} />
+    :::
+
+
+Katalon Studio successfully find the element within the shadow root and input the text: "hello World" into the search bar.
+
+## Work with shadow DOM elements
+
+
+:::note
+
+-   From Katalon Studio version 8.6.0 onwards, you can test multi-level of nested shadow DOM using Record and Spy utility.
+
+
+:::
+
+​To work with shadow DOM elements, follow these steps:
+
+1.  Use the **Spy** utility to capture parent objects that contain shadow DOM elements.​
+
+2.  Identify the properties of the shadow DOM element.
+
+3.  Create a new object in Katalon Studio with properties defined accordingly.
+
+4.  In the new object setting, select **Shadow Root Parent​** option and define with the parent object from the first step.
+
+    This allows Katalon Studio to traverse through parent objects via generated CSS selector to detect shadow DOM objects by their properties. See [Create an object's locator](/create-tests/test-objects/web-test-objects/manage-web-test-objects-in-katalon-studio#).<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-shadow-root-parent.png" width={700} />
+
+    For example, the following test execution log shows that Katalon Studio finds the parent object first. Once the parent object was found, Katalon Studio finds the shadow DOM element by CSS selector.<img src="/doc_images/Documents/Create_tests/Test_Objects/Web_Test_Objects/manage-web-test-object/image/ks-find-child.png" width={700} />
+
+
+### Limitations
+
+-   Katalon Studio does not support recording the click action on test objects with the shadow DOM button object type. Some elements on shadow DOM cannot be detected by Selenium 3, so they might be unclickable. The workaround for this issue is to manually replace the Click keyword with the Enhanced Click keyword. See [\[WebUI\] Enhanced Click](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-enhanced-click).
+-   When using Record and Spy utilities, you cannot take screenshots of shadow DOM test objects. Katalon Studio does not support the XPath and Screenshot locator strategies for shadow DOM test objects. We recommend using the CSS locator strategy only.
+
+## Modify object properties at runtime
+
+If you have multiple and similar objects you want to quickly interact with during test execution, and you really don't want to spend time writing duplicate steps to interact with them, the approach below will help you reduce the time and maintain cleaner codes.
+
+Use CSS or XPath to locate your elements, and then you start changing the IDs. For example:
+
+```
+TestObject yourObject = WebUI.modifyObjectProperty(findTestObject('Object Repository/Some object'), 'css', 'equals', '#${i}', true)
+
+```
+
+where 'i' is the loop counter. You can put it all inside of a loop that will read your excel sheet:
+
+```
+for (def i=0; i <= fineTestData('Path to your excel').getRowNumbers(); i++) {}
+
+
+```
+
+```
+https://www.katalon.com/resources-center/tutorials/data-driven-testing/ for linking data with test.
+
+```
+
+*Credit to [Mate Mrse](https://forum.katalon.com/discussion/7010/how-to-test-clicking-multiple-objects-without-starting-over#lComment_16209)*

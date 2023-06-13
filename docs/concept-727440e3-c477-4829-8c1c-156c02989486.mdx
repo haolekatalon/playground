@@ -1,0 +1,82 @@
+---
+id: concept-727440e3-c477-4829-8c1c-156c02989486
+slug: /analyze/integration-for-test-analyzing/qtest-integration/view-and-upload-katalon-studio-test-execution-results-to-qtest
+---
+
+# View and upload Katalon Studio test execution results to qTest
+
+This guide shows you how to view and upload test executions results from Katalon Studio to qTest.
+
+## Requirements
+
+-   qTest integration with Katalon Studio already configured. See: [Configure qTest integration in Katalon Studio](/organize/integration-for-organizing-tests/configure-qtest-integration-in-katalon-studio).
+-   A registered qTest location for the associated test suite is set as default.
+-   The qTest test case version is at least 1.0.
+
+## Upload test results automatically
+
+To automatically upload test results to qTest, follow these steps:
+
+1.  Check the **Automatically submit test run results** option in **Project** &gt; **Settings** &gt; **Plugins** &gt; **qTest**.
+
+2.  Add an uploaded test case to an uploaded test suite.
+
+3.  Execute an uploaded Katalon test suite.
+
+4.  Open the generated test execution report.
+
+5.  In the **Test Cases Table** section, the status of all test execution is displayed with the following information.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-8-7-153A423A26.png" width={600} alt="the Test Cases Table section" />
+
+    You can view the following information:
+
+    <table><tr><th>Icon</th><th>Description</th></tr><tbody><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-2-28-163A323A19.png" alt="Successfully uploaded icon" /></td><td>The execution result of the test case is uploaded to qTest.</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-2-28-163A293A39.png" alt="Unsuccessfully uploaded icon" /></td><td>The execution result of the test case is not uploaded to qTest.</td></tr>    </tbody></table>
+
+6.  To find the qTest information, click **Show Test Case Details**. In the **Test Case's Log** table, go to the **Integration** tab.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-8-7-153A453A53.png" width={600} alt="Show test case details" />
+
+    You can view the following information:
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>Test Run Alias</td><td>The alias of the integrated qTest test run.</td></tr><tr><td>Test Log ID</td><td>The ID of the test log created in qTest, for example, execution history record.</td></tr><tr><td>Attachment</td><td>This lets users know whether all the execution logs and reports are sent to qTest as an attachment. (i.e., Yes or No) If yes, you can go to qTest and find them under the related execution history record, as illustrated below:<p><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-8-7-153A503A43.png" width={500} /></p></td></tr>    </tbody></table>
+
+
+## Upload test case results manually
+
+In case the test results fail to upload to qTest automatically, you can manually upload test results, for both test cases and test suites.
+
+To upload test cases manually, follow these steps:
+
+1.  Add an uploaded test case to an uploaded test suite.
+
+2.  Execute the uploaded Katalon test suite.
+
+3.  Open the generated test execution report.
+
+4.  In the **Test Cases Table** section, right-click the test case you wish to upload the test result. Select **qTest** &gt; **Upload**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-8-7-163A33A27.png" width={600} alt="Upload test case results manually" />
+
+5.  Once the uploading process is finished, you can go to qTest to verify whether the test execution is uploaded successfully to qTest test run.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-8-7-163A103A23.png" width={600} alt="Upload test case results manually" />
+
+
+## Upload test suite results manually
+
+To manually upload test suite results to qTest, follow these steps:
+
+1.  In the **Tests Explorer** panel, open the **Reports** folder. Right-click the test execution result you wish to upload. Select **qTest** &gt; **Upload**.
+
+    To upload all test executions, you can right-click the **Report** folder, select **qTest** &gt; **Upload**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/upload-test-execution/image2017-8-7-163A113A37.png" width={500} alt="Upload test suite results manually" />
+
+2.  Once the uploading process is finished, you can go to qTest to verify whether the test execution is uploaded successfully to the qTest test run.
+
+
+**Related information**  
+
+
+[Generate qTest - Katalon Studio parity reports](/analyze/integration-for-test-analyzing/qtest-integration/generate-qtest-katalon-studio-parity-reports)

@@ -1,0 +1,27 @@
+---
+id: concept-5ad0a393-05e6-48ba-97f9-03348ff65aa8
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-file
+---
+
+# \[Cucumber\] Run Feature File
+
+-   **Description**: Execute a single Feature File.
+-   **Keyword name**: runFeatureFile
+-   **Keyword syntax**: runFeatureFile\(relativeFilePath, flowControl\)
+-   **Parameters**:
+
+    -   Name: relativeFilePath
+    -   Description: a relative file path of the feature file
+    -   Parameter Type: String
+    -   Mandatory: Required
+    -   Name: flowControl
+    -   Description: an instance com.kms.katalon.core.model.FailureHandling that controls the running flow
+    -   Parameter Type: FailureHandling
+    -   Mandatory: Optional
+-   **Returns**: an instance of CucumberRunnerResult that includes the status of keyword and report folder location.
+-   **Example**:
+
+```
+CucumberKW.runFeatureFile('Include/features/New Feature File.feature')
+
+```

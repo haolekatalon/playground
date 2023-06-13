@@ -1,0 +1,12 @@
+---
+id: troubleshooting-21a17cd8-9480-4f91-ac08-12698a3e09ff
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/encounter-xcodebuild-exited-with-code-65-and-signal-null
+---
+
+# Encounter xcodebuild exited with code '65' and signal 'null'
+
+Your .ipa application and/or WebDriverAgent is not signed correctly.
+
+1.  Sign and rebuild the WebDriverAgent XCode project with your developer certificate.
+
+2.  Uncheck **Automatically Signing** option from WebDriverAgentRunner and select **valid provisioning profile** \(profile displayed as Eligible from the list\).D

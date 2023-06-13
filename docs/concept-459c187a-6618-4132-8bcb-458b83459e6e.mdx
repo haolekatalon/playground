@@ -1,0 +1,41 @@
+---
+id: concept-459c187a-6618-4132-8bcb-458b83459e6e
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-double-tap
+---
+
+# \[Mobile\] Double Tap
+
+
+:::note
+
+-   Starting from **version 7.2.0**, this keyword is available for Mobile testing on Katalon Studio.
+
+
+:::
+
+## doubleTap
+
+-   **Description**: Perform a double-tap action on a mobile element.
+-   **Keyword syntax**: Mobile.doubleTap\(testObject, timeout, flowControl\)
+-   **Parameters**:
+
+    -   Name: testObject
+    -   Description: Represent a mobile element.
+    -   Parameter Type: TestObject
+    -   Mandatory: Requiredz
+    -   Name: timeout
+    -   Description: System will wait at most *timeout* \(seconds\) to return a result.
+    -   Parameter Type: int
+    -   Mandatory: Required
+    -   Name: flowControl
+    -   Description: Used to control the step if the step failed.
+    -   Parameter Type: FailureHandling
+    -   Mandatory: optional
+-   **Returns**: void.
+-   **Throw**: **StepFailedException** if Katalon Studio could not find the specified element.
+-   **Example**:
+
+    ```
+    Mobile.doubleTap(findTestObject('android.widget.Button0 - NEXT'), 0)
+    
+    ```

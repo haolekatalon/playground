@@ -1,0 +1,53 @@
+---
+id: concept-54abd009-0eda-4a35-800f-3f52e8e20ba2
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-set-har-file-generation
+---
+
+# \[WS\] Set HAR File Generation
+
+## Requirements
+
+-   Katalon Studio version 8.2.0 onwards.
+
+
+## Description
+
+Katalon Studio generates HAR files for each Web Service request by default. From version 8.2.0 onwards, you can use the <code>setHarFileGeneration</code> keyword to enable or disable HAR file generation either at the test case or test suite level.
+
+Keyword name: <code>WS.setHarFileGeneration</code>
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td  colspan="1"  rowspan="1"  td><strong>enable</strong></td><td  colspan="0"  rowspan="1"  td>boolean</td><td  colspan="-1"  rowspan="1"  td>Required</td><td>Enable or disable HAR file generation.</td></tr><tr><td  colspan="1"  rowspan="1"  td><strong>flowControl</strong></td><td  colspan="0"  rowspan="1"  td>FailureHandling</td><td  colspan="-1"  rowspan="1"  td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+
+:::note
+
+-   If Katalon Studio could not save the setting, throw: <code>StepFailedException</code>.
+
+
+:::
+
+## Returns
+
+<table><tr><th>Parameter Type</th><th>Description</th></tr><tbody><tr><td  colspan="1"  rowspan="1"  td>boolean</td><td  colspan="0"  rowspan="1"  td><ul><li><code>true</code><strong>:</strong> enable HAR file generation.</li></ul><ul><li><p><code>false</code><strong>:</strong>disable HAR file generation.</p></li></ul></td></tr></tbody></table>
+
+## Example
+
+-   Disable HAR file generation:
+
+    ```
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS 
+    'Do not generate har file when sending a request.'
+    WS.setHarFileGeneration(false)
+    ```
+
+-   Enable HAR file generation:
+
+    ```
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS 
+    'Generating har file when sending a request. This is the default setting.'
+    WS.setHarFileGeneration(true)
+    ```
+
+    To check whether the HAR file generation option is enabled or not, see [\[WS\] Get HAR File Generation](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-get-har-file-generation).

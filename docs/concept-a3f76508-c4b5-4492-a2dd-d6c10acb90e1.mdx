@@ -1,0 +1,59 @@
+---
+id: concept-a3f76508-c4b5-4492-a2dd-d6c10acb90e1
+slug: /plugins-and-add-ons/katalon-store/katalon-studio-plugins/using-katalon-store-plugins
+---
+
+# Using Katalon Store Plugins
+
+Katalon Plugin is to extend Katalon Studio capabilities and integrate the software with your favorite tools. This section introduces plugins, different ways of using plugins with the Katalon Studio Enterprise license and the detailed configurations.
+
+## Introduction to Katalon Store Plugins
+
+### Plugins on Katalon Store
+
+You can find many plugins published on [Katalon Store](https://store.katalon.com/), which are developed by the Katalon team or the community user.
+
+Some plugins are exclusive for Katalon Studio Enterprise users only while the other plugins are available for the community, free of charge.
+
+You can trial an Enterprise plugin for 30 days. After the trial period, if you wish to continue using the plugin for configuration, you need to subscribe to a Katalon Studio Enterprise license.
+
+### Katalon Store Plugins usage modes
+
+All Katalon users are eligible for using the community plugins published on Store.
+
+Compared to the community users, in addition to Store's plugins, Katalon Studio Enterprise users can use their private plugins or all plugins in an offline environment.
+
+Katalon Runtime Engine users can use plugins in console mode.
+
+### Katalon Store Plugin Repository
+
+Katalon Studio Enterprise users can decide where Katalon Studio will download plugins for a project. Go to **Project &gt; Settings &gt; Plugins** and select one of the following options:
+
+-   **Katalon Store and Local**: Katalon Studio will install plugins from the Katalon Store and the Plugins folder of each project.
+-   **Katalon Store**: Katalon Studio will install plugins from Katalon Store only.
+-   **Local**: Katalon Studio will install plugins from the Plugins folder only.
+
+## Use Plugins in Console Mode
+
+
+:::note
+
+-   Katalon Studio version 7.0.0 onwards
+-   An active Katalon Runtime Engine license. To learn more about activating the Katalon Runtime Engine license, you can refer to this document: Activate Katalon licenses.
+-   An API key. To learn more about API keys, you can refer to this document: [Katalon API Key](/administer/settings/katalon-api-key-in-katalon-testops).
+
+:::
+
+To use plugins from Katalon Store in console mode:
+
+-   Install the plugin from Katalon Store.
+-   While generating commands, use the API Key of the users who have the plugin installed. Both API key command-line options work, either <code>-apiKey=&lt;Your&#95;API&#95;Key&gt;</code> or <code>-apikey=&lt;Your&#95;API&#95;Key&gt;</code>.
+
+
+:::note
+
+-   From version 7.7.0 onwards, if you belong to more than one Organization subscribing to Katalon Runtime Engine licenses, you can choose which Organization validates your license usage with the following command line: <code>-orgID=&lt;Katalon&#95;OrgID&gt;</code>.
+
+:::
+
+If you use the private plugins, make sure you store all plugins in the <code>&lt;project&#95;name&gt;/Plugins</code> folder. See above: [Private Plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/private-plugins-in-katalon-studio).

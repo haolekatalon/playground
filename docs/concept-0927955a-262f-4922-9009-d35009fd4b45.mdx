@@ -1,0 +1,178 @@
+---
+id: concept-0927955a-262f-4922-9009-d35009fd4b45
+slug: /create-tests/manage-projects/set-up-projects/web-testing/handle-webdrivers/upgrade-or-downgrade-webdrivers-in-katalon-studio
+---
+
+# Upgrade or Downgrade WebDrivers in Katalon Studio
+
+To have a better control of the browser versions while testing, Katalon Studio allows you to update or downgrade WebDrivers manually or via Katalon Studio built-in tools. This article will show you how to do so.
+
+## Update a WebDriver
+
+
+:::note
+
+-   From Katalon Studio version 7.0.0 onwards, you can update Chrome, Firefox and Internet Explorer WebDrivers directly from the application.
+-   From Katalon Studio version 7.6.0 onwards, you can also update Edge Chromium WebDrivers from Katalon Studio.
+
+:::
+
+To update a WebDriver directly from Katalon Studio, from the main toolbar, select **Tools &gt; Update WebDrivers**. Select a browser in the dropdown list.
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Web_Testing/Handle-WebDrivers/update-or-downgrade-webdrivers/image/ks-850-update-web-driver.png" width={300} />
+
+From Katalon Studio version 7.6.0 onwards, Katalon Studio can detect and allows you to auto-update a compatible Chrome or Edge Chromium driver version when start using Spy/Recorder Web Utility.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/handle-webdrivers/KS-Auto-update-WebDriver.png" width={500} alt="update-webdriver-automatically" />
+
+For console mode execution, you can use this command argument <code>--config -webui.autoUpdateDrivers=true</code> to allow automatic WebDriver updates. You can learn more about using the console mode here: [Console Mode Execution](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine).
+
+## Replace a Webdriver
+
+To upgrade or downgrade WebDrivers, you can replace WebDrivers manually. You can choose to do so at the application or project level.
+
+
+:::note
+
+-   By default, Katalon Studio runs WebDrivers at the application level. Adding a Webdriver at the project level overrides the application level to open your web browsers.
+
+
+:::
+
+Do as follows:
+
+1.  Find the WebDriver version you want to run your test with. You can find them here:
+
+    Versions of browser drivers:
+
+    -   [Chrome Drivers](https://chromedriver.chromium.org/downloads)
+
+    -   [Gecko Drivers](https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html)
+
+    -   [Internet Explorer](http://selenium-release.storage.googleapis.com/index.html)
+
+    -   [Microsoft Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)
+
+2.  Find the location of the WebDrivers you want to replace.
+
+    -   At the application level, WebDriver binaries are stored here:
+
+        
+        :::note
+
+        -   If you have multiple Katalon Studio versions installed on your development machine, make sure to navigate to the correct path of the Katalon Studio version you wish to use.
+
+        :::
+
+        *For Window users*
+
+        **Chrome**
+
+        You can use 32-bit Windows Chromedriver for both 32-bit and 64-bit Windows.
+
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\chromedriver&#95;win32</code>
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\chromedriver&#95;win64</code>
+        **Firefox**
+
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\firefox&#95;win32</code>
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\firefox&#95;win64</code>
+        **Internet Explorer**
+
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\iedriver&#95;win32</code>
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\iedriver&#95;win64</code>
+        **Edge**
+
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\edgedriver</code>
+        **Edge \(Chromium\)**
+
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\edgechromium&#95;win32</code>
+        -   <code>&lt;Katalon Studio folder&gt;\configuration\resources\drivers\edgechromium&#95;win64</code>
+        *For macOS users*
+
+        **Chrome**
+
+        -   <code>/Applications/Katalon Studio.app/Contents/Eclipse/configuration/resources/drivers/chromedriver&#95;mac</code>
+        **Firefox**
+
+        -   <code>/Applications/Katalon Studio.app/Contents/Eclipse/configuration/resources/drivers/firefox&#95;mac</code>
+        **Edge \(Chromium\)**
+
+        -   <code>/Applications/Katalon Studio.app/Contents/Eclipse/configuration\resources\drivers\edgechromium&#95;mac</code>
+    -   At the project level, go to **\\Project Folder\\Include** on your computer and follow the below paths:
+
+        
+        :::note
+
+        -   By default, there is no Webdriver at project level. After replacing WebDrivers at project level, restart Katalon Studio to run new WebDrivers.
+
+        :::
+
+        *For Window users*
+
+        **Chrome**
+
+        -   <code>Include/drivers/chromedriver&#95;win32/chromedriver.exe</code>
+
+        -   <code>Include/drivers/chromedriver&#95;win64/chromedriver.exe</code>
+
+        **Firefox**
+
+        -   <code>Include/drivers/geckodriver&#95;win32/geckodriver.exe</code>
+        -   <code>Include/drivers/geckodriver&#95;win64/geckodriver.exe</code>
+        **Internet Explorer**
+
+        -   <code>Include/drivers/iedriver&#95;win32/IEDriverServer.exe</code>
+        -   <code>Include/drivers/iedriver&#95;win64/IEDriverServer.exe</code>
+        **Edge \(Chromium\)**
+
+        -   <code>Include/drivers/edgedriver&#95;win32/MicrosoftWebDriver.exe</code>
+
+        -   <code>Include/drivers/edgedriver&#95;win64/MicrosoftWebDriver.exe</code>
+
+        -   <code>Include/drivers/edgechromiumdriver&#95;win64/msedgedriver.exe</code>
+
+        -   <code>Include/drivers/edgechromiumdriver&#95;win32/msedgedriver.exe</code>
+
+        *For macOS users*
+
+        **Chrome**
+
+        -   <code>Include/drivers/chromedriver&#95;mac64/chromedriver</code>
+
+        **Firefox**
+
+        -   <code>Include/drivers/geckodriver&#95;mac64/geckodriver</code>
+
+        **Edge \(Chromium\)**
+
+        -   <code>Include/drivers/edgechromiumdriver&#95;mac/msedgedriver</code>
+        *For Linux users*
+
+        **Chrome**
+
+        -   <code>Include/drivers/chromedriver&#95;linux32/chromedriver</code>
+
+        -   <code>Include/drivers/chromedriver&#95;linux64/chromedriver</code>
+
+        **Firefox**
+
+        -   <code>Include/drivers/geckodriver&#95;linux32/geckodriver</code>
+        -   <code>Include/drivers/geckodriver&#95;linux64/geckodriver</code>
+3.  After finding the correct location, replace the <code>driver.exe</code> file with the one you have downloaded.
+
+    
+    :::note
+
+    -   After updating or downgrading WebDrivers, to make sure the current version of the browser driver is running smoothly, it is advisable to try **re-running the test** to resolve and check any pop-up issues.
+
+    :::
+
+
+## Use DriverFactory library
+
+Katalon Studio also offers DriverFactory library to manipulate WebDriver instances by using Katalon keywords.
+
+## See also
+
+-   [Terminate Webdrivers](/create-tests/manage-projects/set-up-projects/web-testing/handle-webdrivers/terminate-webdrivers-in-katalon-studio)
+-   [Handle WebDrivers with EventFiringWebDrivers](/create-tests/manage-projects/set-up-projects/web-testing/handle-webdrivers/handle-webdrivers-with-eventfiringwebdriver-in-katalon-studio)

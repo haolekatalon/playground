@@ -1,0 +1,75 @@
+---
+id: concept-8366d0ec-0113-4dd7-b6ab-e951c367bd60
+slug: /get-started/set-up-your-workspace/katalon-studio-preferences/test-case-preferences-in-katalon-studio
+---
+
+# Test Case Preferences in Katalon Studio
+
+With Test Case preferences, you can define the default behaviors related to your test case design. This includes:
+
+-   Test Case Calling
+-   Default Open View
+-   Default Keyword Type
+-   Line-wrapping settings
+
+To configure your Test Case preferences, go to Katalon Studio &gt; **Preferences** &gt; **Katalon** &gt; **Test Case**.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-case-preferences/test-case-preferences.png" width={700} alt="Test Case Preferences" />
+
+## Test Case Calling
+
+The **Test Case Calling** option allows you to specify how Katalon Studio should behave when you call another test case as a test step. To learn more about this function, see [Call Test Case](/create-tests/create-test-cases/call-test-case-in-katalon-studio).
+
+For example, we call the "TC1\_Verify Successful/Login test case", with two variables named <code>Username</code> and <code>Password</code>. Their variables are displayed in the image below:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-case-preferences/830-calling-example.png" width={700} alt="example" />
+
+-   **Generate variable with default value**: The called test case uses the default value of its variables.
+
+    ```
+    WebUI.callTestCase(findTestCase('Main Test Cases/TC1_Verify Successful Login'), [('Username') : 'John Doe', ('Password') : 'ThisIsNotAPassword'], FailureHandling.STOP_ON_FAILURE)
+    
+    ```
+
+-   **Generate variable with the same name as the exposed variable of the called test case**: The called test case uses its variable names as variable values.
+
+    ```
+    WebUI.callTestCase(findTestCase('Main Test Cases/TC1_Verify Successful Login'), [('Username') : Username, ('Password') : Password], FailureHandling.STOP_ON_FAILURE)
+    
+    ```
+
+    -   **Expose variables automatically after choosing the called test case**: At the **Variables** tab, all variables of the called test case are also added to the current test case.
+
+To learn more about supported types of variables in Katalon Studio, refer to this document: Variable Types.
+
+## Default Open View
+
+By default, Katalon Studio opens your test case in the manual view. You can choose to always open your test case in the manual view or the script view.
+
+## Default Keyword Type
+
+-   **Default Keyword**: Based on your frequently used types of testing, you can set the **Default Keyword Type** as WebUI, Mobile, Cucumber, Web Service, Windows, or TestNG. For example, you set the default keyword type as <code>WebUI</code>. In the test case editor, whenever you click **Add**, a new WebUI keyword is added as a new test step.
+
+In each keyword type, you can also set a default keyword. For example, you set **Accept Alert** as the default keyword for the **WebUI** keyword type. In the test case editor, whenever you click **Add**, the **Accept Alert** is added as a new test step by default.
+
+## Line-wrapping Settings
+
+When you edit in script view, depending on how you want to view your scripts, you can enable/disable the line-wrapping to wrap up the code lines in customized maximum line width.
+
+When switching from the manual mode to the script mode, you can also wrap the code lines by pressing a keyboard combination of <code>⌘</code>+<code>Shift</code>+<code>F</code> for macOS or <code>Ctrl</code>+<code>Shift</code>+<code>F</code> for Windows and Linux.
+
+-   Line-wrapping disabled:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-case-preferences/wrap.png" alt="Before the line-wrapping enabled" />
+
+-   Line-wrapping enabled:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/test-case-preferences/wrapped.png" alt="After the line-wrapping enabled" />
+
+
+**See also**:
+
+-   [Katalon Preferences](/get-started/set-up-your-workspace/katalon-studio-preferences/preferences-in-katalon-studio)
+-   [Import Preferences](/get-started/set-up-your-workspace/katalon-studio-preferences/import-preferences-to-katalon-studio)
+-   [Proxy Preferences](/get-started/set-up-your-workspace/katalon-studio-preferences/configure-proxy-preferences-in-katalon-studio)
+-   [Object Spy Preferences](/get-started/set-up-your-workspace/katalon-studio-preferences/object-spy-preferences-in-katalon-studio)

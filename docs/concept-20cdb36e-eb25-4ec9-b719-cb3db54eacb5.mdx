@@ -1,0 +1,108 @@
+---
+id: concept-20cdb36e-eb25-4ec9-b719-cb3db54eacb5
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-file-with-tags
+---
+
+# \[Cucumber\] Run Feature File with Tags
+
+## Description
+
+Katalon Studio supports executing a single feature file with the <code>runFeatureFileWithTags</code> function, using the following tag expressions:
+
+<table><tr><th><strong>Expression</strong></th><th><strong>Description</strong></th></tr><tbody><tr><td><code>@tag1 and @tag2</code></td><td>Features or scenarios tagged with both <code>@tag1</code> and <code>@tag2</code>.</td></tr><tr><td><code>@tag1 or @tag2</code></td><td>Features or scenarios tagged with either <code>@tag1</code> or <code>@tag2</code>.</td></tr></tbody></table>
+
+To learn more about tag expressions, refer to this Cucumber document: [Cucumber tag expression](https://cucumber.io/docs/cucumber/api/#tag-expressions).
+
+## Using the AND tag expression
+
+-   **Description**: execute the features or scenarios associated with all the input tags.
+-   **Keyword name**: runFeatureFileWithTags.
+-   **Keyword syntax**: runFeatureFileWithTags\(relativeFilePath, tags, flowControl\).
+-   **Parameters**:
+
+    -   Name: relativeFilePath
+    -   Description: the relative path to the feature file that starts from the current project location.
+    -   Parameter Type: <code>String</code>.
+    -   Mandatory: required.
+    -   Name: tags
+    -   Description: the tags of the features or scenarios that you want to execute.
+    -   Parameter Type: <code>String</code>, <code>String[]</code>, or <code>String...</code> \(Varargs\).
+    -   Mandatory: required.
+    -   Name: flowControl \(only valid when tags are of <code>String[]</code> type\)
+    -   Description: an
+
+        ```
+        instance com.kms.katalon.core.model.FailureHandling
+        ```
+
+        that controls the running flow.
+
+    -   Parameter Type: <code>FailureHandling</code>.
+    -   Mandatory: optional.
+-   **Returns**: an instance of <code>CucumberRunnerResult</code> that includes the status of keyword and report folder location.
+-   **Example**:
+
+    **Example \#1**: tags of <code>String</code> type
+
+    ```
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", "@tag1 and @tag2")
+    
+    ```
+
+    **Example \#2**: tags of <code>String[]</code> type
+
+    ```
+    String[] logTags = ["@tag1", "@tag2"] as String[]
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", logTags, FailureHandling.STOP_ON_FAILURE)
+    
+    ```
+
+    **Example \#3**: tags of <code>String...</code> type \(Varargs\)
+
+    ```
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", "@tag1", "@tag2")
+    
+    ```
+
+
+## Using the OR tag expression
+
+-   **Description**: execute the features or scenarios associated with any of the input tags.
+
+-   **Keyword name**: runFeatureFileWithTags
+-   **Keyword syntax**: runFeatureFileWithTags\(relativeFilePath, tags, flowControl\).
+-   **Parameters**:
+
+    -   Name: relativeFilePath
+    -   Description: the relative path to the feature file that starts from the current project location.
+    -   Parameter Type: <code>String</code>
+    -   Mandatory: required
+    -   Name: tags
+    -   Description: the tags of the features or scenarios that you want to execute.
+    -   Parameter Type: <code>String</code> or <code>String[]</code>.
+    -   Mandatory: required
+    -   Name: flowControl \(only valid when tags are of <code>String[]</code> type\)
+    -   Description: an instance <code>com.kms.katalon.core.model.FailureHandling</code> that controls the running flow.
+    -   Parameter Type: <code>FailureHandling</code>.
+    -   Mandatory: optional.
+-   **Returns**: an instance of <code>CucumberRunnerResult</code> that includes the status of keyword and report folder location.
+-   **Example**:
+
+    **Example \#1**: tags of <code>String</code> type
+
+    ```
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", "@tag1 or @tag2")
+    // Or
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", "@tag1, @tag2")
+    
+    ```
+
+    **Example \#2**: tags of <code>String[]</code> type
+
+    ```
+    String[] logTags1 = ["@tag1, @tag2"] as String[]
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", logTags1, FailureHandling.STOP_ON_FAILURE)
+    // Or 
+    String[] logTags2 = ["@tag1 or @tag2"] as String[]
+    CucumberKW.runFeatureFileWithTags("Include/features/New Feature File.feature", logTags2, FailureHandling.STOP_ON_FAILURE)
+    ```

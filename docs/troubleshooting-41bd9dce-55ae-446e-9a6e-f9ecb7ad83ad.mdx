@@ -1,0 +1,26 @@
+---
+id: troubleshooting-41bd9dce-55ae-446e-9a6e-f9ecb7ad83ad
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/unable-to-create-a-new-remote-session-with-ios-real-devices
+---
+
+# Unable to create a new remote session with IOS real devices
+
+The encountered error:
+
+```
+java.util.concurrent.ExecutionException: org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: An unknown server-side error occurred while processing the command. Original error: Unable to launch WebDriverAgent because of xcodebuild failure: xcodebuild failed with code 65
+```
+
+1.  Remove the current WebDriverAgentRunner from the iOS device
+
+2.  On the iOS device, go to **Settings** &gt; **General** &gt; **Device Management**, trust your Apple ID.
+
+3.  Run this command again to install the WebDriverAgentRunner:
+
+    ```
+    xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=your_device_id' test
+    ```
+
+4.  If the command runs successfully there should be messages as below:
+
+    <img src="/doc_images/Documents/Create_tests/Troubleshooting_For_Test_Creation/Troubleshooting_Automated_Mobile_Testing/images/create_a_new_remote_test_successfully.jpeg" alt="install WebDriverAgentRunner successfully" />

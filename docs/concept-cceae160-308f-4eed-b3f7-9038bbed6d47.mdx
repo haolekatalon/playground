@@ -1,0 +1,94 @@
+---
+id: concept-cceae160-308f-4eed-b3f7-9038bbed6d47
+slug: /organize/view-test-scripts-in-katalon-platform/view-test-scripts-in-katalon-testops
+---
+
+# View test scripts in Katalon TestOps
+
+Katalon TestOps presents test cases and test suites in a folder-based view that mirrors the organization of your script repository.
+
+This document navigates you to where the uploaded test cases and test suites are stored and how they are presented in Katalon TestOps to help you manage your test scripts effectively.
+
+## View test scripts uploaded from a Git repository
+
+To view test cases and test suites after uploading your scripts from the Git repository, follow these steps:
+
+1.  After uploading your test scripts from a Git repository:
+
+    -   If you want to view uploaded test cases, go to **Test Management** &gt; **Test Cases**.
+
+    -   If you want to view uploaded test suites, go to **Test Management** &gt; **Test Suites**.
+
+    You can see all folders corresponding to your uploaded Git repositories displayed under the **Uploaded Data** folder. The following picture shows the script repository folder in the **Test Cases** page.
+
+    <img src="/doc_images/Documents/Organize/view-test-scripts-in-TestOps/Image/KO-Uploaded-test-cases-from-Git-repo.png" alt="View uploaded test cases from the Git repo" />
+
+    
+    :::note
+
+    -   It may take a few minutes for the uploaded test scripts to appear.
+
+    :::
+
+2.  You can also view all test run results in this tab. If your test results are not from the uploaded test scripts, they are in the **Uploaded Data** folder.
+
+    -   If you have not run tests yet, the execution data is empty.
+
+    -   If you have run tests, this section contains information from your test execution.
+
+        -   In the **Test Cases** page, you can see the following data for each test case: **Last execution**, **Last updated**, **No. of execution**, **Average Duration**, **Flakiness \(%\)**. If you have linked Jira requirements to a TestOps test case, you can see the Jira ticket ID in the **Requirements** column.
+
+            <img src="/doc_images/Documents/Organize/view-test-scripts-in-TestOps/Image/KO-View-test-case-results-in-TM-tab.png" alt="View test results in the test management tab" />
+
+            
+            :::note
+
+            -   TestOps only shows the number of executions of the test cases that have been executed from 1/1/2022 \(ICT\) onwards.
+
+            :::
+
+        -   In the **Test Suites** page, you can see the total number of test executions, the **Last updated** and **Last executed** data.
+
+            <img src="/doc_images/Documents/Organize/view-test-scripts-in-TestOps/Image/KS-View-test-suite-results-in-TM-tab.png" alt="View test suite results in the Test Management tab" />
+
+3.  If you can't find a script repository, refresh it. To do so, follow these steps:
+
+    1.  Go to **Configurations** &gt; **Script Repositories**.
+
+    2.  Select the script repository you want to refresh.
+
+    3.  Click **Refresh Test Suite Collection** in the top right corner.
+
+    4.  Go to **Test Management** &gt; **Test Cases**/**Test Suites** to check the results. You should see the test cases or test suites from the uploaded Git repository here.
+
+
+Once done checking your uploaded test scripts in Katalon TestOps, you can start organizing your test scripts into test suites for execution.
+
+**Related information**  
+
+
+[Upload test scripts from a Git repository](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops#)
+
+**Next step**  
+
+
+[Manage test suites in Katalon TestOps](/organize/manage-tests/test-suite/manage-test-suites-in-katalon-testops)
+
+## View test scripts from uploaded execution data
+
+If you upload your execution data using the frameworks we support, or upload manually to Katalon TestOps \(see: Upload JUnit and Katalon Studio Test Results to Katalon TestOps\), you can also view test data in the **Test Management** tab.
+
+Katalon TestOps supports uploading test results from the following frameworks:
+
+-   Jasmine. See: [Upload Test to Katalon TestOps via Jasmine](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-jasmine-to-katalon-testops).
+
+-   Jest. See: [Upload Test to Katalon TestOps via Jest](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-jest-to-katalon-testops).
+
+-   Mocha. See: [Upload Test to Katalon TestOps via Mocha](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-mocha-to-katalon-testops).
+
+-   Pytest. See: [Upload Test to Katalon TestOps via Pytest](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-pytest-to-katalon-testops).
+
+
+After uploading the execution data, go to **Test Management** &gt; **Test Cases**/**Test Suites** and click on the **Uploaded Data** folder.
+
+You can see test cases and their execution data in folders inside the **Uploaded Data** folder.

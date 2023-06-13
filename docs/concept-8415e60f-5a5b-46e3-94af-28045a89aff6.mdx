@@ -1,0 +1,127 @@
+---
+id: concept-8415e60f-5a5b-46e3-94af-28045a89aff6
+slug: /create-tests/keywords/custom-keywords/introduction-to-custom-keywords-in-katalon-studio
+---
+
+# Introduction to custom keywords in Katalon Studio
+
+In addition to built-in keywords, you can define custom keywords to extend the capabilities of Katalon Studio. Once created, custom keywords can be used when executing test cases like other built-in keywords.
+
+## Create a keyword package
+
+A package is a namespace that organizes a set of related classes and interfaces.
+
+You can keep things organized by grouping related classes and interfaces into packages.
+
+To create a keyword package, do as follows:
+
+1.  From the main menu, select **File** &gt; **New** &gt; **Package**.
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-855-new-package.png" width={700} alt="Select new package from the main menu" />
+
+    The **New Keyword Package** dialog is displayed.
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-new-package.png" width={500} alt="The New keyword package appears" />
+
+2.  Enter a name for your package, then click **OK**.
+
+
+In the **Tests Explorer** section, a new package is created accordingly.<img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-new-package-created.png" width={400} alt="The new keyword package in the Tests Explorer sidebar" />
+
+## Create a custom keyword
+
+To create a custom keyword, do as follows:
+
+1.  From the main menu, select **File** &gt; **New** &gt; **Keyword**.
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-855-new-kw.png" width={500} alt="Select New keyword file from the main menu" />
+
+    The **New Keyword** dialog is displayed.
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-new-keyword.png" width={500} alt="The New keyword dialog appears" />
+
+2.  Enter a class name and specify a package for the keyword. Click **OK**.
+
+    By default, a class name cannot start with a number, contain spaces, or have special characters. You can follow the Java naming convention: start with a lowercase letter, then capitalize the first letter of every following word \(for example, <code>newCustomKeyword</code>\).
+
+    
+    :::note
+
+    -   You can generate sample custom keywords for Web, Mobile, and API Testing. Refer to [Sample Custom Keywords in Katalon Studio](/create-tests/keywords/custom-keywords/sample-custom-keywords-in-katalon-studio).
+
+    :::
+
+    A new custom keyword is created under the specified **package**.<img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-new-ckw.png" width={400} alt="The new custom keyword in the Tests Explorer sidebar" />
+
+3.  Enter the following code snippet in your class to define a custom keyword:
+
+    ```
+    @Keyword (keywordObject = "<category_name>")
+    def keywordName(parameters…) {
+    // enter your code here
+    // you can use either Groovy or Java
+    }
+    ```
+
+    <table><tr><th>Item</th><th>Description</th><th>Required</th></tr><tbody><tr><td><code>@Keyword</code></td><td>The annotation to indicate that the block of code below is the definition of a keyword.</td><td>Yes</td></tr><tr><td><code>keywordObject</code></td><td>The category of your custom keyword (available from version 7.5.5).</td><td>No</td></tr><tr><td><code>keywordName</code></td><td>The name for your custom keyword.</td><td>Yes</td></tr><tr><td>parameters</td><td>The list of parameters to be used in the custom keyword.</td><td>No</td></tr>    </tbody></table>
+
+    For example:
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-ckw-example.png" width={500} alt="An example of custom keyword definition" />
+
+    From version 7.5.5 and later, **Custom Keywords** in **Keywords Browser** are put in alphabetical order, and you can categorize them. The category name should be declared via <code>keywordObject</code> with the same mechanism as the built-in keywords.
+
+    The sample below describes a keyword with the "Browser" category:
+
+    ```
+    @Keyword(keywordObject = "Browser")
+    def refreshBrowser() {
+    }
+    ```
+
+    In the **Keywords Browser**:
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-keyword-browser.png" width={400} alt="Custom keyword in Keywords Brower view" />
+
+4.  When you are done, save the keyword file.
+
+
+## Use custom keywords in the manual view
+
+To use your defined custom keywords in the manual view of a test case, do as follows:
+
+1.  Open a test case in the manual view. Select **Add** &gt; **Custom Keyword**.
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-custom-keyword.png" width={250} alt="Select Add > Custom keyword in manual view" />
+
+2.  A new test step is added. Select your preferred custom keyword.
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-add-new-ckw.png" width={500} alt="Browse custom keyword" />
+
+
+Your custom keyword is added as a test step.<img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-ckw-test-step.png" width={500} alt="The custom keyword appears as a test step in manual view" />
+
+## Use custom keywords in the script view
+
+To use your defined custom keywords in the script view of a test case, do as follows:
+
+1.  The **Class** <code>CustomKeywords</code> of Katalon Studio allows you to access all custom keywords. Enter the following syntax into the script editor:
+
+    ```
+    CustomKeywords.
+    ```
+
+2.  After you type the **dot** character, the **Content Assist** function is invoked. All the custom keywords defined in your test project are displayed as below:
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-content-assist.png" width={500} alt="A list of custom keywords displayed when Content Assist is invoked" />
+
+3.  Select your custom keyword and provide all parameters as required.
+
+
+You've added your custom keyword in the script view.<img src="/doc_images/Documents/Create_tests/Keywords/Custom_Keywords/Introduction_To_Custom_Keywords/image/ks-custom-keyword-script-view.png" width={500} />
+
+## Work with custom keywords
+
+The following classes and methods can be useful when working with custom keywords.
+
+<table><tr><th>Class</th><th>Method</th><th>Description</th></tr><tbody><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/webui/driver/DriverFactory.html" >DriverFactory</a></td><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/webui/driver/DriverFactory.html#getWebDriver()" >getWebDriver()</a></td><td>Get the currently active web driver.</td></tr><tr><td  rowspan="4"  td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html" >Test Object</a></td><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#addProperty(java.lang.String,%20com.kms.katalon.core.testobject.ConditionType,%20java.lang.String)" >addProperty</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> name, <a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/ConditionType.html" >ConditionType</a> condition, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> value)</td><td>Add a new property to the test object.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#setProperties(List)" >setProperties</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html" >List</a>&lt;<a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObjectProperty.html" >TestObjectProperty</a>&gt; properties)</td><td>Set the properties of the test object.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#getObjectId()" >getObjectId()</a></td><td>Get object ID.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/TestObject.html#findPropertyValue(java.lang.String,%20boolean)" >findPropertyValue</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> name, boolean caseSensitive)</td><td>Find the value of a property using the property name.</td></tr><tr><td  rowspan="7"  td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html" >Keyword Util</a></td><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#logInfo(java.lang.String)" >logInfo</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Log the message as info.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#markError(java.lang.String)" >markError</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Mark a keyword to be an error.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#markErrorAndStop(java.lang.String)" >markErrorAndStop</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Mark a keyword to be an error and stop execution.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#markFailed(java.lang.String)" >markFailed</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Mark a keyword to be failed and continue execution.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#markFailedAndStop(java.lang.String)" >markFailedAndStop</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Mark a keyword to be failed and stop execution.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#markPassed(java.lang.String)" >markPassed</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Mark a keyword to be passed.</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/util/KeywordUtil.html#markWarning(java.lang.String)" >markWarning</a>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html" >String</a> message)</td><td>Mark a keyword to be a warning.</td></tr></tbody></table>

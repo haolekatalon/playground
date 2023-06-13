@@ -1,0 +1,23 @@
+---
+id: troubleshooting-bcd9cd80-2c66-4820-91fa-8d0473be1a85
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-common-exceptions/unable-to-open-projects-in-katalon-studio-platform-edition
+---
+
+# Unable to open projects in Katalon Studio - Platform Edition
+
+You encounter this message in Katalon Studio - Platform Edition: "No projects with Git integration found. Go to TestOps to link [Git repositories](https://docs.katalon.com/docs/organize/upload-test-scripts-from-the-git-repository-to-katalon-testops) and try again."
+
+-   When opening a project:<img src="/doc_images/Documents/Create_tests/Troubleshooting_For_Test_Creation/Troubleshooting_Common_Exception/image/ks-850-open-project-error.png" width={700} />
+
+-   During the application onboarding:<img src="/doc_images/Documents/Create_tests/Troubleshooting_For_Test_Creation/Troubleshooting_Common_Exception/image/ks-error-dialog.png" width={500} />
+
+
+To open a project in Katalon Studio - Platform Edition, you need to create a project on Katalon TestOps and enable Git integration on that project. In Katalon Studio - Platform Edition, only projects with Git integration are visible in the **Open Project** dialog.
+
+1.  Go to [Katalon TestOps](https://testops.katalon.io/).
+
+2.  Open or create a new project on Katalon TestOps. See [Create an organization and project](/administer/administration-tasks/create-an-organization-and-project).
+
+3.  Link a Git repository URL to your project. See [Upload test scripts from the Git repository to TestOps](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+4.  Go back to Katalon Studio - Platform Edition. On the **Open Project** dialog, and click on **Fetch Project** and continue opening your project.

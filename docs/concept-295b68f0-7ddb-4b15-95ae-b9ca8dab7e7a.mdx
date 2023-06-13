@@ -1,0 +1,66 @@
+---
+id: concept-295b68f0-7ddb-4b15-95ae-b9ca8dab7e7a
+slug: /plugins-and-add-ons/katalon-store/katalon-studio-plugins/generate-groovy-doc-for-a-plugin-on-katalon-store
+---
+
+# Generate groovy doc for a plugin on Katalon Store
+
+Beside publishing your plugin to Katalon Store, you can generate your documentation into groovydoc and add to store.
+
+## Add documentation title to <code>build.gradle</code>
+
+In your project, open build.gradle file and update <code>docTitle</code>.
+
+Let’s refer to the following example:
+
+```
+groovydoc {
+
+
+ source = pluginSources
+
+
+ docTitle = 'WaitForAngularLoad Custom Keywords'
+
+
+}
+
+```
+
+## Add dependencies to <code>build.gradle</code>
+
+You can add dependencies to <code>build.gradle</code> \(optional\). Let’s refer to the following example to add dependencies:
+
+```
+dependencies {
+
+
+ compile('com.paulhammant:ngwebdriver:1.1.4') {
+
+
+   exclude group: 'org.seleniumhq.selenium'
+
+
+ }
+
+```
+
+If you don't have the dependencies, delete the command lines.
+
+## How to build
+
+Run the following command at the root folder:
+
+```
+gradle groovydoc -x compileGroovy
+```
+
+After successfully running the command, there will be the "build" folder displayed in your plugin package.
+
+## Add the project to katalon-plugin-docs repository
+
+-   Go to <code>katalon-plugin-docs/katalon-plugin-docs.github.io/</code>
+-   Upload your file to “docs” folder
+-   Create a pull request and wait for approval
+
+Example of the AngularJS Dropdown Keywords successfully added to Git: [AngularJS Dropdown custom keyword](https://github.com/katalon-plugin-docs/katalon-plugin-docs.github.io/tree/master/docs/angularjs-dropdown-custom-keywords).

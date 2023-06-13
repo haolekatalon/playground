@@ -1,0 +1,60 @@
+---
+id: concept-5d35f339-0ace-4d35-a95f-95528c296737
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-take-element-screenshot
+---
+
+# \[WebUI\] Take Element Screenshot
+
+## Description
+
+
+:::note
+
+From version **7.7.0**, this keyword is available.
+
+:::
+
+## takeElementScreenshot
+
+-   **Description**: Take a screenshot of a specific web element. The captured image will be saved in '.png' format.
+-   **Keyword name**: takeElementScreenshot
+-   **Keyword syntax**: <code>WebUI.takeElementScreenshot(fileName, to, flowControl)</code>
+-   **Parameters**:
+
+    -   Name: fileName
+
+        -   Description: A String that represents a path to the saved image. The path can be absolute path or relative path.
+        -   Parameter Type: String
+        -   Mandatory: Optional
+    -   Name: to
+
+        -   Description: A Test Object which represents the element you want to take screenshot of.
+        -   Parameter Type: TestObject
+        -   Mandatory: Optional
+    -   Name: flowControl
+
+        -   Description: Specify [failure handling](https://docs.katalon.com/katalon-studio/docs/failure-handling.html) schema to determine whether the execution should be allowed to continue or stop.
+        -   Parameter Type: FailureHandling
+        -   Mandatory: Optional
+-   **Examples**:
+
+
+1.  You want to take a screenshot of an element that you have captured by using Katalon Spy Utility and stored in Test Object &gt; UI &gt; logo. The file name is 'logo.png' and stored in the report folder. Default [failure handling](https://docs.katalon.com/katalon-studio/docs/failure-handling.html) is used:
+
+    ```
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+    
+    WebUI.takeElementScreenshot(RunConfiguration.getReportFolder() + '/logo.png', findTestObject('UI/logo'))
+    
+    ```
+
+2.  You want to take a screenshot of a Test Object stored in a variable named 'header' for TestOps Vision. Use the default fileName:
+
+    ```
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    
+    // where ignoredElements is a user-defined List-typed variable.
+    WebUI.takeElementScreenshot(header)
+    
+    ```

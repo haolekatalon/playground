@@ -1,0 +1,45 @@
+---
+id: concept-24e2c11f-a5b8-4113-8d8f-ab1387985dbd
+slug: /create-tests/test-objects/api-test-objects/import-web-service-objects/import-restful-requests-with-openapi-specification-2-0-swagger-to-katalon-studio
+---
+
+# Import RESTful requests with OpenAPI Specification 2.0 \(Swagger\) to Katalon Studio
+
+This topic shows you how to import web service objects from a **Swagger 2.0** file or URL, depending on the type of your Katalon Studio project. You can learn more about Swagger 2.0 from this Swagger page: [Swagger 2.0](https://swagger.io/specification/v2/).
+
+To import a RESTful request from Swagger 2.0 to Katalon Studio, perform the following steps:
+
+1.  Create or open an API/Web Service project.
+
+2.  To import a RESTful request from **Swagger 2.0**, click on **OpenAPI** &gt; **Import OpenAPI 2 \(Swagger\)**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/import-rest-requests-from-swagger-20/import.png" width={350} alt="api or web service project type" />
+
+    Alternately, you can import a RESTful request via the **Tests Explorer** panel. Right-click on **Object Repository** &gt; **Import** &gt; **From OpenAPI 2 \(Swagger\)**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Import-Web-Service-Objects/import-rest-requests-from-swagger-20/image/ks-import-openapi2.png" width={500} />
+
+3.  In the dialog that displays, browse to your **Swagger** local file or enter an OpenAPI 2 \(Swagger\) URL and click **OK**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/import-rest-requests-from-swagger-20/browse.png" width={500} alt="browse to local file" />
+
+    Katalon Studio loads the file and generates RESTful test requests accordingly.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Import-Web-Service-Objects/import-rest-requests-from-swagger-20/image/ks-object-repository.png" width={500} />
+
+
+
+:::caution
+
+-   No Raw text content in HTTP Body parsed from Swagger.
+-   No Authorization parsed from Swagger.
+-   Variables and Parameters must be adjusted manually.
+
+:::
+
+**See also:**
+
+-   [Use test requests in a test case](/create-tests/create-test-cases/using-web-services-in-a-test-case-in-katalon-studio).
+-   [Parameterize a Web Service Object](/create-tests/test-objects/api-test-objects/rest-request/parameterize-a-web-service-object-in-katalon-studio).
+-   [Verification Snippets](/create-tests/test-objects/api-test-objects/verification-snippets-in-katalon-studio).
+-   [Import REST API with OpenAPI Specification 3.0](/create-tests/test-objects/api-test-objects/import-web-service-objects/import-rest-api-with-openapi-specification-3-0-to-katalon-studio).

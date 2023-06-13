@@ -1,0 +1,59 @@
+---
+id: concept-965dd514-644c-4a7d-beb0-7c28d5677d35
+slug: /execute/cloud-based-test-execution/test-execution-with-testops/set-up-kubernetes-test-environments-for-testops
+---
+
+# Set up Kubernetes Test Environments for TestOps
+
+In Katalon TestOps, you can create a Kubernetes \(EKS\) Test Environment to execute or schedule Test Runs.
+
+
+:::note
+
+Compatible with Kubernetes version 1.25 or earlier. Works best on 1.25.
+
+:::
+
+Follow these steps:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login).
+2.  Go to your Project &gt; **Configurations** &gt; **Test Environments** &gt; **Kubernetes**.
+
+3.  Click **Create Kubernetes Test Environment** at the top right corner.
+
+4.  Fill in the required information.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-aug-aws-eks/create-kubernetes-page-2.png" alt="create kubernetes page" />
+
+    -   In the **Agent Name** section, enter a name for your Agent.
+    -   In the **URL**, **Certificate Authority** and **Namespace** sections, enter your Kubernetes information.
+    -   In the **Katalon API Key** section, enter your [API Key](https://analytics.katalon.com/user/apikey).
+    -   In the **Authentication Type** section, choose one of the following options:
+
+        -   Username/Password
+        -   Token
+        -   AWS EKS
+
+            
+            :::note
+
+            -   You have already configured Authentication Type in EKS.
+
+            :::
+
+5.  Click **Test Connection**, then click **Create** to complete.
+
+6.  Go to **Test Environments** &gt; **Kubernetes** to see the list of Kubernetes test environments you have created.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-revamp-aug-aws-eks/kubernetes-test-environment-page-list-2.png" />
+
+
+Next steps:
+
+1.  [Upload Test Scripts from a Git Repository](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+2.  [Schedule Test Runs](/execute/schedule-test-execution/schedule-test-runs-in-testops).
+
+See also:
+
+-   [Create a Local Test Environment with an Agent](/execute/cloud-based-test-execution/test-execution-with-testops/local-test-environments/create-a-local-test-environment-with-an-agent).
+-   [Set up an Agent to execute tests on Docker environment](/execute/cloud-based-test-execution/test-execution-with-testops/set-up-docker-test-environments-for-testops).

@@ -1,0 +1,104 @@
+---
+id: concept-2c4a51d3-2105-4a36-a92b-92beeaa7a738
+slug: /create-tests/manage-projects/set-up-projects/windows-desktop-apps-testing/set-up-winappdriver-in-katalon-studio
+---
+
+# Set up WinAppDriver in Katalon Studio
+
+This document shows you how to install and run Windows Application Driver \(WinAppDriver\) on a Windows 10 machine before performing Windows Desktop Apps tests.
+
+
+:::note
+
+-   **What is the test machine?**
+
+    -   The test machine is where you have the Application Under Test installed and tested.
+
+-   **What is the test runner machine?**
+
+    -   The test runner machine is where you install Katalon Studio and store the test scripts.
+    -   The test runner machine and the test machine can be the same machine or different ones \(remote connection\)
+
+:::
+
+## Install and run WinAppDriver on Windows 10 machine
+
+### Install WinAppDriver
+
+
+:::note
+
+-   Install and run WinAppDriver on the test machine.
+
+
+:::
+
+There are two ways to install WinAppDriver on a Windows 10 machine:
+
+1.  From the Katalon Studio toolbar, select **Tools &gt; Windows &gt; Install WinAppDrivers**. The **Windows Application Driver Setup** window opens. Follow the instructions to install the Windows Application Driver.
+
+2.  You can also refer to the WinAppDriver Github project document here: [Installing and Running Windows Application Driver](https://github.com/microsoft/WinAppDriver#installing-and-running-windows-application-driver) for the installation.
+
+
+### Run WinAppDriver
+
+1.  Enable **Developer Mode** on the test machine. You can refer to the Microsoft document here: [Enable your device for development](https://docs.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development) for instructions.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/introduction-desktop-app-testing/dev-mode.png" width={306} />
+
+2.  By default, WinAppDriver is installed at <code>C:\Program Files (x86)\Windows Application Driver</code>. To run WinAppDriver, double-click the <code>WinAppDriver.exe</code> file from the installation directory.
+
+
+## Set up WinAppDriver for the remote connection
+
+### On the Windows 10 test machine
+
+
+:::note
+
+-   While the test is being run, make sure to have WinAppDriver open and configured for the remote connection on the Windows 10 test machine.
+
+:::
+
+After installing WinAppDriver and enabling **Developer Mode**, to configure WinAppDriver for the remote connection, follow these steps:
+
+1.  Open **Task Manager** &gt; Select **File** &gt; Create a new task.
+2.  Select **Create this task with administrative privileges** and enter <code>cmd</code> in the **Open** text box, then click the **OK** button.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/introduction-desktop-app-testing/Set-up-1.png" width={476} />
+
+3.  Run <code>cd</code> to your WinAppDriver installation folder. By default, it is at <code>C:\Program Files (x86)\Windows Application Driver</code>.
+
+4.  Run <code>WinAppDriver.exe &lt;IP&#95;Adress&gt; &lt;Port&gt;</code>.
+
+    -   <code>IP&#95;Adress</code>: is the public IP address of the test machine. Run <code>ipconfig.exe</code> to determine the IP address.
+    -   <code>Port</code>: is the public port of the remote machine. By default, it should be 4723.
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/introduction-desktop-app-testing/Set-up-2.png" width={690} />
+
+    
+    :::note
+
+    -   If the test machine is in a highly secured environment with firewall, you might need to create an Inboud Port Rule for the test machine to receive inbound requests. To set up the inbound rule, you can follow the steps here in the WinAppDriver project document: [Create an Inbound Port Rule](https://github.com/microsoft/WinAppDriver/blob/master/Docs/RunningOnRemoteMachine.md).
+
+    :::
+
+
+### On the test runner machine
+
+
+:::note
+
+-   The test runner machine can be Windows, macOS or Linux.
+
+:::
+
+While building your test script, make sure to have the <code>WinAppDriver URL</code> point to the public IP address of the remote test machine. In the above example, it should be: <code>http://192.168.37.95:4723/</code>.
+
+The application file path is the absolute path to the <code>Windows Executable File (&lt;.exe)</code> file of the remote test machine.<img src="https://github.com/katalon-studio/docs-images/raw/3672749302fd26a6ee095ed5217b2be05aaf6d78/katalon-studio/docs/introduction-desktop-app-testing/KS-Windows-Remote-connection-3.png" alt="Remote connection in Katalon" />
+
+**Next step**  
+
+
+[Capture Windows Objects using the Windows Spy Utility in Katalon Studio](/create-tests/record-and-spy/windows-record-and-spy-utilities/capture-windows-objects-using-the-windows-spy-utility-in-katalon-studio)
+
+[Windows Record Utility in Katalon Studio](/create-tests/record-and-spy/windows-record-and-spy-utilities/windows-record-utility-in-katalon-studio)

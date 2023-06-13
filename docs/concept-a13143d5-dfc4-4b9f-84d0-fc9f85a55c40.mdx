@@ -1,0 +1,216 @@
+---
+id: concept-a13143d5-dfc4-4b9f-84d0-fc9f85a55c40
+slug: /create-tests/manage-projects/set-up-projects/mobile-testing/ios/mobile-ios-setup-real-devices-in-katalon-studio
+---
+
+# \[Mobile\] iOS Setup \(Real devices\) in Katalon Studio
+
+This article shows you how to set up real iOS devices to test iOS applications with Katalon Studio.
+
+To begin with, you need to setup a macOS environment. You can not execute iOS mobile testing in Windows or Linux.
+
+**Related information**  
+
+
+[\[Mobile\] Create and Run iOS Test Case in Katalon Studio](/get-started/sample-projects/mobile/mobile-create-and-run-ios-test-case-in-katalon-studio)
+
+[Troubleshooting automated mobile testing overview](/create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/troubleshooting-automated-mobile-testing-overview)
+
+## Part 1: Install Xcode
+
+Install Xcode version 10.2 or newer. You can download Xcode from the App Store or the Apple Developer website: [Xcode 13](https://developer.apple.com/xcode/).
+
+
+:::note
+
+-   Katalon Studio does not officially support Xcode 14 at the moment.
+-   Xcode must support the current version of your iOS device. To learn more about the supported environments in Katalon Studio, see: [Supported environments](/supported-execution-environments/supported-environments-for-katalon-studio-and-katalon-runtime-engine-kre).
+
+:::
+
+## Part 2: Install Appium, Xcode command-line tools, and other iOS dependencies
+
+### Install with built-in tools
+
+From Katalon Studio version 8.3.0 onwards, you can install Appium and Xcode command-line tools \(Xcode CLT\) via Katalon built-in tools. To do so:
+
+1.  Open Katalon Studio and go to **Tools** &gt; **iOS** &gt; **Dependencies**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-825-Install-dependencies-via-built-in-tools.png" width={500} alt="Install dependencies via Katalon built-in tools" />
+
+2.  Katalon will automatically install the latest version of Xcode CLT, Appium, Homebrew, NodeJS, and other iOS dependencies.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-825-KS-install-dependencies.png" width={500} alt="KS installs dependencies" />
+
+
+### Install manually
+
+1.  Install the command-line tool for Xcode. You can download the command-line tool compatible with your Xcode version from the Apple Developer website here: [Download](https://developer.apple.com/download/all/).
+
+    Alternatively, you can copy and paste the following command-line arguments in this order in the **Terminal** to install the command-line tool for Xcode:
+
+    ```
+    xcode-select --install
+    ```
+
+    ```
+    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+    ```
+
+2.  Download and install Node.js from the Node.js website: [Node.js Downloads](https://nodejs.org/en/download/).
+
+    
+    :::note
+
+    -   Make sure you install Node.js into a location where you have full Read/Write permissions.
+
+    :::
+
+3.  Install Appium version 1.12.1 or newer via NPM. To install the latest Appium version, copy and paste the command-line argument as follows:
+
+    ```
+    npm install -g appium
+    ```
+
+    
+    :::note
+
+    -   We recommend installing the latest Appium version.
+    -   Katalon Studio does not officially support Appium 2.x yet.
+    -   If you are using emulators other than Xcode simulators, some emulators come with Appium installed. If you want to run an application on an emulator, check your emulator settings before installing Appium.
+    :::
+
+    To learn more about Appium, you can refer to the Appium document here: [Getting started](http://appium.io/docs/en/about-appium/getting-started/#installing-appium).
+
+4.  Install Homebrew. Homebrew is a package manager that makes it easy to install extra dependencies. To install Homebrew, follow the instructions on the Homebrew website: [Homebrew](https://brew.sh/).
+
+5.  After installing Homebrew, you can now use it to install the following dependencies in the **Terminal**:
+
+    -   ios-deploy version 1.9.4 or newer. You can learn more about ios-deploy in this Github project: [ios-deploy](https://github.com/ios-control/ios-deploy). To install ios-deploy via Homebrew, copy and paste the command-line argument as below:
+
+        <code>brew install ios-deploy</code>
+
+    -   usbmuxd version 1.0.10 or newer. You can learn more about usbmuxd in this Github project: [usbmuxd](https://github.com/libimobiledevice/usbmuxd). To install usbmuxd via Homebrew, copy and paste the following command-line arguments in this order:
+
+        <code>brew install --HEAD usbmuxd</code>
+
+        <code>brew unlink usbmuxd</code>
+
+        <code>brew link usbmuxd</code>
+
+    -   libimobiledevice version 1.2.0 or newer. You can learn more about libimobiledevice on the libimobiledevice website: [libimobiledevice](https://libimobiledevice.org/). To install libimobiledevice via Homebrew, copy and paste the following command-line arguments in this order:
+
+        <code>brew install --HEAD libimobiledevice</code>
+
+        <code>brew unlink libimobiledevice</code>
+
+        <code>brew link libimobiledevice</code>
+
+    -   For Appium versions older than 1.20.0, you need to install Carthage. You can learn more about Carthage in this Github project: [Carthage](https://github.com/Carthage/Carthage). To install Carthage via Homebrew, copy and paste the command-line argument below:
+
+        <code>brew install carthage</code>
+
+    -   For Appium versions older than 1.15.0, you also need to install ios-webkit-debug-proxy. You can learn more about ios-webkit-debug-proxy in this Github project: [ios-webkit-debug-proxy](https://github.com/google/ios-webkit-debug-proxy). To install ios-webkit-debug-proxy via Homebrew, copy and paste the command-line argument as below:
+
+        <code>brew install ios-webkit-debug-proxy</code>
+
+
+## Part 3: Set up the real iOS devices for mobile testing in Katalon Studio
+
+
+:::note
+
+-   You have enrolled in the Apple Developer Program. To learn more about the Apple Developer Program enrollment, you can refer to this Apple document: [Enrollment](https://developer.apple.com/support/enrollment/).
+
+:::
+
+1.  Any device for development with Xcode must be listed in the Apple Developer Portal. To learn about listing your device in Apple Developer Portal, you can refer to this wikiHow document: [How to Add a New Device to Your Apple Developer Portal](https://www.wikihow.com/Add-a-New-Device-to-Your-Apple-Developer-Portal).
+
+2.  In **Xcode &gt; Preferences &gt; Account**, click *Add* \(+\) to enter your Apple Developer Account ID and password.
+
+3.  Connect your iOS devices to your computer via a USB cable. Confirm to accept or trust the phone.
+
+4.  To enable **UI Automation** on the device, navigate to **Settings &gt; Developer**. In the **UI Automation** section, turn on the setting for **Enable UI Automation**.
+
+5.  If you want to execute your tests using Safari on iOS \(mobile browser\), you will need to enable the following settings in **Settings &gt; Safari &gt; Advanced**:
+
+    -   JavaScript
+    -   Web Inspector
+    -   Remote Automation
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/KS-IOS-Safari-Web-Inspector.png" alt="Enable debug mode in iOS devices" />
+
+
+## Part 4: Install the WebDriverAgent
+
+The WebDriverAgent is a WebDriver server used to control iOS devices remotely. To install the WebDriverAgent, you can refer to this document: [Install WebDriverAgent for iOS devices](/create-tests/manage-projects/set-up-projects/mobile-testing/ios/mobile-install-webdriveragent-for-real-ios-devices-in-katalon-studio).
+
+## Part 5: Distribute your app for testing on registered devices
+
+To distribute your app for testing on registered devices, you need to archive and export an <code>.ipa</code> file. Do as follows:
+
+### Prepare your app for distribution
+
+1.  Open the project file with Xcode. For example, to open <code>Coffee Timer.xcodeproj</code>, from where you store the project &gt; **App** &gt; **Your-First-iOS-App** &gt; **Coffee Timer**. Double-click the <code>Coffee Timer.xcodeproj</code> file.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/open-xcode-file.png" alt="Open Xcode project" />
+
+2.  After opening the project in Xcode, select a registered iOS device to launch the apps.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/select-device.png" width={300} alt="Select device" />
+
+3.  In the **General** tab, set deployment iOS version and select device type in the **Deployment Info** section.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/deployment.png" width={500} alt="Choose deployment info" />
+
+4.  Switch to the **Signing & Capabilities** tab, check the **Automatically manage signing** box, then choose the team that has your device registered in the Apple Developer Portal.
+
+    By choosing the **Automatically manage signing** box, Xcode manages code signing assets for you. To learn more about automatic signing, you can refer to this Apple document: [Automatic signing](https://help.apple.com/xcode/mac/current/#/dev80cc24546).
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/KS-825-Enable-automatic-signing.png" alt="Auto manage signing" />
+
+5.  To build the <code>.ipa</code> file, click **Product &gt; Build**.
+
+
+### Create an archive of your app
+
+1.  To archive the <code>.ipa</code> file, click **Product &gt; Archive**. If the archive builds successfully, it appears in the Archives organizer.
+
+    
+    :::note
+
+    -   You can't create an archive if you set the run destination to a simulator.
+    :::
+
+
+### Export your app using an ad hoc or development provisioning profile
+
+When you export the app, Xcode re-signs the app using the code signing assets that you choose. To learn more about the distribution method, you can refer to this Apple document:[Distribution method.](https://help.apple.com/xcode/mac/current/#/dev31de635e5)
+
+1.  To open the Archives organizer, choose **Window** &gt; **Organizer** and click **Archives**.
+
+2.  Select the archive you want to export, then click **Distribute App** and follow the instructions to get the <code>.ipa</code> file. Here, we choose a development provisioning profile to export the <code>Coffee Timer.ipa</code> file.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/export.gif" alt="Distribute .ipa app" />
+
+
+### Install the app on user devices
+
+To verify the <code>.ipa</code> file, follow these steps:
+
+1.  Open Xcode, then navigate to **Window &gt; Devices and Simulators**.
+
+2.  Choose your device from the **Devices** list.
+
+3.  Click *Add* \(+\) to browse the <code>.ipa</code> file.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/KS-iOS-Install-.png" alt="Add an app to a real device" />
+
+4.  Once installed successfully, the application appears in the **Installed Apps** section.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Real_Device/Pictures/KS-install-app-via-Xcode.png" alt="App installed successfully" />
+
+
+**Learn more with our Katalon Academy course**  
+
+
+[Solve Mobile Testing Challenges with Codeless Solution](https://academy.katalon.com/courses/codeless-solution-mobile-testing/?utm_source=kat_docs&utm_medium=ios_setup)

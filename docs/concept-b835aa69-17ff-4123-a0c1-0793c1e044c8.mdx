@@ -1,0 +1,43 @@
+---
+id: concept-b835aa69-17ff-4123-a0c1-0793c1e044c8
+slug: /create-tests/data-driven-testing/implement-data-driven-testing-with-mysql
+---
+
+# Implement data-driven testing with MySQL
+
+From Katalon Studio v8.0.0 onwards, the built-in JDBC driver for MySQL is removed; instead, you can choose to install your preferred version of JDBC driver.
+
+To keep the MySQL database in use, you need to add its driver to the external library for establishing the database connection. To see which libraries Katalon Studio supports built-in JDBC drivers, you can refer to this document: [Introduce database connection](/create-tests/data-driven-testing/configure-database-connection-for-data-driven-testing-in-katalon-studio).
+
+This document shows you how to add a driver for MySQL database connection.
+
+## Add an external JDBC driver for MySQL database connection
+
+-   Katalon Studio version 8.0.0 onwards.
+
+-   You already set up MySQL Database.
+
+-   MySQL Database is running.
+
+
+1.  Download the MySQL library executable .jar file. You can download from the MySQL website: [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/).
+
+    The version of JDBC driver must be compatible with MySQL version.
+
+2.  Go to **Project Settings** &gt; **Library Management**. Click **Add** button to add the jar file to the external library.
+
+    <img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/how-to-implement-ddt-mysql/images/KS-MYSQL-Add-MySQL-library.png" width={400} />
+
+3.  In **Project Settings**, switch to **Database** to configure the database connection.
+
+    1.  Select **Secure User and Password** to enable **User** and **Password** fields.
+
+    2.  Input the **User** and **Password** used for authentication.
+
+    3.  Enter **Connection URL**.
+
+    4.  Add **Connection Properties for JDBC Driver** if any \(available from version 8.6.5\).
+
+    5.  Click **Test Connection** to verify whether your database is connected successfully.<img src="/doc_images/Documents/Create_tests/Data_Driven_Testing/how-to-implement-ddt-mysql/images/KS-MYSQL-Connect-MySQL.png" width={600} />
+
+4.  Click **Apply and Close** to complete the connection process.

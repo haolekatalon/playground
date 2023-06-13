@@ -1,0 +1,64 @@
+---
+id: concept-6e2608a3-ec51-4b3c-8c8f-11d4e0d6c062
+slug: /plugins-and-add-ons/katalon-store/katalon-studio-plugins/private-plugins-in-katalon-studio
+---
+
+# Private Plugins in Katalon Studio
+
+Private plugins are Katalon plugins that are developed for private use. With private plugins supported, you can build, distribute, install, and use your plugins without publishing them on Store for public access.
+
+## Requirements
+
+-   Katalon Studio version 7.0.0 onwards.
+-   An active Katalon Studio Enterprise license. To learn more about activating licenses, you can refer to this document: Activate Katalon licenses.
+
+## Build Private Plugins
+
+If you don't know how to build a plugin that can be used in Katalon Studio, refer to the documents on how to develop [platform plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/create-your-first-katalon-studio-plugin) and [custom keywords plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/how-to-develop-a-custom-keywords-plugin-in-katalon-studio).
+
+If you have already written custom keywords, then code reuse across projects can be achieved easily by distributing the keywords as plugins. This utility is especially helpful when you need to test a set of products that frequently encounter recurring problems. Before, you would have to copy and paste every custom keyword class from projects to projects. Whenever the implementation of the custom keyword changes, you would need to update that change in all projects. Now, you can deploy and install custom keyword plugins through only a few commands and manual steps.
+
+## Store Private Plugins
+
+You need to store private plugins in the <code>&lt;project&#95;name&gt;/Plugins</code> folder for Katalon Studio to treat them as local plugins. There are two types of plugins: **Platform** and **Custom Keyword**. Noticeably, **Platform** plugins need storing in the <code>&lt;project&#95;name&gt;/Plugins/platform</code> folder.
+
+Below is the structure of the <code>Plugins</code> folder:
+
+```
+Plugins
+
+ |
+
+ |___ platform
+
+         |___ IDE plugin 1.jar
+
+         |___ IDE plugin 2.jar
+
+         |___ ....
+
+         |___ IDE plugin n.jar
+
+ |___ Custom keyword plugin 1.jar
+
+ |___ Custom keyword plugin 2.jar
+
+ |___ ...
+
+ |___ Custom keyword plugin n.jar
+
+```
+
+## Use Private Plugins in Katalon Studio
+
+In **Project &gt; Settings &gt; Plugins**, select one of the following options:
+
+-   **Katalon Store and Local**: Katalon Studio will install plugins from the Store and the Plugins folder of each project.
+-   **Local**: Katalon Studio will install plugins from the Plugins folder only.
+
+
+:::note
+
+-   To install plugins offline, see [Offline Plugin Installation](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/installing-plugin-offline-in-katalon-studio).
+
+:::

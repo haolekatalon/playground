@@ -1,0 +1,144 @@
+---
+id: concept-a90ff7a0-33c3-4637-8c80-ae17da1ca18c
+slug: /create-tests/manage-projects/project-settings/git-integration/git-integration-authentication-with-ssh-keys-in-katalon-studio
+---
+
+# Git integration authentication with SSH Keys in Katalon Studio
+
+
+:::note
+
+-   Starting from **version 7.0.0**, Katalon Studio supports connecting to Git with SSH Keys.
+
+
+:::
+
+In Katalon Studio, you can generate and add SSH keys to SSH agents without coding. With SSH keys, you can clone your project from cloud-hosted services of Git and integrate them with Katalon Studio. Cloud-based Git services include:
+
+-   GitHub
+-   GitLab
+-   BitBucket
+-   Microsoft Azure DevOps
+
+This tutorial shows you how to generate SSH keys and clone a repository from cloud-hosted services of Git with an SSH protocol.
+
+## Requirements
+
+-   An active Katalon Studio Enterprise license.
+-   An existing cloud-based Git repository for your projects. You can download or clone our CI sample project from our GitHub repository: [CI sample](https://github.com/katalon-studio-samples/ci-samples).
+-   An existing account for your Git repository of choice.
+
+## Generate SSH keys
+
+To generate new SSH keys, do as follows:
+
+1.  Go to **Katalon Studio** &gt; **Preferences** and select **General**. Click on **Network Connections** &gt; **SSH2**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/config-ssh.png" width={700} alt="SSH URL" />
+
+    1.  **General** tab: you can manage your SSH home directory and which private key you are using. The the SSH is usually located at <code>:/Users/your&#95;user&#95;name/.ssh</code> or <code>C:\Users\your&#95;user&#95;name\.ssh</code>. The <code>.ssh</code> folder contains your SSH private and public keys, for example: <code>id&#95;rsa</code> or <code>id&#95;rsa.pub</code>.
+    2.  **Private keys**: you can view or delete the old keys and only keep the ID key you use.
+2.  Switch to **Key Management** tab.
+
+    The dialog appears as below.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/generate-ssh-key.png" width={700} alt="Key management tab" />
+
+    -   Select **Generate DSA Key** or **Generate RSA Key** to generate a new SSH key.
+    -   Select **Load Existing Key** to check if you already have an existing SSH key. This action opens your <code>.ssh</code> folder.
+
+        <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/load-existing-key.png" width={500} alt="load existing key" />
+
+    -   You can also generate an RSA key with this command:
+
+        <code>ssh-keygen -m PEM -t rsa -b 2048 -C "your&#95;email@example.com"</code>
+
+        
+        :::note
+
+        -   Katalon Studio only supports <code>OpenSSL</code>, not <code>OpenSSH</code> formats.
+        :::
+
+3.  Enter the **Passphrase** or leave it empty, then click **Save Private Keys**.
+
+    Enter the file name and click **Save**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/save-ssh-file.png" width={400} alt="Save .ssh file" />
+
+
+You've successfully generated a pair of public and private keys.
+
+## Add a new SSH key to your Git account
+
+### In GitHub
+
+-   Go to your **Git Account &gt; Settings &gt; SSH and GPG keys** and click **New SSH key**. The **SSH keys / Add new** page appears.
+-   Enter the **Title** and paste your **Key**, then click **Add SSH key**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/git-integration/Add%20new%20SSH%20key.png" width={700} alt="add new SSH key" />
+
+
+### In Bitbucket
+
+-   Go to **Your profile and settings &gt; Personal settings &gt; SSH keys** and click **Add key**. The **Add SSH key** dialog appears.
+-   Enter the **Label** and paste your **Key**, then click **Add key**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/git-integration/bitbucket-org-account-settings-ssh-keys.png" width={850} alt="Bitbucket" />
+
+
+### In Azure DevOps
+
+-   Go to **User Settings &gt; SSH Publics key** and click **New Key**. The **Add New SSH Key** dialog appears.
+-   Enter the **Name** and paste your **Public Key Data**, then click **Add**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/git-integration/dev-azure-Katalon-usersSettings-keys.png" width={850} alt="ADO" />
+
+
+### In GitLab
+
+-   Go to **User Settings &gt; SSH key**.
+-   Enter the **Title**, set the expiration date and paste your **Key**. Then, click **Add key**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/git-integration/gitlab-profile-keys.png" width={850} alt="GitLab" />
+
+
+## Clone your project with SSH protocol
+
+You need to enable Git integration. See: [Enable Git integration](/create-tests/manage-projects/project-settings/git-integration/work-with-git-in-katalon-studio#).
+
+To get a SSH protocol: go to your account on GitHub, GitLab, Bitbucket, or Azure DevOps, then go to the repository you want to clone to Katalon Studio. Click **Clone** and select **SSH**, then copy the **SSH protocol**.
+
+After enabling Git Integration, you can clone an existing Git repository into a new directory on the local machine.
+
+Do as follows:
+
+1.  In the main toolbar, click on the **Git** icon and select **Clone Project**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/clone-project-ssh-key.png" width={200} alt="Clone project" />
+
+2.  The **Clone Git Repository** dialog displays.
+
+    Enter a repository URL with SSH Protocol and click **Next**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/clone-repo-ssh.png" width={500} alt="Clone Git repo dialog" />
+
+3.  Enter the passphrase, if any, then click **OK**.
+
+    The **Branch Selection** dialog appears.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/branch-select-ssh.png" width={500} alt="Branch selection dialog" />
+
+4.  Specify the local location for cloning as well as the initial branch.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/destination-ssh.png" width={500} alt="Local destination" />
+
+    -   **Directory**: the local storage location you want to store your Git repository.
+    -   **Initial branch**: all selected branches from the previous step are displayed here. Select the branch to be used initially from this list.
+5.  Click **Finish** when you are done. Katalon Studio automatically opens your cloned project.
+
+    To verify settings, go to **Katalon Studio** &gt; **Preferences** and select Team. Click on **Git** &gt; **Configurations**, and select **Repository Settings**. Ensure that the repository is selected correctly with the URL specified.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Git-Integration/Git_Integration_Authentication_With_SSH_Keys/images/git-setting-ssh.png" width={700} alt="Git setting dialog" />
+
+
+You've successfully cloned your repositories. You can commit, pull, and push changes to the repositories from Katalon Studio.

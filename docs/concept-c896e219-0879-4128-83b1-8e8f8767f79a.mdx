@@ -1,0 +1,38 @@
+---
+id: concept-c896e219-0879-4128-83b1-8e8f8767f79a
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-wait-for-element-present
+---
+
+# \[Mobile\] Wait For Element Present
+
+## Description
+
+Wait for the given mobile element to present within the given time \(in seconds\).
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>to</td><td>TestObject</td><td>Required</td><td>Represent a mobile element.</td></tr><tr><td>timeOut</td><td>int</td><td>Required</td><td>Maximum period of time (in seconds) that system will wait to return a result.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Param Type</th><th>Description</th></tr><tbody><tr><td>Boolean</td><td><ul><li><strong>true</strong>: the element is present within the timeout.</li><li><strong>false</strong>: the element is NOT present within the timeout.</li></ul></td></tr></tbody></table>
+
+## Example
+
+You want to wait for 'App' control to be present in 10 seconds timeout.
+
+```
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import internal.GlobalVariable as GlobalVariable
+
+'Start application on current selected android\'s device'
+Mobile.startApplication(GlobalVariable.G_AndroidApp, false)
+
+'Wait for app control to be present in 10 seconds timeout'
+Mobile.waitForElementPresent(findTestObject('Object Repository/Application/android.widget.TextView - App'), 10)
+
+'Close application on current selected android\'s device'
+Mobile.closeApplication()
+
+```

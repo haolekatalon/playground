@@ -1,0 +1,49 @@
+---
+id: concept-07cf6e3e-7fae-440a-94a8-22b722291d45
+slug: /plugins-and-add-ons/katalon-recorder-extension/get-your-job-done/export-scenarios/export-test-projects-from-katalon-recorder
+---
+
+# Export test projects from Katalon Recorder
+
+From version 5.6.0 onwards, Katalon Recorder \(KR\) you can export multiple tests into a single file. This file is compatible with many other frameworks, such as Katalon Studio, Java Maven or Python. From version 5.9.0 onwards, you can export your project to Selenium 4.
+
+The export feature is especially useful to outgrow the capabilities of KR. As your work requirements and projects complexity increase, you can move your test artifacts and projects to other frameworks. This allows you to benefit from further advanced testing without losing your work.
+
+The table below shows the full list of exporting features that KR offers, compared with Selenium IDE:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-recorder/docs/5.6.0-release/KR%20vs.%20Selenium%20exporting%20features.png" alt="KR vs Selenium in exporting" />
+
+## Export to Katalon Studio and other frameworks
+
+Requirements \(for Java/Python frameworks\):
+
+-   ChromeDriver installed.
+-   Java/Python IDE installed \(preferably IntelliJ\).
+
+Follow these steps:
+
+1.  Open Katalon Recorder.
+2.  On the left sidebar, go to **Export** &gt; **Export to other frameworks**.
+
+3.  Select a framework \(e.g., Katalon Studio or Selenium 3, Java \(WebDriver + TestNG\)\).
+
+4.  Select the tests you want to export.
+
+    <img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-your-job-done/Export-scenarios/export-test-script/KR-590-selenium-4.jpeg" />
+
+    Katalon Recorder also notifies you here if there are incompatible commands.
+
+5.  Click **Export**.
+
+
+You can now import the file/project with your framework of choice.
+
+
+:::note
+
+-   For Java JUnit, Java TestNG and Python, the data is exported as a full project. You can open the project in the Java/Python IDE.
+
+-   For other frameworks, the data is exported as a .zip file.
+
+
+:::

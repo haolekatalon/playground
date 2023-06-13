@@ -1,0 +1,17 @@
+---
+id: troubleshooting-f111e322-e3b7-455b-9955-14df5de39415
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/unable-to-connect-to-katalon-server
+---
+
+# Unable to connect to Katalon server
+
+Unable to connect to Katalon server.
+
+1.  Allow the following .exe files to communicate through Windows Firewall. To learn more about allowing apps through Windows Firewall, you can refer to the Microsoft document here: [Risks of allowing apps through Windows Defender Firewall](https://support.microsoft.com/en-us/windows/risks-of-allowing-apps-through-windows-defender-firewall-654559af-3f54-3dcf-349f-71ccd90bcc5c).
+
+    -   geckodriver.exe
+    -   chromedriver.exe
+    -   iedriverserver.exe
+    These executable files can be located in:<code>&lt;Katalon Studio folder&gt;\\configuration\\resources\\drivers</code>.<img src="https://raw.githubusercontent.com/katalon-studio/docs-images/master/katalon-studio/docs/troubleshooting-web-automated-testing/Screen-Shot-2018-04-24-at-13.51.51.png" /> <img src="https://raw.githubusercontent.com/katalon-studio/docs-images/master/katalon-studio/docs/troubleshooting-web-automated-testing/Screen-Shot-2018-04-24-at-13.51.41.png" />
+
+    You may also need to add Google Chrome \(chrome.exe\) and Firefox \(firefox.exe\) in the worst case if your current Windows Firewall blocks them as well.

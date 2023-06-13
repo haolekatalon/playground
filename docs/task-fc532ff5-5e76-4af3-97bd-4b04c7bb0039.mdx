@@ -1,0 +1,48 @@
+---
+id: task-fc532ff5-5e76-4af3-97bd-4b04c7bb0039
+slug: /create-tests/manage-projects/manage-test-projects/create-a-test-project-in-katalon-studio
+---
+
+# Create a test project in Katalon Studio
+
+To create a test project in Katalon Studio, do as follows:
+
+1.  Go to **File** &gt; **New** &gt; **Project** from the main menu.
+
+2.  In the displayed **New Project** dialog, enter the name of your project.<img src="/doc_images/Documents/Create_tests/Manage_Projects/Manage_Test_Project/Images/ks-850-new-project.png" width={500} alt="Create a new project in Katalon Studio" />
+
+3.  Choose a desired project **Type**.
+
+    -   **Generic**, **Web**, **Mobile**, **Desktop**: All standard features for Web, Mobile, API, and Desktop testing are available.
+    -   **API/Web Service**: Exclusive features for API/Web Service Testing are enabled, including icons of importing test requests from [OpenAPI Specification 3.0](/create-tests/test-objects/api-test-objects/import-web-service-objects/import-rest-api-with-openapi-specification-3-0-to-katalon-studio), [WADLs](/create-tests/test-objects/api-test-objects/import-web-service-objects/import-restful-requests-from-wadls-to-katalon-studio), [WSDLs](/create-tests/test-objects/api-test-objects/import-web-service-objects/import-soap-requests-from-wsdls-to-katalon-studio), [OpenAPI Specification 2.0 \(Swagger\)](/create-tests/test-objects/api-test-objects/import-web-service-objects/import-restful-requests-with-openapi-specification-2-0-swagger-to-katalon-studio), and [Postman](/create-tests/test-objects/api-test-objects/import-web-service-objects/import-web-service-requests-from-soapui-to-katalon-studio); [Request History list](/create-tests/test-objects/api-test-objects/request-history-in-katalon-studio) and more.
+
+4.  In the **Project** field dropdown list, you can either choose to create a blank project or a sample project.
+
+    If you choose to create a sample project, the Git repository URL of that sample project is retrieved in the **Repository URL** accordingly.
+
+    If you choose to create a blank project, you can choose whether to generate .gitignore file or build.gradle file.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Manage_Test_Project/Images/ks-855-gitnore.png" width={500} />
+
+5.  In the **Location** field, choose the location for your test where you have all Read & Write permission. Do not store your projects in the Katalon build folder.
+
+6.  Enter a brief **Description** for your new project, then click **OK**.
+
+
+Katalon generates a new project accordingly.
+
+## Create API/Web Service project
+
+Katalon Studio supports API/Web Service test project, which allows separating the API/Web Service testing from WebUI and Mobile testing. You can also perform more API/Web Service automation tasks on Katalon Studio such as Quickstart wizard, import Swagger or WSDL definition File/URL directly, or retrieve the request history at any time.
+
+The update comes with a interface, including a toolbar and a view that serve only for API/Web Service testing.
+
+In Katalon Studio, to create a new API/Web Service project, select **API/Web Service** type in the **New Project** dialog and specify all required project information.
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/API_Web_Service_Project/New-Project.png" width={500} />
+
+In Katalon Studio - Platform Edition, go to **Project Information** &gt; **Project Type** &gt; **WebService** to change project type and enable the toolbar for API testing.
+
+You cannot create a new project in Katalon Studio - Platform Edition. You need to set up your project on Katalon TestOps, then open your Web Service project in Katalon Studio - Platform Edition. See [Open a test project in Katalon Studio - Platform Edition](/create-tests/manage-projects/manage-test-projects/open-a-test-project-in-katalon-studio-platform-edition).
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/API_Web_Service_Project/image/ks-project-settings.png" width={500} />

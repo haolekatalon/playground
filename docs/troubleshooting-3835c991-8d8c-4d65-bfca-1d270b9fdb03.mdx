@@ -1,0 +1,58 @@
+---
+id: troubleshooting-3835c991-8d8c-4d65-bfca-1d270b9fdb03
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/use-different-browser-versions
+---
+
+# Use different browser versions
+
+In case you want Katalon Studio to use different versions besides the currently installed version, there are two ways to do it.
+
+1.  You can use custom keywords.
+
+    To use this method, the browser instances you wish to use should be installed on your machine first.
+
+2.  Create a custom keyword to open the browser. Press **Ctrl + Shift + O** to automatically import necessary packages. To learn more about creating a custom keyword, you can refer to this document here: Introduction to Custom Keyword.
+
+    ```
+    
+    import com.kms.katalon.core.webui.driver.DriverFactory 
+    public class WebUICustomKeywords {  
+    	@Keyword  
+    	def openFirefoxBrowser(String firefoxPath, String firefoxDriver) { 
+    
+    		//Set path to Firefox version 
+    		System.setProperty("webdriver.firefox.bin", firefoxPath) 
+    
+    		//Set path to Firefox driver: \configuration\resources\drivers\firefox_win64\geckodriver.exe System.setProperty("webdriver.gecko.driver", firefoxDriver)
+    		WebDriver driver = new FirefoxDriver() 
+    		DriverFactory.changeWebDriver(driver)  
+    	}  
+    
+    	@Keyword  
+    	def openChromeBrowser(String chromeDriverPath, String chromePath)  { 
+    
+    		//Set path to chromedriver driver: \configuration\resources\drivers\chrome_win32\chromedriver.exe System.setProperty("webdriver.chrome.driver", chromeDriverPath) 
+    		ChromeOptions options = new ChromeOptions() 
+    
+    		//Set path to Chrome binary options.setBinary(chromePath) 
+    		WebDriver driver = new ChromeDriver(options) DriverFactory.changeWebDriver(driver)  
+    	} 	
+    }	
+    
+    ```
+
+3.  In a test case, use the newly created keyword.
+
+    ```
+    
+    CustomKeywords.'com.example.WebUICustomKeywords.openFirefoxBrowser'('C:\\Program Files\\Mozilla Firefox 52\\firefox.exe',  'C:\\5.4\\Katalon Studio Windows 64\\configuration\\resources\\drivers\\firefox_win64\\geckodriver.exe')
+    
+    WebUI.navigateToUrl(GlobalVariable.G_SiteURL) 
+    WebUI.click(findTestObject('Page_CuraHomepage/btn_MakeAppointment'))
+    
+    ```
+
+
+1.  You can also downgrade browser version.
+
+    If you want to use a very old version of your current browser, you may need to downgrade or upgrade browser drivers as well as Selenium WebDriver, you can refer to this document here: [Update or Downgrade WebDrivers](/create-tests/manage-projects/set-up-projects/web-testing/handle-webdrivers/upgrade-or-downgrade-webdrivers-in-katalon-studio)

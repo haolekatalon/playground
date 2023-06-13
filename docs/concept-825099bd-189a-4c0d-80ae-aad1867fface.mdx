@@ -1,0 +1,53 @@
+---
+id: concept-825099bd-189a-4c0d-80ae-aad1867fface
+slug: /execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-testops
+---
+
+# Use TestCloud in TestOps
+
+Katalon TestCloud is available for seamless integration with Katalon TestOps.
+
+Current test environments require time and effort to set up and maintain while providing limited browser/operating system \(OS\) options. By contrast, with a few clicks, you can set up a TestCloud Test Environment in **TestOps** for your test execution across browsers and OS.
+
+The TestCloud Test Environment also allows you to:
+
+-   Execute tests on a public domain.
+-   Execute tests on a private domain via a TestCloud tunnel.
+-   Track your TestCloud testing quota.
+
+**TestCloud** stabilizes the test results when you execute a massive number of parallel tests.
+
+## Requirements
+
+-   An active Katalon TestCloud subscription or trial. See [TestCloud Trial](/administer/katalon-platform-packages/testcloud-feature-comparison#).
+
+-   Kobiton integration must be disabled. You can toggle **Kobiton** off in advanced settings. See [Advanced settings](/execute/schedule-test-execution/schedule-test-runs-in-testops#).
+
+## Schedule test runs on TestOps with TestCloud environment
+
+To schedule a test execution with the TestCloud environment, do as follows:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your Project.
+
+2.  Go to **Test Execution** and click **Schedule Test Run**.
+
+    <img src="/doc_images/Documents/Execute/Schedule_test_executions/Schedule-test-runs-in-testops/image/tc-schedule-test-run.png" />
+
+3.  Give your test run a name, then select the Script repository that stores your project.
+
+4.  Choose a test suite or test suite collection to execute.
+
+5.  In the **Environment** section, click the drop-down menu and select **More options**.
+
+6.  In **TestCloud** section, select your preferred environment\(s\) to run your test.
+
+7.  Optional: You can toggle **Use TestCloud tunnel** to enable TestCloud tunnel. This option requires tunnel setup. For more details, see [Configure TestCloud Tunnel](/execute/cloud-based-test-execution/test-execution-with-testcloud/schedule-test-runs-with-testcloud-tunnel#).
+
+    <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/integrate-testcloud-with-testops/Images/tc-environment-more-options-anno.png" />
+
+8.  Click **Schedule** to save your test run configuration.
+
+
+A new test run with the TestCloud environment is added to the **Test Run List**.
+
+<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/integrate-testcloud-with-testops/Images/to-test-run-list.png" width={850} alt="test run list" />

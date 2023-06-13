@@ -1,0 +1,46 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-47a30798-6005-415f-bc00-84e91c990474
+slug: /integrations/unsupported-integrations/selenium-katalon-migration
+---
+
+# Selenium Katalon migration
+
+
+:::note
+
+-   Please note that the use case presented here is a suggestion only and should be implemented with caution. It has not undergone quality assurance testing and is not officially supported by our platform.
+
+
+:::
+
+You can migrate your test cases from Selenium, TestNG, or JUnit projects to Katalon Studio. With the supported features and keywords, you can execute and maintain your existing Selenium, TestNG and JUnit projects with Katalon Platform without starting everything from scratch.
+
+This project demonstrates how Katalon Studio helps users to use their existing Selenium project in Katalon Studio. Katalon supports Selenium TestNG and Selenium based framework both.
+
+## How to migrate Selenium to Katalon
+
+-   [Katalon Studio](https://docs.katalon.com/docs/get-started/katalon-studio-installation/install-katalon-studio-on-macoswindows#download-katalon-studio)
+-   Basic understanding of Junit and TestNG
+-   [TestNG/Junit Keywords](https://store.katalon.com/product/180/TestNG-JUnit-Keywords).
+
+We have two different application which we will use for our sample project:
+
+-   BBC **\([http://www.bbc.com](http://www.bbc.com/)\)**
+-   Heroku application **\([https://signup.heroku.com/](https://signup.heroku.com/)\)**
+
+Normal test script execution Data driven test execution
+
+1.  Downlaod and extract the Junit and TestNG based framework.
+
+2.  Add all your project file into **Include** &gt; **scripts** &gt; **groovy**.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Selenium_Katalon_migration/images/add_project.png" width={500} alt="Katalon Studio add project files" />
+
+3.  Change webdriver configuration as per screenshot mentioned below.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Selenium_Katalon_migration/images/KS_-_change_webdriver_configuration.png" alt="change webdriver configuration" />
+
+4.  You might need to fix all possible errors. \(most of the errors are related to the project import so you need to add a proper path for package structure into the import section\).
+
+5.  Create a resource folder and add the Testng.xml file.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Selenium_Katalon_migration/images/KS-add_folder.png" alt="create folder and add testng.xml" />
+
+6.  Create a test case by using TestNG or Junit custom keyword.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Selenium_Katalon_migration/images/create_test_using_testng_and_junit_keywords.png" alt="create test case using testng junit keywords" />
+
+7.  Refer to [Execute tests with Katalon Studio overview](/execute/execute-tests-with-katalon-studio/execute-tests-with-katalon-studio-overview) or [View test results and execution logs in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops) to run the test and verify the test execution results.

@@ -1,0 +1,27 @@
+---
+id: concept-a68ef112-4164-4ca1-a29c-441b86bbae26
+slug: /create-tests/manage-projects/set-up-projects/mobile-testing/retrieve-mobile-s-session-in-katalon-studio
+---
+
+# Retrieve mobile's session in Katalon Studio
+
+To get current mobile's session after using 'Start Application' built-in keyword, use the sample code below:
+
+```
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import com.kms.katalon.core.annotation.Keyword
+import com.kms.katalon.core.mobile.helper.MobileElementCommonHelper
+import com.kms.katalon.core.mobile.keyword.internal.MobileDriverFactory
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.util.KeywordUtil
+import io.appium.java_client.AppiumDriver 
+
+Mobile.startApplication("Your Application", false)
+AppiumDriver<?> driver = MobileDriverFactory.getDriver()
+
+```
+
+**References:**
+
+-   [Start Application](https://docs.katalon.com/display/KD/%5BMobile%5D+Start+Application)

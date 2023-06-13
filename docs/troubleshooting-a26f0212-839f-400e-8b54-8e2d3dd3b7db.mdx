@@ -1,0 +1,16 @@
+---
+id: troubleshooting-a26f0212-839f-400e-8b54-8e2d3dd3b7db
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/element-not-visible-exception
+---
+
+# Element not visible exception
+
+When you encounter the following exception: <code>selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted.</code>
+
+1.  Add the <code>Wait For Element Visible</code> keyword before the one having this issue. To learn more about the <code>Wait For Element Visible</code> keyword, you can refer to this document here: [\[WebUI\] Wait For Element Visible](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-visible).
+
+    ```
+    WebUI.openBrowser('http://demoaut.katalon.com')
+    WebUI.waitForElementVisible(findtestObject('btn_Login'),30)
+    WebUI.click(findTestObject('btn_Login'))
+    ```

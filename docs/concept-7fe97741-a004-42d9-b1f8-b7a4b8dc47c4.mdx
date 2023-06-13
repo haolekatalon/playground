@@ -1,0 +1,113 @@
+---
+id: concept-7fe97741-a004-42d9-b1f8-b7a4b8dc47c4
+slug: /get-started/set-up-your-workspace/katalon-studio-preferences/configure-proxy-preferences-in-katalon-studio
+---
+
+# Configure Proxy Preferences in Katalon Studio
+
+From Katalon Studio version 7.5.0 onwards, the proxy is divided into two categories: Authentication and System proxies. You can apply different proxy configurations for connecting to the Katalon server and your servers during testing.
+
+To access Proxy preferences, go to **Katalon Studio** &gt; **Preferences** &gt; **Katalon** &gt; **Proxy**. Select the **Authentication** or **System** section for the corresponding proxy configuration.
+
+-   Authentication proxy configurations: used for authenticating with Katalon Authentication servers. This affects account authentication, Katalon TestOps, TestCloud, Store integration, the Katalon auto-updater, WebDriver auto-updater, sample projects providers, and more.
+
+-   System proxy configurations: applies to other network connections generated when using Katalon Studio, including but not limited to recording, spying, executing tests, integrating with other tools, and downloading Web Drivers or Android SDK.
+
+
+## Proxy configuration options
+
+In both the **Authentication** and **System** Proxy options, select one of the three options below.<img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/proxy-preferences/image/ks-850-proxy-option.png" width={700} alt="proxy options in System preferences" />
+
+-   **No proxy**: Connect directly without proxy.
+-   **Use system proxy configuration**: Katalon Studio guesses which proxy server your system is behind by checking Java, browser and operating system settings, and environment variables.
+-   **Manual proxy configuration**: Manually set up your proxy with the following settings:
+
+    -   Address: A Proxy server host.
+    -   Port: A Proxy server port.
+    -   Excludes: A list of addresses separated by commas. Enter the beginning or the ending of the address in the list \(for example, <code>192.168.&lt;</code>,<code>&lt;.katalon.com</code>\).
+
+        
+        :::note
+
+        -   The **Excludes** feature is available from Katalon Studio version 7.2.0 onwards.
+        -   Katalon Studio only supports proxy exceptions in web recorder and spy utilities with Chrome and Firefox.
+        :::
+
+
+## Use desired capabilities to set different proxy settings
+
+Katalon Studio applies the system proxy to the desired capabilities of a test execution on the instance automatically.
+
+If you want to configure different proxy settings depending on your projects, you can use **Desired Capabilities** as follows:
+
+1.  Open your project and go to **Katalon Studio** &gt; **Preferences** &gt; **Katalon** &gt; **Proxy** &gt; **System**.
+
+2.  At the bottom of the displayed view, uncheck the **Auto-apply to test execution desired capabilities** option.
+
+    <img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/proxy-preferences/image/ks-proxy-setting-uncheck.png" width={700} alt="Uncheck the Auto-apply to test execution desired capabilities at the end of the Proxy System setting" />
+
+3.  Click **Apply** to save.
+
+4.  Go to **Project** &gt; **Settings** &gt; **Desired Capabilities** and select a testing environment.
+
+5.  Specify the proxy details. For example:
+
+    <img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/proxy-preferences/image/proxy-project-settings.png" width={700} alt="Specify proxy details in Project settings" />
+
+6.  Click **Apply & Close**.
+
+
+## Override proxy details in the test script
+
+From version 7.0.0 and later, Katalon Studio supports an option to pass proxy details via a request object in Web Service testing.
+
+
+:::note
+
+-   The proxy information passed in the request object overrides the proxy information in **Proxy Preferences**.
+
+:::
+
+See the example below:
+
+```
+RequestObject requestObject = findTestObject("google")
+ProxyInformation proxyInfo = new ProxyInformation();
+proxyInfo.setProxyServerAddress("localhost")
+proxyInfo.setProxyServerPort(8001)
+proxyInfo.setProxyOption(ProxyOption.MANUAL_CONFIG.toString())
+proxyInfo.setProxyServerType(ProxyServerType.HTTP.toString())
+requestObject.setProxy(proxyInfo)
+```
+
+Another workaround to override proxy details in script mode is to get your current proxy format, then pass your new proxy information in.
+
+See the example below:
+
+```
+import com.google.gson.Gson 
+import com.kms.katalon.core.configuration.RunConfiguration 
+import com.kms.katalon.core.network.ProxyInformation 
+import com.kms.katalon.core.network.ProxyOption
+
+// Get current proxy information 
+ProxyInformation proxy = RunConfiguration.getProxyInformation() 
+println(proxy)
+
+// Switch proxy 
+proxy.setProxyOption(ProxyOption.MANUAL_CONFIG.name()) 
+proxy.setProxyServerAddress("127.0.0.1") 
+proxy.setProxyServerPort(8082) 
+Map<String, Object> generalProperties = RunConfiguration.getExecutionGeneralProperties(); 
+generalProperties.put(RunConfiguration.PROXY_PROPERTY, new Gson().toJson(proxy)); 
+println proxy
+
+// Switch back to no_proxy 
+proxy.setProxyOption(ProxyOption.NO_PROXY.name()) 
+proxy.setProxyServerAddress("") 
+proxy.setProxyServerPort(0) 
+Map<String, Object> generalProperties = RunConfiguration.getExecutionGeneralProperties(); generalProperties.put(RunConfiguration.PROXY_PROPERTY, new Gson().toJson(proxy)); 
+
+println proxy
+
+```

@@ -1,0 +1,89 @@
+---
+id: concept-c9b3d106-c177-45f9-aa47-6514c536f12e
+slug: /get-started/set-up-your-workspace/katalon-studio-preferences/set-a-new-default-jre-for-test-projects-in-katalon-studio
+---
+
+# Set a new default JRE for test projects in Katalon Studio
+
+Katalon Studio uses the default embedded Java Runtime Environment \(JRE\) v8 to run a Katalon Studio instance and compile test projects. You can learn more about JRE v8 in the Oracle document here: [JRE v8](https://www.oracle.com/java/technologies/javase/jre8-readme.html).
+
+From Katalon Studio version 7.9.0 onwards, you can set your desired JRE package as the default one to compile and run test projects. You can also override the default configuration in console mode by using the environment variable.
+
+
+:::note
+
+-   This change applies to the JRE used to run your test projects, not the JRE used to run Katalon Studio.
+
+:::
+
+This guide takes you through the steps to:
+
+-   Set a new default JRE for a Katalon Studio instance.
+-   Apply the new JRE to a test project.
+-   Run tests with another JRE in the command line.
+
+## Set a new default JRE for a Katalon Studio instance
+
+-   Katalon Studio version 7.9.0 onwards.
+-   The desired JRE version \(from v8 to v14\) installed on your machine.
+
+You need to set your desired JRE as the default JRE in Katalon Preferences. In this example, we set JRE 11 as the default one. Do as follows:
+
+1.  Go to **Katalon Studio** &gt; **Preferences** &gt; **Java** &gt; **Installed JREs**.
+
+2.  Click on the button **Add...**.
+
+    <img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/Set_A_New_Default_JRE_For_Test_Projects/images/ks-add-jre.png" />
+
+3.  In the **Add JRE** dialog, select **Standard VM**.
+
+    <img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/Set_A_New_Default_JRE_For_Test_Projects/images/ks-standard-vm.png" />
+
+4.  Browse to the <code>Home</code> folder of the JRE you wish to add and give it a name. Here, we name it JRE 11. Click **Finish**.
+
+    <img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/Set_A_New_Default_JRE_For_Test_Projects/images/ks-browse-jre.png" />
+
+5.  In the **Installed JREs** section, check the newly added JRE to set it the default one.
+
+    <img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Katalon_Studio_Preferences/Set_A_New_Default_JRE_For_Test_Projects/images/ks-set-jre-default.png" />
+
+6.  Click **Apply & close**.
+
+
+## Use the newly added JRE in a test project
+
+To run a test project with the new JRE, do as follows:
+
+1.  Download <code>jaxb-api-2.3.1.jar</code> library. You can download JAXB API 2.3.1 from the Maven Repository website here: [JAXB API 2.3.1](https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api/2.3.1).
+
+2.  Add the <code>jaxb-api-2.3.1.jar</code> library to your test project. To do so, you can follow the instructions in this document: [Add an external library to a project](/create-tests/manage-projects/project-settings/library-management-in-katalon-studio#).
+
+    
+    :::note
+
+    -   The JRE version used to run test projects and JRE compiler compliance level should be compatible. For instance, Java 8 test projects are compatible with the default JRE compiler level 1.8. To alter JRE compiler compliance level, go to **Preferences** &gt; **Java** &gt; **Compiler**.
+    -   In case you want to check which Java version the test project is developed with, add the following script to a test case, then run it and see the log.
+    ```
+    println System.getProperty('java.version')
+    ```
+
+    :::
+
+
+## Run tests with another JRE in the command line
+
+
+:::note
+
+-   Katalon Runtime Engine \(KRE\) version 7.9.0 onwards.
+-   The desired JRE version \(from v8 to v14\) installed on your machine.
+-   An active KRE license. To learn more about activating licenses, you can refer to this document here: [Katalon Runtime Engine license overview](/administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/license-overview).
+
+:::
+
+To execute a test suite or a test suite collection with another JRE in console mode, you need to add the <code>KATALON&#95;JAVA&#95;HOME= &lt;JRE&#95;location&gt;</code> environment variable and use it before Katalon commands. Below is a sample command on macOS and Linux for your reference:
+
+```
+export KATALON_JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home.
+./katalonc ...
+```

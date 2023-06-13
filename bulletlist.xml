@@ -1,0 +1,24 @@
+<bulletlist>
+    <li><link href="abc/">About Katalon Platform</link></li>
+    <li>General Information
+        <bulletlist>
+            <li>Supported Technologies
+                <bulletlist>
+                    <li><link href="def/">Supported Technologies for Katalon Studio</link></li>
+                </bulletlist>
+            </li>
+            <li>Supported Environments
+                <bulletlist>
+                    <li>
+                        <link href="ghi/">Supported Environments for KS and KRE</link>
+                    </li>
+                    <li>
+                        <link href="jkl/">Supported Environments for TC</link>
+                    </li>
+                </bulletlist>
+            </li>
+        </bulletlist>
+    </li>
+</bulletlist>
+
+    

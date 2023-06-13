@@ -1,0 +1,102 @@
+---
+id: concept-88df1cce-e4e9-4775-ab58-bce610311e0c
+slug: /administer/katalon-platform-packages/testops-private-instance-integration
+---
+
+# TestOps Private Instance integration
+
+If data security is a critical concern for you and your business, testing in a secure environment where sensitive information is isolated can be required.
+
+From Katalon Studio version 8.3.5 onwards, you can privately perform tests and upload test results to TestOps Private Instance from Katalon Studio.
+
+This article introduces the TestOps Private Instance offering and shows you how to integrate your private instance with Katalon Studio.
+
+## What is TestOps Private Instance?
+
+TestOps Private Instance is a single-tenant cloud architecture where a single software instance and its supporting infrastructure/database serve only one customer, a.k.a tenant.
+
+Users can have an isolated TestOps instance with separate application nodes, isolated networking, and database resources. This creates a more secure environment than a multi-tenant architecture where a single software instance and database serve multiple customers.
+
+To learn more about single-tenant and multi-tenant architectures, you can refer to this Hubspot blog post: [Single vs Multi-Tenant SaaS Architecture](https://blog.hubspot.com/service/single-vs-multi-tenant-saas).
+
+With TestOps Private Instance, you can benefit from:
+
+-   Data isolation: This is helpful for users working with sensitive information and strict data storage requirements.
+
+-   Data residency: This is helpful for users who must confirm where their data lives or have compliance requirements, for example to be in compliance with General Data Protection Regulation \(GDPR\).
+
+-   Dedicated Katalon application: For users who have a predictable workload and want stronger guarantees in performance, a dedicated instance ensures that they perform tests without being interrupted by maintenance or scaling issues.
+
+-   No maintenance: While the dedicated instance offers better data isolation and performance, it is still fully managed by Katalon. This relieves customers from infrastructure management.
+
+
+## Enable TestOps Private Instance integration
+
+### Requirements
+
+-   Katalon Studio Enterprise version 8.3.5 onwards. To learn more about activating Katalon Studio with TestOps Private Instance.
+
+-   A private instance URL. If you want to learn more about TestOps Private Instance, contact our sales team via business@katalon.com.
+
+
+### Enable TestOps private instance integration in Katalon Studio
+
+
+:::note
+
+-   When running TestOps Private Instance in console mode, you need to activate the KRE license with Private Instance. To do so, pass the Private Instance URL used for authentication to the <code>serverURL</code> parameter. For example: <code>-serverUrl="https://admin-tenant1.katalon-cloudops.com"</code>
+
+
+:::
+
+1.  Open Katalon Studio.
+
+2.  Open the **Project Settings** menu.
+
+    -   Go to **Project** &gt; **Settings** &gt; **Katalon TestOps**.<img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/KSE-8-5-5-project-settings-task-6660.png" width={500} alt="The project settings menu in Katalon Studio Enterprise." />
+    -   Alternatively, you can also click the **TestOps icon** from the main toolbar to navigate to the TestOps settings.<img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/KS-8.3.5-TestOps-icon-task-6660.png" width={400} alt="The TestOps icon in Katalon Studio Enterprise." />
+3.  In the **Authentication** section, check **Override Authentication** and input your private instance URL, account e-mail, and password.
+
+    <img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/KS-8.3.5-Override-authentication-task-6660.png" width={500} alt="Set up Katalon TestOps by inputting your custom authentication details." />
+
+4.  Click **Fetch Organizations**. Once the connection is successful, Katalon Studio retrieves the organizations you belong to.
+
+    <img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/KS-8.3.5-Successful-override-task-6660.png" width={500} alt="Katalon Studio will verify and fetch your account's information." />
+
+5.  In the **Organization** dropdown menu, choose yor organization's name.
+
+6.  To upload test results automatically to your private instance, select the **Enable Katalon TestOps Integration** checkbox under the **Integration** section.
+
+    <img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/KS-8.3.5-Enable-TestOps-integration-task-6660_.png" width={500} alt="Enable the Katalon TestOps integration in Katalon Studio." />
+
+    1.  Once the connection is successful, Katalon Studio displays all teams and projects connected to your account.
+
+    2.  Choose your corresponding team and project in the dropdown menus labeled **Team** and **Project**. If you do not have these yet, they will be created automatically.
+
+
+Once the TestOps Private Instance integration is enabled, you can execute tests and upload test results to your private instance from Katalon Studio.
+
+### Enable TestOps private instance integration in Katalon Studio Platform Edition
+
+
+:::note
+
+-   When running TestOps Private Instance in console mode, you need to activate the KRE license with Private Instance. To do so, pass the Private Instance URL used for authentication to the <code>serverURL</code> parameter. For example: <code>-serverUrl="https://admin-tenant1.katalon-cloudops.com"</code>
+
+
+:::
+
+1.  Open Katalon Studio - Platform Edition.
+
+    -   If you are opening Katalon Studio Platform Edition for the first time, the **Katalon Studio Activation** dialog automatically pops up.
+    -   If you are already logged into a Katalon account in Katalon Studio, then click on the **Profile** button and select **Log out**. Upon logging out, the **Katalon Studio Activation** dialog appears.
+    <img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/kspe-step-1-task-5882.png" width={400} alt="Logging out of Katalon Studio Platform Edition." />
+
+2.  In the **Server URL** section of the **Katalon Studio Activation** dialog, input your private instance URL, account e-mail, and password.
+
+3.  Select your organization, then click **OK**.
+
+    <img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/private-instance-integration/image/kspe-step-4-task-5882.png" width={500} alt="Select your organization in Katalon Studio Platform Edition." />
+
+
+Once the TestOps Private Instance integration is enabled, you can execute tests and upload test results to your private instance from Katalon Studio Platform Edition.

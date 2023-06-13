@@ -1,0 +1,84 @@
+---
+id: concept-7bb4a45a-5477-431d-8015-434c29c5ea80
+slug: /create-tests/create-test-cases/using-web-services-in-a-test-case-in-katalon-studio
+---
+
+# Using Web Services in a test case in Katalon Studio
+
+Katalon Studio supports various ways to use a Web Service object in a test case. You can call the web service methods from manual view \(keywords test\), script view \(test scripts\), and verify the responses.
+
+## In test request object view
+
+You can add Web Services request to test case directly from the test request object view. Click on the *plus* icon to add Web Services request to a new test case or any existing test case.
+
+<img src="/doc_images/Documents/Create_tests/Create_Test_Cases/using-web-services-in-a-test-case/image/ks-841-add-ws-object.png" width={700} alt="add web service object" />
+
+## In the manual view of the test case editor
+
+Follow the steps below to use web service object in **Manual** view:
+
+1.  Open a test case in **Manual** view, then select the option to **Add** **Web Service Keyword** from command toolbar.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/using-web-services-in-a-test-case/image/ks-841-add-ws-kw.png" width={700} alt="add web service keyword" />
+
+2.  A Web Service step is added to the test case.
+
+    To send a request to Web Service, you need to use **[Send Request](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-send-request)**keyword. Select the **[Send Request](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-send-request)**keyword now.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/using-web-services-in-a-test-case/image/ks-841-send-request.png" width={700} alt="send request" />
+
+3.  Double click on **Object** cell to specify the web service object to **[Send Request](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-send-request)**.
+
+    
+    :::note
+
+    -   Variables for Web Service Test Object:
+
+        -   When you modify the variables of a Web Service Test Object in a test case, the values will ONLY apply to that particular test case. If you reuse that Test Object in another test case, Katalon Studio will get the original values that were defined in the Test Object editor.
+
+    :::
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/using-web-services-in-a-test-case/image/ks-841-test-object-input.png" width={600} />
+
+4.  The output of **[Send Request](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-send-request)**keyword could be validated if needed using different <code>Verify...</code> keywords depending on your situation. To learn more about Web Service keywords, you can refer to the following documents:
+
+    -   [\[WS\] Verify Element Text](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-verify-element-text)
+
+    -   [\[WS\] Verify Elements Count](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-verify-elements-count)
+
+    -   [\[WS\] Verify Response Status Code](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-verify-response-status-code)
+
+    -   [\[WS\] Verify Response Status Code In Range](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-verify-response-status-code-in-range)
+
+
+## In the script view of a test case editor
+
+You can use the **[Send Request](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-send-request)**keyword for Web Service object and the **[Verify...](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-verify-element-property-value)**keywords to verify the web service response. You may want to refer to [Handle Response messages](/create-tests/test-objects/api-test-objects/handle-response-messages-in-katalon-studio) for more details regarding **Element Locator**:
+
+```
+//Send a SOAP request and returns its response
+def response = WS.sendRequest(findTestObject([]))
+//Verify if a value at a specific location in response is as expected
+WS.verifyElementPropertyValue(response, <Element Locator>, <expected value>)
+
+```
+
+For example:
+
+<img src="/doc_images/Documents/Create_tests/Create_Test_Cases/using-web-services-in-a-test-case/image/ks-841-test-script.png" width={700} alt="add web service in a test script" />
+
+If you have used [variables and parameters in test requests](/create-tests/test-objects/api-test-objects/rest-request/parameterize-a-web-service-object-in-katalon-studio#), you can pass values to the variables as follows:
+
+```
+//Send a test request and pass values to variables used in that request
+def response = WS.sendRequest(findTestObject([the ID of Web Service object], ["variable1": value1, "variable2": value2, ... , "variableN": valueN]))
+
+```
+
+For example:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/using-web-services-in-a-test-case/parameterize-ws.png" />
+
+The following API docs might be useful when working with web service objects:
+
+<table><tr><th>Class</th><th>Description</th></tr><tbody><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/RequestObject.html" >Request Object</a></td><td>Describe all available methods for Request Object</td></tr><tr><td><a href="https://api-docs.katalon.com/com/kms/katalon/core/testobject/ResponseObject.html" >Response Object</a></td><td>Describe all available methods for Response Object</td></tr></tbody></table>

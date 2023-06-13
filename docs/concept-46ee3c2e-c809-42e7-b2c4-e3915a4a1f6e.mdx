@@ -1,0 +1,27 @@
+---
+id: concept-46ee3c2e-c809-42e7-b2c4-e3915a4a1f6e
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-folder
+---
+
+# \[Cucumber\] Run Feature Folder
+
+-   **Description**: Execute multiple feature files stored in the same features folder.
+-   **Keyword name**: runFeatureFolder
+-   **Keyword syntax**: <code>runFeatureFolder(folderRelativePath, flowControl)</code>
+-   **Parameters**:
+
+    -   Name: <code>folderRelativePath</code>
+    -   Description: the folder relative path that starts from the current project location.
+    -   Parameter Type: String
+    -   Mandatory: Required
+    -   Name: <code>flowControl</code>
+    -   Description: an instance com.kms.katalon.core.model.FailureHandling that controls the running flow.
+    -   Parameter Type: FailureHandling
+    -   Mandatory: Optional
+-   **Returns**: an instance of <code>CucumberRunnerResult</code> that includes the status of keyword and report folder location.
+-   **Example**:
+
+    ```
+    CucumberKW.runFeatureFolder('Include/features/New Feature Folder.feature')
+    
+    ```

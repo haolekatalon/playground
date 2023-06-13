@@ -1,0 +1,44 @@
+---
+author: Trinh Huynh <trinh.huynh@katalon.com>
+id: concept-3f0116cc-9992-42f8-9497-1747875ccbe5
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-test-suite-analytics-in-katalon-studio
+---
+
+# View test suite analytics in Katalon Studio
+
+This document describes the Analytics components in Katalon Studio.
+
+
+:::note
+
+-   Katalon Studio version 8.6.5 onwards.
+-   You have enabled uploading reports to Katalon Platform. For instruction, see [Integrate Katalon TestOps and Katalon TestCloud with Katalon Studio](/get-started/set-up-your-workspace/integrate-katalon-testops-and-katalon-testcloud-with-katalon-studio).
+
+:::
+
+After executing a test suite, you can find the execution data in two places:
+
+## In Main tab
+
+<img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Toolbar_And_Views_In_Katalon_Studio/image/ts-main.png" width={600} />
+
+In the **Main** tab, you can find three analytics columns: **Flakiness \(%\)**, **Latest Run**, and **Avg. Duration** \(Average Duration\). These columns provide insights into the trends and performance of each test case.
+
+<table><tr><th>Column</th><th>Description</th></tr><tbody><tr><td><strong>Flakiness (%)</strong></td><td>The percentage calculated from the number of failed/passed statuses of the test case</td></tr><tr><td><strong>Latest Run</strong></td><td>The execution statuses of three latest test runs</td></tr><tr><td><strong>Avg. Duration</strong></td><td>The average time (in seconds) taken for the test case to complete its execution</td></tr></tbody></table>
+
+## In Analytics tab
+
+
+:::note
+
+-   Only applicable for test suite.
+
+:::
+
+The **Analytics tab** provides you with insights fetched from Katalon Platform, where you can gain insights into the overall performance of the test suite.
+
+<img src="/doc_images/Documents/Get_Started/Set_Up_Your_Workspace/Toolbar_And_Views_In_Katalon_Studio/image/ts-analytics.png" width={600} />
+
+<table><tr><th>Component</th><th>Description</th></tr><tbody><tr><td><strong>Avg. Duration of Last 3 Runs</strong></td><td>Displays the average time it takes to complete the test suite execution based on the last 3 runs</td></tr><tr><td><strong>Last 3 runs</strong></td><td>Displays an overview of testing configuration used in the last 3 test suite executions and their statuses: Passed, Failed, Error, Incomplete, and Skipped</td></tr></tbody></table>
+
+To access more detailed and advanced test reports, you can click on **Analyze on Platform** to open TestOps dashboard. To learn more about the reports on TestOps dashboard, see [TestOps dashboard overview](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/testops-dashboard-overview).

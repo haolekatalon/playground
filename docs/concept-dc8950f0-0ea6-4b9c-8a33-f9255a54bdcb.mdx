@@ -1,0 +1,61 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-dc8950f0-0ea6-4b9c-8a33-f9255a54bdcb
+slug: /administer/katalon-platform-packages/katalon-platform-quotas
+---
+
+# Katalon Platform Quotas
+
+Katalon Platform comprises of different modules and services with their own individual quotas. These quotas represent how much of resources you can use according to your subscription plan. See: [Katalon Platform Plans](/administer/katalon-platform-packages/katalon-platform-plans).
+
+This document lists out the quotas of Katalon Platform and shows you how to view them.
+
+## Quotas overview
+
+The following are the quotas used throughout the platform.
+
+### Test results
+
+Katalon Platform limits the number of test results, that is the results of test cases anywhere in the platform and reported in .Katalon TestOps. A test result is counted under the following cases:
+
+-   The test result is of a test case executed via TestOps scheduler and other Katalon applications \(Katalon Studio, Katalon TestCloud, Katalon Runtime Engine \(KRE\), Visual Testing\), with *Passed*, *Failed*, *Error*, *Incomplete* status. Test cases with the *Skipped* status are not counted.
+
+-   The test result is imported from outside of Katalon applications, such as [JUnit](/analyze/reports/upload-test-reports/upload-junit-and-katalon-studio-reports-to-testops-manually), [Mocha](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-mocha-to-katalon-testops), [Jest](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-jest-to-katalon-testops), [Jasmine](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-jasmine-to-katalon-testops), and [Pytest](/analyze/reports/upload-test-reports/upload-reports-from-other-framework/upload-test-reports-from-pytest-to-katalon-testops).
+
+-   The test result is manually uploaded to TestOps using [TestOps interface](/analyze/reports/upload-test-reports/upload-junit-and-katalon-studio-reports-to-testops-manually), [Command line using Report Uploader](/analyze/reports/upload-test-reports/upload-junit-and-report-files-to-using-command-line), or from [Jenkins integration](/execute/ci-cd-integrations/jenkins-integration/use-katalon-plugins-for-jenkins-integration/integrate-jenkins-with-testops).
+
+Test results that run under Debug mode in Katalon Studio are not counted \(Katalon Studio does not allow uploading test results that run under Debug mode to TestOps\).
+
+### Active projects
+
+An active project is a Katalon test project created in TestOps. Depending on your current Katalon Platform subscription plan, there is a limit on the number of projects you can create.
+
+Test projects created in Katalon Studio \(not connected to the platform\) are not counted into your active project quota.
+
+### TestCloud sessions
+
+The **TestCloud** per Session plan allows you to purchase a specific number of parallel sessionsYou can run one test sequence in one sessionOne session enables you to run one sequence of tests,. for as long as you need.
+
+The number of TestCloud sessions that you purchase is the maximum number of parallel tests you can execute with TestCloud. If you schedule more parallel test runs than the purchased session quota, the additional test runs will be queued.
+
+The maximum number of queued test runs is up to *three* times your session quota. For example, if your session quota is 5 sessions, you can queue 15 additional sessions.
+
+### Visual testing checkpoint images
+
+Visual Testing uses screenshots called checkpoint images to compare UI changes. These checkpoint images are taken via Visual Testing keywords \( e.g., [\[WebUI\] Take Area Screenshot As Checkpoint](/create-tests/keywords/keyword-description-in-katalon-studio/visual-based-web-testing-keywords/webui-take-area-screenshot-as-checkpoint) or [\[Mobile\] Take Area Screenshot As Checkpoint](/create-tests/keywords/keyword-description-in-katalon-studio/visual-based-mobile-testing-keywords/mobile-take-area-screenshot-as-checkpoint)\).
+
+## View your quotas
+
+You can view the quotas of different products in the **Product Utilization** section of the Katalon Platform.
+
+Follow these steps:
+
+1.  [Sign in to Katalon Platform](https://katalon.com/sign-in).
+
+2.  In the Katalon Platform homepage, click on the **Settings** menu in the top right corner. Select **Product Utilization**.
+
+    You are navigated to the **Admin** page.
+
+3.  Under the **Product Utilization** section, select the product with the associated quota that you want to view.
+
+    For example, to view the test result quota of your organization, select **Katalon Platform**.<img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/katalon-platform-quotas/Product-utilization-test-results.png" width={700} />

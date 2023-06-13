@@ -1,0 +1,26 @@
+---
+id: concept-6a90d183-3fe6-4aa8-a370-298b3f640f3c
+slug: /plugins-and-add-ons/katalium-framework/get-started/katalium-framework-in-other-ides
+---
+
+# Katalium Framework in other IDEs
+
+## Prerequisites
+
+-   Java Development Kit 8.
+
+## Start Katalium Server
+
+Please refer to [this guide](/plugins-and-add-ons/katalium-server/get-started-with-katalium-server) to learn how to start Katalium Server.
+
+## Run your first test in IDE
+
+Refer to this guide to learn how to [create a test case](/plugins-and-add-ons/katalium-framework/create-a-test-case-in-katalium-framework) or [test suite](/plugins-and-add-ons/katalium-framework/create-a-test-suite-in-katalium-framework).
+
+Example of a test case run in IntelliJ IDEA:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-get-started-other-ides/run-test-ide.png" />
+
+## Run your first test in CLI
+
+To run the default test suite configured in <code>pom.xml</code> use <code>mvn clean test</code>. Test suites can also be specified using command arguments, e.g. <code>mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng-parallel.xml</code>.

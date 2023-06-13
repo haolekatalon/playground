@@ -1,0 +1,16 @@
+---
+id: troubleshooting-8b4d0f72-5092-42e4-a7d7-960bcb8bd966
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/webdriver-exception-element-is-not-clickable-at-point-x-y
+---
+
+# WebDriver exception: Element is not clickable at point \(x, y\)
+
+When you encounter the following exception: <code>org.openqa.selenium.WebDriverException: Element is not clickable at point (x, y). Other elements would receive the click: ...</code>
+
+1.  Click on the element using the <code>Execute Javascript</code> keyword instead. To learn more about the <code>Javascript</code> keyword, you can refer to this document here: [\[WebUI\] Execute JavaScript](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-execute-javascript).
+
+    ```
+    import com.kms.katalon.core.webui.common.WebUiCommonHelper 
+    WebElement element = WebUiCommonHelper.findWebElement(findTestObject('your/object'),30)
+    WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(element))
+    ```

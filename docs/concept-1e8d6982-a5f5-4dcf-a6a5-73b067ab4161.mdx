@@ -1,0 +1,64 @@
+---
+id: concept-1e8d6982-a5f5-4dcf-a6a5-73b067ab4161
+slug: /create-tests/create-tests-using-katalon-cloud-studio/create-and-manage-a-draft-test-case/run-a-draft-test-case
+---
+
+# Run a draft test case
+
+Learn how to execute a test run on your draft test case in Katalon Cloud Studio \(Beta\).
+
+## Run a draft test case with a browser extension
+
+Learn how to execute a test run on your draft test case with a browser extension.
+
+1.  From the Project home screen, go to **Tests** &gt; **Test Cases** and select the draft test case you wish to run.
+
+2.  In the Editor view, click **Run**.<img src="/doc_images/Documents/Create_tests/Cloud_Studio/Images/Run_test_case_using_browser_extension.png" width={700} />
+
+    Two things happen when you execute a test run:
+
+    -   A test browser opens executing all test steps listed in the draft test case; and
+
+    -   The Katalon Editor displays the progress of the test run via the progress bar<img src="/doc_images/Documents/Create_tests/Cloud_Studio/Images/progress_bar.png" width={700} />
+
+3.  Once the test run is completed, the Editor is updated with the results of the test run \(Passed/Failed\) and other pertinent information about the test run such as:
+
+    -   Number of steps executed in the test run
+    -   Number of steps passed/failed/incomplete
+    -   Duration of the test run
+    -   Test step error summary
+    Here's an example of a test run with a <code>Passed</code> result:
+
+    <img src="/doc_images/Documents/Create_tests/Cloud_Studio/Images/Passed_Test_Run.gif" width={700} />
+
+    Here's an example of a test run with a <code>Failed</code> result:
+
+    <img src="/doc_images/Documents/Create_tests/Cloud_Studio/Images/Failed_Test_Run.gif" width={700} />
+
+
+You have successfully executed a test run on your draft test case with a browser extension.
+
+## Run a draft test case with TestCloud
+
+You can now run a draft test case using TestCloud in Katalon Cloud Studio \(Beta\) and later versions.
+
+1.  From the Project home screen, go to **Tests** &gt; **Test Cases** and select the draft test case you wish to run.
+
+2.  In the Editor view, click the **Run** dropdown arrow and select **Run with TestCloud** and the following configurations:
+
+    -   Select the OS configuration you want to run the test case under
+
+        -   For Cloud Studio \(Beta\), we only support Linux OS.
+
+    -   Select the browser and version
+
+        -   For Cloud Studio \(Beta\), we only support Chrome 110 and Firefox 110 browsers.
+
+    <img src="/doc_images/Documents/Create_tests/Cloud_Studio/Images/TestCloud_Run_configuration.gif" width={700} />
+
+3.  Click **Run Test**.
+
+    Once the draft test case finishes the test run, the Editor is updated with the results of the test run \(Passed/Failed\).
+
+
+You have successfully executed a test run on your draft test case with TestCloud.

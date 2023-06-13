@@ -1,0 +1,220 @@
+---
+id: concept-dafaff1e-c8b6-48b1-854d-7e627c58f0b6
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-take-screenshot
+---
+
+# \[WebUI\] Take Screenshot
+
+## Parameters
+
+The parameters for the WebUI keywords are as given below:
+
+<table><tr><th>Parameter</th><th>Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>fileName</td><td>String</td><td>Optional</td><td>A String that represents the path to the saved image. The path can be an absolute or relative path.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="https://docs.katalon.com/katalon-studio/docs/failure-handling.html" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr><tr><td>screenshotOptions</td><td>Map</td><td>Optional</td><td>A String representing the information to be printed on the captured screenshot.</td></tr></tbody></table>
+
+
+:::note
+
+-   *ScreenshotOptions*is available for refer Katalon Studio version 8.0.5 onwards.
+
+
+:::
+
+### ScreenshotOptions parameters
+
+The *screenshotOptions* parameter has the following properties:
+
+<table><tr><th>Parameter</th><th>Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>Text</td><td>String</td><td>Must not be null or empty</td><td>This string determines the information to be printed on the captured screenshot. This string should be limited to 100 characters.</td></tr><tr><td>x</td><td>Integer</td><td>Optional</td><td>x pixels from the left side of the image. The default is 0.</td></tr><tr><td>y</td><td>Integer</td><td>Optional</td><td>y pixels from the top of the image. The default is 0.</td></tr><tr><td>font</td><td>String</td><td>Optional</td><td>Font name. The default is Arial.</td></tr><tr><td>fontSize</td><td>Integer</td><td>Optional</td><td>Size of font. The default is 12, maximum is 50.</td></tr><tr><td>fontColor</td><td>String</td><td>Optional</td><td>Hex string of color. Default is "#000000" (black).</td></tr><tr><td>fontStyle</td><td>FontStyle</td><td>Optional</td><td>fontStyle can be Plain, Italic or Bold. Default is Plain.</td></tr></tbody></table>
+
+For further information on standard map literal syntax, refer to: [The Groovy Development Kit - Collections-Maps](https://groovy-lang.org/groovy-dev-kit.html#Collections-Maps)
+
+
+:::note
+
+-   Supported fonts are Operating System \(OS\) fonts. You can find a list of font names for your operating system in the links given below:
+
+    -   Windows: required/Studio StuKatalon [How to Change the Default System Font on Windows 10](https://www.howtogeek.com/716407/how-to-change-the-default-system-font-on-windows-10/#:~:text=Windows%2010's%20default%20system%20font,on%20your%20Windows%2010%20PC.)
+    -   macOS: [Fonts - Apple Developer](https://developer.apple.com/fonts/#:~:text=SF%20Pro,and%20includes%20a%20rounded%20variant.)
+
+:::
+
+## Example for the use of WebUI keywords
+
+In this section, we demonstrate examples for the use of WebUI keywords for screenshots.required/Studio StuKatalon
+
+### Take a screenshot of your current browser after logging in
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+'Open browser and navigate to AUT'
+WebUI.openBrowser(GlobalVariable.G_SiteURL)
+
+'Input username'
+WebUI.setText(findTestObject('Page_Login/txt_UserName'), Username)
+
+'Input password'
+WebUI.setText(findTestObject('Page_Login/txt_Password'), Password)
+
+'Click on new_btn'
+WebUI.click(findTestObject('Page_Login/btn_Login'))
+
+'Take a screenshot after logging in'
+WebUI.takeScreenshot()
+
+'Close browser'
+WebUI.closeBrowser()
+
+```
+
+By default, the screenshots are saved to your *Katalon* folder.
+
+### Store your screenshot in a custom location
+
+The following example also takes a screenshot of your current browser after logging in. But here, the screenshot is saved to a custom location.
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+'Open browser and navigate to AUT'
+WebUI.openBrowser(GlobalVariable.G_SiteURL)
+
+'Input username'
+WebUI.setText(findTestObject('Page_Login/txt_UserName'), Username)
+
+'Input password'
+WebUI.setText(findTestObject('Page_Login/txt_Password'), Password)
+
+'Click on new_btn'
+WebUI.click(findTestObject('Page_Login/btn_Login'))
+
+'Take screenshot after logging in'
+WebUI.takeScreenshot('E:\\screenshot.png')
+
+'Close browser'
+WebUI.closeBrowser()
+
+```
+
+### Sort and store screenshots by projects using relative paths
+
+Same as above, but here the screenshot is stored in the same location as your current project, using relative paths.
+
+```
+ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+'Open browser and navigate to AUT'
+WebUI.openBrowser(GlobalVariable.G_SiteURL)
+
+'Input username'
+WebUI.setText(findTestObject('Page_Login/txt_UserName'), Username)
+
+'Input password'
+WebUI.setText(findTestObject('Page_Login/txt_Password'), Password)
+
+'Click on new_btn'
+WebUI.click(findTestObject('Page_Login/btn_Login'))
+
+'Take screenshot after logging in'
+WebUI.takeScreenshot('Test/Demo.png')
+ 
+'Close browser'
+WebUI.closeBrowser()
+
+```
+
+### Print text on your screenshots
+
+
+:::note
+
+-   Katalon Studio 8.0.5 required.
+
+
+:::
+
+The following examples illustrate different configurations to print the information you require on your screenshots.
+
+-   Add the current timestamp to your screenshot:
+
+```
+def timestamp = new Date().format("YYYY-MM-dd HH:mm:ss")
+WebUI.takeScreenshot(["text" : timestamp])
+
+```
+
+-   Add text <code>Katalon Studio</code> at position \(10, 20\):
+
+```
+WebUI.takeScreenshot(["text" : "Katalon Studio", "x" : 10, "y" : 20])
+
+```
+
+-   Add text <code>Katalon Studio</code> at position \(10, 20\) with font Courier, size 24, and gray color:
+
+```
+WebUI.takeScreenshot(["text" : "Katalon Studio", "x" : 10, "y" : 20, "font" : "Courier", "fontSize" : "24", "fontColor": "#808080"])
+
+```
+
+-   Take a screenshot, save it at D://Document. Add text <code>Katalon Studio</code> at position \(10, 20\) with font Courier, size 24 in gray:
+
+```
+WebUI.takeScreenshot(["text" : url, "x" : 10, "y" : 20, "fontColor" : "#FF3399", "fontStyle" : "Bold", "fontSize" : 30])
+```

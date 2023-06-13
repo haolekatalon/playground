@@ -1,0 +1,143 @@
+---
+id: concept-8ef6f132-7402-46db-97d4-2bab28d13443
+slug: /get-started/migration-from-other-tools/selenium-testng-junit-migration-to-katalon-studio
+---
+
+# Selenium/TestNG/JUnit Migration to Katalon Studio
+
+From Katalon Studio version 7.4.0 onwards, you can migrate your test cases from Selenium, TestNG, or JUnit projects to Katalon Studio. With the supported features and keywords, you can execute and maintain your existing Selenium, TestNG and JUnit projects with Katalon Platform without starting everything from scratch.
+
+Katalon Studio supports:
+
+-   Selenium version 3.x
+-   TestNG version 6.11
+-   JUnit version 4.12
+
+You can download our GitHub sample project for TestNG migration: [TestNG Migration](https://github.com/katalon-studio-samples/TestNG-Migration).
+
+## Requirements
+
+-   Katalon Studio version 7.4.0 onwards.
+
+
+## Supported features & keywords to facilitate the migration
+
+### Java class files
+
+You can create, view and edit Java class files.
+
+To create a new Java class file, in the **Tests Explorer** panel, go to the **Include &gt; scripts &gt; groovy** folder, right-click and choose **New &gt; Java Class**. Choose a package and enter class name in the **New** dialog.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/new-java-class.png" width={362} alt="Create Java Class files" />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/java1.png" width={285} alt="Sample Java Class file" />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/java-script.png" width={501} alt="Sample Java Class file" />
+
+## Built-in TestNG/JUnit keywords
+
+### Install TestNG/JUnit Keywords plugin
+
+You can enable the built-in keywords in the manual view by using the **TestNG/JUnit Keywords** plugin. You can download the plugin from Katalon Store here: [TestNG/JUnit Keywords](https://store.katalon.com/product/180/TestNG-JUnit-Keywords).
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/testng-kw.png" width={260} />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/testng-kw-2.png" width={334} />
+
+After installing the plugin, go to Katalon Studio and click **Reload Plugins**.
+
+If you want to use this plugin offline, you can refer to this document:[Use Private Plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/private-plugins-in-katalon-studio#). Because the **TestNG/JUnit Keywords** plugin is a **platform** plugin, you need to move the plugin package .jar file in the <code>&lt;project&#95;name&gt;/Plugins/platform</code> folder.
+
+### TestNG/JUnit Keywords
+
+TestNG/JUnit Keywords Plugin offers 3 built-in keywords to help you run TestNG/JUnit tests as follows:
+
+-   **runTestNGTestClasses**
+
+    **Syntax**: <code>runTestNGTestClasses(List testClasses)</code>
+
+    **Description**: run TestNG test classes and generate TestNG report at the running report folder.
+
+    **Parameters**:
+
+    <table><tr><th>Parameters</th><th>Type</th><th>Description</th><th>Mandatory</th></tr><tbody><tr><td>testClasses</td><td>List</td><td>List of TestNG test classes</td><td>Required</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. To learn more about failure handling settings, you can refer to this document: <a href="/maintain/configure-failure-handling-settings-in-katalon-studio#" >Failure handling</a>.</td><td>Optional</td></tr>    </tbody></table>
+
+-   **runTestNGTestSuites**
+
+    **Syntax**: <code>runTestNGTestSuites(List testSuite)</code>
+
+    **Description**: run TestNG test suites and generate TestNG report at the running report folder.
+
+    **Parameters**:
+
+    <table><tr><th>Parameters</th><th>Type</th><th>Description</th><th>Mandatory</th></tr><tbody><tr><td>testSuites</td><td>List</td><td>List of TestNG test suites as .xml files</td><td>Required</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. To learn more about failure handling settings, you can refer to this document: <a href="/maintain/configure-failure-handling-settings-in-katalon-studio#" >Failure handling</a>.</td><td>Optional</td></tr>    </tbody></table>
+
+-   **runJUnitTestClasses**
+
+    **Syntax**: <code>runJUnitTestClasses(List TestClasses)</code>
+
+    **Description**: run JUnit test cases and generate JUnit report at the running report folder.
+
+    **Parameters**:
+
+    <table><tr><th>Parameters</th><th>Type</th><th>Description</th><th>Mandatory</th></tr><tbody><tr><td>testClasses</td><td>List</td><td>List of JUnit test classes</td><td>Required</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. To learn more about failure handling settings, you can refer to this document: <a href="/maintain/configure-failure-handling-settings-in-katalon-studio#" >Failure handling</a>.</td><td>Optional</td></tr>    </tbody></table>
+
+
+## Migrate Selenium/TestNG/JUnit projects to Katalon Studio
+
+
+:::note
+
+-   Install Gradle version 5 or prior. You can download from the Gradle website here: [Gradle](https://gradle.org/).
+
+
+:::
+
+To migrate Selenium/TestNG/JUnit scripts to a Katalon Studio project, do as follows:
+
+1.  Open a project in Katalon Studio.
+
+2.  Build project dependencies.
+
+    2.1 Open the .gradle file and add the Java dependencies of your Selenium/TestNG/JUnit project.
+
+    
+    :::note
+
+    -   You only need to add the JUnit/TestNG project dependencies that are not Selenium dependencies.
+    -   Katalon Studio has bundled TestNG, JUnit and Selenium dependencies, you don't need to declare those dependencies again.
+    :::
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/build-gradle.png" width={629} alt="Selenium migration gradle" />
+
+    2.2 Open the **Command Prompt** or **Terminal** and navigate to the folder of your project. Enter <code>gradle katalonCopyDependencies</code>, then wait for the Gradle to build successfully.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/build-success.png" width={500} alt="Selenium migration build successful" />
+
+    2.3 Reopen the project to reload all the dependencies.
+
+3.  Copy and paste the source code of your Selenium/TestNG/JUnit project in the <code>Include/scripts/groovy</code> folder of your Katalon project.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/Copy-the-source-code.gif" alt="Add TestNG source code" />
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/step5.png" width={322} alt="Add TestND source code" />
+
+4.  Copy and paste other resources of your Selenium/TestNG/JUnit project in the <code>Include</code> folder of your Katalon project \(if any\).
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/Add-other-resources.gif" alt="Add TestNG resoureces" />
+
+5.  To reload the source code and resources from your Selenium/TestNG/JUnit project, right-click the <code>Include</code> folder, then click **Refresh**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/KS-Selenium-Reload-source-code.png" width={322} alt="Reload TestNG source code and resources" />
+
+6.  Create a test case that includes TestNG keywords to run TestNG test suites or JUnit test classes. To learn more about TestNG keywords, see above: [Built-in TestNG/JUnit keywords](/get-started/migration-from-other-tools/selenium-testng-junit-migration-to-katalon-studio#).
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/Selenium-TestNG-Migration/step7.png" width={629} alt="Create test case using TestNG/JUnit keywords" />
+
+    For real-time monitoring and better reporting capabilities, consider integrating your project with Katalon TestOps. See also [Upload Test Results to Katalon TestOps from Katalon Studio](/analyze/reports/upload-test-reports/upload-test-results-from-katalon-studio-to-katalon-testops-manually).
+
+
+## See also
+
+-   [Import Selenium IDE version 3 projects](/get-started/migration-from-other-tools/import-selenium-ide-version-3-projects-to-katalon-studio)
+-   Learn more with our Katalon Academy course: [Migrate from Selenium to Katalon Studio – Everything You Should Know](https://academy.katalon.com/courses/selenium-migrate/?utm_source=kat_docs&utm_medium=migration_to_ks)

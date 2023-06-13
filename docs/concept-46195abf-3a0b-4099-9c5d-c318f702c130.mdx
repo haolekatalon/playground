@@ -1,0 +1,34 @@
+---
+id: concept-46195abf-3a0b-4099-9c5d-c318f702c130
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-get-driver
+---
+
+# \[Windows\] Get Driver
+
+
+:::note
+
+-   Starting from **version 7.0.0**, Windows desktop application testing is available on Katalon Studio.
+
+
+:::
+
+## getDriver
+
+-   **Description**: Get the current Windows Driver.
+-   **Keyword name**: getDriver
+-   **Keyword syntax**: Windows.getDriver\(\)
+-   **Return Value**
+
+    -   Description: The current Windows Driver
+    -   Parameter Type: WindowsDriver
+-   **Example**:
+
+```
+"Start the note pad application"
+Windows.startApplication('C:\\Windows\\System32\\notepad.exe')
+
+"Get the application title"
+Windows.getDriver().getTitle()
+
+```

@@ -1,0 +1,51 @@
+---
+id: concept-8e0f1443-21d7-4458-b852-266252b054ac
+slug: /organize/manage-tests/manage-test-suite-collections-in-katalon-studio
+---
+
+# Manage test suite collections in Katalon Studio
+
+A test suite collection \(TSC\) contains a list of test suites, which allows you to execute multiple test suites together in either parallel mode or sequential mode.
+
+## Create a new test suite collection
+
+To create a new test suite collection, do as follows:
+
+1.  In the **Tests Explorer** panel, right-click on the **Test Suites** folder &gt; **New** &gt; **Test Suite Collection**.
+
+    <img src="/doc_images/Global_reuse/Images_warehouse/Katalon_Studio/Tests_Explorer/KS-8.2.5-create-tsc.png" width={500} alt="Create a new test suite collection" />
+
+    Alternatively, you can also go to **File** &gt; **New** &gt; **Test Suite Collection** from the main menu.
+
+    A **New Test Suite Collection** dialog appears.
+
+2.  Fill in the name and the description \(optional\).
+
+3.  Click **OK**.
+
+
+You have successfully created a new test suite collection.
+
+## Add test suites to a test suite collection
+
+To add test suites to a test suite collection, do as follows:
+
+1.  In the command toolbar, click **Add**.
+
+    A **Test Suite Browser** dialog appears, displaying all of the Katalon Studio test suites.
+
+2.  Select the test suites you wish to execute. Click **OK**.
+
+    The selected test suites are added to the test suite collection accordingly.
+
+    <img src="/doc_images/Documents/Organize/Manage_Tests/Test-suite-collection/Image/KS-Add-TS-to-TSC.png" alt="Add test suites to a test suite collection" />
+
+3.  After adding test suites to the test suite collection, you need to configure the environment for test suite execution. The following table will provide you with the detailed description to set up the environment.
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>Run with</td><td>To select the environment executed with the Test Suite.</td></tr><tr><td>Run configuration</td><td><p>This column allows you to specify the configuration for the selected environment. This is mostly applicable to mobile environment.</p> <p>For example: When you choose iOS environment, you can select which iOS devices you want to execute with by clicking this column.</p> <p><img src="/doc_images/Documents/Organize/Manage_Tests/Test-suite-collection/Image/KS-Specify-configuration-for-environment.png" width={300} alt="Select devices for iOS environment" /></p></td></tr><tr><td>Profile</td><td>Execution Profile that contains all variables values for each Test Suite execution. To learn more about the execution profile, you can refer to this document: <a href="/create-tests/data-driven-testing/execution-profile" >Execution Profile</a>.</td></tr><tr><td>Run</td><td>To choose the test suite you wish to run in the test suite collection. This is checked by default.</td></tr>    </tbody></table>
+
+
+**Next step**  
+
+
+[Execute test suite collections in Katalon Studio](/execute/execute-tests-with-katalon-studio/execute-test-suite-collections-in-katalon-studio)

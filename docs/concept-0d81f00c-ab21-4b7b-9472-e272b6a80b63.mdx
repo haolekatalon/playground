@@ -1,0 +1,42 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-0d81f00c-ab21-4b7b-9472-e272b6a80b63
+slug: /execute/test-execution-overview
+---
+
+# Test Execution Overview
+
+Katalon Platform offers a variety of test execution solutions, giving testers the flexibility of choosing the execution environments and behaviors. This document is an overview of test execution methods offered by Katalon Platform and their common use cases.
+
+## Test methods
+
+Katalon Platform provides scalable test executing solutions across local, on-premises, and cloud environments. Specifically, the platform offers the following methods.
+
+-   **Local**: You can develop and execute your tests right away with Katalon Studio or with the command-line interface of Katalon Runtime Engine \(KRE\). See: [Execute tests with Katalon Studio overview](/execute/execute-tests-with-katalon-studio/execute-tests-with-katalon-studio-overview) and [Execute tests with KRE](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#).
+
+-   **Cloud-based**: With TestOps and TestCloud, you can execute tests on most common browsers and operating systems, and on different devices specific to your application under test. See: [Test Execution with TestOps](/execute/cloud-based-test-execution/test-execution-with-testops/test-execution-with-testops) and [Use TestCloud in TestOps](/execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-testops).
+
+-   **CI/CD Integrations**: We provide a pre-configured Docker image equipped with KRE - the Katalon Docker Image \(KDI\). With this image, you can implement test executions in containers of any CI/CD pipeline. See: [CI/CD Integration Overview](/execute/ci-cd-integrations/ci-cd-integration-overview).
+
+
+## Integrations with other vendors for cloud execution
+
+Besides the provided methods, you can further extend Katalon tools by integrating with other software testing vendors. These integrations allow you to execute Katalon tests in cloud environments and devices created by other platforms, for web or mobile applications.
+
+The integrations for test execution include:
+
+<table><tr><th>Product</th><th>Description</th><th><strong>Supported <span>Katalon Studio</span> versions</strong></th></tr><tbody><tr><td><a href="/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-overview" >TestCloud</a></td><td>Execute tests on the cloud with the most popular browsers, operating systems, and mobile devices. See: <a href="/supported-execution-environments/supported-environments-for-katalon-testcloud" >Supported environments for Katalon TestCloud</a>.</td><td> </td></tr><tr><td><a href="/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/aws-device-farm-integration" >AWS Device Farm</a></td><td>Execute your Katalon test scripts with devices provided on AWS Device Farm by using aws-device-farm-integration.</td><td> </td></tr><tr><td><a href="/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/app-center-integration" >App Center</a></td><td>Execute your Katalon test scripts with devices provided on App Center Test by using sideload to package Katalon projects in JUnit format.</td><td> </td></tr><tr><td><a href="/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/browserstack-integration" >BrowserStack</a></td><td>Execute your tests on BrowserStack Selenium Grid from your <span>Katalon Studio</span> instance. You can also try our cloud-based test environment, see <a href="/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-overview" ><span>Katalon TestCloud</span> overview</a>.</td><td>v7.0.0+</td></tr><tr><td><a href="/execute/ci-cd-integrations/circleci-katalon-orb" >CircleCI</a></td><td>Set up a CircleCI test environment to schedule and execute tests remotely with <span>Katalon TestOps</span>.</td><td> </td></tr><tr><td><a href="https://docs.katalon.com/docs/katalon-runtime-engine/docker-image#ariaid-title1" >Docker image</a></td><td><ul><li>Run tests with Katalon Docker image (KDI), which contains up-to-date browsers, including Google Chrome, Mozilla Firefox, Microsoft Edge, and <span>Katalon Studio</span>. With KDI, you do not need to use the <span>Katalon Studio</span> and <span>Katalon Runtime Engine</span> apps installed on your local machine.</li><li>Create a Docker Test Environment with a compatible Agent in Katalon TestOps. See <a href="/execute/cloud-based-test-execution/test-execution-with-testops/set-up-docker-test-environments-for-testops" >Docker Test Environments</a>.</li></ul></td><td> </td></tr><tr><td><a href="/execute/cloud-based-test-execution/test-execution-with-testops/set-up-kubernetes-test-environments-for-testops" >Kubernetes</a></td><td>Create a Kubernetes (EKS) test environment to execute or schedule Test Runs in <span>Katalon TestOps</span>.</td><td> </td></tr><tr><td><a href="/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/kobiton-integration/kobiton-integration-with-katalon-studio#" >Kobiton</a></td><td><ul><li><p>Execute automated tests on Kobiton devices.</p></li><li><p>Plan and run your tests on Kobiton devices with <span>Katalon TestOps</span>.</p></li></ul></td><td>v7.0.1+</td></tr><tr><td><a href="/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/lambdatest-integration" >LambdaTest</a></td><td>Run your tests on LambdaTest Selenium Grid from your <span>Katalon Studio</span> instance.</td><td>v7.8.0+</td></tr><tr><td><a href="/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/sauce-labs-integration" >Sauce Labs</a></td><td>Execute tests with Sauce Labs profiles and view Katalon test execution results on Sauce Labs using the <a href="https://store.katalon.com/product/75/Sauce-Labs-Integration#pricing-content" >Sauce Labs Integration</a> from Katalon Store. You can also try our cloud-based test environment, see <a href="/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-overview" ><span>Katalon TestCloud</span> overview</a>.</td><td>v7.0.0+</td></tr><tr><td><a href="/create-tests/manage-projects/project-settings/desired-capabilities/introduction-to-desired-capabilities-in-katalon-studio" >Custom integration</a></td><td>Define desired capabilities in different environments for a Katalon project.</td><td>v7.0.0+</td></tr></tbody></table>
+
+## Use Cases
+
+The following are some common use cases for test executions in Katalon Platform.
+
+-   Record and replay your tests in Katalon Studio to validate basic test cases. See: [Execute a test case](/execute/execute-tests-with-katalon-studio/execute-a-test-case).
+
+-   Pass your Katalon test projects to KRE and execute the tests in your development environment with headless mode. See: [Command Builder in Katalon Studio](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#).
+
+-   Self-host a local **TestOps** agent that contains KRE and execute tests. See: [Create a Local Test Environment with an Agent](/execute/cloud-based-test-execution/test-execution-with-testops/local-test-environments/create-a-local-test-environment-with-an-agent).
+
+-   Map your **TestOps** project with a test repository \(hosted on GitHub, GitLab, ...\) and schedule test runs. See: [Execute Test Runs manually in TestOps](/execute/schedule-test-execution/execute-test-runs-manually-in-testops).
+
+-   Integrate to the CI/CD pipeline of your choice with KDI to execute tests with code changes. See: [CI/CD Integration Overview](/execute/ci-cd-integrations/ci-cd-integration-overview).

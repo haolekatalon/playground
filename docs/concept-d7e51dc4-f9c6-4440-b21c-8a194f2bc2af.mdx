@@ -1,0 +1,51 @@
+---
+id: concept-d7e51dc4-f9c6-4440-b21c-8a194f2bc2af
+slug: /organize/integration-for-organizing-tests/configure-rally-integration-in-katalon-studio
+---
+
+# Configure Rally integration in Katalon Studio
+
+Katalon Studio allows you to link Katalon Studio test cases and view test execution results in Rally.
+
+## Requirements
+
+-   Katalon Studio version 7.0.0 onwards.
+-   An active Katalon Studio Enterprise license. To learn more about activating your Katalon Studio license, you can refer to this document: Activate Katalon license.
+
+## Enable Rally integration in Katalon Studio
+
+To enable Rally integration in Katalon Studio, do as follows:
+
+1.  Install Rally integration plugin. To do so, follow these steps:
+
+    1.  Download and install the **Rally Integration** plugin. You can go to the Katalon Store here: [Rally Integration](https://store.katalon.com/product/125/Rally-Integration).
+
+    2.  To activate the installed plugin, open Katalon Studio and navigate to Account Settings. Click **Reload Plugin**.
+
+2.  Go to **Project Settings** &gt; **Plugins** &gt; **Rally**. Input the following information:
+
+    -   **Rally URL**: <code>https://rally1.rallydev.com/</code>.
+    -   **API Key**: the API key in Rally. To generate an API key in Rally, you can refer to the Broadcom documentation: [Create an API key](https://knowledge.broadcom.com/external/article/10814/rally-how-to-create-an-api-key.html).
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Rally_integration_in_Studio/Image/KS-Enable-Rally-integration-in-Studio.png" alt="Enable Rally integration in Studio" />
+
+    Once connected successfully, Katalon retrieves your available workspaces from Rally. Choose the Rally workspace you want to work on.
+
+3.  Click **Apply and Close**.
+
+
+You have successfully enabled Rally integration in Katalon Studio.
+
+## Map test cases between Katalon Studio and Rally
+
+Katalon Studio provides an easy way to map a Katalon test case to an existing Rally test case. Follow these steps:
+
+1.  To retrieve the test case ID, open your project in Rally, then go to **Quality** &gt; **Test Cases**. Here you can see the list of test cases and their IDs.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Rally_integration_in_Studio/Image/KS-Test-case-ID-in-Rally.png" alt="View Rally test cases" />
+
+2.  In Katalon Studio, open the test case you wish to link to Rally. Switch to the **Integration** tab, and specify the respective test case ID in Rally.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Rally_integration_in_Studio/Image/KS-Map-Studio-Rally-test-cases.png" alt="Map Rally and Studio test cases" />
+
+
+You have successfully mapped test cases between Katalon Studio and Rally.

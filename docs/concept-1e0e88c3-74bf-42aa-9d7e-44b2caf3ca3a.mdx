@@ -1,0 +1,54 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-1e0e88c3-74bf-42aa-9d7e-44b2caf3ca3a
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/test-run-summary
+---
+
+# Test run summary
+
+The test run **Summary** provides you with an overview of a test run result. You may view statistics of all test cases executed in a test run, its execution history, as well as provide you with a quick view of failed test cases associated with the selected test run.
+
+## View a test run summary
+
+1.  Go to **Reports** &gt; **Test Runs** &gt; **Test Runs**.
+
+2.  Navigate to **All Test Runs** and click a test run ID to go to the selected test run's **Summary**: <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_summary/Image/TO-Reports-select_a_test_run_ID.png" alt="click a test run ID" />
+
+3.  On the selected test run's **Summary** page, refer to the test results status bar as shown below to view the total number of tests that have **Passed**, **Failed**, or are in **Error**, **Incomplete**, or **Skipped** statuses. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_summary/Image/TO-Reports-Test_run_summary_bar.png" alt="Test run results summary bar" />
+
+4.  
+:::note
+
+The **Previous Test Runs** section is only available if the test run is executed more than once.
+
+:::
+
+    Scroll down to **Previous Test Runs** to view how your tests performed over time. A test suite on Katalon Platform can be run multiple times, such as regression tests that are scheduled to with each product release. The fluctuation trend in test execution time may indicate flakiness or lack of reliability in your test scripts. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/TO-Reports-Previous_Test_Runs.png" alt="Previous test runs" />
+
+5.  
+:::note
+
+The **Sessions** section is only available if you have run a configuration with an agent.
+
+:::
+
+    Scroll down to the **Sessions** section to view session logs. To view the logs for a specific session, click the session ID as shown in the screenshot below:<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-View-session-logs.png" alt="View session logs" />
+
+    You can see the full session log, along with the run command in this page. If you want to re-run the test run, click **Run** at the upper right corner of the session log modal.
+
+6.  Scroll down to the **Failed Test Results** section to check for any failed test cases \(and the corresponding error that caused it\) in your test run. Click the test result ID to view the error and a detailed analysis of the error. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-Test-results-ID.png" alt="Click failed test results ID" />
+
+7.  Scroll down to the **Test Suites** section to view execution information including the test suite name, execution profile, operating system and browser, duration and executed date.
+
+    Click the selected hyperlinked test suite to view:
+
+    -   The test cases enclosed in the selected test suite; and
+
+    -   Execution history of the test suite
+
+    <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/KT-View-test-suite-information.png" alt="View test suite information" />
+
+8.  Navigate to the **Custom Fields** and **Tags** section on the right side as shown below and select from the drop-down list the custom fields and tags to be assigned to your test result. Refer to[Add Custom Fields and Tags to test cases](/organize/manage-tests/test-case/add-custom-fields-and-tags-to-test-cases) for more information on how to add or remove custom fields and tags.<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/TO-Reports-Test_Run_detail-_custom_fields_and_tags.png" alt="Test result custom fields and tags" />
+
+
+You have gained relevant information on a test run result.

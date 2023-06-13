@@ -1,0 +1,61 @@
+---
+id: concept-f3ce81f2-f5d0-4a07-950e-49a6bd79c0fa
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/common-assertions/common-verify-not-match
+---
+
+# \[Common\] Verify Not Match
+
+## Description
+
+Verify if two strings do not match each other, the second string can be a regular expression.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>actualText</td><td>String</td><td>Required</td><td>Represent the actual text.</td></tr><tr><td>expectedText</td><td>String</td><td>Required</td><td>Represent the expected text (can be a regular expression).</td></tr><tr><td>isRegex</td><td>Boolean</td><td>Required</td><td>Indicate whether the expected text is a regular expression.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Param Type</th><th>Description</th></tr><tbody><tr><td>Boolean</td><td>true, if two given strings do NOT match each other; otherwise, false.</td></tr></tbody></table>
+
+## Example
+
+You want to verify if the text "Katalon" does not match the regular expression "\(L\|T\)atalon".
+
+-   Manual view
+
+    <img src="/doc_images/Documents/Create_tests/Keywords/Keywords_Description_In_Katalon_Studio/Common-Assertions/common-verify-not-match/common-verify-not-match.png" width={600} alt="manual view" />
+
+-   Script view
+
+    ```
+    import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+    import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+    import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+    import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+    import com.kms.katalon.core.model.FailureHandling as FailureHandling
+    import com.kms.katalon.core.testcase.TestCase as TestCase
+    import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+    import com.kms.katalon.core.testdata.TestData as TestData
+    import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+    import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+    import com.kms.katalon.core.testobject.TestObject as TestObject
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    import internal.GlobalVariable as GlobalVariable
+    
+    'Use WebUI keyword'
+    WebUI.verifyNotMatch('Katalon', '(L|T)atalon', true)
+    
+    'Use Mobile keyword'
+    Mobile.verifyNotMatch('Katalon', '(L|T)atalon', true)
+    
+    'Use Web Service keyword'
+    WS.verifyNotMatch('Katalon', '(L|T)atalon', true)
+    
+    ```

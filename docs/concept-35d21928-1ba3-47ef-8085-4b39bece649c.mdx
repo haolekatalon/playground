@@ -1,0 +1,73 @@
+---
+id: concept-35d21928-1ba3-47ef-8085-4b39bece649c
+slug: /plugins-and-add-ons/katalon-store/katalon-studio-plugins/installing-plugin-offline-in-katalon-studio
+---
+
+# Installing plugin offline in Katalon Studio
+
+To leverage your testing experience, Katalon Store provides you with a library of plugins developed by Katalon and the Katalon community. The plugins are available on the [Katalon Store](https://store.katalon.com/). However, in some cases, you might want to:
+
+-   Install and use all the plugins that are available on the Store without internet access.
+-   Build your plugins and use them directly in Katalon Studio without publishing on the Store. See also: [Private Plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/private-plugins-in-katalon-studio).
+
+Below is a step-by-step guide to installing plugins offline in Katalon Studio.
+
+## Requirements
+
+-   Katalon Studio version 7.0.0 onwards.
+-   An active license for Katalon Studio Enterprise. See [License overview](/administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/license-overview).
+
+## View types of plugins on the Katalon Store
+
+On [Katalon Store](https://store.katalon.com/), select the plugin you want to install. In the **Information** section, check the type of that plugin. There are two types of plugins: **Custom Keywords Plugin** and **Katalon Studio Plugin**. <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/install-offline-plugin/KS-install-plugin-offline-plugin-type.png" alt="Plugin Type" />
+
+## Download plugin packages from Katalon Store
+
+As an exclusive feature in Katalon Studio Enterprise, you can download and use plugin packages. To download a package, follow the below steps:
+
+1.  On **Katalon Store**, click on the desired plugin to access its details.
+
+2.  On the detail page of the plugin, click on the **Changelog** link.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-store/docs/user/Gettins%20Started%20Updated%20Images/K.S.E-8.3.0-getting_started_plugin_changelog.png" />
+
+3.  You can download the plugin packages with your preferred versions.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-store/docs/user/Gettins%20Started%20Updated%20Images/K.S.E-8.3.0-getting_started_plugin_package_download.png" />
+
+
+## Install plugins offline
+
+To install plugins downloaded from Katalon Store or your private plugins that you developed yourselves, do as follows:
+
+1.  Move the plugin package <code>.jar</code> file to the following folder:
+
+    -   For Custom Keywords Plugin: <code>&lt;project&#95;name&gt;/Plugins</code>
+
+    -   For Katalon Studio Plugin: <code>&lt;project&#95;name&gt;/Plugins/platform</code>
+    <img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Store/Katalon_Studio_Plugins/Install_Plugin_Offline/image/ks-plugin-folder.png" width={700} />
+
+2.  Open your project in Katalon Studio and go to **Project &gt; Settings &gt; Plugins**. Select one of the following options to use plugins offline:
+
+    -   **Katalon Store and Local**: Katalon Studio installs plugins from the Store and the **Plugins** folder of each project. Make sure that you log in to Katalon Studio and Katalon Store with the same account.
+
+    -   **Local**: Katalon Studio will install plugins from the **Plugins** folder only.
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/install-offline-plugin/KS-install-plugin-offline-project%20settings.png" width={600} alt="project settings" />
+
+3.  Click **Apply and Close**.
+
+
+## Reload your plugins in Katalon Studio
+
+**Reload Plugins** allows you to update a list of installed plugins in **Katalon Studio**, including newly installed plugins.
+
+To reload plugins, click on the drop-down next to **Profile** and select **Reload Plugins**.
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Store/Access_To_Katalon_Store_In_Katalon_Studio/image/ks-reload-plugins.png" width={300} alt="reload plugins" />
+
+The **Plugins** dialog appears with a list of installed plugins, the plugin version, the link to review that plugin in Katalon Store, and the reload plugin status to let you know if the installation has succeeded or failed.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-store/docs/user/access-store-in-KS/reload-plugin-result.png" width={700} />
+
+After you reload plugins, newly installed plugins are automatically activated. If you install a Katalon Studio plugin, you can see the logo of the plugin you have installed in the main toolbar. Custom Keywords plugins do not have logos. For Custom Keywords plugins​, you can find a list of custom keywords ready for use added to the **Keyword Browsers**​.

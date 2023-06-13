@@ -1,0 +1,72 @@
+---
+id: concept-2d58eb5b-be31-44a3-936f-5ec27a5581bd
+slug: /analyze/integration-for-test-analyzing/upload-test-execution-results-from-katalon-studio-to-testrail
+---
+
+# Upload test execution results from Katalon Studio to TestRail
+
+When uploading the execution results of a test suite to TestRail as a Test Run, you can upload the test results to a new Test Run or upload test runs to an existing Test Run in TestRail.
+
+## Requirements
+
+-   You have configured TestRail integration in Katalon Studio. See [Configure TestRail integration in Katalon Studio](/organize/integration-for-organizing-tests/configure-testrail-integration-in-katalon-studio).
+
+
+## Upload test results to a new test run in TestRail
+
+To upload test results from Katalon Studio to a new test run in TestRail, follow these steps:
+
+1.  In Katalon Studio, create a new test suite or a dynamic test suite.
+
+2.  Prepend the name of the test suite with the text <code>S&lt;ID&gt;</code>, where <code>&lt;ID&gt;</code> is the test suite ID of your choice.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/ks-new-test-suite.png" width={500} alt="Create a new test suite to upload results to TestRail" />
+
+3.  Add the mapped test cases to the test suite.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/ks-add-maped-test-case.png" width={600} alt="Add mapped test cases to test suites" />
+
+4.  Execute a test suite.
+
+    A new Test Run is created in your TestRail project.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/KS-View-Test-Run-in-TestRail.png" alt="View Test Runs in TestRail" />
+
+5.  To view the Test Run details, click on the Test Run.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/KS-Test-Run-details-in-TestRail.png" alt="View Test Run details in TestRail" />
+
+6.  In case you want to upload multiple test results to TestRail at the same time, you can add mapped test suites to a test suite collection.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/KS-upload-multiple-test-runs-TSC.png" alt="Add mapped test suites to a test suite collection" />
+
+    Katalon Studio will generate separate Test Runs in TestRail in correspondence with the executed Katalon test suites.
+
+
+## Upload test results to an existing Test Run in TestRail
+
+To upload test results to an existing Test Run in TestRail, follow these steps:
+
+1.  In Katalon Studio, create a new test suite or a dynamic test suite.
+
+2.  Prepend the name of the test suite with the text <code>R&lt;ID&gt;</code>, where <code>&lt;ID&gt;</code> is the **Test Suite ID** of your choice.
+
+    To view the **Test Run ID**, open your TestRail project and click on the Test Run. The ID is displayed next to the Test Run name.
+
+    We can see that <code>R8</code> is the ID of the created Test Run.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/KS-TestRail-Test-Run-ID.png" alt="View Test Run ID in TestRail" />
+
+    We prepend the Test Suite with the text <code>R8</code> as follows:
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/ks-r08.png" width={500} alt="Create test suite for uploading results to an existing test run" />
+
+3.  Add the mapped test cases to the test suite.
+
+    If you are executing a dynamic test suite, you can query test cases associated with an existing Test Run in TestRail. See [Query test cases linked to TestRail in a dynamic test suite](/organize/integration-for-organizing-tests/query-test-cases-linked-to-testrail-in-a-dynamic-test-suite).
+
+4.  Execute a test suite.
+
+    After we execute the Test Suite, the **R8** Test Run is updated with new test results.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Upload_Studio_Test_Results_To_TestRail/Image/KS-Test-Result-to-TestRail-existing.png" alt="Upload test results to an existing Test Run in TestRail" />

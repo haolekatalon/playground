@@ -1,0 +1,59 @@
+---
+id: concept-c2fdebf0-294b-44a3-b182-597de9685c52
+slug: /create-tests/manage-projects/project-settings/desired-capabilities/manage-desired-capabilities-in-katalon-studio
+---
+
+# Manage Desired Capabilities in Katalon Studio
+
+From version 8.0.0 onwards, you can reuse desired capabilities across Katalon Studio projects by importing and exporting desired capabilities in a JSON file. See also [Desired capabilities](/create-tests/manage-projects/project-settings/desired-capabilities/introduction-to-desired-capabilities-in-katalon-studio).
+
+This is useful if you want to:
+
+-   Reuse or copy the configured desired capabilities to another projects with some minor changes.
+
+-   Share the configured desired capabilities for team members to reduce effort.
+
+
+## Requirements
+
+-   Katalon Studio version 8.0.0 onwards.
+
+-   An active Katalon Studio Enterprise license. You can learn more about activating licenses in this document: Activate Katalon License.
+
+
+## Export desired capabilities
+
+1.  Go to **Project/Settings/Desired Capabilities** &gt; Choose the driver with the desired capabilities you wish to export. Click **Export**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-Export-DC.png" />
+
+2.  A dialog box appears. Select the destination folder, then click **Save**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/azure-devops/desired-capabilities-management/export-chrome-save.png" width={400} alt="Save JSON file" />
+
+
+## Import desired capabilities
+
+After exporting the JSON files, you can modify them if needed, then import them into another projects.
+
+Follow these steps:
+
+1.  Go to **Project/Settings/Desired Capabilities** &gt; choose the driver you want to import the desired capabilities of. Click **Import**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-Import-DC.png" />
+
+2.  A dialog box appears. Click **Browse**. Navigate to the JSON file you want to import and select it. Click **OK**.
+
+    
+    :::note
+
+    -   You can decide whether to override all existing desired capabilities by checking/unchecking the **Override existing properties** box.
+    :::
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/azure-devops/desired-capabilities-management/chrome_dc.png" width={400} />
+
+
+## See also
+
+-   [Test Artifacts Sharing](/create-tests/manage-test-artifacts/test-artifacts-sharing-in-katalon-studio)
+-   [Private Plugins](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/private-plugins-in-katalon-studio)

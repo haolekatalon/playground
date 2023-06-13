@@ -1,0 +1,73 @@
+---
+id: concept-c0f8eac4-6683-48aa-b8b1-dde59ddc4cd5
+slug: /create-tests/manage-projects/project-settings/desired-capabilities/start-browsers-in-private-mode-in-katalon-studio
+---
+
+# Start browsers in private mode in Katalon Studio
+
+The following guidelines show you how to start browsers \(Firefox, Chrome, Edge Chromium\) in a private mode in Katalon Studio.
+
+## Firefox
+
+To use **Katalon Studio** with Firefox Private Browsing windows, do as follows:
+
+1.  In **Katalon Studio**, go to **Project &gt; Settings &gt; Desired Capabilities &gt; Web UI &gt; Firefox**.
+
+2.  Click **Add** on the command toolbar, then input the following values:
+
+    <table><tr><th>Table 1</th></tr><tbody><tr><td>Name</td><td>Type</td><td>Value</td></tr><tr><td>moz:firefoxOptions</td><td>Dictionary</td><td>Click More (...). In the pop-up <strong>Dictionary Property Builder</strong> dialog, click <strong>Add</strong>, then input values from Table 2.</td></tr>    </tbody></table>
+
+    <table><tr><th>Table 2</th></tr><tbody><tr><td>Name</td><td>Type</td><td>Value</td></tr><tr><td>args</td><td>List</td><td>--private</td></tr>    </tbody></table>
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-FIRFOX-Private-mode.png" alt="Open Firefox with devtools in private mode" />
+
+3.  Click **Apply and Close**. You can now execute tests in Firefox Private Browsing windows.
+
+4.  To use the **Record and Spy** utility of **Katalon Studio** in private windows, you need to allow the **Katalon Studio** extension to run in private windows. See Mozilla document: [Enabling or disabling extensions in private windows](https://support.mozilla.org/en-US/kb/extensions-private-browsing).
+
+
+## Chrome
+
+To use Katalon Studio with the Incognito mode of Chrome, do as follows:
+
+1.  In **Katalon Studio**, go to **Project &gt; Settings &gt; Desired Capabilities &gt; Web UI &gt; Chrome**.
+
+2.  Click **Add** on the command toolbar, then input the following values:
+
+    <table><tr><th>Name</th><th>Type</th><th>Value</th></tr><tbody><tr><td>args</td><td>List</td><td>--incognito</td></tr>    </tbody></table>
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Desired_Capabilities/start-browsers-in-private-mode/image/ks-850-incognito-dc.png" width={700} alt="setting desired capabilities for Chrome" /><img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Desired_Capabilities/start-browsers-in-private-mode/image/ks-850-incognito.png" width={700} alt="incognito" />
+
+3.  Click **Apply and Close**. You can now execute tests in Incognito mode of Chrome.
+
+4.  To use the **Record and Spy** utility of **Katalon Studio** in Incognito mode of Chrome, you need to allow the Katalon Studio extension to run in Incognito mode of Chrome. Do as follows:
+
+    -   Open Incognito window
+    -   Go to <code>chrome://extensions</code>
+    -   Find the Katalon Studio extension, click **Details**
+    -   Toggle the button **Allow in Incognito**
+
+## Edge Chromium
+
+To use **Katalon Studio** with the InPrivate mode of Edge Chromium, do as follows:
+
+1.  In **Katalon Studio**, go to **Project &gt; Settings &gt; Desired Capabilities &gt; Web UI &gt; Edge Chromium**.
+
+2.  Add a new property as follows.
+
+    <table><tr><th>Table 1</th></tr><tbody><tr><td>Name</td><td>Type</td><td>Value</td></tr><tr><td>ms:edgeChromium</td><td>boolean</td><td>true</td></tr><tr><td>ms:edgeOptions</td><td>Dictionary</td><td>Click More (...). In the pop-up <strong>Dictionary Property Builder</strong> dialog, click <strong>Add</strong>, then input values from Table 2.</td></tr>    </tbody></table>
+
+    <table><tr><th>Table 2</th></tr><tbody><tr><td>Name</td><td>Type</td><td>Value</td></tr><tr><td>args</td><td>List</td><td>-inprivate</td></tr>    </tbody></table>
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-Edge-Chromium-Private-mode-1.png" alt="ks edge chromium dictionary property builder" />
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-Edge-Chromium-Private-mode-2.png" alt="ks edge chromium private mode" />
+
+3.  Click **Apply and Close**. You can now execute your test in InPrivate mode of Edge Chromium.
+
+4.  To use the **Record and Spy** utility of **Katalon Studio** in InPrivate mode of Edge Chromium, you need to allow the Katalon Studio extension to run in InPrivate mode of Chrome. Do as follows:
+
+    -   Open InPrivate window
+    -   Go to <code>edge://extensions/</code>
+    -   Find the Katalon Studio extension, click **Details**
+    -   Toggle the button **Allow in InPrivate**

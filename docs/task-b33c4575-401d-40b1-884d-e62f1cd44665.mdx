@@ -1,0 +1,52 @@
+---
+id: task-b33c4575-401d-40b1-884d-e62f1cd44665
+slug: /organize/integration-for-organizing-tests/xray-integration/link-a-katalon-test-run-with-an-xray-test-plan
+---
+
+# Link a Katalon test run with an Xray test plan
+
+This article guides you to schedule a Katalon test run and link it with an Xray test plan.
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login). Then navigate to **Test Management** &gt; **Test Execution**.
+
+    The Test Execution page appears.
+
+2.  From the Test Execution page, select **Schedule Test Run**.
+
+    The **Schedule Test Run** dialog appears as below. <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Test_Execution-Schedule_Test_Run_dialog.png" alt="Schedule Test Run dialog" />
+
+3.  On the **Schedule Test Run** dialog, configure your test run with settings such as designated test suite, when to run the test, test environment. You can find detailed guidance for those settings in [Schedule Test Run](/execute/schedule-test-execution/schedule-test-runs-in-testops). After you have configured your desired settings, don't click on the finishing **Schedule** button yet. You need to link your test run to an Xray test plan before clicking **Schedule**.
+
+4.  To link the test run with your intended Xray test plan. Navigate to **Advanced settings**.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Test_Execution-Schedule_Test_Run_advanced_settings.png" alt="Schedule Test Run advanced settings" />
+
+5.  From the **Xray Test Plan** section, type in the name of your Xray Test Plan, then select it from the suggesting dropdown list.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Schedule_Test_Run-select_Xray_Test_plan.png" alt="select Xray Test Plan" />
+
+6.  From the **Xray Push Mechanism**, select one among three mechanisms in the dropdown list:
+
+    -   Manual push only: Katalon will not automatically upload test run result to Jira/Xray upon finishing the execution. You will decide which test run result to be uploaded to Xray and do that manually.
+
+    -   Push on all runs: Katalon will automatically upload all test run results to Jira/Xray.
+
+    -   Push on passing runs only: Katalon will only automatically upload test run results with a **Passed** status to Jira/Xray.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Schedule_Test_Run-Xray_Push_Mechanism.png" />
+
+    In this article we will opt for **Push on all runs** mechanism. Select **Schedule** to save the settings and finish.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Test_Execution-Schedule_Test_Run_Finish.png" alt="Finish scheduling test run" />
+
+7.  After scheduling the test run, execute it.
+
+    When the test run finishes, you can see the test run result being uploaded to Jira under an Xray test execution issue. In the Jira screenshot below, the Xray test execution issue is created bearing the Katalon test execution ID in its designated name. In the Xray test execution issue below, the name ​**Test execution 27**​ indicates the TestOps test run ID was 27. ​
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_case_with_an_Xray_test/images/Xray_test_execution_issue.png" alt="Xray test execution issue" />You can find and see the test run ID 27 on TestOps **Reports** &gt; **Test Runs**.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Reports-Test_Run.png" alt="TestOps test run ID" />
+
+    On TestOps, you can also find the hyperlink ID that leads to the Xray test execution.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Reports-Linked_Xray_test_execution.png" alt="Linked Xray test execution" />
+
+8.  In the **Details** section of the Xray test execution, you can also find the test environments on which the test was executed.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Reports-Xray_shows_test_environment.png" />
+
+9.  When you navigate to an Xray test issue Testing Board, you can see the URL to the test result on Katalon.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Reports-linked_Xray_test_comment_section.png" alt="Xray test contains URL to Katalon test result" />
+
+    You can also see above the URL a linked defect. A defect must first be added to a Katalon test run and then manually pushed to Xray, see [how to link a defect to Katalon test run](/analyze/integration-for-test-analyzing/jira-integration/link-test-runs-to-jira-defects-in-katalon-testops) and [how to manually push Katalon test run to Xray](/organize/integration-for-organizing-tests/xray-integration/manually-push-katalon-test-result-to-xray).<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Reports-linked_Xray_test_defect_section.png" alt="Xray test contains Katalon defect" />

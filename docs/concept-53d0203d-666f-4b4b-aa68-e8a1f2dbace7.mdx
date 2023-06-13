@@ -1,0 +1,128 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-53d0203d-666f-4b4b-aa68-e8a1f2dbace7
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-graphql-request-against-a-graphql-schema
+---
+
+# \[WS\] Validate GraphQL request against a GraphQL schema
+
+## Requirements
+
+-   Katalon Studio version 8.4.0 onwards.
+
+
+## Description
+
+Validate a GraphQL request body against a GraphQL schema. The GraphQL schema input can be a GraphQL string, URL, or file path.
+
+Keyword name: <code>WS.validateGraphqlRequestAgainstSchema</code>
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>request</td><td>RequestObject</td><td>Required</td><td>Specify the request object that needs to be validated.</td></tr><tr><td>graphqlSchema</td><td>String</td><td>Required</td><td>Specify the GraphQL schema used to validate the request.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Parameter Type</th><th>Description</th></tr><tbody><tr><td>boolean</td><td><ul><li><code>true</code>: the request passes the validation.</li><li><code>false</code>: the request doesn't pass the validation.</li></ul></td></tr></tbody></table>
+
+
+:::note
+
+-   If Katalon Studio cannot find the schema file, the request does not have a body content, or the request doesn't pass the validation, throw: <code>StepFailedException</code>.
+
+
+:::
+
+## Example
+
+You want to validate a GraphQL request body against a GraphQL schema before sending the request.
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.RequestObject
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+​
+// User wants to validate a GraphQL query in request body before sending the request
+RequestObject req = findTestObject('Country/CountryQuerySchema');
+String graphqlSchema = 
+'''
+type Continent {
+	code: ID!
+	name: String!
+	countries: [Country!]!
+}
+​
+type Country {
+	code: ID!
+	name: String!
+	native: String!
+	phone: String!
+	continent: Continent!
+	capital: String
+	currency: String
+	languages: [Language!]!
+	emoji: String!
+	emojiU: String!
+	states: [State!]!
+}
+type State {
+	code: String
+	name: String!
+	country: Country!
+}
+type Language {
+	code: ID!
+	name: String
+	native: String
+	rtl: Boolean!
+}
+input StringQueryOperatorInput {
+	eq: String
+	ne: String
+	in: [String]
+	nin: [String]
+	regex: String
+	glob: String
+}
+input CountryFilterInput {
+	code: StringQueryOperatorInput
+	currency: StringQueryOperatorInput
+	continent: StringQueryOperatorInput
+}
+input ContinentFilterInput {
+	code: StringQueryOperatorInput
+}
+input LanguageFilterInput {
+	code: StringQueryOperatorInput
+}
+​
+type Query {
+	continents(filter: ContinentFilterInput): [Continent!]!
+	continent(code: ID!): Continent
+	countries(filter: CountryFilterInput): [Country!]!
+	country(code: ID!): Country
+	languages(filter: LanguageFilterInput): [Language!]!
+	language(code: ID!): Language
+}
+'''
+​
+if (WS.validateGraphqlRequestAgainstSchema(req, graphqlSchema)) {
+	res = WS.sendRequest(req)
+}
+```

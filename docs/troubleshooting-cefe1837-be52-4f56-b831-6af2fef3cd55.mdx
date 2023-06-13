@@ -1,0 +1,18 @@
+---
+id: troubleshooting-cefe1837-be52-4f56-b831-6af2fef3cd55
+slug: /execute/troubleshooting/unable-to-execute-the-current-selected-test-case
+---
+
+# Unable to execute the current selected test case
+
+When executing data-driven tests with excel files, you might encounter the error:
+
+*"Unable to execute the current selected test case.*
+
+*Reason:*
+
+*Java.io.IOException: Cannot find the excel sheet. Please check your data source and try again."*
+
+Some changes from the excel file can make Katalon Studio unable to find the data that you configure the data binding in your test case or test suite. For example, you configure data binding for sheet A in an excel file, then you delete sheet A from that excel file.
+
+1.  Open the **Data Binding** tab and check the data files that you configure the data binding with your test case or test suite.

@@ -1,0 +1,32 @@
+---
+id: concept-65013f53-e3de-4e61-a02a-683eb5b037c5
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-double-click
+---
+
+# \[Windows\] Double-click
+
+
+:::note
+
+-   Starting from **version 7.0.0**, Windows desktop application testing is available on Katalon Studio.
+
+
+:::
+
+## doubleClick
+
+-   **Description**: Perform a double-clicking action on the Web element found by using the locator value of the given Windows object.
+-   **Keyword name**: doubleClick
+-   **Keyword syntax**: Windows.doubleClick\(windowsObject\)
+-   **Parameter:** windowsObject
+
+    -   Description: An object describing the locator and locator strategy to find a Windows element.
+    -   Parameter Type: WindowsTestObject
+    -   Mandatory: Required
+-   **Example**:
+
+```
+"Double-click on the item element to open the editor"
+Windows.doubleClick(findWindowsObject("Object Repository/item"))
+
+```

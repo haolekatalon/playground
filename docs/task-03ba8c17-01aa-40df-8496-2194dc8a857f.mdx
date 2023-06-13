@@ -1,0 +1,128 @@
+---
+id: task-03ba8c17-01aa-40df-8496-2194dc8a857f
+slug: /create-tests/test-objects/mobile-test-objects/find-the-locator-of-a-mobile-application-element
+---
+
+# Find the locator of a mobile application element
+
+We can identify a mobile app element's locator using Appium Inspector.
+
+1.  Make sure Appium was installed by running the commands:
+
+    ```
+    appium --version
+    npm install appium-doctor -g
+    appium-doctor -h
+    ```
+
+2.  Download and install Appium Inspector: [Appium Inspector](https://github.com/appium/appium-inspector/releases).
+
+    Start Appium server by running:
+
+    ```
+    appium --base-path /wd/hub
+    ```
+
+3.  Start Appium Inspector:
+
+    -   Run this command before starting Appium Inspector:
+
+        ```
+        xattr -cr "/Applications/Appium Inspector.app"
+        ```
+
+    -   Run Appium Inspector:
+
+        ```
+        /Applications/Appium Inspector.app
+        ```
+
+4.  Start an Appium session:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Mobile_Test_Objects/Find_the_locator_of_a_mobile_application_element/Appium_Inspector_-_start_session.jpeg" alt="start Appium session" />
+
+    -   Step 1: Fill in **Remote Host**, **Remote Port** and **Remote Path** for the Appium server.
+
+    -   Step 2: Input device information to **JSON representation**. Here is the sample:
+
+        ```
+        {
+        "appium:deviceName": "emulator-5554",
+        "platformName": "Android",
+        "appium:app": "/path/to/apkFiles/ApiDemos-debug.apk"
+        }
+        ```
+
+    -   Step 3: Select **Start Session**.
+
+5.  After the app launched successfully, click the element and retrieve the locator value at **Selected Element**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/Mobile_Test_Objects/Find_the_locator_of_a_mobile_application_element/Appium_Inspector_-_copy_locator_value.jpeg" alt="copy locator value on Appium" />Here is a sample of custom keyword:
+
+    ```
+    package mypackage
+    
+    import org.openqa.selenium.remote.DesiredCapabilities
+    import com.fasterxml.jackson.databind.ObjectMapper
+    import com.kms.katalon.core.annotation.Keyword
+    import io.appium.java_client.MobileElement
+    import io.appium.java_client.android.AndroidDriver
+    
+    class MobileSupport {
+        @Keyword
+        static def getSession(String appiumEnpoint, String desizedCapabilitiesJson) {
+            Map<String,Object> desizedCapabilities = new ObjectMapper().readValue(desizedCapabilitiesJson, HashMap.class)
+            DesiredCapabilities caps = new DesiredCapabilities(desizedCapabilities)
+            AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL(appiumEnpoint), caps)
+            return driver
+        }
+    }
+    
+    ```
+
+    And here is an sample test case for your reference:
+
+    ```
+    import org.openqa.selenium.By
+    import org.testng.Assert
+    import io.appium.java_client.MobileElement
+    import io.appium.java_client.android.AndroidDriver
+    import mypackage.MobileSupport
+    
+    String desCaps = """
+        {
+          "appium:deviceName": "emulator-5554",
+          "platformName": "Android",
+          "appium:app": "/Users/thanhnhanmai/Documents/apkFiles/ApiDemos-debug.apk"
+        }    
+    """
+    
+    "Open API Demos application"
+    AndroidDriver<MobileElement> driver = MobileSupport.getSession("http://127.0.0.1:4723/wd/hub"", desCaps)
+    
+    "Verify that the tool bar title is API Demos"
+    By toolBarTitle = By.xpath("/hierarchy/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView")
+    Assert.assertEquals(driver.findElement(toolBarTitle).getText(), "API Demos")
+    
+    "Click App"
+    driver.findElementByAccessibilityId("App").click()
+    
+    "Click Search"
+    driver.findElementByXPath("//android.widget.TextView[@content-desc='Search']").click()
+    
+    "Click Invoke Search"
+    driver.findElementByAccessibilityId("Invoke Search").click()
+    
+    "Fill 'Prefill query'"
+    String seachText = "ABC"
+    driver.findElement(By.id("io.appium.android.apis:id/txt_query_prefill")).sendKeys(seachText)
+    
+    "Click 'onSearchRequest' button"
+    driver.findElementByAccessibilityId("onSearchRequested()").click()
+    
+    "Verify content of the address bar"
+    Assert.assertEquals(driver.findElement(By.id("android:id/search_src_text")).getText(), seachText)
+    ```
+
+
+You have retrieved the app element's locator information.

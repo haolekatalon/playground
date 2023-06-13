@@ -1,0 +1,34 @@
+---
+id: concept-e1f3e498-edf4-4203-ad36-f2e74332d2e3
+slug: /organize/manage-tests/dynamic-test-suite/basic-search-for-dynamic-test-suite
+---
+
+# Basic Search For Dynamic Test Suite
+
+
+:::note
+
+-   From version 8.5.0, **Test Case Management With Tags** and **Basic Search For Dynamic Test Suite** becomes the official built-in feature of Katalon Studio. See [Manage dynamic test suites in Katalon Studio](/organize/manage-tests/dynamic-test-suite/manage-dynamic-test-suites-in-katalon-studio).
+
+
+:::
+
+[Dynamic Test Suite](/organize/manage-tests/test-suite/manage-test-suites-in-katalon-studio#) allows you to define the query search and manage query plugins from Katalon Store. [Basic Search For Dynamic Test Suite](https://store.katalon.com/product/2/Basic-Search-For-Dynamic-Test-Suite) is one of them. This plugin enables basic search capabilities to look for test cases faster in Katalon Studio and help filter which test cases to be executed.
+
+1.  Create a new dynamic test suite by a right-click on **Test Suite &gt; New &gt; Dynamic Test Suite**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/basic-search-for-dynamic-querying-test-suite/create-ts.png" width={643} />
+
+2.  Add test cases to the dynamic test suite NOT in a manual way but via [search query](/organize/manage-workspace/search-test-cases-in-katalon-studio). Enter the search condition, click **Preview** to query out the matching test cases and the total number of results.
+
+    For example, to add the test cases in the “Custom-keyword samples" folder to this dynamic test suite, you can use this search query:
+
+    ```
+    id=(Test Cases/Simple Examples/Katalon Shop/Custom-keyword samples)
+    ```
+
+    .
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/basic-search-for-dynamic-querying-test-suite/result.png" width={1029} />
+
+    Test cases that match the search conditions are chosen when the test suites are executed \(unlike in built-in test suites, test cases are chosen at planning time\).

@@ -1,0 +1,40 @@
+---
+id: task-ba3ac1d0-1464-404e-a25d-235334ba9b88
+slug: /organize/integration-for-organizing-tests/xray-integration/manually-push-katalon-test-result-to-xray
+---
+
+# Manually push Katalon test result to Xray
+
+-   You must have the role of Organization Owner or Admin.
+
+-   You have linked your Jira test cases to the Jira test plan.
+
+-   You have linked a Katalon test run to an Xray test plan.
+
+
+If you have opted for **Manual push only** mechanism to upload Katalon test result to Jira/Xray, Katalon will not automatically upload all test results to Jira/Xray. You will decide which test run result to be uploaded to Jira/Xray. This article will show you how to do that. You can also refer to this [video](https://screencast-o-matic.com/watch/c0VtfQVxX6q) for demonstration.
+
+1.  After your test run has finished. Navigate to the test run page: **Reports** &gt; **Test Runs** &gt; **Test Runs**.
+
+    The Test Ops Test Runs page appears as below. <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Manually_push_test_result_to_Xray/image/TO-Reports-Test_Runs-Test_Runs.png" alt="Test Ops Test Runs list" />
+
+2.  Select a test run by clicking on its **ID** number.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_run_with_an_Xray_test_plan/images/TO-Reports-Test_Run.png" alt="Test run ID number" />
+
+3.  From the test run detail page, select **Push to Xray**.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Manually_push_test_result_to_Xray/image/TO-Test_Runs-push_to_Xray.png" alt="Push to Xray" />
+
+    The **Push to Xray** dialog appears.
+
+4.  Type in the **Xray Test Plan** and select one from the suggesting dropdown list.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Manually_push_test_result_to_Xray/image/TO-Reports-Test_Runs-_Push_to_Xray_dialog.png" alt="Push to Xray dialog" />
+
+5.  Choose a release version for your test run if necessary: in the **Release Version** section, choose from the dropdown list a release version.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Manually_push_test_result_to_Xray/image/TO-Reports-Xray_push_-_release_version.png" width={700} alt="Choose test run release version to push to Xray" />
+
+6.  Click **Submit** to upload the test result to Xray.
+
+
+An Xray test execution issue is created on Jira bearing the Katalon test execution ID in its designated name. In the Xray test execution issue below, the name **Test execution 27** indicates the TestOps test run ID was 27. <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Xray_Integration/Link_a_Katalon_test_case_with_an_Xray_test/images/Xray_test_execution_issue.png" alt="Xray test execution issue" />

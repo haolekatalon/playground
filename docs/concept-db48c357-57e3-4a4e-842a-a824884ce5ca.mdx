@@ -1,0 +1,47 @@
+---
+id: concept-db48c357-57e3-4a4e-842a-a824884ce5ca
+slug: /plugins-and-add-ons/katalium-framework/get-started/katalium-framework-in-visual-studio-code
+---
+
+# Katalium Framework in Visual Studio Code
+
+## Prerequisites
+
+-   Visual Studio Code.
+-   Java Development Kit 8.
+
+## Install Katalium Extension for Visual Studio Code
+
+Install Katalium Extension [here](https://marketplace.visualstudio.com/items?itemName=katalon-llc.katalium).
+
+## Activate
+
+In Visual Studio Code, enter Katalon email and password to activate.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-get-started-vscode/activate.gif" />
+
+## Create project
+
+Click **Create Project** button to create a new project.
+
+*Note: Clean your Workspace folder before creating a new project.*
+
+## Start Katalium Server
+
+To start Katalium Server, click **Start Server** button.
+
+*Note: You can view server information in Output tab of Katalium. For example:*
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-get-started-vscode/before-start-server-vscode.png" />
+
+After starting server, open browser in <code>http://localhost:4444/</code>.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-get-started-vscode/start-server-vscode.png" />
+
+## Run your first test in Visual Studio Code
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-get-started-vscode/run-test-vscode.png" />
+
+## Run your first test in CLI
+
+To run the default test suite configured in <code>pom.xml</code> use <code>mvn clean test</code>. Test suites can also be specified using command arguments, e.g. <code>mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng-parallel.xml</code>.

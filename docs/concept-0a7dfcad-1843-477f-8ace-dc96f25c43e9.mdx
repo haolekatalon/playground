@@ -1,0 +1,77 @@
+---
+id: concept-0a7dfcad-1843-477f-8ace-dc96f25c43e9
+slug: /organize/integration-for-organizing-tests/jira-integration/manage-bdd-test-cases-with-jira-integration
+---
+
+# Manage BDD test cases with Jira integration
+
+This article shows you how to configure Katalon BDD custom fields in Jira.
+
+## Requirements
+
+-   In Jira, install this plugin from the Atlassian Marketplace website: [Katalon Studio and TestOps integration](https://marketplace.atlassian.com/apps/1217501/katalon-bdd-test-automation-for-jira?hosting=cloud&tab=overview).
+-   Enable Jira integration with Katalon TestOps. To enable Jira integration with Katalon TestOps, follow the steps in this document: [TestOps - Jira Integration](/organize/integration-for-organizing-tests/jira-integration/enable-testops-jira-integration-for-test-management#).
+
+## Create Katalon BDD fields in Jira
+
+-   You must have the Jira admin access.
+
+
+To create Katalon BDD fields in Jira, follow theses steps:
+
+1.  From Jira settings, select **Issues**. In the **Fields** section, select **Custom fields** &gt; **Create custom field**.
+
+2.  Depending on your Jira products: Jira Cloud or Jira Data Center \(Jira Server\), you need to write your BDD scenarios in different field type:
+
+    -   For Jira Data Center \(Jira Server\): Select **Katalon Gherkin**.
+
+    -   For Jira Cloud: Select **Paragraph \(supports rich text\)**.
+
+    This custom field lets you write descriptions for your test cases and stories in Gherkin syntax. Gherkin keywords such as <code>Given</code>, <code>When</code>, <code>Then</code> will be highlighted automatically.
+
+3.  Click **Next**.
+
+4.  In the new window, provide a name and a description \(optional\). Then click **Create**.
+
+5.  Choose which screens to display and select **Update** to finish adding your new custom field.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-Jira-integration-BDD-testing/Image/KS-TDAP-733-Choose-screens-to-display-custom-fields.png" alt="Choose display screens for custom BDD fields" />
+
+
+You have successfully created a Katalon BDD custom field in Jira.
+
+## Enable the BDD custom field with the Katalon add-on
+
+To enable the BDD custom field with the Katalon add-on, follow these steps:
+
+1.  Open your Jira project.
+
+2.  In the left panel, go to **Project settings**. Scroll down to the bottom and select **Katalon BDD**.
+
+3.  Select the field you have created, then click **Add**.
+
+4.  Select issue types to show this field with BDD editor.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-Jira-integration-BDD-testing/Image/KS-TDAP-733-Enable-BDD-custom-fields.png" alt="Add BDD custom fields with Katalon addon" />
+
+5.  Click **Save**.
+
+
+## Write BDD scenarios in Jira tickets
+
+With the newly added BDD custom fields, you can now write BDD scenarios in Jira tickets. To do so, follow these steps:
+
+1.  Open a Jira issue.
+
+2.  Click **More \(...\)**, select **Katalon BDD Fields**.
+
+3.  To edit content in Katalon BDD Field, click **Edit** \(pencil icon\) and write a Gherkin content. Make sure the content starts with <code>Feature</code>.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-Jira-integration-BDD-testing/Image/KS-TDAP-733-Write-BDD-scenarios.png" width={500} alt="Write BDD scenarios in Jira tickets" />
+
+4.  Click **Save** \(check icon\).
+
+
+You have successfully created a BDD test case in Jira.
+
+Next, to import BDD test cases for execution in Katalon Studio, you need to configure Jira integration in Katalon Studio.

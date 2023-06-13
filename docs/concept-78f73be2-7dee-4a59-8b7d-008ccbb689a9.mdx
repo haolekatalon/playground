@@ -1,0 +1,66 @@
+---
+id: concept-78f73be2-7dee-4a59-8b7d-008ccbb689a9
+slug: /analyze/reports/manage-reports/filter-test-run-list-by-build-name-in-katalon-testops
+---
+
+# Filter test run list by build name in Katalon TestOps
+
+In Katalon TestOps, you can filter Test Runs by Build name to:
+
+-   Find and track the list of Test Runs linked with specific Build names.
+-   Monitor testing progress linked with those Builds.
+
+
+:::note
+
+-   You must execute tests from Katalon Runtime Engine.
+
+:::
+
+## Add Build name in Command Line or Console Mode
+
+Follow these steps:
+
+1.  Open Command prompt.
+
+2.  Find the Command Line option <code>--info -buildLabel</code> and edit it with your own info.
+
+
+
+:::note
+
+-   You can find it in [this list of <code>katalonc</code> command options](https://docs.katalon.com/katalon-studio/docs/console-mode-execution.html#general-options).
+
+
+:::
+
+## Filter Test Runs by Build name in Katalon TestOps
+
+Follow these steps:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your Project.
+
+2.  Go to **Reports** &gt; **Test Runs**.
+
+3.  Find the **Build Label** filter as shown below.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-may-filter-test-runs-list-by-build-name/build-label-button-2.png" alt="build name new UI" />
+
+    By default, it will display *All* which means that all of your Test Runs in all Builds are listed.
+
+4.  Click **Build Label**, then manually input the <code>-buildLabel</code> value that was previously configured in Katalon Studio.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-analytics/docs/testops-may-filter-test-runs-list-by-build-name/build-label-box.png" width={400} alt="build name box" />
+
+5.  Click **Update**.
+
+    You can now see the list of Test Runs associated with that <code>-buildLabel</code>.
+
+
+
+:::note
+
+-   The Build name will be displayed under the **Configuration** section on each Test Run.
+-   You can also go back to the default filter by clicking **Clear**.
+
+:::

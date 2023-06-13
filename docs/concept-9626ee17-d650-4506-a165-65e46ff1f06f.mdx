@@ -1,0 +1,47 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-9626ee17-d650-4506-a165-65e46ff1f06f
+slug: /create-tests/create-test-cases/statements/assert-statements
+---
+
+# Assert Statements
+
+An assert statement contains a boolean expression where this condition must hold true for the test execution to continue. Thus, execution of the assertion causes evaluation of the boolean expression, and an error is reported if the expression evaluates as false.
+
+
+:::note
+
+-   Once a test step is added as any of the control statements, it is not allowed to change into another keyword.
+
+
+:::
+
+## In manual view
+
+1.  Open a test case in **Manual** view. Click on the drop-down icon of the **Add** button, then choose **Assert Statements**.
+
+2.  To add a keyword under a statement, select that statement, then click **Add** . A test step is created under that statement.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/assert-statement.png" width={300} alt="Assert statement" />
+
+    A test step represents assert expression is added to the test case.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Assert_statement/ks-assert-statement.png" width={600} />
+
+3.  Double-click on the **Input** cell to edit the called method.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/condition-input.png" width={600} alt="Assert input" />
+
+
+## In script view
+
+The **Script** view of test cases allows you to programmatically define and handle assertions using either Groovy or Java language. For more details regarding assertions in Groovy, refer to this Groovy documentation: [Core Testing Guide.html](http://docs.groovy-lang.org/docs/latest/html/documentation/core-testing-guide.html).
+
+For example:
+
+```
+WebUiBuiltInKeywords.openBrowser('', FailureHandling.STOP_ON_FAILURE)
+WebUiBuiltInKeywords.navigateToUrl(GlobalVariable.global_Gmail_Url, FailureHandling.STOP_ON_FAILURE)
+assert varA == true    
+            
+```

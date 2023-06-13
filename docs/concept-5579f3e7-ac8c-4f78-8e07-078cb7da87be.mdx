@@ -1,0 +1,149 @@
+---
+id: concept-5579f3e7-ac8c-4f78-8e07-078cb7da87be
+slug: /create-tests/record-and-spy/webui-record-and-spy-utilities/record-web-utility-in-katalon-studio
+---
+
+# Record web utility in Katalon Studio
+
+You can create an automated test script with test recording. In Katalon Studio, you only need to manually interact with your website and perform all the desired actions as a real user while the Katalon Recorder Utility record them.
+
+You can create a new test script or edit an existing test script by using the Katalon Recorder Utility. This manual includes a tutorial of how to record test scripts and a brief introduction to each panel of the Katalon Web Recorder.
+
+## Record a new test case
+
+To record a new test case, do as follows:
+
+1.  From the main toolbar, click on **Record Web** to open the **Web Recorder**.
+
+    <img src="/doc_images/Global_reuse/Common_steps/image/ks-record-web.png" width={400} />
+
+    The **Web Recorder** dialog appears.<img src="/doc_images/Global_reuse/Common_steps/image/ks-web-recorder-dialog.png" width={700} />
+
+2.  Enter a URL of your web application. For example, <code>https://katalon-demo-cura.herokuapp.com/</code>.
+
+3.  Next to the URL text box, you can click on the drop-down of **Record** to select the browser type for this recording session.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/create_test_case_using_record_playback/image/ks-855-select-browser.png" width={700} alt="recorder browser" />
+
+    <table><tr><th>Type</th><th>Description</th><th>Supported browsers</th></tr><tbody><tr><td>New Browsers</td><td>Start recording in a new browser.</td><td><ul><li>Chrome (Recommended)</li><li><p>Chrome (with Profile)</p></li><li>Firefox</li><li>Edge Chromium (available from version 7.5.10)</li><li>Internet Explorer (only available on Windows)</li></ul></td></tr><tr><td>Active Browsers</td><td>Use the current browser to start recording.<p>Katalon Studio installs <a href="https://chrome.google.com/webstore/detail/katalon-recorder-selenium/ljdobmomdgdljniojadhoplhkpialdid" >Katalon Recorder</a> as an add-on to help with recording for this type of browser.</p></td><td><ul><li><p>Chrome</p></li><li><p>Firefox</p></li><li><p>Edge Chromium (available from version 8.4.0)</p></li></ul></td></tr>    </tbody></table>
+
+    The default browser is Chrome. To change the default browser, go to **Project** &gt; **Settings** &gt; **Execution** &gt; **Default execution** and choose from the drop-down list.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-852-default-execution.png" width={700} alt="set default execution" />
+
+4.  To start the recording session, click on **Record**.
+
+    A browser instance is launched automatically. Wait for your web page to load and interact with its elements. When you hover over an element, the browser highlights the element and displays its correspondent XPath on the top of the page.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/xpath.png" />
+
+5.  Interact with the web page. In this example, try signing in with the provided credentials. The recorded steps are generated automatically in **Recorded Actions**. When you type in a **Password** field, **Katalon Web Recorder** uses the [Set Encrypted Text](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-set-encrypted-text) keyword automatically. The input value is encrypted to ensure security.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-855-set-encrypted-text.png" width={850} />
+
+6.  Once you are done, click on **Stop recording**, then click on **Save Script**.
+
+
+During your recording, Katalon Studio captures the objects that you have interacted with. When saving test script, **Katalon Web Recorder** exports a list of objects used in the test case. Choose a directory you want your test objects to reside to continue.
+
+## Record using an existing test case
+
+With Web Recorder, you can modify existing test cases instead of creating a brand new test case.
+
+Follow these steps:
+
+1.  Open any existing test case to continue recording.
+
+2.  Click on the **Record** icon to open Web Recorder. A confirmation dialog appears asking you to continue on recording the current test case.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-continue-recording.png" width={500} />
+
+    If you choose **No, I want a clean session**, Katalon Studio opens a new recording session without any pre-recorded steps from the current test case.
+
+    If you choose **Yes**, all the existing test steps and test case variables are imported to the **Recorded Actions** and **Variables** tabs in Web Recorder respectively. You do not need to repeat the test steps having been recorded.<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-855-record-on-existing-test-case.png" width={850} alt="record on existing test case" />
+
+3.  Interact with the AUT.
+
+4.  When saving your script, Katalon Studio automatically detects similar existing objects in the **Objects Repository** and asks you for further action to optimize the Object Repository.<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-852-add-element-to-object-repo.png" width={500} alt="Add element to object repository" />
+
+    The objects highlighted in red are objects already existed in the Object Repository. Katalon Studio identifies duplicate objects based on the ID \(for example: <code>Object Repository/Page&#95;CURA Healthcare Service/a&#95;Make Appointment</code>\) and several attributes of the object.
+
+    You can select one of these options to save:
+
+    -   **Merge changes into existing objects**: Add unique changes of the newly recorded object to the existing object, but still keep the existing object ID.
+    -   **Create duplicate objects**: Save the newly recorded object separately from the existing object.
+    -   **Replace existing objects**: The newly recorded object overrides the ID and attributes of the existing object.
+
+## Validate UI elements
+
+
+:::note
+
+-   From version 7.7.0, Katalon supports adding Mouse Over and Verification Steps by a right-click on an element displayed in the AUT when recording with Chrome, Edge \(Chromium-based\), and Firefox.
+
+
+:::
+
+Given that you enter incorrect username or password, you can validate if the website displays an error message indicating a failed login attempt.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-855-validate-UI-element.png" width={850} alt="verify fail message" />
+
+Or you can verify if the next screen after a successful login is "right" by verifying if a specific UI element is present.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-855-verify-element-present.png" />
+
+In the drop-down list of the **Run** button, you can find some Run options. The two of them labeled with **Debug** are advanced options for validating recorded script, and saving you from running all test steps over and over again if you have a Katalon Studio Enterprise license:
+
+-   **Run all steps**: Execute all steps that are enabled on Web Recorder.<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-run-all-step.png" width={600} />
+-   **Debug: Run selected steps**: Execute only one or many selected steps. You can select multiple steps using either Ctrl or Shift key.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/debug-run-selected-steps.png" width={600} />
+
+-   **Debug: Run from selected step**: Execute the currently selected step and all the steps after the selected one.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-run-from-selected-step.png" width={600} />
+
+
+## Katalon Web Recorder Utility Components
+
+### Recorded actions
+
+Available actions in Katalon Web Recorder Utility is the same as Katalon Studio built-in keywords. You can add any action, call another test case, and/or use Custom Keywords.
+
+
+:::note
+
+-   Katalon Studio does not support recording the click action on test objects with the type: <code>&lt;input type="file"&gt;</code>, which defines a file upload box with a browse button.
+
+
+:::
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-add.png" width={700} />
+
+### Captured objects
+
+During your recording, Katalon captures the objects that you have interacted with. When saving test script, **Katalon Web Recorder** exports a list of objects used in the test case. To learn more about WebUI test objects, see: [WebUI test objects](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-accept-alert).
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/captured-objects.png" width={450} />
+
+### Variables
+
+In Katalon Web Recorder, you can manage the [variables](/create-tests/data-driven-testing/data-driven-testing-with-katalon-studio) directly related to your recording.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/var.png" width={500} />
+
+### Logs
+
+When running the recorded actions, you can investigate the execution by looking at its real-time detailed logs. Execution logs are displayed on the **Logs** tab.
+
+<img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/record-web-utility/image/ks-log.png" width={700} />
+
+For advanced features such as branching, looping or validation, refer to this article: [Control Statements](/create-tests/create-test-cases/statements/statements-in-katalon-studio-overview).
+
+
+:::note
+
+-   Learn more with our Katalon Academy course: [Create Automated Tests with Record & Playback.](https://academy.katalon.com/courses/record-playback-testing/?utm_source=kat_docs&utm_medium=record_web_utility)
+
+
+:::

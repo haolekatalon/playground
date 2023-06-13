@@ -1,0 +1,25 @@
+---
+id: troubleshooting-7e8abf8b-b983-4b64-9851-6234786520a6
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/appium-directory-is-not-set
+---
+
+# Appium directory is not set
+
+When you encounter the following error <code>com.kms.katalon.core.appium.exception.AppiumStartException: Appium directory is not set</code>.
+
+When running tests with **Katalon Runtime Engine**, by default Katalon checks the Appium directory at APPIUM\_HOME environment variable.
+
+-   Windows: C:\\Users\\AppData\\Roaming\\npm\\node\_modules\\appium.
+-   macOS and Linux: /usr/local/lib/node\_modules/appium.
+
+1.  To set Appium location by using APPIUM\_HOME environment variable:
+
+    For Windows:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/roubleshooting-automated-mobile-testing/windows-appium-home.png" alt="Set Appium_Home for Windows" />
+
+    For macOS and Linux:
+
+    ```
+    export APPIUM_HOME=/usr/local/lib/node_modules/appium
+    ```

@@ -1,0 +1,29 @@
+---
+id: troubleshooting-a3f73df3-302a-4956-bc33-7f572bbbaf94
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/fail-to-start-the-appium-server-in-60-seconds
+---
+
+# Fail to start the Appium server in 60 seconds
+
+When you encounter one of the following errors:
+
+-   Fail to start the Appium server in 60 seconds.
+-   Original error: 'x.x.SplashActivity' never started.
+
+You can find the root cause by going to **Windows** &gt; **Katalon Studio Preferences** &gt; **Katalon** &gt; **Mobile**, then set your Appium Log Level to **Debug**.
+
+After this change is applied, retry your record/spy session and then open generated .appium file in the project folder. Somewhere in this file you are likely will see these lines:
+
+```
+[debug] [ADB] Running '..\adb.exe' with args: [...] [debug] [ADB] Found package: 'com.abc.def.xyz' and fully qualified activity name : 'com.egh.jik' [debug] [ADB] Incorrect package and activity. Retrying.
+```
+
+This is because Katalon Studio can't start application due to incorrect package and activity by default, so you need to add additional settings to desired capabilities. Do as follows:
+
+1.  Navigate to Mobile settings \(**Project** &gt; **Settings** &gt; **Execution** &gt; **default** &gt; **Mobile** &gt; **Android**\).
+
+2.  Add the following key:
+
+    -   Name: appWaitActivity.
+
+    -   Value: com.\* \(**based on the prefix of 'Found package' log**\).

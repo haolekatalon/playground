@@ -1,0 +1,54 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-e3d70be4-2c75-4ed9-918d-06232703e885
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-get-element-property-value
+---
+
+# \[WS\] Get Element Property Value
+
+## Description
+
+<code>getElementPropertyValue(ResponseObject to, String string, FailureHandling flowControl)</code>
+
+Get the property value of an element \(defined by a locator\) in the data returned by a web service request.
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>response</td><td><code>ResponseObject</code></td><td>Required</td><td>The object that represents an HTTP response.</td></tr><tr><td>string</td><td><code>String</code></td><td>Required</td><td>The element locator that Katalon uses to look for the expected data. To learn more about element locators, you can refer to this document: <p><a href="/create-tests/test-objects/api-test-objects/handle-response-messages-in-katalon-studio" >Handle Response messages</a>.</p></td></tr><tr><td>flowControl</td><td><code>FailureHandling</code></td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Return type</th><th>Description</th></tr><tbody><tr><td><code>String</code></td><td>A <code>String</code> object that stores the property value.</td></tr><tr><td><code>null</code></td><td>A <code>null</code> value if the element cannot be located.</td></tr></tbody></table>
+
+## Example
+
+The code snippet below shows you how to get the value of a property in a JSON object.
+
+```
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.testobject.ConditionType as ConditionType
+import com.kms.katalon.core.testobject.RequestObject as RequestObject
+import com.kms.katalon.core.testobject.TestObjectProperty as TestObjectProperty
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WebAPI
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+
+// Send a REST API request and receive the response
+def response = WS.sendRequest(findTestObject('Object Repository/GET user by id'))
+
+// JSON in response: {"id":1,"username":"John Smith","password":"123","gender":"MALE","age":25,"avatar":null}
+
+// Get the value of a property called 'username' in the JSON response
+WS.getElementPropertyValue(response, 'username')
+
+```

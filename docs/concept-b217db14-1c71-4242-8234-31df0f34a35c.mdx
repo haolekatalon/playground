@@ -1,0 +1,28 @@
+---
+id: concept-b217db14-1c71-4242-8234-31df0f34a35c
+slug: /execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-katalon-runtime-engine
+---
+
+# Use TestCloud in Katalon Runtime Engine
+
+This guide shows you how to use TestCloud in Katalon Runtime Engine \(KRE\).
+
+## Requirements
+
+-   Katalon Runtime Engine version 8.2.5 onwards.
+-   An active TestCloud subscription or trial. See [TestCloud Trial](/administer/katalon-platform-packages/testcloud-feature-comparison#).
+
+
+:::note
+
+For versions before 8.6.5, you need to have a Katalon Runtime Engine license. From version 8.6.5 onwards, only TestCloud subscription is required; you can execute tests on TestCloud without a KRE license.
+
+:::
+
+## Run tests with TestCloud in Katalon Runtime Engine
+
+TestCloud is accessible from KRE. To trigger test execution with TestCloud environments from KRE, you need to specify the following arguments.
+
+<table><tr><th>Command-line argument</th><th>Description</th><th>Data type</th><th>Mandatory</th></tr><tbody><tr><td><code>-browserType="TestCloud"</code></td><td><p>The browser type used for test suite execution. The "TestCloud" value means you are using <span>TestCloud</span> environments.</p></td><td>String</td><td>Required (for single test suite execution)</td></tr><tr><td><code>-testcloudEnvironmentId</code></td><td><p>The ID of the environment which corresponds to a combination of OS, browser type and browser version to execute. This ID can be generated with <a href="/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#" >Command Builder</a>.</p></td><td>String</td><td>Required</td></tr><tr><td><code>-testcloudTunnel</code></td><td>Allow the execution to be performed via <span>TestCloud</span> Tunnel.</td><td>Boolean</td><td>Optional</td></tr></tbody></table>
+
+To accurately generate KRE commands with environment ID, you can use Command Builder in Katalon Studio. See: [Command Builder](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#).

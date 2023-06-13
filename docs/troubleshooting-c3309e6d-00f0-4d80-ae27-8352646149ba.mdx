@@ -1,0 +1,47 @@
+---
+id: troubleshooting-c3309e6d-00f0-4d80-ae27-8352646149ba
+slug: /execute/troubleshooting/how-to-free-up-more-available-ram-for-katalon-studio
+---
+
+# How to free up more available RAM for Katalon Studio
+
+These are useful approaches to free up more available RAM for Katalon Studio on your machine.
+
+1.  Always update Katalon Studio to the latest version.
+
+
+1.  Edit the katalon.ini file to reduce JVM heap size.
+
+    1.  Open the katalon.ini file in a text editor. You can find your katalon.ini file at:
+
+        -   On macOS: Right-click on the Katalon Studio application and choose **Show Package Contents**. Then, go to **Contents** &gt; **Eclipse** &gt; **katalonc.ini**. For example: <code>/Applications/Katalon Studio PE.app/Contents/Eclipse/katalon.ini</code>
+
+        -   On Windows: Open the folder that contains Katalon Studio application. For example: <code>C:\Users\&lt;username&gt;\Downloads\Katalon&#95;Studio&#95;Windows&#95;64-8.5.2\katalon.ini</code>
+
+    2.  Add these JVM options to your katalon.ini file:
+
+        ```
+        -XX:+UseG1GC
+        -XX:+UseStringDeduplication
+        ```
+
+    3.  Save the file.
+
+    These options help Java Garbage Collector better manage unused objects and reduce JVM heap size.
+
+
+1.  Clear the terminated executions frequently.
+
+    Suppose you have a long working day with Katalon Studio. In that case, the **Job Progress** may be filled up with many execution histories, which can take up more memory. Click the recycle bin button to clear all terminated execution history.<img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/KS-clear-execution-history.png" alt="Katalon Studio clear execution history" />
+
+
+1.  Disable **Log executed test steps** in **Project Settings** &gt; **Execution**.
+
+    <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/KS-disable-log_executed_test_steps.png" alt="disable Log executed test steps" />
+
+    To understand more about this **Log executed test steps** setting, see [View and customize execution log in Katalon Studio](/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-and-customize-execution-log-in-katalon-studio#).
+
+
+1.  Avoid using Katalon Studio for long execution.
+
+    Katalon Studio is most suitable for test creation. For test execution, we advise using Katalon Runtime Engine.

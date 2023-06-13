@@ -1,0 +1,42 @@
+---
+id: concept-231339d3-e9f7-4db4-847c-477e1db9e78b
+slug: /plugins-and-add-ons/katalium-framework/real-time-monitoring-and-reporting-in-katalium-framework
+---
+
+# Real-time Monitoring and Reporting in Katalium Framework
+
+## TestNG Reports
+
+After execution, TestNG will generate a test-output folder at the root of the project.
+
+<code>target/surefire-reports</code>
+
+## For real-time monitoring and reporting using Katalon Analytics
+
+Go to <code>src</code> &gt; <code>test</code> &gt; <code>kata-default.properties</code>.
+
+Set default values for parameters in the file <code>kata-default.properties</code>.
+
+For example, kataProjectId=2, the Project ID will be displayed as <code>https://analytics.katalon.com/team/1/project/2</code>
+
+See real-time monitoring progress of the test execution:
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-reports/1-test-results.png" />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-framework/docs/katalium-framework-reports/2-test-results.png" />
+
+-   With Katalium extension in Visual Studio Code, this will be automatically setup.
+
+-   With other IDEs, you need to set values for parameters in the files <code>&lt;user&#95;home&gt;/.katalon/framework.properties</code> in Katalium Framework.
+
+    KATALON\_API\_KEY: Enter the API Key. You can generate new API keys at <code>https://analytics.katalon.com</code>. Go to **[Profile](https://analytics.katalon.com/user/profile)** &gt; **Create API Key** &gt; Input key name &gt; Click **Create**.
+
+    KATALON\_EMAIL: Enter your Katalon account. You can sign up for a free account at <code>https://www.katalon.com</code>.
+
+    For example:
+
+    ```
+    KATALON_API_KEY=8077730e-0e09-4b9d-a959-1a62b0a0d6f2
+    KATALON_EMAIL=info@katalon.com
+    
+    ```

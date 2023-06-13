@@ -1,0 +1,76 @@
+---
+id: concept-04d19f10-8d48-462d-8e27-f79913fadaf2
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-open-browser
+---
+
+# \[WebUI\] Open Browser
+
+## Description
+
+Open a browser and navigate to the specified URL. If the URL is left empty then just open a browser.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>rawUrl</td><td>String</td><td>Optional</td><td><p>URL of the web page to be opened can be left empty or null. If rawUrl doesn't contain protocol prefix, the protocol will be http://. For example:</p> <ul><li><p>https://www.google.com</p></li><li><p>file:///D:/Development/index.html</p></li><li><p>kms-technology.com =&gt; http://kms-technology.com</p></li><li><p>http://katalon.com/</p></li></ul></td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Example
+
+1.  You want to open a browser and navigate to 'http://demoaut.katalon.com/' URL:
+
+    ```
+    import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+    import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+    import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+    import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+    import com.kms.katalon.core.model.FailureHandling as FailureHandling
+    import com.kms.katalon.core.testcase.TestCase as TestCase
+    import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+    import com.kms.katalon.core.testdata.TestData as TestData
+    import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+    import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+    import com.kms.katalon.core.testobject.TestObject as TestObject
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    import internal.GlobalVariable as GlobalVariable
+    
+    WebUI.openBrowser('http://demoaut.katalon.com/')
+    
+    WebUI.closeBrowser()
+    
+    ```
+
+2.  You want to open browser only
+
+    ```
+    import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+    import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+    import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+    import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+    import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+    import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+    import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+    import com.kms.katalon.core.model.FailureHandling as FailureHandling
+    import com.kms.katalon.core.testcase.TestCase as TestCase
+    import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+    import com.kms.katalon.core.testdata.TestData as TestData
+    import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+    import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+    import com.kms.katalon.core.testobject.TestObject as TestObject
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    import internal.GlobalVariable as GlobalVariable
+    
+    WebUI.openBrowser('')
+    
+    WebUI.closeBrowser()
+    
+    ```

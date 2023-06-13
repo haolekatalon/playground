@@ -1,0 +1,68 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-12ab3316-2ac3-4a73-9bd9-993926223ab0
+slug: /analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/test-run-result-details
+---
+
+# Test run result details
+
+**Test Results** provides contextual details of a selected test run, including those with failed test cases.
+
+## View test run result details
+
+1.  Go to **Reports** &gt; **Test Runs** &gt; **Test Runs**.
+
+2.  Navigate to the **All Test Runs** section and click a test run ID to go to the selected test run **Summary**.<img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_summary/Image/TO-Reports-select_a_test_run_ID.png" alt="click a test run ID" />
+
+3.  Select **Test Results** and then the test run ID to view details of the test run results: <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports-select_tab_Test_Results_.png" alt="select Test Results tab" />
+
+4.  The **Result** page displays detailed information about the test run. In the example below, the selected test run is deemed as **Failed**: <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports_Failed_Test_Result.png" alt="Test result page" />
+
+    The **Result** section provides the following contextual information on why your test run achieved a successful \(or failed\) result:
+
+    -   **Error message**: Specific reason why the execution fails.
+
+    -   **Attachments**: Captured screenshots and/or recorded videos to see what went wrong with failed tests.
+
+    -   **Failed Assertions**: When you run tests with Katalon Studio and if you have used [built-in assertion keywords](/create-tests/create-test-cases/generate-test-steps-in-katalon-studio-script-view#) with the <code>verify</code> prefix \(e.g, <code>WebUI.verifyElementPresent</code>\) or [custom assertion keywords](/create-tests/keywords/custom-keywords/introduction-to-custom-keywords-in-katalon-studio) such as <code>KeywordUtil.markPassed(message)</code>, <code>KeywordUtil.markFailed(message)</code>, <code>KeywordUtil.markFailedAndStop(message)</code>, you can see the failed assertions in this section. To know more about assertion in Katalon Studio, see [Assert Statements](/create-tests/create-test-cases/statements/assert-statements).
+
+    -   **Errors**: The full error log. You may download this file.
+
+    -   **Logs**: The execution logs in each test step and the step status. This allows you to quickly troubleshoot which steps cause test failure. You may view this log in text view or tree view.
+
+5.  Navigate to the right side to view more information about your test run result. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports_Failed_Test_Result_related_info.png" alt="Test result related information" />This section provides a quick view of the following details in relation to your test run result:
+
+    <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/TO-Reports-Further_failure_reason_analysis.png" alt="Additional failure analysis" />
+
+    -   **Test Suite**, **Test Case**: The test suite and test case executed in the test run.
+
+    -   **Similar Failures:** TestOps analyzes all existing failed test results and identifies similar failed test suites or test cases. Those test runs with similar failures are listed in this section with their hyperlinked IDs.
+
+    -   **Failure Reason**: TestOps automatically assigns failure reason to the corresponding top-level exception of failed test results. You may click on the drop-down and change the suggested reason to a different category. You may also click on **Troubleshooting Guideline** for more [information](/maintain/suggested-solutions-for-keyword-errors) on how to resolve your failed test suite and/or test case.
+
+        
+        :::note
+
+        -   The **Failure Reason** capability is limited to the Premium and Ultimate plans of Katalon Platform. For more information, see [Katalon Platform Plans](/administer/katalon-platform-packages/katalon-platform-plans).
+        :::
+
+    -   **Maintainer**: The member user assigned as the executed test case's maintainer.
+
+    -   **Jira Defects**: You may link the related Jira defect or ticket for test management. For more information, refer to the following topic:[Link test runs to Jira defects in Katalon TestOps](/analyze/integration-for-test-analyzing/jira-integration/link-test-runs-to-jira-defects-in-katalon-testops).
+
+        <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Image/TO-Reports-Failure_Result-Jira_Defects.png" alt="Jira defects" />
+
+6.  Click the **Requests** tab to view the API requests received. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports-Test_Runs-Requests.png" alt="Test run - API requests" />
+
+    Click the hyperlinked request ID to view more details of the API requests received.
+
+7.  Click the **Test Objects** tab to view the test objects executed in the test run. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports-Test_Runs-Test_Objects.png" alt="Test Objects" />Click the hyperlinked test object ID to view more details of the test objects executed in the test run.
+
+8.  Click the **Similar Failures** tab to view other test run failures with similar errors. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports-Test_Runs-Similar_Failures.png" alt="Similar Failures" />You may click on a hyperlinked test failure ID to view more details.
+
+9.  Click the **Comments** tab to view all comments for the test run. You may also type in and submit comments for collaboration. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports-Test_Runs-Comments.png" alt="Comments" />
+
+10. Click the **Re-runs** tab to view the re-runs of the test run executed in list form. <img src="/doc_images/Documents/Analyze/Reports/View_Test_Reports/View_reports_in_TestOps/View_test_run_results/View_test_run_results_and_execution_logs/Test_run_detail/Image/TO-Reports-Test_Runs-Reruns.png" alt="Re-runs" />You may also click the hyperlinked re-run execution ID to view more details.
+
+
+You have navigated through the test run result details.

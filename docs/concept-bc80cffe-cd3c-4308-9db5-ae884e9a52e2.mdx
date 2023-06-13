@@ -1,0 +1,119 @@
+---
+id: concept-bc80cffe-cd3c-4308-9db5-ae884e9a52e2
+slug: /execute/ci-cd-integrations/jenkins-integration/use-katalon-docker-image-for-jenkins-integration/integrate-jenkins-on-docker-hosted-in-ubuntu
+---
+
+# Integrate Jenkins on Docker hosted in Ubuntu
+
+
+:::note
+
+-   An active floating Katalon Runtime Engine license.
+-   Docker and Jenkins already installed and configured. You can learn how to install Docker and Jenkins in this Jenkins guide: [Docker](https://www.jenkins.io/doc/book/installing/docker/).
+
+:::
+
+Docker is a platform for running applications in an isolated environment called a Docker container. Applications like Jenkins can be downloaded as read-only images, each of which is run in Docker as a container.
+
+However, when your Jenkins is installed on a dynamic Docker hosted in Ubuntu without GUI, you might not be able to configure build and integration with Katalon Studio from the user interface normally.
+
+This tutorial will guide you through configuring and building your Katalon Project with Jenkins on Docker hosted in Ubuntu. Your Katalon Project will be run with Katalon Studio Docker Image; hence pre-installed Katalon Studio and Katalon Runtime Engine in your local machine are not required. You can pull Docker Image for Katalon Studio at Docker Hub: [katalonstudio/katalon](https://hub.docker.com/r/katalonstudio/katalon).
+
+## Integrate with Docker on Jenkins
+
+To integrate with Docker on Jenkins, you need to install the **Docker Plugins** and **Docker Pipeline**, then set an environment path to Jenkins. Do as follows:
+
+### Install plugins
+
+1.  Open Jenkins, then go to **Dashboard &gt; Manage Jenkins &gt; Manage Plugins**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/new-plugin.png" width={500} alt="manage plugins" />
+
+2.  The Plugin Manager page appears. In the **Available** tab, search for **Docker Plugin** and **Docker Pipeline**, then select them.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/plugins.png" alt="plugins" />
+
+3.  Click **Install without restart**.
+
+
+### Add an Environment Path
+
+To run Docker commands from Jenkins, you need to add an environment path to Jenkins. The <code>PATH</code> specifies where to find the folder containing Docker commands.
+
+Go to **Dashboard &gt; Manage Jenkins &gt; Configure System &gt; Global properties**. Select the **Environment variables** to add a global variable named <code>PATH</code> with this value: <code>$PATH:/usr/local/bin:</code>.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/Global-properties.png" alt="global properties" />
+
+## Upload your Katalon project on Jenkins
+
+
+:::note
+
+-   Make sure you have Docker open, with **Docker Plugin** and **Docker Pipeline** activated on Jenkins.
+-   You can clone or download our sample CI/CD project at our GitHub repository: [CI sample](https://github.com/katalon-studio-samples/ci-samples).
+
+:::
+
+You can either upload your Katalon project from a Git repository or your local workspace.
+
+### Upload a Git repository
+
+1.  Prepare your Katalon project repository on GitHub.
+2.  In the Jenkins Dashboard, go to **New Item** and create a **Freestyle project**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/new-item.png" alt="new item" />
+
+3.  In the **Source Code Management** section, choose **Git**.
+
+4.  Enter your repository URL, select branches to build, repository browser, and additional behaviours, if any.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/git.png" alt="add git repository" />
+
+
+### Upload in the local workspace
+
+1.  Put your CI/CD project folder in this directory: <code>Users/Your&#95;user&#95;name/.jenkins/workspace</code>. Copy your project folder name.
+2.  In the Jenkins Dashboard, go to **New Item** and create a **Freestyle project**. Name your project the same name as your project folder in your local Jenkins workspace.
+
+## Build your project
+
+1.  In the **Build** section, click **Add build step** and choose **Execute shell**. Input your command, for example:
+
+    ```
+    docker run -t --rm -v "$(pwd)":/tmp/project katalonstudio/katalon katalonc.sh -projectPath=/tmp/project -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -apikey=<YOUR_API_KEY>
+    
+    ```
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/execute-shell.png" alt="command" />
+
+    
+    :::note
+
+    You can find more command line options at [Command Syntax](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine#).
+
+    :::
+
+    After you are done with the configuration, click **Save**.
+
+2.  In your project, click **Build Now**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/build-now.png" width={500} alt="build now" />
+
+3.  To view the console log, click on your current build on Jenkins and select **Console Output**.
+
+    In the **Console Output**, you can view the status when Docker starts finding the image <code>katalonstudio/katalon</code>, verifying your licenses, reloading plugins, then executing your test. If Docker cannot find the <code>katalonstudio/katalon</code> image locally, it automatically pulls this image.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/console-output.png" alt="console output" />
+
+    When the test is being run, you can also view this console log in Docker.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-docker/docker-log.png" alt="docker log" />
+
+4.  To view your report files, you can go to this directory: <code>Users/Your&#95;user&#95;name/.jenkins/workspace/Your&#95;project&#95;name/Reports</code> or your third-party integration like Katalon TestOps, Azure DevOps, or qTest.
+
+    
+    :::note
+
+    -   For real-time monitoring and better reporting capabilities, consider integrating your project with Katalon TestOps. See also [Upload Test Results to Katalon TestOps from Katalon Studio](/analyze/reports/upload-test-reports/upload-test-results-from-katalon-studio-to-katalon-testops-manually).
+
+    :::

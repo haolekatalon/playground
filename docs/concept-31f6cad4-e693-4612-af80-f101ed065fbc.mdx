@@ -1,0 +1,143 @@
+---
+id: concept-31f6cad4-e693-4612-af80-f101ed065fbc
+slug: /organize/integration-for-organizing-tests/jira-integration/enable-testops-jira-integration-for-test-management
+---
+
+# Enable TestOps - Jira integration for test management
+
+Katalon TestOps provides a seamless Jira integration that allows you to:
+
+-   Link Jira requirements and Jira defects
+
+-   Link test runs to Jira releases
+
+-   Write BDD scenarios in Jira tickets
+
+-   View test results from linked Katalon Studio test cases in Jira
+
+
+This article shows you how to configure Jira integration in Katalon TestOps.
+
+## Requirements
+
+-   In Jira, install this plugin from the Atlassian Marketplace website: [Katalon Studio and TestOps integration.](https://marketplace.atlassian.com/apps/1217501/katalon-bdd-test-automation-for-jira)
+
+-   You must be the owner or admin of an organization.
+
+## Enable TestOps - Jira integration in Katalon TestOps
+
+You can configure TestOps - Jira integration in Katalon TestOps. This integration allows you to:
+
+-   Link Jira requirements and Jira defects.
+
+-   Link test runs to populated Jira releases.
+
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your project.
+
+    The project **Dashboard** page appears.
+
+2.  Select **Configuration** &gt; **Integration**.
+
+    The **Integrations** page appears. There is a dropdown menu on the page for a full list of integration options.
+
+3.  Select **Jira** in the dropdown menu.
+
+    The Jira page appears as below.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/kt-jira-integration.png" width={800} alt="Select Jira integration in TestOps" />
+
+4.  Enter Jira URL, Username, and Password.
+
+    For Jira Cloud:
+
+    -   Jira URL must be in the form of <code>https://&lt;site&#95;name&gt;.atlassian.net</code>.
+
+    -   In the **Username** section, enter the email address you have registered for your Jira Cloud account.
+
+    -   In the **Password** section, enter an Atlassian Cloud's API token. See instructions for API tokens in the Atlassian document: [API tokens](https://confluence.atlassian.com/cloud/api-tokens-938839638.html).
+
+    For Jira Server:
+
+    -   Jira URL must be in the form of <code>http(s)://domain</code>, without any trailing parts. For example, <code>/secure</code>.
+
+    -   In the **Username** section, enter your Username instead of your email address.
+
+    -   In the **Password** section, enter your Password.
+
+5.  Click **Test Connection** to see if the connection is successful.
+
+6.  Click **Save**.
+
+
+You have successfully enabled TestOps - Jira integration in Katalon TestOps. You can now link test cases to Jira requirements, Jira defects or link test runs to Jira releases.
+
+**Next step**  
+
+
+[Populate Jira releases](/plan/integration-for-test-planning/populate-jira-releases)
+
+[Link Test Cases to Jira Requirements](/plan/integration-for-test-planning/link-test-cases-to-jira-requirements)
+
+[Link test runs to Jira defects in Katalon TestOps](/analyze/integration-for-test-analyzing/jira-integration/link-test-runs-to-jira-defects-in-katalon-testops)
+
+## Create webhook for TestOps - Jira integration
+
+-   You must be the Owner or Administrator of your organization
+
+
+We use Jira webhook to notify Katalon Platform when specific events happen in Jira. For instance, Jira can alert Defect Reports when a defect-linked Jira issue's status or priority is updated. By using a webhook, Jira issue lifecycle changes can be reflected on Katalon Platform in real-time without any manual intervention from users. This allows for seamless and efficient coordination between Jira and Katalon Platform, providing users with up-to-date information without any delay.
+
+1.  On TestOps, go to **Configurations** &gt; **Integrations** &gt; **Jira/Xray**, scroll down to Webhook.
+
+    If you don't see the Webhook section, [set up Jira integration first](https://docs.katalon.com/docs/organize/integration-for-organizing-tests/jira-integration/enable-katalon-testops---jira-integration-for-test-management). <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/TO-Configurations-Jira_Webhook.png" alt="Jira webhook integration" />
+
+2.  Select **Create Webhook**, and copy the Webhook URL.<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/TO-Jira_webhook-copy_URL.png" alt="Copy jira webhook URL" />
+
+3.  Open your Jira portal, go to **Jira Settings** &gt; **Webhook** &gt; **Create a Webhook**. Paste the Webhook URL from TestOps to the URL field. <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/TO-Jira_webhook-_copy_paste_URL_to_jira.png" alt="Paste jira webhook URL" />
+
+4.  Set up Jira events scope for the Webhook by selecting **Issue**: **created**, **updated**, **deleted**. <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/TO-Jira_webhook_scopes_selection.png" alt="Select jira webhook scopes" />
+
+    Uncheck the **Exclude Body** option: <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/Jira_webhook_-_uncheck_Exclude_body.png" alt="uncheck Exclude body option" />Finally, select **Create** at the bottom of the screen.
+
+
+The Jira Webhook is created successfully. <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/Jira_webhook_created_successfully.png" alt="Jira webhook created successfully" />
+
+## Enable TestOps - Jira integration in Jira software
+
+You can configure TestOps - Jira integration for test management in Jira. This configuration allows you to write BDD scenarios in Jira tickets and view test results from linked Katalon Studio test cases in Jira.
+
+-   This integration is only available for Jira Cloud.
+
+
+To enable TestOps - Jira integration in Jira software, follow these steps:
+
+1.  Open your Jira projects. Your Jira page name follows the following syntax: <code>&lt;sitename&gt;.atlassian.net</code>.
+
+2.  At the bottom of the left panel, click **Project settings**.
+
+3.  Scroll down the left panel, expand the **App** section and select **Katalon Settings**. The **Katalon settings** page appears as below.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/Enable-Jira-TestOps-integration/Image/kt-katalon-settings.png" width={500} alt="Configure Katalon settings in Jira Software" />
+
+4.  Fill in the information as follows:
+
+    -   **Email**: Enter the email address you have registered for your Katalon account.
+
+    -   **API Key**: Enter a TestOps API key. To learn more about generating a TestOps API key, you can refer to this document: [Katalon API Key in Katalon TestOps](/administer/settings/katalon-api-key-in-katalon-testops).
+
+5.  Click **Fetch organizations**, then select your organization from the dropdown list.
+
+6.  Click **Save**.
+
+
+You have successfully enabled TestOps - Jira integration in Jira software. You can now write BDD test cases in Jira tickets or view test results in Jira tickets and gadgets.
+
+**Next step**  
+
+
+[View Katalon Studio test results in Jira tickets](/analyze/integration-for-test-analyzing/jira-integration/view-katalon-studio-test-results-in-jira-tickets)
+
+[View test results in the Jira Test Results gadget](/analyze/integration-for-test-analyzing/jira-integration/view-test-results-in-the-jira-test-results-gadget)
+
+[Manage BDD test cases with Jira integration](/organize/integration-for-organizing-tests/jira-integration/manage-bdd-test-cases-with-jira-integration)

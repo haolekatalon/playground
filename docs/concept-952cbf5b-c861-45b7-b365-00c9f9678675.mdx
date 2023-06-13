@@ -1,0 +1,53 @@
+---
+id: concept-952cbf5b-c861-45b7-b365-00c9f9678675
+slug: /administer/administration-roles/administrative-roles-and-permissions
+---
+
+# Administrative Roles and Permissions
+
+​Katalon Platform​ organizes users into four management levels:
+
+-   Account
+-   Organization
+
+-   Team
+
+-   Project
+
+
+The account level is the highest, followed by the organization, the team, then the project level.
+
+Overall, the account level is in charge of subscription and billing management functions, while the organization level collates teams, projects, and users for collaboration.
+
+Members can be assigned different roles with varying permissions and privileges. While they can be granted administrator rights, advanced administrative functions are inaccessible to them by default.
+
+## View the user roles within an organization
+
+To view the user roles in your organization, do as follows:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/) and go to your project.
+
+    The project **Dashboard** appears.
+
+2.  Click **Settings** at the top right corner. From the dropdown menu, click **User Management**. <img src="/doc_images/Documents/Administer/Administrative_Roles/testops-roles-privileges/image/TO_Access_User_Management.png" alt="TestOps User Management" />
+
+3.  You can see the roles of all users under the **Role** column.<img src="/doc_images/Documents/Administer/Administrative_Roles/testops-roles-privileges/image/TestOps_User_roles.png" alt="TestOps user roles" />
+
+
+## Roles and permissions at account and organization level
+
+### Roles and permissions at Account level
+
+<table><tbody><tr><td  rowspan="2"  td><strong>Permissions</strong></td><td  colspan="3"  td><strong>Roles</strong></td></tr><tr><td><strong>Owner</strong></td><td><strong>Admin</strong></td><td><strong>Billing Manager</strong></td></tr><tr><td><strong>User Management</strong></td><td><ul><li><p>Invite users</p></li><li><p>Revoke invitation</p></li><li><p>Assign Account user role</p></li><li><p>Remove Member from Account</p></li><li><p>Transfer ownership</p></li><li><p>Export User Management page</p></li></ul></td><td><ul><li><p>Invite users to Account</p></li><li><p>Revoke invitation</p></li><li><p>Assign Account user role</p></li><li><p>Remove Member from Account</p></li></ul></td><td><ul><li><p>View User Management page</p></li><li><p>Export User Management page</p></li></ul></td></tr><tr><td><strong>Subscription Management</strong></td><td><ul><li><p>Purchase subscription</p></li><li><p>Upgrade subscription</p></li><li><p>Cancel subscription</p></li><li><p>Get quote</p></li></ul></td><td><p>No access</p></td><td><ul><li><p>Purchase subscription</p></li><li><p>Upgrade subscription</p></li><li><p>Cancel subscription</p></li><li><p>Get quote</p></li><li><p>Contact sales</p></li></ul></td></tr><tr><td><strong>Payment Method</strong></td><td><ul><li><p>View payment method</p></li><li><p>Add payment method</p></li><li><p>Delete payment method</p></li></ul></td><td><p>No access</p></td><td><ul><li><p>View payment method</p></li><li><p>Add payment method</p></li><li><p>Delete payment method</p></li></ul></td></tr><tr><td><strong>License Management</strong></td><td><ul><li><p>Distribute licenses to Organizations</p></li><li><p>Transfer licenses between Organizations</p></li><li><p>Revoke licenses from Organizations</p></li><li><p>Assign licenses to Member</p></li></ul></td><td><ul><li><p>Distribute licenses to Organizations</p></li><li><p>Transfer licenses between Organizations</p></li><li><p>Revoke licenses from Organizations</p></li></ul></td><td><p>View License Management page</p></td></tr><tr><td><strong>Organization Management</strong></td><td><ul><li><p>Create Organizations</p></li><li><p>Update Organization information</p></li><li><p>Delete Organizations</p></li></ul></td><td>No access</td><td>No access</td></tr><tr><td><strong>Account Settings</strong></td><td><ul><li><p>Update Account information</p></li><li><p>Delete Account</p></li></ul></td><td>No access</td><td>No access</td></tr></tbody></table>
+
+### Roles and permissions at Organization level
+
+<table><tbody><tr><td  rowspan="2"  td><strong>Permissions</strong></td><td  colspan="2"  td><strong>Roles</strong></td></tr><tr><td><strong>Owner</strong></td><td><strong>Admin</strong></td></tr><tr><td><strong>User Management</strong></td><td><ul><li><p>Invite users to Organization</p></li><li><p>Revoke invitation</p></li><li><p>Assign Organization user role</p></li><li><p>Remove Member from Organization</p></li><li><p>Transfer ownership</p></li><li><p>Export User Management page</p></li></ul></td><td><ul><li><p>Invite users to Organization</p></li><li><p>Revoke invitation</p></li><li><p>Assign Organization user role</p></li><li><p>Remove Member from Organization</p></li><li><p>Transfer ownership</p></li><li><p>Export User Management page</p></li></ul></td></tr><tr><td><strong>Organization Settings</strong></td><td><ul><li><p>Change Organization information</p></li><li><p>Delete Organization</p></li></ul></td><td><p>No access</p></td></tr><tr><td><strong>License Management</strong></td><td><ul><li><p>Assign licenses to Members</p></li><li><p>Transfer licenses between Members</p></li><li><p>Revoke licenses from Members</p></li></ul></td><td><ul><li><p>Assign licenses to Members</p></li><li><p>Transfer licenses between Members</p></li><li><p>Revoke licenses from Member</p></li></ul></td></tr><tr><td><strong>Product Utilization</strong></td><td><ul><li><p>View reports</p></li><li><p>Filter reports</p></li><li><p>Export reports</p></li></ul></td><td><ul><li><p>View reports</p></li><li><p>Filter reports</p></li><li><p>Export reports</p></li></ul></td></tr></tbody></table>
+
+
+:::note
+
+-   If a member receives a checkout link generated by someone else, they can subscribe to and checkout licenses on Katalon Platform. This is only applicable if there is no predefined payment method. See: [Katalon License Subscription](/administer/administration-tasks/subscription-management/katalon-studio-enterprise-and-katalon-runtime-engine-license/purchase-katalon-studio-and-katalon-runtime-engine-licenses).
+
+
+:::

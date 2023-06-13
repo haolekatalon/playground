@@ -1,0 +1,85 @@
+---
+id: concept-424a260f-c6f1-4522-b243-85bdaa9d4e60
+slug: /execute/execute-tests-with-katalon-studio/skip-test-cases-in-katalon-studio
+---
+
+# Skip test cases in Katalon Studio
+
+In this article, we demonstrate how to skip test cases in a test suite by adding a test listener with the <code>TestCaseContext.skipThisTestCase()</code> method. To learn more about the usage of test listeners, see [Test Listeners \(Test Hooks\)](/create-tests/create-test-cases/test-fixtures-and-test-listeners-test-hooks-in-katalon-studio#).
+
+## Skip test cases in a test suite execution
+
+To skip test cases in a test suite execution, do as follows:
+
+1.  In the **Test Explorer** panel, right-click on **Test Listeners**. Select **New** &gt; **New Test Listener**.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/skip-test-cases/image/ks-new-test-listeners.png" width={500} />
+
+    A **New Test Listener** dialog opens.
+
+2.  Enter the name of the test listener, for example: <code>SkipTest</code>. Select **Generate sample Before Test Case method**, then click **OK**.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/skip-test-cases/image/ks-new-test-listener.png" width={400} />
+
+    Katalon Studio generates a sample template with the necessary annotations, libraries and supported functions as below:
+
+    ```
+    import internal.GlobalVariable as GlobalVariable
+    
+    import com.kms.katalon.core.annotation.BeforeTestCase
+    import com.kms.katalon.core.annotation.BeforeTestSuite
+    import com.kms.katalon.core.annotation.AfterTestCase
+    import com.kms.katalon.core.annotation.AfterTestSuite
+    import com.kms.katalon.core.context.TestCaseContext
+    import com.kms.katalon.core.context.TestSuiteContext
+    
+    class SkipTest {
+        /**
+         * Executes before every test case starts.
+         * @param testCaseContext related information of the executed test case.
+         */
+        @BeforeTestCase
+        def sampleBeforeTestCase(TestCaseContext testCaseContext) {
+        println testCaseContext.getTestCaseId()
+        println testCaseContext.getTestCaseVariables()
+    }
+    ```
+
+3.  Use the <code>TestCaseContext.skipThisTestCase()</code> method to skip test cases. See also: [skipThisTestCase\(\)](https://api-docs.katalon.com/com/kms/katalon/core/context/TestCaseContext.html#skipThisTestCase()).
+
+    Inside the <code>SkipTest</code> Test Listener, copy and paste the following code under the generated sample template.
+
+    ```
+    // To check for the desired condition and skip the test case if true.
+    if(inputyourconditionhere)
+    {   testCaseContext.skipThisTestCase()
+    }
+    ```
+
+    For example, we want to skip the Test Case named: "Log in 1" in a test suite. We input the following sample code in the **SkipTest** Listener:
+
+    ```
+    class SkipTest {
+        /**
+         * Executes before every test case starts.
+         * @param testCaseContext related information of the executed test case.
+         */
+        @BeforeTestCase
+        def sampleBeforeTestCase(TestCaseContext testCaseContext) {
+        println testCaseContext.getTestCaseId()
+        println testCaseContext.getTestCaseVariables()
+        if ((testCaseContext.getTestCaseId()) == "Test Cases/Log in 1") 
+            {   testCaseContext.skipThisTestCase()
+            }
+    }
+    
+    ```
+
+4.  Save your test listener.
+
+5.  Open and execute a test suite.
+
+
+Check the results in the **Results** tab to see the final status of your tests. For the example above, Katalon successfully skips the test case named: "Log in 1".
+
+<img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/skip-test-cases/image/ks-skip-log-in-1.png" />

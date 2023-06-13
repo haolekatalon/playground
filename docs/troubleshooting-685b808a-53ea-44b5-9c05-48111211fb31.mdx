@@ -1,0 +1,45 @@
+---
+id: troubleshooting-685b808a-53ea-44b5-9c05-48111211fb31
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/connected-device-not-displayed-in-device-name-list
+---
+
+# Connected device not displayed in 'Device Name' list
+
+When you cannot see the connected device displayed in the **Device Name** list, it can be because one of the following causes:
+
+If you do mobile testing with iOS devices, make sure you enable **UI Automation** on the device. Do as follows:
+
+1.  Connect your device to Xcode.
+
+2.  Go to **Settings** &gt; **Developer** and turn on **UIAutomation**.
+
+3.  Check if your device is recognized using the following commands on Terminal:
+
+    ```
+    cd /Applications/Katalon\ Studio.app/Contents/Eclipse/configuration/resources/tools/imobiledevice  idevice_id -l
+    ```
+
+    
+    :::note
+
+    -   If your iOS version is iOS 11, make sure the version of Katalon Studio is 5.3.0+.
+
+    :::
+
+
+If you do mobile testing with Android devices, make sure to turn on the phone developer mode. Do as follows:
+
+1.  Connect your phone to the computer via a USB cable.
+
+2.  Go to **Settings** &gt; **Developer options**, enable**:**
+
+    -   USB debugging – Debug mode when USB is connected.
+    -   Install via USB – Allow installing apps via USB.
+    -   USB debugging \(Security Setting\) – Allow granting permissions and simulating input via USB debugging.
+3.  Make sure a trusted connection is established by tapping on **Trust this computer** whenever this dialog is displayed on your device.
+
+4.  Check if the device is listed using adb command:
+
+    1.  On Windows command line/ MacOS terminal: Navigate to platform-tools folder in &lt;Android SDK folder&gt;\\platform-tools.
+
+    2.  Type in "adb devices" and observe devices listed there. Make sure that your corrected device is listed there with online status.

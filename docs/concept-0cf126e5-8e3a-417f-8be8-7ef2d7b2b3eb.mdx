@@ -1,0 +1,114 @@
+---
+id: concept-0cf126e5-8e3a-417f-8be8-7ef2d7b2b3eb
+slug: /create-tests/manage-projects/set-up-projects/mobile-testing/ios/mobile-ios-setup-simulators-in-katalon-studio
+---
+
+# \[Mobile\] iOS Setup \(Simulators\) in Katalon Studio
+
+This article shows you how to set up Xcode simulators to test iOS applications with Katalon Studio.
+
+To begin with, you need to setup a macOS environment. You can not execute iOS mobile testing in Windows and Linux.
+
+## Part 1: Install Xcode
+
+Install Xcode version 10.2 or newer. You can download Xcode from the App Store or the Apple Developer website: [Xcode 13](https://developer.apple.com/xcode/).
+
+
+:::note
+
+-   Xcode must support the current version of your iOS device.
+-   Katalon Studio can only support iOS version 9.0 or above. To learn more about the supported environment in Katalon Studio, you can refer to this document: [Supported environment](/supported-execution-environments/supported-environments-for-katalon-studio-and-katalon-runtime-engine-kre).
+
+:::
+
+## Part 2: Install Appium and Xcode command-line tools
+
+### Install with built-in tools
+
+From Katalon Studio version 8.3.0 onwards, you can install Appium and Xcode command-line tools \(Xcode CLT\) via Katalon built-in tools. To do so:
+
+1.  Open Katalon Studio and go to
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-825-Install-dependencies-via-built-in-tools.png" width={500} alt="Install dependencies via Katalon built-in tools" />
+
+2.  Katalon will automatically install the latest version of Xcode CLT, Appium, Homebrew, NodeJS, and other iOS dependencies.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-825-KS-install-dependencies.png" width={500} alt="KS installs dependencies" />
+
+
+### Install manually
+
+1.  Install the command-line tool for Xcode. You can download the command-line tool compatible with your Xcode version from the Apple Developer website here: [Download](https://developer.apple.com/download/all/).
+
+    Alternatively, you can copy and paste the following command-line arguments in this order in the **Terminal** to install the command-line tool for Xcode:
+
+    ```
+    xcode-select --install
+    ```
+
+    ```
+    sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+    ```
+
+2.  Download and install Node.js from the Node.js website: [Node.js Downloads](https://nodejs.org/en/download/).
+
+    
+    :::note
+
+    -   Make sure you install Node.js into a location where you have full Read/Write permissions.
+
+    :::
+
+3.  Install Appium version 1.12.1 or newer via NPM. To install the latest Appium version, copy and paste the command-line argument as follows:
+
+    ```
+    npm install -g appium
+    ```
+
+    
+    :::note
+
+    -   We recommend installing the latest Appium version.
+    -   If you are using emulators other than Xcode simulators, some emulators come with Appium installed. If you want to run an application on an emulator, check your emulator settings before installing Appium.
+    :::
+
+    To learn more about Appium, you can refer to the Appium document here: [Getting started](http://appium.io/docs/en/about-appium/getting-started/#installing-appium).
+
+
+## Part 3: Set up Xcode simulators for mobile testing in Katalon Studio
+
+After installing Xcode, Katalon automatically recognizes Xcode simulators as iOS devices. To check whether Katalon successfully recognizes Xcode simulators, on the main toolbar, select the **iOS** device in the dropdown list next to **Run**.
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-TOOLBAR-iOS.png" alt="Katalon recognizes Xcode simulators" />
+
+You should see a list of pre-installed Xcode simulators appearing as iOS devices.
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-iOS-Katalon-regconizes-simulators.png" alt="Katalon recognizes Xcode simulators" />
+
+## Part 4: Prepare the iOS application file
+
+To execute mobile testing with Xcode simulators, you need to prepare an <code>.app</code> file.
+
+1.  Open the <code>.xcodeproj</code> project file with Xcode. Here, we open our sample <code>Coffee Timer.xcodeproj</code> project file.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/open-xcode-file.png" alt="Open Xcode project" />
+
+2.  After opening the project in Xcode, choose one of the iOS simulators to launch the apps.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Set_Up_Projects/Mobile-Testing/iOS/Mobile_iOS_Setup_Simulators/Pictures/KS-iOS-Choose-simulator-1.png" alt="Choose simulators" />
+
+3.  To build the <code>.app</code> file, click **Product &gt; Build**.
+
+    Wait for the build to finish, to find the <code>app</code> file, go to <code>~/Library/Developer/Xcode/DerivedData/&#10100;app name&#10101;/Build/Products/&#10100;scheme&#10101;-iphonesimulator/&#10100;app name&#10101;.app</code>. In this example, we can find our sample <code>Coffee Timer.app</code> file at: <code>~/Library/Developer/Xcode/DerivedData/Coffee Timer/Build/Products/Debug-iphonesimulator/Coffee Timer.app</code>.
+
+    
+    :::tip
+
+    -   To quickly search for the <code>DerivedData</code> folder, copy and paste the following path <code>~/Library/Developer/Xcode/DerivedData</code> into the **Spotlight**.
+    :::
+
+
+**Learn more with our Katalon Academy course:**  
+
+
+[Solve Mobile Testing Challenges with Codeless Solution](https://academy.katalon.com/courses/codeless-solution-mobile-testing/?utm_source=kat_docs&utm_medium=ios_setup)

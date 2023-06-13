@@ -1,0 +1,83 @@
+---
+id: concept-b6fbf977-60e6-421c-b2ff-09b124c215a8
+slug: /organize/integration-for-organizing-tests/configure-testrail-integration-in-katalon-studio
+---
+
+# Configure TestRail integration in Katalon Studio
+
+The **TestRail Integration** plugin establishes the connection between Katalon Studio and TestRail to deliver the following advanced capabilities:
+
+-   In TestRail, you can view test results of test suites executed in Katalon Studio.
+-   In Katalon Studio, you can query test cases associated with test runs of TestRail in the dynamic test suite.
+
+
+
+:::note
+
+-   From version 8.5.5, your TestRail password is encrypted. If you open your project in Katalon Studio version before 8.5.5, you might need to re-enter your TestRail password.
+
+-   The **TestRail Integration** plugin only supports integrating Katalon Studio with TestRail Cloud.
+
+
+:::
+
+This tutorial shows you how to configure TestRail integration
+
+## Requirements
+
+-   An active Katalon Studio Enterprise license.
+-   The **TestRail Integration** plugin installed. You can find the plugin here: [TestRail Integration plugin](https://store.katalon.com/product/13/TestRail-Integration).
+
+## Enable TestRail integration in Katalon Studio
+
+To enable the integration of Katalon Studio with TestRail, you need to configure both your TestRail site and Katalon Studio, do as follows:
+
+1.  Enable the TestRail API. Log in to your account, go to **Administration** &gt; **Site Settings** &gt; **API**, and check the **Enable API** option. Then click **Save Settings**.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Testrail_integration_in_Studio/Picture/KS-enable-API-in-Testrail.png" alt="Enable API in TestRail" />
+
+2.  Enable the **TestRail Integration** plugin. Follow these steps:
+
+    1.  In the main menu, go to **Project** &gt; **Settings** &gt; **Plugins** &gt; **TestRail** and check the **Using TestRail** option.
+
+    2.  Enter the credentials required for **Authentication**:
+
+        -   **URL**: your TestRail instance <code>https://&lt;example&gt;.testrail.io</code>.
+        -   **Username**: your TestRail username.
+        -   **Password**: your TestRail password.
+        -   **Project**: your TestRail project ID \(an integer\). To get the project ID, open your TestRail project in the browser and view the ID at the end of the URL.
+
+            For example, we have a project URL as follows: <code>https://company.testrail.io/index.php?/projects/overview/1</code>. The project ID here is <code>1</code>.
+
+    3.  Click **Test Connection** to test connection.
+
+    4.  Click **Apply and Close**.
+
+        <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Testrail_integration_in_Studio/Picture/ks-855-testrail-ps.png" width={600} alt="Enable TestRail integration in KS" />
+
+
+You have successfully enabled TestRail integration in Katalon Studio.
+
+## Map test cases between Katalon Studio and TestRail
+
+To map a test case between Katalon Studio and TestRail, you need to get the TestRail test case ID. Do as follows:
+
+1.  To retrieve the TestRail test case ID, open your project in TestRail, then go to the **Test Cases** tab.
+
+    Here you can see the list of test cases and their IDs.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Testrail_integration_in_Studio/Picture/KS-Test-Case-list-Testrail.png" width={850} alt="TestRail test case list" />
+
+2.  Open the test case you want to map, switch to the **Integration** tab, and specify the respective test case ID in TestRail \(only the integer part\).
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Configure_Testrail_integration_in_Studio/Picture/KS-TestRail-Integration-tab-in-Studio.png" width={500} alt="Specify test case ID in Studio" />
+
+3.  Save the Katalon Studio test cases.
+
+
+You have successfully map test cases between Katalon Studio and TestRail.
+
+**Related information**  
+
+
+[Upload test execution results from Katalon Studio to TestRail](/analyze/integration-for-test-analyzing/upload-test-execution-results-from-katalon-studio-to-testrail)

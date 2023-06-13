@@ -1,0 +1,66 @@
+---
+id: concept-773edec0-bea4-4512-8544-8f3b93dc13a3
+slug: /maintain/fix-broken-web-test-objects-with-time-capsule-in-katalon-studio
+---
+
+# Fix broken web test objects with Time Capsule in Katalon Studio
+
+From version 7.8.0, Katalon Studio supports the Time Capsule feature to restore the state of your AUT when a test failed due to broken locators. You can generate a Time Capsule to fix broken web test objects that are not automatically fixed by the Self-healing feature.
+
+Katalon Studio triggers Time Capsule whenever a test execution fails due to the following exception: <code>com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id ... not found</code>.
+
+This document shows you how to enable and use the Time Capsule feature in a failed test execution.
+
+
+:::note
+
+-   Only applicable to WebUI testing on Chrome browser.
+
+
+:::
+
+## Enable Time Capsule
+
+-   Katalon Studio from version 7.8.2 onwards. For versions before 7.8.2, Time Capsule is enabled by default.
+
+When disabled, Time Capsule will not be generated.
+
+To use Time Capsule, you need to enable it in Katalon Studio. Do as follows:
+
+1.  Go to **Project** &gt; **Settings** &gt; **Execution** &gt; **WebUI**.
+
+2.  In the **Default Time Capsule** dropdown list, select **Enabled**.
+
+    <img src="/doc_images/Documents/Maintain/time-capsule/images/ks-time-capsule-enabled.png" width={500} />
+
+3.  Click **Apply and Close**.
+
+
+The Time Capsule extension is ready to use.
+
+## Fix broken objects in a failed test execution
+
+After Time Capsule is triggered by the exception <code>com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id ... not found</code> , do as follows:
+
+1.  Click on **Click here to fix broken Test Object** link in:
+
+    -   The **Log Viewer** of the failed test case.
+
+        <img src="/doc_images/Documents/Maintain/time-capsule/images/ks-fix-broken-object.png" width={700} />
+
+    -   The **Result** tab of the test suite that contains the failed test case.
+
+        <img src="/doc_images/Documents/Maintain/time-capsule/images/ks-TS-fix-broken-object.png" width={700} />
+
+    Katalon Studio opens the **Object Spy** dialog with the captured state of the AUT.<img src="/doc_images/Documents/Maintain/time-capsule/images/ks-broken-object-spy.png" width={700} />
+
+2.  In the displayed AUT, capture the object again.
+
+    <img src="/doc_images/Documents/Maintain/time-capsule/images/ks-recapture-broken-obj.png" width={700} />
+
+    The captured object is updated in the **Object Spy** dialog.
+
+3.  Click **Save** to keep the changes made to the captured object.
+
+
+You can run your test again with the updated test object.

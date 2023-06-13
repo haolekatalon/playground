@@ -1,0 +1,29 @@
+---
+id: concept-f4cd2192-46ba-4b51-ad3b-ccb732e021d3
+slug: /create-tests/test-objects/api-test-objects/authorization/authorization-oauth-1-0-in-katalon-studio
+---
+
+# Authorization OAuth 1.0 in Katalon Studio
+
+To learn more about OAuth 1.0, you can refer to OAuth documentation: **[OAuth Core 1.0 Revision A](https://oauth.net/core/1.0a/).**
+
+The following fields are supported in Katalon Studio:
+
+<table><tr><th>Name</th><th>Description</th></tr><tbody><tr><td>Consumer Key</td><td>The API key associated with the application (Twitter, Facebook, etc.). This key (or 'client ID', as Facebook calls it) is what identifies the client, which is a website/service that is trying to access an end-user's resources.</td></tr><tr><td>Consumer Secret</td><td>The client password that is used to authenticate with the authentication server, which is a Twitter/Facebook/etc. server that authenticates the client.</td></tr><tr><td>Signature Method</td><td>The consumer uses either HMAC-SHA1 or RSA-SHA1 to sign the request. For signature method RSA-SHA1, only OpenSSL RSA Private key with PKCS#8 or PKCS#1 format is supported.</td></tr><tr><td>Token</td><td>What is issued to the client once the client successfully authenticates itself (using the consumer key & secret). This access token defines the privileges of the client (what data the client can and cannot access).</td></tr><tr><td>Token Secret</td><td>The string sent with the access token as a password.</td></tr><tr><td>Realm</td><td>The Provider basically decides if this is of any importance. It is the counterpart of the WWW-authenticate response header. If a server returns a WWW-authenticate header of 'OAuth realm="<a href="https://api.example.com/" >https://api.example.com</a>"' then it probably parses that value from the Authenticate request header in the OAuth process.</td></tr></tbody></table>
+
+## Use OAuth 1.0 Authorization in Katalon Studio
+
+To use OAuth 1.0 authorization in Katalon Studio, do as follows:
+
+1.  In the **Authorization** tab of a web service request, set the **Type** as **OAuth 1.0**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/authorization-oauth1/ks-840-choose-oauth01.png" width={700} alt="authorization tab" />
+
+2.  Fill in your authorization information , then click on **Update to HTTP Header**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/authorization-oauth1/ks-840-oauth01-authorization.png" width={700} alt="OAuth 1.0 authentication" />
+
+
+The authorization information are updated to the **Authorization** request of the **HTTP Header** tab, as you can see below.
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/authorization-oauth1/ks-840-oauth-01-http-header.png" width={700} alt="http header" />

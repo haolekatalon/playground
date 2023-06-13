@@ -1,0 +1,75 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-0ad3f7b8-4a52-45cc-8d91-da203c41bc8e
+slug: /integrations/unsupported-integrations/testproject-migration
+---
+
+# TestProject migration
+
+This article demonstrates how Katalon Studio helps users migrate their TestProject project to Katalon Studio. The article also contains some of the test cases for Web, Mobile and API test migration.
+
+
+:::note
+
+-   Please note that the use case presented here is a suggestion only and should be implemented with caution. It has not undergone quality assurance testing and is not officially supported by our platform.
+
+
+:::
+
+[TestProject](https://testproject.io/) is an end-to-end automation tool that provides capabilities to automate Web, API, and Mobile applications. It is an open-source friendly tool built on top of Selenium and Appium. TestProject employs OpenSDK with Junit 5 for building and execution of test cases.
+
+## Migrate TestProject to Katalon Studio
+
+-   [Katalon Studio](https://docs.katalon.com/docs/get-started/katalon-studio-installation/install-katalon-studio-on-macoswindows#download-katalon-studio) version 7.4.0 onwards.
+
+-   A TestProject sample project.
+
+-   Basic understanding of Junit and TestNG.
+
+-   [Junit/TestNG plugin](https://store.katalon.com/product/180/TestNG-JUnit-Keywords).
+
+
+You can refer to this [demonstration video](https://academy.katalon.com/katalon-demo-and-integration/?video=36525) of the steps below.
+
+1.  Download a TestProject sample project.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/TestProject_migration/image/TestProject-download_project.png" alt="download a TestProject project" />
+
+    Here is a sample repository for the sample project: https://github.com/katalon-studio-samples/salesforce-katalon-sample.git
+
+2.  Open **Project Settings** in Katalon Studio, import all required .jar files \(build.gradle\). You can refer to: [Gradle Settings in Katalon Studio](/proof-of-concept/dependencies-management-with-native-gradle-support-poc-in-katalon-studio#).<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/TestProject_migration/image/KS-Project_settings-import_.jar_files.png" alt="import .jar files in Katalon Studio project settings" />
+
+3.  Add all your project files inside **Include** &gt; **scripts** &gt; **groovy**.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/TestProject_migration/image/KS-Add_projects_to_Test_Explorer.png" alt="add projects Katalon Studio Test Explorer" />
+
+4.  Resolve conflicts:
+
+    -   Change JUnit 5 annotation to TestNG/JUnit 4 \(Katalon Studio currently doesn't support JUnit 5\):
+
+        <code>@BeforeAll</code> needs changing to <code>@BeforeClass</code>, <code>@AfterAll</code> needs changing to <code>@AfterClass</code>.
+
+    -   Add <code>@Test</code> annotation before the method <code>void execute()</code> and initialize Katalon Webdriver inside the <code>@BeforeClass</code>:<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/TestProject_migration/image/TestProject_conflict_Test_and_BeforeClass.png" alt="resolve @Test and @BeforeClass conflict" />
+
+        For Web based application:
+
+        ```
+        WebUiBuiltInKeywords.openBrowser("");
+        WebUiBuiltInKeywords.maximizeWindow();
+        driver = DriverFactory.getWebDriver();
+        ```
+
+        For Mobile application:
+
+        ```
+        String dirName = RunConfiguration.getProjectDir():
+        MobileBuiltInKeywords.startApplication(dirName+"/App/APIDemos.apk", false);
+        driver = MobileDriverFactory.getDriver();
+        ```
+
+    -   Prepare TestNG.xml file by adding a class name:<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/TestProject_migration/image/add__class_name_to_TestNG.xml_.png" alt="add class name to TestNG.xml" />
+
+    -   Prepare the test cases by adding TestNG or Junit Keywords.
+
+5.  Run the test execution. You can refer to [Execute tests with Katalon Studio overview](/execute/execute-tests-with-katalon-studio/execute-tests-with-katalon-studio-overview).
+
+6.  Verify test execution result. You can refer to [View test results and execution logs in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops).<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/TestProject_migration/image/KS_TestProject-verify_test_result.png" alt="verify test result with TestProject project" />
+
+
+You have successfully migrated and executed test cases from a TestProject project.

@@ -1,0 +1,98 @@
+---
+id: concept-ec60c23b-882e-4288-bafc-b2547225c618
+slug: /organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops
+---
+
+# Upload test scripts from the Git repository to TestOps
+
+Katalon Platform supports uploading test scripts from a Git repository to Katalon TestOps. This allows you to manage version control and synchronization of your test project between different modules in Katalon Platform.
+
+Katalon supports AWS CodeCommit, Azure Repos, Bitbucket, GitHub, and GitLab integration for Git repositories.
+
+This article demonstrates how to upload your test scripts from a Git repository to Katalon TestOps.
+
+## Upload test scripts from a Git repository
+
+-   You have an existing test project in Azure Repos / Bitbucket / GitHub / GitLab / AWS CodeCommit.
+
+
+To upload test scripts from a Git repository to Katalon TestOps, do as follows:
+
+1.  Sign in [Katalon TestOps](https://testops.katalon.io/login) and go to the project you want to upload the test scripts to.
+
+2.  Go to **Configurations** &gt; **Script Repositories** &gt; **Connect Git Repository**. Click **Create a new Git repository**.
+
+    <img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/TO-Configurations-create_a_git_repo.png" alt="create a new Git repository" />
+
+    The **Create a new Git repository** tab appears.<img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/TO-Configurations-Create_a_new_git_repo_tab.png" alt="Create a new Git repository tab appears" />
+
+3.  In the **Source Type** dropdown list, choose one of the following source types:
+
+    -   Azure Repos
+    -   Bitbucket
+    -   GitHub
+    -   GitLab
+    -   AWS CodeCommit. When you select the **AWS CodeCommit** option, the **Access Key ID** and **Secret Access Key** fields are enabled. Currently, Katalon Studio does not support AWS CodeCommit yet.
+4.  In the **Repository URL** field, enter the URL of your Git script repository. If you choose **AWS CodeCommit**, you can refer to this AWS document to retrieve the repository URL: [Step 4: Connect to the CodeCommit console and clone the repository](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html#setting-up-gc-connect-console).
+
+5.  In the **Username** field, enter your Azure Repos / Bitbucket / GitHub / GitLab / AWS CodeCommit username.
+
+6.  In the **Personal Access Token** field, enter your personal access token \(PAT\). To create a PAT, you can refer to the following documents:
+
+    -   For Azure Repos, see this Microsoft document: [Use personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows).
+    -   For Bitbucket, refer to this Atlassian document: [Create an App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/).
+
+    -   For GitHub, see this GitHub document: [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Make sure you opt to create a classic PAT, and select **repo** scope to set permission scopes for the PAT.<img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/Github-Personal_access_token_permission.png" />
+
+    -   For GitLab, refer to this GitLab document: [Personal access tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token).
+
+    -   For AWS CodeCommit, to create username and PAT for Git credentials, refer to this AWS document: [Step 3: Create Git credentials for HTTPS connections to CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html#setting-up-gc-iam).
+
+7.  In the **Access Key ID** and **Secret Access Key** fields, enter your access key ID and secret access key in AWS CodeCommit. To retrieve the access key ID and secret access key, you can refer to this AWS document: [Manage access keys for IAM](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token).
+
+8.  **Optional:** You can choose **Link existing test execution results with test cases having the same paths and names**. This option allows TestOps to attach existing test run results to the uploaded test cases and test suites that has the same paths and names.
+
+    For example:
+
+    -   You have an existing test run results from the **Login** test case in the <code>Test Cases/Common Test Cases</code> folder. By default, if this test case is not from an uploaded Git test project, its test results are in the **Uploaded Data** folder in the **Test Management** tab.
+
+    -   You upload a Git repository that also has a **Login** test case in the <code>Test Cases/Common Test Cases</code> folder.
+
+    -   You check the **Link existing test execution results with test cases having the same paths and names** option.
+
+    -   Once the Git repository is connected successfully, in the **Test Management** tab, you can see the existing test results of the **Login** test case in the <code>&lt;your-git-repo-name&gt;/Test Cases/Common Test Cases</code> folder.
+
+9.  Click **Connect**.
+
+    The following sections appear:
+
+    -   **Branch**: choose a branch.
+    -   **Name**: enter your project name.
+    -   **Description**: enter your Git project description \(optional\).
+
+10. Click **Create**.
+
+
+You have successfully uploaded your test scripts from a Git repository to Katalon TestOps. Next, you can start managing your test scripts in Katalon TestOps.
+
+**Related information**  
+
+
+[View test scripts uploaded from a Git repository](/organize/view-test-scripts-in-katalon-platform/view-test-scripts-in-katalon-testops#)
+
+## Sync your Git repository latest versions to Katalon TestOps
+
+After you have linked your Git repository to Katalon TestOps, later on you can sync the latest version of your Git repository to Katalon TestOps.
+
+1.  Sign in [Katalon TestOps](https://testops.katalon.io/login) and select your project.
+
+2.  Go to **Configurations** &gt; **Script Repositories**. Select the Git repository you want to sync.
+
+    <img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/TestOps_-_select_Git_repository.png" alt="select Git repository" />
+
+3.  Sync the latest version of your Git repository by clicking **Refresh Test Suite Collection**.
+
+    <img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/TestOps_-_Refresh_Test_Suite_Collection.png" alt="TestOps - Refresh Test Suite Collection" />
+
+
+The latest versions of your Git repository has been synced to Katalon TestOps.

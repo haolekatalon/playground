@@ -1,0 +1,40 @@
+---
+id: concept-441ec62b-402c-474e-92fb-9fea0150a11c
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-find-image-element
+---
+
+# \[Mobile\] Find Image Element
+
+
+:::note
+
+-   This keyword, available in version 7.2.0+, is for Katalon Studio Enterprise users only.
+
+
+:::
+
+## findImageElement
+
+-   **Description**: Find the mobile element that is recognized by the given image.
+-   **Keyword syntax**: <code>findImageElement(imageFilePath,flowControl)</code>
+-   **Parameters**:
+
+    -   Name: imageFilePath
+    -   Description: Absolute path of the image
+    -   Parameter Type: String
+    -   Mandatory: Required
+
+    -   Name: flowControl
+
+    -   Description: Control the execution flow if the step fails
+    -   Parameter Type: FailureHandling
+    -   Mandatory: Optional
+-   **Return**: The first found WebElement that is recognized by the given image.
+
+-   **Example**:
+
+    ```
+    WebElement element = Mobile.findImageElement("/Users/myaccount/Desktop/image.png")
+    println "Element found at: (" + element.getPosition().x + ", " + element.getPosition().y + ")"
+    
+    ```

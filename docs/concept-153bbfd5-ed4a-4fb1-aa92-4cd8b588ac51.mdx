@@ -1,0 +1,86 @@
+---
+id: concept-153bbfd5-ed4a-4fb1-aa92-4cd8b588ac51
+slug: /create-tests/data-driven-testing/data-driven-testing-with-katalon-studio
+---
+
+# Data-driven testing with Katalon Studio
+
+Data-driven testing \(DDT\) is a software testing method that stores test data in table or spreadsheet format. Data-driven testing allows testers to input a single test script that can execute tests for all test data from a table and expect the test output in the same table.
+
+Katalon Studio allows you to conduct data-driven testing with internal and external data sources at both test case and test suite levels. You can download the data-driven testing sample project from our GitHub repository: [Shopping cart sample](https://github.com/katalon-studio-samples/shopping-cart-tests).
+
+This document discusses the components and the supported data-driven testing methods in Katalon Studio.
+
+## Variables
+
+Katalon Studio supports three types of variables: Global variables, Test Case variables, and Groovy variables.
+
+**Global variables**
+
+Global variables are variables defined in the execution profile and can be used in a test case, test object, web service object, and email configuration within a project. To learn more about global variables, see [Global variables](/create-tests/data-driven-testing/global-variables).
+
+**Test Case variables**
+
+Test Case variables allow you to pass dynamic data into a test case. You can create test case variables and call test cases with variables in the manual and script mode.
+
+To learn more about using test case variables, see [Test Case variables](/create-tests/data-driven-testing/test-case-variables).
+
+**Groovy variables**
+
+
+:::note
+
+Katalon Studio supports Groovy from version 2.4.x onwards.
+
+:::
+
+Katalon Studio allows you to define variables in Groovy. For example:
+
+```
+// x is defined as a variable of String type
+String x = "Hello";
+ 
+// y is defined as a variable of int type
+int y = 5;
+
+// The value of the variables are printed to the console
+println(x);
+println(y);
+
+```
+
+To learn more about Groovy, refer to the Apache Groovy document: [Groovy semantics](http://groovy-lang.org/semantics.html).
+
+## Test data
+
+Katalon Studio supports data-driven testing with external and internal data sources. You can create internal or external data files, then configure variable binding to read test data values from these files. To learn more about test data in Katalon Studio, see [Manage test data](/create-tests/data-driven-testing/manage-test-data).
+
+## Set parameter for your test script
+
+You can pass variables to your test scripts by setting parameters in test cases, test objects, or their properties:
+
+-   [Parameterize Web Test Objects](/create-tests/test-objects/web-test-objects/parameterize-web-test-objects-in-katalon-studio)
+-   [Parameterize Mobile Test Object](/create-tests/test-objects/mobile-test-objects/parameterize-mobile-test-object-properties-in-katalon-studio)
+-   [Parameterize Web Service Object](/create-tests/test-objects/api-test-objects/rest-request/parameterize-a-web-service-object-in-katalon-studio)
+-   [Parameterize Windows Test Objects](/create-tests/test-objects/windows-test-objects/windows-test-objects-in-katalon-studio#)
+
+## Supported data-driven testing methods
+
+**In a test case**
+
+Katalon Studio supports data-driven testing in a test case independently from the test suite. See [Data-driven testing at the test case level](/create-tests/data-driven-testing/data-driven-testing-at-the-test-case-level-in-katalon-studio).
+
+**In a test suite/test suite collection**
+
+-   [Run test case with an external data source](/create-tests/data-driven-testing/data-driven-testing-at-the-test-suite-level)
+-   [Combine multiple data sources](/create-tests/data-driven-testing/combine-multiple-data-sources-in-katalon-studio)
+
+By default, Katalon Studio converts variables to strings to conduct data-binding. However, from version 6.3.0 onwards, you can enable or disable this function and allow Katalon Studio to read variables as their data types. See: [Enhanced variable binding](/create-tests/data-driven-testing/variable-binding-in-katalon-studio).
+
+Alternatively, you can also conduct data-driven testing with Groovy using the <code>findTestData</code> method. To learn about this method, you can refer to our API documentation: [TestData](https://api-docs.katalon.com/com/kms/katalon/core/testdata/TestData.html).
+
+**In a dynamic test suite**
+
+Katalon Studio supports data-driven testing in a dynamic test suite. To learn more about data-driven testing in a dynamic test suite, you can refer to this document: [Data-driven testing in a dynamic test suite](/create-tests/data-driven-testing/perform-data-driven-testing-in-a-dynamic-test-suite).
+
+Learn in practice with our free Katalon Academy course: [Katalon Studio: How to Apply Data-Driven Testing](https://academy.katalon.com/courses/data-driven-testing/?utm_source=kat_docs&utm_medium=ddt_ks).

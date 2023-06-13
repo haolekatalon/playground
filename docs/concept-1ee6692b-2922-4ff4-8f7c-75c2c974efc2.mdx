@@ -1,0 +1,65 @@
+---
+id: concept-1ee6692b-2922-4ff4-8f7c-75c2c974efc2
+slug: /create-tests/manage-projects/project-settings/desired-capabilities/remote-execution-for-mobile-testing-in-katalon-studio
+---
+
+# Remote Execution for Mobile Testing in Katalon Studio
+
+This tutorial guides you through configuring Desired Capabilities for executing mobile tests remotely with the local Appium server \(Appium Grid\).
+
+Currently, Katalon Studio only supports testing an iOS application using macOS. With remote execution, you can use a Windows machine and remote to a macOS for iOS application testing.
+
+## Requirements
+
+-   [Set up Katalon Studio for mobile testing on Windows](/create-tests/manage-projects/set-up-projects/mobile-testing/android/mobile-android-setup-in-katalon-studio)
+-   [Set up Katalon Studio for mobile testing on macOS](/create-tests/manage-projects/set-up-projects/mobile-testing/ios/mobile-ios-setup-real-devices-in-katalon-studio)
+-   A started Appium server on the remote machine
+-   Connected Android or iOS devices
+
+## Tutorials
+
+Open your project in Katalon Studio and go to **Project/Settings/Desired Capabilities/Remote**:
+
+1.  In **Remote server URL**, enter the Appium server URL and select **Appium** in **Remote server type**
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/mobile-remote-execution/remote.png" />
+
+2.  In **Appium driver**, select Android Driver for Android devices; or iOS Driver for iOS devices
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/mobile-remote-execution/remote1.png" />
+
+3.  Add desired capabilities to the table
+
+
+-   For **Android** app: you need to add <code>platformName</code>, <code>platformVersion</code> and <code>deviceName</code> capabilities
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/mobile-remote-execution/remote3.png" />
+
+    
+    :::tip
+
+    In a remote machine, type <code>adb devices</code> in Command Prompt to retrieve <code>deviceName</code> \(Id of an Android device/simulator\)
+
+    :::
+
+-   For **iOS** app: you need to add <code>platformName</code>, <code>platformVersion</code>, <code>deviceName</code>, and <code>udid</code> capabilities
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/mobile-remote-execution/remote4.png" />
+
+    
+    :::tip
+
+    In a remote machine, type <code>idevice&#95;id -l</code> in Terminal to retrieve <code>udid</code> \(id of an iOS device/simulator\)
+
+    :::
+
+-   For **Chrome** browser on **Android** devices: you need to add <code>platformName</code>, <code>platformVersion</code>, <code>deviceName</code>, and <code>browserName</code> \(its value should be **chrome**\) capabilities
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/mobile-remote-execution/remote5.png" />
+
+-   For **Safari** browser on **iOS** devices: you need to add <code>platformName</code>, <code>platformVersion</code>, <code>deviceName</code>, <code>udid</code>, and <code>browserName</code> \(its value should be **safari**\) capabilities
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/mobile-remote-execution/remote6.png" />
+
+
+The above examples only show the minimum capabilities to run a Mobile test. Katalon Studio also supports other desired capabilities listed in [Appium document](http://appium.io/docs/en/writing-running-appium/caps/#general-capabilities).

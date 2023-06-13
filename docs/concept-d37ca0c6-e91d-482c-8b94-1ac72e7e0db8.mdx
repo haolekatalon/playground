@@ -1,0 +1,175 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-d37ca0c6-e91d-482c-8b94-1ac72e7e0db8
+slug: /create-tests/manage-projects/manage-test-projects/open-a-test-project-in-katalon-studio-platform-edition
+---
+
+# Open a test project in Katalon Studio - Platform Edition
+
+For Katalon Studio - Platform Edition, you need to set up your project on Katalon TestOps, then open your test project in Katalon Studio - Platform Edition.
+
+
+:::note
+
+-   You cannot create a new project in Katalon Studio - Platform Edition.
+
+:::
+
+## Requirements
+
+-   Katalon Studio - Platform Edition version 8.5.0 or 8.5.5. For Katalon Studio version 8.6.0 onwards, see [Open a test project in Katalon Studio](/create-tests/manage-projects/manage-test-projects/open-a-test-project-in-katalon-studio).
+
+-   You already belonged to an Organization on Katalon Platform. See [Create Organization and Projects](/administer/administration-tasks/create-an-organization-and-project).
+
+
+## Set up your project on Katalon TestOps
+
+To use Katalon Studio - Platform Edition, you first start with Katalon TestOps. Here, you need to create a project, link your project with a Git repository, then open your project in Katalon Studio - Platform Edition.
+
+The Git repository is where you store your test project. You only need to set up your Git repository once, then all your team members can get access to your test project via Katalon TestOps. Katalon Platform enables Git integration by default. You can collaborate with your team by committing directly from Katalon Studio and updating your Git repository on Katalon TestOps.
+
+### Create a new project in TestOps
+
+This section details how you create a new project in TestOps.
+
+-   You are the administrator or owner of the organization.
+
+To create a new project in [Katalon TestOps](https://testops.katalon.io/), do as follows:
+
+1.  Go to TestOps &gt; **Settings** &gt; **Project Management**.
+
+    <img src="/doc_images/Global_reuse/Common_steps/image/to-project-management.png" width={350} alt="The Project Management section in the settings menu." />
+
+    The **Project** dashboard appears.
+
+2.  Click on **Create Project**.
+
+    <img src="/doc_images/Global_reuse/Common_steps/image/to-create-a-project.png" width={700} alt="Create a project in the project dashboard." />
+
+3.  Choose your team, then click **Next**.
+
+    <img src="/doc_images/Global_reuse/Common_steps/image/to-choose-a-team.png" width={700} alt="The manage projects page in Katalon TestOps." />The **Manage Projects** page appears.<img src="/doc_images/Global_reuse/Common_steps/image/to-manage-your-project.png" width={700} alt="Create a project by inputting a project name." />
+
+4.  Enter your project name, then click **Create**.
+
+
+A pop-up in the upper right side of the screen confirms that you have successfully created a new project in Katalon TestOps.
+
+### Upload test scripts from a Git repository
+
+-   You have an existing test project in Azure Repos / Bitbucket / GitHub / GitLab / AWS CodeCommit.
+
+
+To upload test scripts from a Git repository to Katalon TestOps, do as follows:
+
+1.  Sign in [Katalon TestOps](https://testops.katalon.io/login) and go to the project you want to upload the test scripts to.
+
+2.  Go to **Configurations** &gt; **Script Repositories** &gt; **Connect Git Repository**. Click **Create a new Git repository**.
+
+    <img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/TO-Configurations-create_a_git_repo.png" alt="create a new Git repository" />
+
+    The **Create a new Git repository** tab appears.<img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/TO-Configurations-Create_a_new_git_repo_tab.png" alt="Create a new Git repository tab appears" />
+
+3.  In the **Source Type** dropdown list, choose one of the following source types:
+
+    -   Azure Repos
+    -   Bitbucket
+    -   GitHub
+    -   GitLab
+    -   AWS CodeCommit. When you select the **AWS CodeCommit** option, the **Access Key ID** and **Secret Access Key** fields are enabled. Currently, Katalon Studio does not support AWS CodeCommit yet.
+4.  In the **Repository URL** field, enter the URL of your Git script repository. If you choose **AWS CodeCommit**, you can refer to this AWS document to retrieve the repository URL: [Step 4: Connect to the CodeCommit console and clone the repository](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html#setting-up-gc-connect-console).
+
+5.  In the **Username** field, enter your Azure Repos / Bitbucket / GitHub / GitLab / AWS CodeCommit username.
+
+6.  In the **Personal Access Token** field, enter your personal access token \(PAT\). To create a PAT, you can refer to the following documents:
+
+    -   For Azure Repos, see this Microsoft document: [Use personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows).
+    -   For Bitbucket, refer to this Atlassian document: [Create an App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/).
+
+    -   For GitHub, see this GitHub document: [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Make sure you opt to create a classic PAT, and select **repo** scope to set permission scopes for the PAT.<img src="/doc_images/Documents/Organize/upload-tests-via-git-repo/image/Github-Personal_access_token_permission.png" />
+
+    -   For GitLab, refer to this GitLab document: [Personal access tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token).
+
+    -   For AWS CodeCommit, to create username and PAT for Git credentials, refer to this AWS document: [Step 3: Create Git credentials for HTTPS connections to CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html#setting-up-gc-iam).
+
+7.  In the **Access Key ID** and **Secret Access Key** fields, enter your access key ID and secret access key in AWS CodeCommit. To retrieve the access key ID and secret access key, you can refer to this AWS document: [Manage access keys for IAM](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token).
+
+8.  **Optional:** You can choose **Link existing test execution results with test cases having the same paths and names**. This option allows TestOps to attach existing test run results to the uploaded test cases and test suites that has the same paths and names.
+
+    For example:
+
+    -   You have an existing test run results from the **Login** test case in the <code>Test Cases/Common Test Cases</code> folder. By default, if this test case is not from an uploaded Git test project, its test results are in the **Uploaded Data** folder in the **Test Management** tab.
+
+    -   You upload a Git repository that also has a **Login** test case in the <code>Test Cases/Common Test Cases</code> folder.
+
+    -   You check the **Link existing test execution results with test cases having the same paths and names** option.
+
+    -   Once the Git repository is connected successfully, in the **Test Management** tab, you can see the existing test results of the **Login** test case in the <code>&lt;your-git-repo-name&gt;/Test Cases/Common Test Cases</code> folder.
+
+9.  Click **Connect**.
+
+    The following sections appear:
+
+    -   **Branch**: choose a branch.
+    -   **Name**: enter your project name.
+    -   **Description**: enter your Git project description \(optional\).
+
+10. Click **Create**.
+
+
+You have successfully uploaded your test scripts from a Git repository to Katalon TestOps. Next, you can start managing your test scripts in Katalon TestOps.
+
+## Open a test project in Katalon Studio - Platform Edition
+
+-   Katalon Studio - Platform Edition version 8.5.0 or 8.5.5.
+
+-   You already belonged to an Organization on Katalon Platform. See [Create Organization and Projects](/administer/administration-tasks/create-an-organization-and-project).
+
+-   You already created a project with Git integration on Katalon TestOps. See [Create a new project in TestOps](/administer/administration-tasks/create-an-organization-and-project#) and [Upload test scripts from a Git repository](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops#).
+
+
+To open a project in Katalon Studio - Platform Edition, do as follows:
+
+1.  From the main menu, select **File** &gt; **Open Project**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Manage_Test_Project/Images/ks-855-open-project-pe.png" width={600} />
+
+    The **Open Project** dialog appears.
+
+2.  In the displayed **Open Project** dialog, select the project you want to open from the dropdown list. Katalon Studio retrieves all linked repositories of that project from the **TestOps Serve URL**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Manage_Test_Project/Open_Test_Project_In_KS_Platform/image/ks-850-pe-open-project.png" width={700} alt="open project dialog" />
+
+    If you cannot find your project, you can click on **Fetch Project** to update the latest list of active projects. An active project is a project on Katalon TestOps with linked Git repositories. See [Upload test scripts from the Git repository to TestOps](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+3.  To clone your Git repository to Katalon Studio, select your Git repository URL from the dropdown list.
+
+4.  Input your Git **Username** and **Personal Access Token**. Granting the Write permission for this token is recommended to work with Katalon Studio. See GitHub document: [Repository roles for an organization](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization).
+
+    You can select the option to **Save authentication** for the next time you open this project.
+
+    To learn how to create a Git Personal Access Token, you can refer to these documents:
+
+    -   GitHub: [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+    -   Azure Repos: [Use personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows)
+
+    -   Bitbucket: [HTTP access tokens](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+
+    -   GitLab: [Create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token)
+
+        
+        :::note
+
+        -   AWS CodeCommit is currently not supported in Katalon Studio.
+
+        :::
+
+5.  Choose your branch to work on.
+
+6.  Select a **Local Location** to clone your project to your local machine.
+
+7.  Click **OK.**
+
+
+You've successfully opened a project in Katalon Studio.

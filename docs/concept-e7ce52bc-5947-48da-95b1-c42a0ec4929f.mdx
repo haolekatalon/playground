@@ -1,0 +1,93 @@
+---
+id: concept-e7ce52bc-5947-48da-95b1-c42a0ec4929f
+slug: /create-tests/test-objects/api-test-objects/authorization/authorization-oauth-2-0-in-katalon-studio
+---
+
+# Authorization OAuth 2.0 in Katalon Studio
+
+OAuth 2.0 \(Open Authorization 2.0\), is an industry-standard protocol for authorization.
+
+This guide illustrates how to use OAuth 2.0 in Katalon Studio.
+
+Grants in OAuth 2.0 are sets of steps a client has to perform to get resource access authorization. The following grant types are supported in Katalon Studio:
+
+-   **Authorization Code**: used by confidential and public clients to exchange an authorization code for an access token. After the user returns to the client via the redirect URL, the application gets the authorization code from the URL and use it to request an access token.
+
+-   **Password Credentials**: used to exchange credentials of a user for an access token. Password credentials is the simplest OAuth grants and involves only one step: the application presents a traditional username and password login. Because the client application has to collect the password of a user and send it to the authorization server, password credentials is not recommended grant type.
+
+-   **Client Credentials**: used by clients to obtain an access token outside of the context of a user.
+
+-   **Refresh Token**: used by clients to exchange a refresh token for an access token when the access token has expired. Refresh token allows clients to continue to have a valid access token without further interaction with the user.
+
+
+To learn more about OAuth 2.0 grant types, see OAuth 2.0 documentation: [OAuth Grant Types](https://oauth.net/2/grant-types/).
+
+Here is the list of available field of OAuth 2.0 authorization in Katalon Studio:
+
+-   **Callback URL**: The client application callback URL to redirect to after OAuth authorization.
+
+-   **Auth URL**: The endpoint for the API provider authorization server, which is used to retrieve the authorization code.
+
+-   **Access Token URL**: The authentication server of the provider, which is used to exchange an authorization code for an access token.
+
+-   **State**: An opaque value to prevent cross-site request forgery.
+
+-   **Consumer Key**: The API key associated with the application \(Twitter, Facebook, etc.\). This key \(or client ID, as Facebook calls it\) is what identifies the client, which is a website/service that is trying to access the resources of an end-user.
+
+-   **Consumer Secret**: The password of the client that is used to authenticate with the authentication server, which is a Twitter/Facebook/etc. server that authenticates the client.
+
+-   **Authorization code**: A token represents the access granted by the end user, which is used to obtain an access token and a refresh token.
+
+-   **Scope**: The scope of request access, which might include multiple space-separated values. This is a mechanism in OAuth 2.0 to limit application access to an account of a user.
+
+-   **Access Token**: A string that the OAuth client uses to make requests to the resource server.
+
+-   **Refresh Token**: A string that the OAuth client can use to get a new access token without the interaction of the user.
+
+
+## Use OAuth 2.0 authorization in Katalon Studio
+
+This section shows you how to use OAuth 2.0 authorization in Katalon Studio.
+
+To use OAuth 2.0 authorization in Katalon Studio, do as follows:
+
+1.  Open your web service request object.
+
+2.  In the web service request object editor, switch to the **Authorization** tab.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/bearer-authorization/ks-840-authorization-type.png" width={700} alt="authorization type" />
+
+3.  Choose **Authorization** type as **OAuth 2.0**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/authorization-oauth2/image/ks-840-oath-20.png" width={700} alt="OAuth 2.0" />
+
+4.  In the **Grant Type** dropdown menu, select the desired grant type.
+
+5.  Enter the required values for the chosen grant type.
+
+6.  You can also upload your data from an excel file by clicking on **Load data from Excel**. For **Authentication Code** grant type, you need to click on **Request token**.
+
+7.  To use current authorization information, click on **Update to HTTP Header**.
+
+
+The authorization information is added to the **HTTP Header**.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/authorization-oauth2/image/ks-840-update-to-https-header.png" width={700} alt="update to HTTP header" />
+
+## Example: Request token for Authorization Code grant type
+
+For the **Authorization Code** grant type, the workflow is different.
+
+1.  Open your web service request object.
+
+2.  Switch to the **Authorization** tab, choose the **Type** as **OAuth 2.0** and **Grant Type** as **Authorization Code**.
+
+3.  You need to enter these values: **Callback URL**, **Auth URL**, **Access Token URL**, **Consumer Key**, and **Consumer Secret**.
+
+4.  Then, click on **Request token**. A dialog appears:
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/authorization-oauth2/image/ks-840-request-token.png" width={500} alt="request token" />
+
+5.  Copy the generated URL in the dialog and paste it into the address bar of your browser. You will be directed to the authorization page, where you need to grant access to the inquired resource.
+
+6.  Copy the result return from the address bar of your browser, then paste it back into the dialog.
+
+    For a more detailed example, you can refer to Imgur API documentation: [Authorization and OAuth](https://apidocs.imgur.com/#authorization-and-oauth).

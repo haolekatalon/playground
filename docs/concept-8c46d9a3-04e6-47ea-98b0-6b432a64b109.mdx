@@ -1,0 +1,34 @@
+---
+id: concept-8c46d9a3-04e6-47ea-98b0-6b432a64b109
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-find-elements
+---
+
+# \[Windows\] Find Elements
+
+
+:::note
+
+-   Starting from **version 7.0.0**, Windows desktop application testing is available on Katalon Studio.
+
+
+:::
+
+## findElements
+
+-   **Description**: Find elements by using the locator value of the given Windows object.
+-   **Keyword name**: findElements
+-   **Keyword syntax**: Windows.findElements\(windowsObject\)
+-   **Parameter**: windowsObject
+
+    -   Description: An object describing the locator and locator strategy to find a Windows element.
+    -   Parameter Type: WindowsTestObject
+    -   Mandatory: Required
+-   **Returns**: The found elements.
+-   **Example**:
+
+```
+List<WebElement> foundElements = Windows.findElements(findWindowsObject('Object Repository/Notepad/Edit'))
+println "Found " + foundElements.size() + " element(s)"
+println "The First found element said: " + foundElements.get(0).getText()
+
+```

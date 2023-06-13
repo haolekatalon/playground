@@ -1,0 +1,42 @@
+---
+id: concept-a09fd8cc-5d9b-45c4-b27b-027a5f411ccf
+slug: /plan/link-test-execution-with-a-testops-release-using-command-builder
+---
+
+# Link test execution with a TestOps release using command builder
+
+## Requirements
+
+You have already configured TestOps integration. [Learn more](/analyze/reports/upload-test-reports/upload-test-results-from-katalon-studio-to-katalon-testops-manually).
+
+## Create a new Release in Katalon TestOps
+
+You can create a new Release or use an existing Release. See: [Create and edit releases in TestOps](/plan/create-and-edit-releases-in-testops).
+
+## Select a TestOps Release to generate command
+
+In **Katalon Studio**, open the **Command Generator** and select a Test Suite that you want to execute in CLI.
+
+In the **Katalon TestOps** section, select the release you want to link your execution with after running the test suite.
+
+<img src="/doc_images/Documents/Plan/link-execution-with-TestOps-release-via-cli-in-Studio/image/ks-generate-command-release-section.png" alt="kse-generate-command-release-section" />
+
+
+:::note
+
+-   If you have not created any Releases in TestOps, it will be set as **Default Release**.
+
+
+:::
+
+After finishing the above steps, click on **Generate Command** and copy it to the command line.
+
+## View linked execution and release in Katalon TestOps
+
+After executing your test suite with CLI, sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your project, then go to **Planning** &gt; **Releases**. You can view the list of all releases here.
+
+<img src="/doc_images/Documents/Plan/link-execution-with-TestOps-release-via-cli-in-Studio/image/kt-release-page.png" alt="kte-june2022-releases-page" />
+
+Click on a release \(e.g., the **7.6** release\) and select **Test Runs** to view all test executions linked to the chosen Release.
+
+<img src="/doc_images/Documents/Plan/link-execution-with-TestOps-release-via-cli-in-Studio/image/kt-release-test-runs-page.png" alt="kte-june2022-releases-test-runs-page" />

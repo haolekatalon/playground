@@ -1,0 +1,152 @@
+---
+id: concept-9d80283e-f4eb-497b-84a3-1baa7e326c38
+slug: /organize/integration-for-organizing-tests/jira-integration/configure-jira-integration-in-katalon-studio
+---
+
+# Configure Jira integration in Katalon Studio
+
+This article shows you how to configure Jira integration in Katalon Studio.
+
+## Requirements
+
+-   An active Katalon Studio Enterprise license.
+-   Install the **Jira Integration** plugin for Katalon Studio. You can find the plugin here: [Jira Integration](https://store.katalon.com/product/3/Jira-Integration).
+-   In Jira, install this plugin from the Atlassian Marketplace website: [Katalon Studio and TestOps integration](https://marketplace.atlassian.com/apps/1217501/katalon-bdd-test-automation-for-jira).
+
+## Enable Jira integration in Katalon Studio
+
+To enable Jira integration in a Katalon Studio project , follow these steps:
+
+1.  In Katalon Studio, go to **Projects** &gt; **Settings** &gt; **Plugins** &gt; **JIRA**.
+
+2.  Select the **Enable integration** checkbox.
+
+3.  In the **Authentication** section, fill in the criteria as shown below:
+
+    -   **Server URL**:
+
+        -   For Jira Cloud: <code>https://&lt;site&#95;name&gt;.atlassian.net</code>
+        -   For Jira Data Center \(Jira Server\): <code>https://domain</code> without any trailing parts, for example, <code>/secure</code>. Your server URL for Jira Data Center should have a valid SSL certificate.
+    -   **Username**: your username or the registered email of the Atlassian account.
+
+    -   **Password/API token**: The Atlassian Cloud's API token. To learn more about generating API in Atlassian, you can refer to the Atlassian document: [Manage Atlassian token for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/KS-TDAP-733-Fill-in-Jira-username-password.png" alt="Fill in Jira username and password" />
+
+4.  Click **Connect** to start the authentication process. A pop-up dialog indicates that the Atlassian account connects successfully.
+
+5.  After successfully authenticating with Jira, all relevant **JIRA Projects** and **Issue Types** will be retrieved and displayed under the **Submit Options** section. You can specify the default project and the default issue type for submission here.
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>Default Jira Project</td><td>The default Jira project to submit tickets.</td></tr><tr><td>Default Jira Issue Type</td><td>The default Jira issue type to create when submitting tickets.</td></tr><tr><td>Use Test Case name as Summary for Jira ticket</td><td>To use the test case name as a summary for submitted tickets.</td></tr><tr><td>Attach Screenshot to Jira ticket</td><td>To include taken screenshots during test execution in submitted tickets.</td></tr><tr><td>Attach Log to Jira ticket</td><td>To include the execution log in submitted tickets.</td></tr>    </tbody></table>
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/KS-TDAP-733-Submit-options-Jira-integration.png" alt="Submit options in Jira integration" />
+
+6.  Click **Apply and Close** to complete the Jira integration.
+
+
+You have successfully enabled Jira integration in Katalon Studio.
+
+
+:::note
+
+-   Jira integration configuration is available in the project scope only. If you want to integrate Jira in another Katalon project, you have to repeat the above steps.
+
+:::
+
+## Import BDD custom fields from Jira to Katalon Studio \(Applicable to Jira Cloud integration\)
+
+-   This step is necessary if you want to conduct BDD testing with Jira. If you don't run BDD tests or you are integrating Jira Data Center \(Jira Server\) with Katalon, skip this section and move to [Import test cases from Jira to Katalon Studio](/organize/integration-for-organizing-tests/jira-integration/configure-jira-integration-in-katalon-studio#).
+
+-   You have configured the Katalon BDD fields in Jira. See: [Manage BDD test cases with Jira integration](/organize/integration-for-organizing-tests/jira-integration/manage-bdd-test-cases-with-jira-integration).
+
+
+From Katalon Studio version 7.8.0 onwards, you can import the BDD custom fields to Katalon Studio when importing BDD feature files for Jira Cloud integration. Follow these steps:
+
+1.  Go to **Projects** &gt; **Settings** &gt; **Plugin** &gt; **Jira**.
+
+2.  In the **Fetch Options** section, check the **Enable retrieving content of the specified custom field** box.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-Jira-integration-BDD-testing/Image/KS-TDAP-733-Enable-fetch-BDD-custom-fields.png" width={500} alt="Fetch BDD custom fields to Katalon Studio" />
+
+3.  Select a custom field from the dropdown list.
+
+    
+    :::note
+
+    -   Only the existing custom field ID is valid for this configuration.
+    -   In case you can not find the custom field in the dropdown list, click **Fetch Custom Fields** to fetch the latest list from the connected Jira Cloud.
+    :::
+
+4.  Click **Apply and Close** to apply your settings.
+
+
+You have successfully imported BDD custom fields from Jira to Katalon Studio. You can now start importing your BDD test cases to Katalon Studio to execute and view test results.
+
+**Next step**  
+
+
+[Configure Jira integration in Katalon Studio](/organize/integration-for-organizing-tests/jira-integration/configure-jira-integration-in-katalon-studio)
+
+## Import test cases from Jira to Katalon Studio
+
+Katalon Studio allows you to pull test cases from Jira and link Jira issues to Katalon, follow these steps:
+
+1.  From the Katalon toolbar, select **Jira** &gt; **Import Test Case from JIRA JQL**. An **Import Test Case from JIRA JQL** dialog opens.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/KS-TDAP-733-Import-Jira-test-cases-options.png" width={300} alt="Import Jira test cases" />
+
+2.  In the open dialog, fill the JIRA Query Language \(JQL\) script of the desired test case in the **Jira JQL** box. To find out the JQL script of your test case, you can refer to the Atlassian document here: [Search for issues using JQL](https://confluence.atlassian.com/jirasoftwarecloud/advanced-searching-764478330.html).
+
+    For example, we want to import test cases from the **TDAP** project with **Bug** type and **Complete** status. After searching for the Jira ticket using the JQL query, copy and paste the JQL script into the **Jira JQL** box.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/ks-jira-advanced-search.png" alt="Search the Jira tickets via JQL query" />
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/ks-import-jira.png" width={500} alt="Copy the JQL query from Jira to Katalon Studio" />
+
+3.  **Optional:** By default, the **Import BDD feature files** box is selected. This option allows you to import BDD feature files to run BDD tests. In case you don't want to run BDD tests, uncheck this option.
+
+4.  Click **OK**.
+
+5.  The **Test Case Folder Selection** dialog opens. Select the destination to store the issues. Click **OK**.
+
+6.  A **Jira Issues** dialog opens. Click **OK** to import the test case from Jira.
+
+    
+    :::note
+
+    -   You can only import test cases from a Jira ticket once. You can not repeat this action.
+
+    :::
+
+
+Once done, you can see a new test case in Katalon Studio with the following information:
+
+-   The test case name is the Jira ticket summary/subject.
+
+-   The test case description is the Jira ticket content.
+
+-   If you select **Import BDD feature file** as in step 3, Katalon Studio creates a new corresponding feature file in **Include/Feature** with the following information:
+
+    -   The feature file name is the same as the test case name.
+
+    -   The scenario in the feature file is the scenario specified in the fetched BDD custom field of the imported Jira ticket.
+
+        <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/KS-TDAP-733-Final-results-after-importing-test-cases.png" alt="Results after importing Jira tickets" />
+
+        <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/Jira_Integration/configure-jira-integration-in-KS/Image/KS-TDAP-733-Results-after-importing-BDD-feature-files.png" alt="Results after importing BDD feature file" />
+
+
+You can continue to add additional steps in the test case as needed. Then click **Run** for playback.
+
+After importing test cases from Jira to Katalon Studio, you can view test results and submit tickets to Jira.
+
+If you conduct BDD testing, you can view the results in Katalon TestOps.
+
+[Katalon TestOps](https://docs.katalon.com/katalon-analytics/docs/overview.html) is an enterprise-ready platform for QA Orchestration, test analytics, and reporting.
+
+Refer to: [View BDD test results in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-bdd-test-results-in-testops).
+
+**Next step**  
+
+
+[View Katalon Studio test results in Jira tickets](/analyze/integration-for-test-analyzing/jira-integration/view-katalon-studio-test-results-in-jira-tickets)
+
+[Submit an issue from Katalon Studio to Jira](/analyze/integration-for-test-analyzing/jira-integration/submit-an-issue-from-katalon-studio-to-jira)

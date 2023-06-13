@@ -1,0 +1,53 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-d55817c1-f9df-471e-8163-a822e89229e0
+slug: /execute/cloud-based-test-execution/test-execution-with-testcloud/set-desired-capabilities-for-testcloud-environment
+---
+
+# Set desired capabilities for TestCloud environment
+
+In your Katalon project, you can set desired capabilities for browsers and applications. When executing your test with **TestCloud** environment on TestOps, these desired capabilities will be applied.
+
+Here are some common use cases that desired capabilities become useful for web and mobile testing:
+
+-   [Chrome/Chrome \(headless\)](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-desired-capabilities-for-webui-testing-in-katalon-studio#): start Chrome maximized by default.
+
+-   [Firefox/Firefox \(headless\)](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-desired-capabilities-for-webui-testing-in-katalon-studio#): start Firefox at a default page.
+
+-   [Start browsers in private mode in Katalon Studio](/create-tests/manage-projects/project-settings/desired-capabilities/start-browsers-in-private-mode-in-katalon-studio).
+
+-   [Set up remote server in desired capabilities in Katalon Studio](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-remote-server-in-desired-capabilities-in-katalon-studio).
+
+-   Using the <code>acceptInsecureCerts</code> capability to bypass, or implicitly trust, TLS certificates that the certificate service in the browser does not trust.
+
+-   Using the <code>autoGrantPermissions</code> to automatically determine which permissions your app requires and grant them to the app.
+
+-   Using the <code>autoAcceptAlerts</code> to automatically accept all alerts if they pop up.
+
+-   Set landscape orientation.
+
+
+This document shows you how to set desired capabilities when executing tests on TestOps with **TestCloud** environment. If this is your first time executing tests with **TestCloud** environments on TestOps, refer to this documentation beforehand: [Schedule test runs on TestOps with TestCloud environment](/execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-testops#).
+
+## Set desired capabilities for TestCloud environments
+
+This section shows you how to set desired capabilities for **TestCloud** environments.
+
+1.  In Katalon Studio, open your Katalon project.
+
+    1.  For desktop browsers on Windows/ Linux: Go to **Project Settings** &gt; **Desired Capabilities** &gt; **WebUI** and select a browser type, for example Chrome.
+
+        <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/desired-capabilities-testops/image/ks-chrome-dc.png" width={700} alt="desired capabilities for Chrome" />
+
+    2.  For desktop browsers on macOS, mobile browsers, and mobile native applications: Go to **Project Settings** &gt; **Desired Capabilities** &gt; **Remote**.
+
+        <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/desired-capabilities-testops/image/ks-desire-cap.png" width={700} alt="desired capabilities for remote" />
+
+2.  Input the desired capabilities. Learn more about desired capabilities in Katalon Studio here: [Introduction to Desired Capabilities in Katalon Studio](/create-tests/manage-projects/project-settings/desired-capabilities/introduction-to-desired-capabilities-in-katalon-studio).
+
+3.  Save your configurations.
+
+4.  Open and execute your project with **TestCloud** environment on Katalon TestOps.
+
+
+Your tests are executed with the desired capabilities that you configured in Katalon Studio.

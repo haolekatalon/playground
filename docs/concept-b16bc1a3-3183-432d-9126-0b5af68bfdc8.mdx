@@ -1,0 +1,125 @@
+---
+id: concept-b16bc1a3-3183-432d-9126-0b5af68bfdc8
+slug: /create-tests/debug-a-test-case/debug-a-test-case-in-katalon-studio
+---
+
+# Debug a test case in Katalon Studio
+
+Creating automation test cases is a repetitive task that requires a lot of editing and re-running test cases. In many automation tools, when a test case fails and you make certain changes to the script, you usually have to execute the whole script all over again to make sure the test is executed as expected.
+
+To save your precious time from tedious repetitive re-running all unnecessary steps for debugging and to make debugging easier, Katalon Studio provides the following utilities:
+
+-   Debug: Run from here
+-   Debug: Enable/Disable steps
+-   Debug mode
+-   Debug from here
+
+## Requirements
+
+-   An active Katalon Studio Enterprise license.
+
+## Debug: Run from here
+
+With this feature, you can resume the existing execution quickly. Katalon Studio currently supports **Run from here** with **Chrome, Firefox, and Edge Chromium** \(Edge Chromium is supported in versio 7.3.0 and later\) only. To use it, from the [Manual view](/create-tests/create-test-cases/create-test-case-overview) of a test case:
+
+1.  Start a browser with the <code>Open Browser</code> step, or you must have a currently running browser.
+2.  Make sure this browser's session is NOT terminated when the execution finishes \(Go to **Project/Settings/Execution** and uncheck the **Terminate...** options in **Post-Execution Options** based on your testing needs\)
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Post-execution.png" alt="Uncheck post execution" />
+
+3.  In the Manual view of the test case, right-click on a step, select **Run from here** and select one of the **currently running** browser instances to execute your test.
+
+    
+    :::note
+
+    -   If there are no running browser instances that are previously launched in Katalon Studio, **Run from here** is disabled.
+
+    :::
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Run-from-here.png" width={600} alt="Debug - run from here" />
+
+    **Debug: Enable or Disable steps**
+
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Disable-debug.png" width={600} alt="Enable/Disable steps to debug" />
+
+## Debug: Enable or Disable Steps
+
+Katalon Studio allows you to enable or disable one or more test steps before executing the test case to skip unwanted steps during execution. You can use the provided keyboard shortcuts to perform the actions.
+
+-   For Windows: **Ctrl+D** \(disable\) and **Ctrl+E** \(enable\) on selected steps.
+-   For macOS: **command+/** \(disable\) and **option+command+/**
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Disable-debug.png" width={600} alt="Enable/Disable steps to debug" />
+
+## Debug mode
+
+The Debug mode in Katalon Studio is designed to make debugging easy to use, allowing investigating the root causes more quickly. The following steps present how to debug a test case:
+
+1.  Open a test case and switch to the **Script** view.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Script-view.png" alt="Script view Katalon Studio" />
+
+2.  Double-click on the leftmost side of the script editor to mark a breakpoint. A breakpoint is where Katalon Studio pauses the test execution for you to start debugging.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/830-KS-EXECUTION-Line-break-point.png" width={500} alt="mark a breakpoint for the step" />
+
+3.  Choose a browser for **Debug** from the main toolbar.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Run-debug.png" width={320} alt="Run debug" />
+
+4.  Confirm \(select **Yes**\) when being asked to display the **Debug** perspective.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/confirm-perspective.png" width={514} alt="Confirm the debug mode" />
+
+5.  The **Debug** perspective provides convenient options for debugging purposes. You can:
+
+    -   Navigate execution using commands from the debug toolbar
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Navigate-execution.png" alt="debug toolbar" />
+
+    Where:
+
+    <table><tr><th>Command</th><th>Description</th></tr><tbody><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Resume-debugging.png" /></td><td>Resume debugging</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Suspend-debugging.png" /></td><td>Suspend debugging</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Terminate-debugging.png" /></td><td>Terminate debugging</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Disconnect.png" /></td><td>Disconnect</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Step-into-current-code-block.png" /></td><td>Step into the current code block</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Step-over-current-code-block.png" /></td><td>Step over the current code block</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Return-from-current-code-block.png" /></td><td>Return from the current code block</td></tr><tr><td><img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Run-to-specific-line.png" /></td><td>Run to a specific line</td></tr>    </tbody></table>
+
+    -   Track values of variables using Watch utilities.\*\*
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/debugging_test_case/Watch-utilities.png" alt="Watch utilities" />
+
+    Where:
+
+    <table><tr><th>View</th><th>Description</th></tr><tbody><tr><td>Variables</td><td>You can view all variables associated with the current debugged action using Variables View, which is similar to Variables View in Eclipse. Refer to this <a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fviews%2Fexpressions%2Fref-expressions_view.htm" >guide</a> for more details.</td></tr><tr><td>Breakpoints</td><td>You can view all breakpoints using Breakpoints View, which is similar to Breakpoints View in Eclipse. Refer to this <a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fviews%2Fexpressions%2Fref-expressions_view.htm" >guide</a> for more details.</td></tr><tr><td>Expressions</td><td>You can inspect data using Expressions View, which is similar to Expressions View in Eclipse. Refer to this <a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fviews%2Fexpressions%2Fref-expressions_view.htm" >guide</a> for more details.</td></tr>    </tbody></table>
+
+
+## Debug from here
+
+
+:::note
+
+-   Introduced in version **7.5.5**.
+
+:::
+
+To use **Debug from here** with **Chrome, Firefox, or Edge Chromium**, do as follows:
+
+1.  Start a browser with the <code>Open Browser</code> step, or you must have a currently running browser
+2.  Make sure this browser's session is NOT terminated when the execution finishes \(Go to **Project/Settings/Execution** and uncheck the **Terminate...** options in **Post-Execution Options** based on your testing needs\)
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Post-execution.png" alt="Uncheck post execution" />
+
+3.  Open a test case in its **Script** view and double-click on the leftmost side of the script editor to mark a breakpoint. A breakpoint is where Katalon Studio pauses the test execution for you to debug.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/breakpoint.png" />
+
+4.  Switch to the test case's **Manual** view, right-click on a step, select **Debug from here** and select one of the **currently running** browser instances to execute your test.
+
+    
+    :::note
+
+    -   If there are no running browser instances that are previously launched in Katalon Studio, **Debug from here...** is disabled.
+    :::
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execute-a-test-case-or-a-test-suite/KS-EXECUTION-Debug-from-here.png" width={600} alt="Debug from here" />
+
+
+See also:
+
+-   [Decompile Class File for Debugging](/maintain/configure-class-file-decompilation-in-katalon-studio)

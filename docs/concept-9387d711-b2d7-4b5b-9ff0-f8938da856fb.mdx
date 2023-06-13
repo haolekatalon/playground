@@ -1,0 +1,63 @@
+---
+id: concept-9387d711-b2d7-4b5b-9ff0-f8938da856fb
+slug: /plan/integration-for-test-planning/populate-jira-releases
+---
+
+# Populate Jira releases
+
+Katalon TestOps allows you to populate Jira releases for test planning and management. Depending on your use case, you can do this in two ways:
+
+-   Create a new TestOps release linked to a Jira release. This method allows you to import a Jira release of any status whenever you create a new release in Katalon TestOps.
+
+OR
+
+-   Populate unreleased Jira releases. This method allows you to import all of the *unreleased* releases from a Jira project to Katalon TestOps.
+
+## Requirements
+
+-   You have enabled Jira integration in Katalon TestOps. See [Jira integration in Katalon TestOps](/organize/integration-for-organizing-tests/jira-integration/enable-testops-jira-integration-for-test-management).
+
+
+## Populate unreleased Jira releases
+
+To populate unreleased Jira releases in Katalon TestOps, do as follows:
+
+1.  In the **Planning** &gt; **Releases**, click on the **Populate Jira Releases** button.
+
+    The **Populate Jira Releases** box pops up with a dropdown list containing all of your Jira projects.
+
+    <img src="/doc_images/Documents/Plan/Integration_for_test_planning/Populate-Jira-releases/Image/to-populate-jira-release.png" width={850} />
+
+2.  Select your Jira project in the dropdown menu, then click **OK**.
+
+3.  **Optional:** In case you change your start date and release date in Jira, click **Refresh** to see the latest changes in TestOps.
+
+
+Once imported successfully, you can see the name, status, start date and release date of all unreleased releases of the selected Jira projects in Katalon TestOps.
+
+<img src="/doc_images/Documents/Plan/Integration_for_test_planning/Populate-Jira-releases/Image/to-releases.png" />
+
+**Next step**  
+
+
+[Link test runs to a release in TestOps](/plan/link-test-runs-to-a-release-in-testops)
+
+## Create a new TestOps release linked to a Jira release
+
+To create a new embedded Jira release in Katalon TestOps, do as follows:
+
+1.  Click on the **Create Release** button at the top right corner.
+
+    Once you have enabled Jira integration in Katalon TestOps, the **Jira Project** and **Jira Release** sections are added in the **Create Release** page.
+
+    <img src="/doc_images/Documents/Plan/Integration_for_test_planning/Populate-Jira-releases/Image/to-create-releases.png" width={500} />
+
+2.  Select your Jira project and Jira release in the dropdown menu, then click **Create**.
+
+
+Once created successfully, you can see the linked Jira release status next to the name of the newly created TestOps release. You can now link your test runs to this release.
+
+**Next step**  
+
+
+[Link test runs to a release in TestOps](/plan/link-test-runs-to-a-release-in-testops)

@@ -1,0 +1,31 @@
+---
+id: concept-ab442ade-ae7a-486a-81ae-8953a1d0161f
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-verify-image-present
+---
+
+# \[Mobile\] Verify Image Present
+
+
+:::note
+
+-   This keyword, available in version 7.2.+, is for Katalon Studio Enterprise users only.
+
+
+:::
+
+## verifyImagePresent
+
+-   **Description**: Verify the given image that presents on the device screen or not.
+-   **Keyword syntax**: <code>verifyImagePresent(imageFilePath)</code>
+-   **Parameter**: imageFilePath
+
+    -   Description: Absolute path of the image
+    -   Parameter Type: String
+    -   Mandatory: Required
+-   **Return**: true if the image presents. Otherwise, false.
+-   **Example**:
+
+    ```
+    boolean isPresent = Mobile.verifyImagePresent("/Users/myaccount/Desktop/image.png")
+    
+    ```

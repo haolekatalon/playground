@@ -1,0 +1,72 @@
+---
+id: concept-5738de41-6f3c-456e-9bba-13b8cbdf04b0
+slug: /create-tests/manage-projects/project-settings/desired-capabilities/set-up-remote-server-in-desired-capabilities-in-katalon-studio
+---
+
+# Set up remote server in desired capabilities in Katalon Studio
+
+Katalon Studio supports defining desired capabilities for execution on remote web server such as Selenium Grid, Katalium Server or cloud services such as Kobiton, SauceLabs or BrowserStacks.
+
+This article shows you how to configure desired capabilities for remote execution and where they are saved.
+
+
+:::note
+
+-   You can find some common desired capabilities configurations in our GitHub sample project: [Tips and tricks](https://github.com/katalon-studio-samples/tips-and-tricks).
+
+
+:::
+
+## Set desired capabilities for remote execution in Katalon Studio
+
+
+:::note
+
+-   Make sure that you are running Selenium Grid/ Appium Grid while executing the test.
+
+
+:::
+
+To set desired capabilities for remote execution, do as follows:
+
+1.  Go to **Project &gt; Settings &gt; Desired Capabilities &gt; Remote**.
+
+2.  Enter **Remote Server URL**: <code>http://&lt;localhost&gt;:&lt;port&gt;/wd/hub</code> - the URL to the remote server.
+
+3.  In the **Remote Server Type** box, choose **Selenium/Appium**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Desired_Capabilities/desired-capabilities-remote-settings/Pictures/KS-DC-Remote-settings.png" alt="Add Desired Capabilities for remote execution" />
+
+    From Katalon Studio version 6.3.0 onwards, when choosing **Appium** server, you also need to choose **Android Driver/iOS Driver**.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Desired_Capabilities/desired-capabilities-remote-settings/Pictures/KS-DC-Remote-Choose-driver-for-Appium.png" alt="Choose Android Driver/iOS Driver" />
+
+4.  Click **Add** on the command toolbar. Provide the **Name**, **Type** and **Value** of the property that you wish to configure.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Desired_Capabilities/desired-capabilities-remote-settings/Pictures/KS-DC-REMOTE-Set-DC-for-Appium-driver.png" alt="Add Desired Capabilities for remote execution" />
+
+    
+    :::note
+
+    -   Desired capabilities is a JSON object \(having keys and values pair\). We need to set the capability **Name** as <code>key</code> and the capability **Value** as <code>value</code>.
+    -   The capabilities keys are case-sensitive.
+    :::
+
+    To learn more about configuring desired capabilities in Kobiton, BrowserStacks or Katalium Server, you can refer to the following documents:
+
+    -   Kobiton
+    -   [BrowserStack](/execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/browserstack-integration)
+    -   [Katalium Server](/plugins-and-add-ons/katalium-server/katalium-server-execute-katalon-studio-s-scripts-on-remote-machines)
+
+## Location of desired capabilities files
+
+You can find the settings files for each environment in the <code>&lt;your test project location&gt;\settings\internal</code> folder. The files for each driver are named as follows:
+
+<table><tr><th>Driver</th><th>Settings' file</th></tr><tbody><tr><td>Remote Web Server</td><td>com.kms.katalon.core.webui.remote.properties</td></tr></tbody></table>
+
+**Related information**  
+
+
+[Remote Execution for Mobile Testing in Katalon Studio](/create-tests/manage-projects/project-settings/desired-capabilities/remote-execution-for-mobile-testing-in-katalon-studio)
+
+[Selenium Grid - Execution on Remote Machines with Katalon Studio](/create-tests/manage-projects/project-settings/desired-capabilities/selenium-grid-execution-on-remote-machines-with-katalon-studio)

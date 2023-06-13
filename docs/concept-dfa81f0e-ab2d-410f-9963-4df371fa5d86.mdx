@@ -1,0 +1,46 @@
+---
+id: concept-dfa81f0e-ab2d-410f-9963-4df371fa5d86
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-set-text
+---
+
+# \[Mobile\] Set Text
+
+## Description
+
+Set the text on a mobile element. It also clears the previous value of the mobile element.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>to</td><td>TestObject</td><td>Required</td><td>Represents a mobile element.</td></tr><tr><td>text</td><td>String</td><td>Required</td><td>The text to set on the mobile element.</td></tr><tr><td>timeout</td><td>int</td><td>Required</td><td>Maximum period of time (in seconds) that system will wait to return a result</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specifies the <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Example
+
+You want to set the text on a textbox control.
+
+```
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.util.internal.PathUtil as PathUtil
+
+'Start application on current selected android\'s device'
+Mobile.startApplication(GlobalVariable.G_AndroidApp, false)
+
+Mobile.tap(findTestObject('Application/android.widget.TextView - Graphics'), GlobalVariable.G_Timeout)
+
+'Scroll to element which displayed text is Xfermodes'
+Mobile.scrollToText('Xfermodes')
+
+'Set text on textbox control'
+Mobile.setText(findTestObject('Application/Graphics/android.widget.TextView - Xfermodes'),'Your text here', GlobalVariable.G_Timeout)
+
+'Verify if item\'s label is equal to \"Xfermodes\"'
+Mobile.verifyEqual(itemText, 'Xfermodes')
+
+'Close application on current selected android\'s device'
+Mobile.closeApplication()
+
+```

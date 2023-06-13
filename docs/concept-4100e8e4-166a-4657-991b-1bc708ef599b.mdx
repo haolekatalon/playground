@@ -1,0 +1,279 @@
+---
+id: concept-4100e8e4-166a-4657-991b-1bc708ef599b
+slug: /create-tests/keywords/using-keywords-in-katalon-studio/web-testing/how-to-handle-dropdown-menu-in-katalon-studio
+---
+
+# How to handle dropdown menu in Katalon Studio
+
+## What is a dropdown?
+
+A dropdown menu \(or a dropdown list\) is a graphical control element, similar to a list box, that allows users to choose one value from a list. When a dropdown list is inactive, it displays a single value. When activated, it displays a list of values, from which the user may select one. When the user selects a new value, the control reverts to its inactive state, displaying the selected value.
+
+The below image shows the components of a dropdown menu.
+
+-   *Index:* The index of the option to be selected / deselected.
+-   *Value:* The value of the <code>value</code> attribute.
+-   *Label:* The exactly displayed text of a particular option.
+
+<img src="/doc_images/Documents/Create_tests/Keywords/Using_Keywords_In_Katalon_Studio/Web_Testing/how_handle_drop_down_menu/Images/Sample_dropdown_html.png" width={500} alt="Sample HTML for dropdown menu" />
+
+This tutorial shows you how to handle the dropdown menu in common scenarios, using Katalon Studio built-in keywords.
+
+For detailed implementation of dropdown handling, you can refer to our sample test project on GitHub: [katalon-studio-samples/katalon-web-automation](https://github.com/katalon-studio-samples/katalon-web-automation).
+
+## Select option by index
+
+The <code>selectOptionByIndex</code> keyword selects the option at the given index. Index always starts from 0. See: [\[WebUI\] Select Option By Index](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-select-option-by-index).
+
+**Example 1**:
+
+In this example, we are also verifying that the right option is selected.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Select_by_Index_Example.png" alt="Sample dropdown with index starting from 0" />
+
+In **Manual View**: <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/SelectbyIndex_manual.png" alt="Sample test case with selectByIndex keyword in Manual view" />
+
+In **Script View**:
+
+```
+'Open browser'
+ 
+WebUI.openBrowser('file:///C:/Users/User/Desktop/Dropdown.html')
+ 
+'Maximize the Window'
+ 
+WebUI.maximizeWindow()
+ 
+'Select the dropdown value by Select option by index Method'
+ 
+WebUI.selectOptionByIndex(findTestObject('dropdown_Month'), 2)
+ 
+'Verifying the Option is Selected by Index option'
+ 
+WebUI.verifyOptionSelectedByIndex(findTestObject('dropdown_Month'), 2, 60)
+
+
+```
+
+**Example 2**:
+
+If we want to select "Feb" to "Apr" from the below combo box, we pass input as value 2-4 and value type as <code>String</code>.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Select_options_by_passing_Range_value.png" alt="Sample dropdown menu with multiple options selected" />
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Input_Dialog_Box.png" alt="Keyword input 2-4" />
+
+## Select option by label
+
+The <code>selectOptionByLabel</code> keyword selects the option which has the exactly displayed text of a particular option. See: [\[WebUI\] Select Option By Label](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-select-option-by-label).
+
+**Example**:
+
+If we want to select "Apr" from the dropdown, we pass the exactly visible text from it.
+
+In this example, we are also verifying the right option is selected.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/SelectByLabel_Expample.png" alt="Dropdown option with the label April selected" />
+
+In **Manual View**:<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Select_option_By_label_Manual.png" alt="Sample test case with keyword selectOptionByLabel" />
+
+In **Script View**:
+
+```
+'Open browser'
+ 
+WebUI.openBrowser('file:///C:/Users/User/Desktop/Dropdown.html')
+ 
+'Maximize the Window'
+ 
+WebUI.maximizeWindow()
+ 
+'Select the dropdown value by Select option By Label Method'
+ 
+WebUI.selectOptionByLabel(findTestObject('dropdown_Month'), 'Apr', false)
+ 
+'Verifying the Option is Selected by Label option'
+ 
+WebUI.verifyOptionSelectedByLabel(findTestObject('dropdown_Month'), 'Apr', false, 60)
+ 
+WebUI.closeBrowser()
+
+
+```
+
+## Select option by value
+
+The <code>selectOptionByValue</code> keyword selects the option which has value of the <code>value</code> attribute. See: [\[WebUI\] Select Option By Value](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-select-option-by-value).
+
+Example:
+
+If we want to select "Mar" from the dropdown, we pass the value as 3 because "Mar" has the value as 3 for <code>Value</code> attribute.
+
+In this example, we are also verifying that the right option is selected.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/SelectByValue_Exp.png" alt="Sample dropdown option with the attribute value=3" />
+
+In **Manual View**:<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Select_By_Value_Manual.png" alt="Sample test case in Manual view with keyword selectOptionByValue" />
+
+In **Script View**:
+
+```
+'Open browser'
+ 
+WebUI.openBrowser('file:///C:/Users/User/Desktop/Dropdown.html')
+ 
+'Maximize the window'
+ 
+WebUI.maximizeWindow()
+ 
+'Selecting the month from Select By value method'
+ 
+WebUI.selectOptionByValue(findTestObject('dropdown_Month'), '3', false)
+ 
+'Verifying the Option is Selected by Value option'
+ 
+WebUI.verifyOptionSelectedByValue(findTestObject('dropdown_Month'), '3', false, 60)
+ 
+WebUI.closeBrowser()
+
+
+```
+
+For further instructions and help, please refer to [Katalon Studio WebUI](/get-started/sample-projects/webui/webui-create-and-run-web-ui-test-case-using-record-and-playback-in-katalon-studio) tutorials.
+
+## Select all options
+
+The <code>selectAllOption</code> selects all options from a list.
+
+In **Manual View**: <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/SelectAll_Manual.png" alt="Sample test case with keyword selectAllOption" />
+
+In **Script View**:
+
+```
+'Launch Browser'
+ 
+WebUI.openBrowser('C:\\\\Users\\\\User\\\\Desktop\\\\DropDown\\\\MultiSelection_dropDown.html')
+ 
+'Maximize the window'
+ 
+WebUI.maximizeWindow()
+ 
+'Selecting all Options'
+ 
+WebUI.selectAllOption(findTestObject('comboBox_Role'))
+
+```
+
+## Deselect all options
+
+The <code>deselectAllOption</code> keyword deselects all the selected items in a combo box. See: [\[WebUI\] Deselect All Option](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-deselect-all-option).
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Multiple_Attribute_Image1.png" alt="Sample dropdown HTML with multiple=true" />
+
+In **Manual View**:<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/DeSelectAll_Manual.png" alt="Sample test case in Manual view with keyword deselectAllOption" />
+
+In **Script View**:
+
+```
+'Launch Browser'
+ 
+WebUI.openBrowser('C:\\\\Users\\\\User\\\\Desktop\\\\DropDown\\\\MultiSelection_dropDown.html')
+ 
+'Maximize the window'
+ 
+WebUI.maximizeWindow()
+ 
+'Select all the Options'
+ 
+WebUI.selectAllOption(findTestObject('comboBox_Role'))
+ 
+'Deselect all the options'
+ 
+WebUI.deselectAllOption(findTestObject('comboBox_Role'))
+ 
+'Taking the count of number of Selected Options and Storing it in a variable'
+ 
+NoOfSelectedOptions = WebUI.getNumberOfSelectedOption(findTestObject('comboBox_Role'))
+ 
+'After Deselect verifying the Number of Selected options with Actual result to Expected'
+ 
+WebUI.verifyEqual(NoOfSelectedOptions, 0)
+
+In 
+```
+
+## Get the number of total options
+
+The <code>getNumberOfTotalOption</code> keyword returns the number of options listed in the combo box. See: [\[WebUI\] Get Number Of Total Option](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-get-number-of-total-option).
+
+Example:
+
+We have a dropdown and want to get the total number of available options in a dropdown then we will use <code>getNumberOfTotalOption</code>.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Total_Options_Image.png" alt="Sample dropdown menu with 5 options" />
+
+As there are 5 options in the dropdown, the keyword returns the value 5.
+
+In **Manual View**:<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Get_Number_of_Total_Options_Manual.png" alt="Sample test case in Manual view with keyword getNumberOfTotalOption" />
+
+In **Script View**:
+
+```
+'Launch Browser'
+ 
+WebUI.openBrowser('C:\\\\Users\\\\User\\\\Desktop\\\\DropDown\\\\MultiSelection_dropDown.html')
+ 
+'Maximize the window'
+ 
+WebUI.maximizeWindow()
+ 
+'Capturing the Number of  Values in the dropdown and storing it in a variable'
+ 
+TotalOptions = WebUI.getNumberOfTotalOption(findTestObject('comboBox_Role'))
+ 
+println('No of Roles are :' + TotalOptions)
+ 
+'Verifying the number of Options in the dropdown with Expected result'
+ 
+WebUI.verifyEqual(TotalOptions, 5)
+
+
+```
+
+## Get the number of selected options
+
+The <code>getNumberOfSelectedOption</code> keyword returns the count of options which are being selected in the combo box. See: [\[WebUI\] Get Number Of Selected Option](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-get-number-of-selected-option).
+
+For example, in the combo box below the options "Admin" and "HR" are selected. If we want to get the number of selected options, we can use the keyword <code>getNumberOfTotalOption</code>. In this case, the keyword returns 2.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Get-Number-Of-Selected-Options-Example.png" alt="Sample dropdown with two options selected" />
+
+In **Manual View**:<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/tutorials/how_handle_drop_down_menu/Get_Number_of_Selected_Option_manual.png" alt="Sample test case in Manual view with keyword getNumberOfSelectedOption" />
+
+In **Script View**:
+
+```
+'Launch Browser'
+ 
+WebUI.openBrowser('C:\\\\Users\\\\User\\\\Desktop\\\\DropDown\\\\MultiSelection_dropDown.html')
+ 
+'Maximize the window'
+ 
+WebUI.maximizeWindow()
+ 
+'Select All values available in the dropdown by Select All option'
+ 
+WebUI.selectAllOption(findTestObject('comboBox_Role'))
+ 
+'Capturing the Number of selected Values and storing it in a variable'
+ 
+SelectedItems = WebUI.getNumberOfSelectedOption(findTestObject('comboBox_Role'))
+ 
+println('No of Selected Roles are ' + SelectedItems)
+ 
+'Verifying the number of Options selected with Expected result'
+ 
+WebUI.verifyEqual(SelectedItems, 5)
+
+
+```

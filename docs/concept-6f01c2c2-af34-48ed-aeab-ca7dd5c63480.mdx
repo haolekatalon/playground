@@ -1,0 +1,60 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-6f01c2c2-af34-48ed-aeab-ca7dd5c63480
+slug: /create-tests/create-test-cases/create-bdd-test-cases-in-katalon-studio
+---
+
+# Create BDD test cases in Katalon Studio
+
+This section shows you how to create BDD test cases in Katalon Studio.
+
+## Include a feature file in test cases
+
+To include a Cucumber feature file in Katalon Studio test case, you can use Cucumber keywords in your test case. Katalon Studio supports Cucumber keywords along with the original built-in keywords. You do not have to import Cucumber libraries into Katalon Studio.
+
+
+:::caution
+
+-   You can only use custom keywords in your BDD tests when the step definition of the feature file belongs to the default package.
+
+:::
+
+<table><tr><th>Use cases</th><th>Cucumber keywords</th></tr><tbody><tr><td>Execute a single Feature File (with or without tags)</td><td><ul><li><a href="/create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-file" >[Cucumber] Run Feature File</a></li><li><a href="/create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-file-with-tags" >[Cucumber] Run Feature File With Tags</a></li></ul></td></tr><tr><td>Execute multiple Feature Files (with or without tags)</td><td><ul><li><a href="/create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-folder" >[Cucumber] Run Feature Folder</a></li><li><a href="/create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-folder-with-tags" >[Cucumber] Run Feature Folder With Tags</a></li></ul></td></tr><tr><td>Execute using Cucumber Runner</td><td><ul><li><a href="/create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-with-cucumber-runner" >[Cucumber] Run With Cucumber Runner</a></li></ul></td></tr></tbody></table>
+
+For example:
+
+```
+CucumberKW.runFeatureFile('Include/features/logIn.feature')
+```
+
+<img src="/doc_images/Documents/Create_tests/Manage_Test_Artifacts/Working_With_BDD_Feature_File/image/ks-840-feature-file-in-a-test-case.png" width={600} alt="feature file in a test case" />After you execute your BDD tests, you can view BDD report files generated from Katalon Studio or upload and view reports on Katalon TestOps. See: [View BDD reports](/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-bdd-reports-in-katalon-studio).
+
+## Create BDD test case with Cucumber Hooks
+
+To create a BDD test case with Cucumber Hooks, follow these steps:
+
+1.  Set up Cucumber hooks in Katalon Studio. See: [Set up Cucumber hooks](/create-tests/manage-test-artifacts/working-with-bdd-feature-files-in-katalon-studio#).
+
+2.  Create a new test case.
+
+    You can refer to this document: [Create a new test case in Katalon Studio](/create-tests/create-test-cases/create-a-new-test-case-in-katalon-studio).
+
+3.  In the **Manual** view of the new test case, click on the **Add** dropdown button and select **Cucumber Keywords**.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Create_BDD_Test_Case/images/KS-Add-Cucumber-keyword.png" width={700} alt="Add Cucumber Keywords" />
+
+4.  Select the **Run Feature File** keyword.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Create_BDD_Test_Case/images/KS-select-run-feature-file-keyword.png" width={700} alt="Select Run Feature File keyword" />
+
+5.  Right-click on the Feature file and select **Copy ID** to get the relative path.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Create_BDD_Test_Case/images/KS-Copy-ID-feature-file.png" width={500} />
+
+6.  Double-click on the **Input** cell of the **Run Feature File** keyword. In the displayed **Input** dialog, paste the copied relative path from step 3 as the input value.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Create_BDD_Test_Case/images/KS-Feature-file-input-value.png" width={700} alt="Input feature file value" />
+
+7.  Run the test and verify the message of the Cucumber hooks in the **Console** log:
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Create_BDD_Test_Case/images/KS-Cucumber-hooks-message.png" width={700} alt="Cucumber hooks message" />

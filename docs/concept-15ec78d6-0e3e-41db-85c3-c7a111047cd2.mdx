@@ -1,0 +1,154 @@
+---
+id: concept-15ec78d6-0e3e-41db-85c3-c7a111047cd2
+slug: /execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine
+---
+
+# Get started with Katalon Runtime Engine
+
+This guide shows you how to get started with Katalon Runtime Engine \(KRE\).
+
+## Requirements
+
+Before setting up KRE, make sure to complete the following requirements:
+
+-   Verify that your computer meets the system requirements for KRE. See: [System Requirements](http://docs.katalon.com/display/KD/System+Requirements).
+
+-   A KRE license. See: [KRE License](/administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/license-overview).
+
+-   A Katalon API Key for authentication. See: [Generate a Katalon API Key](/administer/settings/katalon-api-key-in-katalon-testops#).
+
+
+## Download KRE
+
+1.  Log in to your Katalon account on the Katalon [website](https://katalon.com/download).
+2.  Select the compatible version of **Katalon Runtime Engine** with your operating system and download.<img src="/doc_images/Documents/Execute/Katalon_Runtime_Engine/install-RE/kre-download.png" width={500} />
+
+3.  Unzip the package and move to the preferred directory to execute automation tests.
+
+    -   **macOS**: If you currently use macOS Catalina, you have to enable Katalon Studio Engine application in System Preferences/ Security & Privacy/ General.
+
+    -   **Linux**: Be sure to install **OpenJDK 8** on your Ubuntu \(NOT Oracle JDK\). You can find the installation steps [here](http://openjdk.java.net/install/). Once you finish the installation, your <code>OpenJDK</code> information is displayed when you execute <code>java -version</code> command.
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-studio-for-linux-console-mode/Screen-Shot-2018-02-07-at-11.50.50.png" />
+
+        -   Troubleshoot: You may encounter the <code>NoClassDefFoundError</code> error since Oracle JDK is being used. Please uninstall Oracle JDK, and then install [Open JDK8](http://openjdk.java.net/install/).
+
+## Execute tests with KRE
+
+To execute tests with KRE, follow these steps:
+
+1.  Open the command-line interface of your OS and navigate to the folder of KRE that contains the executable \(<code>katalonc.exe</code> for Windows or <code>katalonc</code> for macOS and Linux\).
+
+    
+    :::note
+
+    On macOS, the executable is stored in the <code>Contents</code> folder of the application package. For example, the executable path can be <code>/Downloads/Katalon&#95;Studio&#95;Engine&#95;MacOS-8.6.0/Katalon Studio Engine.app/Contents/MacOS/katalonc</code>.
+
+    :::
+
+2.  Enter the <code>katalonc</code> command line along with arguments.
+
+    On Windows:
+
+    ```sh
+    katalonc -noSplash -runMode=console -projectPath="C:\Users\username\Desktop\Katalon Studio\Sample healthcare\test.prj" -retry=0 -testSuiteCollectionPath="Test Suites/healthcare-tests - TS_RegressionTestCollection" -browserType="Chrome" -executionProfile="default" -apiKey="" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true
+    ```
+
+    On macOS and Linux:
+
+    ```sh
+    ./katalonc -noSplash -runMode=console -projectPath="/Users/username/Katalon Studio/Sample healthcare/test.prj" -retry=0 -testSuiteCollectionPath="Test Suites/healthcare-tests - TS_RegressionTestCollection" -browserType="Chrome" -executionProfile="default" -apiKey="" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true
+    ```
+
+    
+    :::note
+
+    -   To easily generate KRE commands, you can use Command Builder. See: [Command Builder in Katalon Studio](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine#).
+
+    -   For the full list of supported arguments, see: [Command-line syntax in Katalon Runtime Engine](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine).
+
+    :::
+
+
+## KRE exit codes
+
+Below is the list of exit codes of KRE:
+
+-   0: The execution passed with no failed or error test case.
+-   1: The execution has failed test cases.
+-   2: The execution has error test cases.
+-   3: The execution has failed test cases and error test cases.
+-   4: The execution cannot start because of invalid arguments.
+-   5: Invalid project.
+-   6: Out of quota.
+-   7: Unable to check quota.
+
+## Command Builder in Katalon Studio
+
+Command Builder is a utility in Katalon Studio that allows you to generate KRE commands quickly and precisely.
+
+To access Command Builder, from the Katalon Studio main toolbar, click on **Build CMD**.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/console-mode-execution/command%20builder.png" alt="Build CMD" />
+
+The **Generate Command for Console Mode** dialog displays as below.
+
+<img src="/doc_images/Documents/Execute/Katalon_Runtime_Engine/console-mode-execution/image/ks-generate-for-console-mode.png" width={500} alt="Generate Command for Console Mode" />
+
+To generate a KRE command, you need to specify the following information:
+
+-   **Test Suite**
+
+    The test suite or test suite collection to be executed.
+
+-   **Executive Platform**
+
+    *Run with*: Testing environment of the execution. Click **Edit** and select an environment to run your test with.
+
+    *Run Configuration*: This option is available for TestCloud environments. Click **Edit** to specify the TestCloud execution environments.
+
+    *Profile*: The execution profile. See: [Execution profile](/create-tests/data-driven-testing/execution-profile). The **Override the execution profile and environment of all test suites** option allows you to override profiles and browser types for all test suites in a test suite collection.
+
+    *Katalon Organization*: if you belong to more than one Organization subscribing to KRE licenses, you can choose which Organization validates your license usage.
+
+-   **Authentication**
+
+    *Katalon API Key*: API Key represents a user's credentials.
+
+-   **Execution Configurations**
+
+    *Update WebDriver automatically*: This option allows automatic WebDriver updates.
+
+    *Terminate the execution once the total number of test failures reaches this threshold*: The desired maximum number of test failures. The input must be a natural number larger than 0.
+
+    *Apply proxy configuration from application settings*: [Configure Proxy Preferences in Katalon Studio](/get-started/set-up-your-workspace/katalon-studio-preferences/configure-proxy-preferences-in-katalon-studio).
+
+    *Update execution status of the test suite after \{x\} second\(s\)*: The delay period between execution status updates.
+
+    *Retry options*: The retry behavior of execution. See: [Modify execution information](/execute/execute-tests-with-katalon-studio/execute-dynamic-test-suites-in-katalon-studio#).
+
+-   **Katalon TestOps**
+
+    *Project*: Override the Project ID in TestOps \(available for Katalon Studio version 7.8.0 onwards\).
+
+    *Release*: Link test runs to a release created on TestOps. To learn how to create a release, see: [Create and edit releases in TestOps](/plan/create-and-edit-releases-in-testops).
+
+
+After completing the configuration, click **Generate Command**. In the **Generate Command** dialog, you can copy the command and paste to the command prompt/terminal for execution.<img src="/doc_images/Documents/Execute/Katalon_Runtime_Engine/console-mode-execution/image/ks-850-generated-command.png" width={500} />
+
+## Use the console.properties file
+
+Besides generating and copying KRE command text from Command Builder, you can also package your configuration in the <code>console.properties</code> file. This file contains key-value pairs of your KRE arguments.
+
+1.  In Command Builder, click **Generate Property File** and save the file to the preferred location.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/console-mode-execution/console-properties.png" alt="Generate a console.properties" />
+
+2.  You can open and update the arguments as needed.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/console-mode-execution/console.properties-file.png" alt="console.properties" />
+
+3.  To run KRE with the arguments in <code>console.properties</code>, use the following syntax.
+
+    ```
+    katalonc -propertiesFile="<absolute path to console.properties file>" -runMode=console -apiKey="<Your_API_Key>"
+    
+    ```

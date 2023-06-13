@@ -1,0 +1,89 @@
+---
+id: concept-775c8fc0-d0df-4933-ae97-c5d16cd85038
+slug: /analyze/reports/generate-test-reports/generate-screen-based-videos-in-katalon-studio-reports
+---
+
+# Generate screen-based videos in Katalon Studio reports
+
+Katalon Studio supports screen-based recording when [browser-based recording](/analyze/reports/generate-test-reports/generate-browser-based-videos-in-katalon-studio-reports)running WebUI tests.
+
+
+:::note
+
+-   Screen-based recorder is available for Katalon Studio version 7.8.0 onwards.
+
+-   Screen-based recorder is only applicable for local WebUI testing.
+
+-   Screen-based recorder is available for single test suite execution only. To record parallel executions, you can refer to [Record Browser-based Videos](/analyze/reports/generate-test-reports/generate-browser-based-videos-in-katalon-studio-reports).
+
+
+:::
+
+Screen-based Recorder is currently available for single Test Suite execution only. To record parallel executions, you can follow these instructions instead: [Record Browser-based Videos](/analyze/reports/generate-test-reports/generate-browser-based-videos-in-katalon-studio-reports).
+
+We recommend the [K-Lite Codec](https://www.codecguide.com/download_kl.htm) to play the recorded video.
+
+## Enable Screen-based Recorder
+
+To use the screen-based recorder, you need to enable it in Katalon Studio.
+
+
+:::note
+
+If you use macOS, make sure you first enable Katalon Studio for screen recording. Go to **Privacy & Security** settings &gt; **Privacy** &gt; **Screen Recording** &gt; Allow Katalon Studio to do Screen Recording.
+
+:::
+
+### For version 7.8.0 and onwards
+
+To enable screen recorder for version 7.8.0 and onwards, follow these steps:
+
+1.  Go to **Project** &gt; **Settings** &gt; **Execution**.
+
+2.  In the **During-Execution Options** panel, enable Video Recorder by checking **Record Video during execution**.
+
+    <img src="/doc_images/Documents/Analyze/Reports/Generate_test_reports/record-screen-based-videos-in-Studio/Images/KS_screen_recorder_settings.png" width={700} alt="During-execution options in KS" />
+
+3.  Select **Screen Recorder** and specify video settings based on your preferences.
+
+    We recommend AVI \(<code>.avi</code>\) format and low quality to save disk space. Higher video quality means bigger file size.
+
+    -   **Video format**: AVI \(<code>.avi</code>\) or MOV \(<code>.mov</code>\).
+    -   **Video quality**: Low; Medium or High.
+4.  Click **Apply and Close**.
+
+
+### For versions before 7.8.0
+
+To enable screen recorder for Katalon Studio versions before 7.8.0, follow these steps:
+
+1.  After creating a test suite in Katalon Studio, go to **Project** &gt; **Settings** &gt; **Report** to open the **Report** view.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/video-capturing/image2017-8-25-143A243A12.png" width={700} alt="KS Settings - Report section" />
+
+2.  Check **Enable Video Recorder during execution** option.
+
+    By default, Katalon Studio only captures **Failed** test cases. However, you can decide to either capture the **Passed** or **Failed** test cases, or both.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/video-capturing/image2017-8-25-153A43A45.png" width={700} alt="Enabled Video recorder during execution option" />
+
+3.  Specify Video settings based on your preferences.
+
+    We recommend AVI \(<code>.avi</code>\) format and low quality to save disk space. The higher the video quality is, the bigger the file size is.
+
+    -   **Video format**: AVI \(<code>.avi</code>\) or MOV \(<code>.mov</code>\).
+    -   **Video quality**: Low; Medium or High.
+4.  Click **OK**.
+
+
+## View recorded videos
+
+After running the test suite, navigate to the **Result** tab. You can see a list of test cases. A recorded video is attached to each test case accordingly.
+
+Click on the *Play* icon in the **Video** column to play the video or navigate to the video folder and use any available video player.
+
+<img src="/doc_images/Documents/Analyze/Reports/Generate_test_reports/record-screen-based-videos-in-Studio/Images/KS_test_suite_result_video.png" width={700} alt="KS test suite result video column" />
+
+<img src="/doc_images/Documents/Analyze/Reports/Generate_test_reports/record-screen-based-videos-in-Studio/Images/Screen-based_recording_result.png" width={700} alt="Recorded video" />
+
+Each test step in a video has a description embedded like a subtitle.

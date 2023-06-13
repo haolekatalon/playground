@@ -1,0 +1,167 @@
+---
+id: concept-595dd7b4-d7cc-49bc-acfa-b58e87b704ad
+slug: /execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-katalon-studio
+---
+
+# Use TestCloud in Katalon Studio
+
+Katalon TestCloud is a test automation service that allows you to execute tests on common browsers and operating systems on the cloud. With Katalon TestCloud, you can easily configure those test environments.
+
+To learn more about how TestCloud can enhance your test automation projects, see:
+
+-   [TestCloud Overview](/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-overview)
+
+-   [Supported environment for TestCloud](/supported-execution-environments/supported-environments-for-katalon-testcloud)
+
+
+This guide shows you how to configure TestCloud in Katalon Studio and execute tests, view reports.
+
+
+:::note
+
+-   From version 8.6.0 onwards, Katalon Studio enables executing tests on mobile browsers of TestCloud. By default, the mobile browsers are Chrome for Android, and Safari for iOS. See: [Supported environments for Katalon TestCloud](/supported-execution-environments/supported-environments-for-katalon-testcloud).
+
+
+:::
+
+## Requirements
+
+-   An active Katalon TestCloud subscription or trial. See [TestCloud Trial](/administer/katalon-platform-packages/testcloud-feature-comparison#).
+-   Katalon Studio version 8.2.5 onwards.
+-   TestCloud integration enabled in Katalon Studio. To learn how to enable the integration, see: [Integrate Katalon TestOps and Katalon TestCloud with Katalon Studio](/get-started/set-up-your-workspace/integrate-katalon-testops-and-katalon-testcloud-with-katalon-studio).
+
+## Run test suites with TestCloud
+
+To run a test suite with TestCloud in Katalon Studio, follow these steps:
+
+1.  Open a test suite.
+
+2.  Click on the dropdown icon of the *Run* button and choose to run with TestCloud.
+
+    <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_select_execution_env.png" width={200} alt="Katalon Studio - Run button - TestCloud option" />
+
+    The **TestCloud Configuration** dialog appears as below.<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_8.6.0_TestCloud_Configuration_dialog.png" width={500} alt="Katalon Studio - TestCloud Configuration dialog" />
+
+    
+    :::note
+
+    The **Tunnel** checkbox is cleared by default. TestCloud Tunnel is for running tests in private domains. See: [Configure TestCloud Tunnel](/execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-katalon-studio#)
+
+    :::
+
+3.  Select the execution environment for your tests.
+
+    Select between **Desktop** or **Mobile** environment.
+
+    -   For Desktop browser environment: Select the desired OS, browser, and browser version.
+
+    -   For Mobile browser environment \(available for Katalon Studio from 8.6.0\): Select the desired OS, OS version, and devices. The default browser is Chrome for Android, and Safari for iOS.
+
+4.  Click **Run**.
+
+
+You can view the execution progress in **Log Viewer** with detailed information on the status of each test step:<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_TestCloud_test_suites_logs.png" width={700} alt="Katalon Studio - TestCloud Log Viewer" />
+
+## Run test suite collections with TestCloud
+
+To run a test suite collection with TestCloud Katalon Studio, follow these steps:
+
+1.  Open your test suite collection and double-click the **Run with** column.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/studio-integration/tsc-execution-info.png" alt="run with testcloud" />
+
+    The **Select an environment** appears as below.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-testcloud/studio-integration/run-tsc-testcloud-as-environment.png" width={500} alt="run config tsc" />
+
+2.  Choose **TestCloud** as your test environment, then click **OK**.
+
+3.  Double click on the **Run Configuration** column to open the **TestCloud Configuration** dialog.
+
+    The **TestCloud Configuration** dialog appears.<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_test_suite_collection_testcloud.png" width={500} alt="TestCloud Configuration dialog in Katalon Studio - Test Suite Collection" />
+
+    
+    :::note
+
+    The **Tunnel** checkbox is cleared by default. TestCloud Tunnel is for running tests in private domains. See: [Configure TestCloud Tunnel](/execute/cloud-based-test-execution/test-execution-with-testcloud/use-testcloud-in-katalon-studio#).
+
+    :::
+
+4.  Select the execution environment for your tests and click **OK**.
+
+    Select between **Desktop** or **Mobile** environment.
+
+    -   For Desktop browser environment: Select the desired OS, browser, and browser version.
+
+    -   For Mobile browser environment \(available for Katalon Studio from 8.6.0\): Select the desired OS, OS version, and device. The default browser is Chrome for Android, and Safari for iOS.
+
+    -   For Desktop browser environment: Select the desired OS, browser, and browser version.
+
+    -   For Mobile browser environment \(available for Katalon Studio from 8.6.0\): Select the desired OS, OS version, and device. The default browser is Chrome for Android, and Safari for iOS.
+
+5.  Click **Execute**.
+
+
+You can view the execution progress in **Log Viewer** with detailed information on the status of each test step:<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_TestCloud_test_suite_collections_logs.png" width={700} alt="Katalon Studio - TestCloud Log Viewer" />
+
+## Configure TestCloud Tunnel
+
+If you want to execute test suites or test suite collections in private domains with TestCloud, you must use TestCloud Tunnel.
+
+For more information on TestCloud Tunnel, see [TestCloud Tunnel](/execute/cloud-based-test-execution/test-execution-with-testcloud/testcloud-tunnel).
+
+
+:::note
+
+-   To allow User Datagram Protocol \(UDP\) connections, the proxy must be configured.
+-   If you use a Man-in-the-Middle \(MITM\) proxy, it must be configured to allow Transport Layer Security \(TLS\) connections.
+
+:::
+
+In Katalon Studio, TestCloud Tunnel can be configured with **Tunnel Setup Helper**.
+
+1.  Open the **TestCloud Configuration** dialog.
+
+2.  Tick the **Tunnel** option.
+
+    You'll see a message in red, as follows:<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_TestCloud_Tunnel_ticked.png" width={500} alt="Katalon Studio - TestCloud Configuration dialog, TestCloud Tunnel not available status" />
+
+3.  Click the **Tunnel Setup Helper** link.
+
+    The **Tunnel Setup Helper** dialog appears.<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/KS_Tunnel_Setup_Helper.png" width={500} alt="Katalon Studio - Tunnel Setup Helper dialog" />
+
+4.  Follow the step-by-step instructions in the dialog to set up the tunnel client in your local machine:
+
+    1.  Select your OS and download the .zip file, then unzip it.
+
+    2.  Open the command-line interface \(CLI\) and navigate to the directory containing the TC-tunnel executable file. Copy the command line from the dialog, then run it in the CLI.
+
+        An example command looks like this:
+
+        ```
+        /Applications/kt config --tenant KatalonStudio --username "myusername@katalon.com" --organization-id "myid" --api-key "myapikey"
+        ```
+
+    3.  Use the <code>kt start</code> command to start the tunnel.
+
+        <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/testcloud_tunnel_terminal.png" width={500} alt="Sample terminal message for running TestCloud Tunnel" />
+
+        
+        :::note
+
+        Keep your CLI open until you have finished running tests.
+
+        :::
+
+5.  Switch back to **Tunnel Setup Helper** and click **Close**.
+
+    Click **Refresh** and you can see the available status.<img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/testcloud_tunnel_available_status.png" width={500} alt="Katalon Studio - TestCloud Configuration dialog - TestCloud Tunnel available" />
+
+6.  Click **Run** to start executing your test suite/test suite collection with TestCloud Tunnel.
+
+
+## View TestCloud reports
+
+After executing tests with TestCloud from Katalon Studio, execution data is consolidated in logs and reports. You can view TestCloud reports in the following formats: CSV, PDF, JUnit, HTML. <img src="/doc_images/Documents/Execute/Cloud_based_test_execution/Test_execution_with_TestCloud/KS_TestCloud_integration/image/Katalon_Studio_test_suites_report_summary.png" width={700} alt="Katalon Studio - Report Summary of a test suite" />
+
+See: [Test Suite and Test Suite Collection Reports](/analyze/reports/view-test-reports/view-test-reports-in-katalon-studio/view-test-suite-and-test-suite-collection-reports-in-katalon-studio).

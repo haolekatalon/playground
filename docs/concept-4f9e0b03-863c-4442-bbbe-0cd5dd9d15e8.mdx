@@ -1,0 +1,38 @@
+---
+id: concept-4f9e0b03-863c-4442-bbbe-0cd5dd9d15e8
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-verify-element-not-has-attribute
+---
+
+# \[WebUI\] Verify Element Not Has Attribute
+
+## Description
+
+Verify if the web element doesn't have an attribute with the specified name.
+
+## Parameters
+
+<table><tr><th>Param</th><th>Param Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>to</td><td>TestObject</td><td>Required</td><td>Represent a web element.</td></tr><tr><td>attributeName</td><td>String</td><td>Required</td><td>The name of the attribute to verify.</td></tr><tr><td>timeout</td><td>int</td><td>Required</td><td>System will wait at most timeout (seconds) to return result</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or sto</td></tr></tbody></table>
+
+## Returns
+
+<table><tr><th>Param Type</th><th>Description</th></tr><tbody><tr><td>boolean</td><td><ul><li><strong>true:</strong> the element doesn't have the attribute with the specified name.</li><li><strong>false:</strong> the element has the attribute with the specified name</li></ul></td></tr></tbody></table>
+
+## Example
+
+You want to verify 'Make Appointment' button doesn't have attribute 'href' .
+
+```
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+'Open browser and navigate to demo AUT site.'
+WebUI.openBrowser(GlobalVariable.G_SiteURL)
+
+'Verify \'Make Appointment\' button doesn\'t have attribute \'href\''
+WebUI.verifyElementNotHasAttribute(findTestObject('Page_CuraHomepage/btn_MakeAppointment'),'href', 20)
+
+'Close browser'
+WebUI.closeBrowser()
+
+```

@@ -1,0 +1,57 @@
+---
+id: concept-f4c8418e-794a-433d-933d-9d50978c33ce
+slug: /execute/ci-cd-integrations/jenkins-integration/passing-scenario-tags-at-runtime-when-building-with-jenkins
+---
+
+# Passing scenario tags at runtime when building with Jenkins
+
+When running automated tests, you might want to classify different features and scenarios into different tags for better management.
+
+This tutorial guides you through how to set your scenario tags to be executed at runtime when Jenkins Build triggers your tests.
+
+## Requirements
+
+-   Jenkins is already installed. See Jenkins documentation on [Installing Jenkins](https://www.jenkins.io/doc/book/installing/).
+-   Katalon plugin is already installed on Jenkins. See [How to use Katalon plugin for Jenkins on Windows](/execute/ci-cd-integrations/jenkins-integration/use-katalon-plugins-for-jenkins-integration/use-katalon-plugins-for-jenkins-integration-on-windows-macos#).
+-   An active Katalon Runtime Engine license.
+
+## Create Global Variables
+
+You can change global variable values in a test suite during runtime without affecting other test suites. Therefore, using a global variable as a parameter in the keyword <code>runFeatureFolderWithTags</code> can save you time when you have many tags to manage.
+
+1.  Go to **Tests Explorer** &gt; **Profiles** to open your desired profiles. Click **Add** to create a global variable whose values are tags. See [Global Variables](/create-tests/data-driven-testing/global-variables).
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/jenkins-tag-runtime/globalvariable-tags.png" width={600} alt="add global variable" />
+
+2.  Write a test case with the following keyword:
+
+    ```
+    runFeatureFolderWithTags(folderRelativePath, tags)
+    ```
+
+    -   folderRelativePath: the folder relative path that starts from the current project location.
+    -   tags: the global variable defined in step 1.
+    **Example**:
+
+    ```
+    CucumberKW.runFeatureFolderWithTags('Include/features/BDD Cucumber Tests', GlobalVariable.username)
+    
+    ```
+
+    
+    :::note
+
+    -   To learn more about this keyword, see [\[Cucumber\] Run Feature Folder with Tags](/create-tests/keywords/keyword-description-in-katalon-studio/cucumber-keywords/cucumber-run-feature-folder-with-tags).
+
+    :::
+
+3.  Add this test case to a test suite and execute it from Jenkins.
+
+
+With the global variable created, you can choose which feature files folder to run with your desired tags values.
+
+## Update Global Variables during runtime
+
+To change the global variable by your desired scenario tags during runtime, use the following command syntax <code>-g&#95;XXX</code>, for example, <code>-g&#95;userName="admin"</code>.
+
+Read more about running Cucumber feature files at [BDD Testing Framework \(Cucumber integration\)](/integrations/supported-integrations/integrate-katalon-studio-with-other-katalon-platform-tools#).

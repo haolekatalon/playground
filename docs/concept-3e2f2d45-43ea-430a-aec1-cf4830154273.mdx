@@ -1,0 +1,105 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-3e2f2d45-43ea-430a-aec1-cf4830154273
+slug: /integrations/unsupported-integrations/salesforce-testing
+---
+
+# Salesforce testing
+
+
+:::note
+
+-   Please note that the use case presented here is a suggestion only and should be implemented with caution. It has not undergone quality assurance testing and is not officially supported by our platform.
+
+
+:::
+
+This project demonstrates how Katalon Studio helps users to automate the Salesforce applications. It contains some of the test cases for Lead, Case, & Account Management. The Dashboard Management test cases contain an example for the iframe.
+
+## Use cases
+
+-   Lead Management in Salesforce
+
+    1.  Login Salesforce account.
+
+    2.  Create a new lead.
+
+    3.  Change status for a lead.
+
+    4.  Change the lead owner.
+
+    5.  Search a lead by name and delete a lead.
+
+    6.  Close application.
+
+-   Case Management in Salesforce
+
+    1.  Login Salesforce account.
+
+    2.  Create a new case.
+
+    3.  Edit a case and change the status.
+
+    4.  Search a case by ID and delete a case.
+
+    5.  Close application.
+
+-   Account Management in Salesforce
+
+    1.  Login Salesforce account.
+
+    2.  Create an account.
+
+    3.  Close application.
+
+-   Dashboard Management in Salesforce
+
+    1.  Login Salesforce account.
+
+    2.  Create a dashboard.
+
+    3.  Create a component and add the report.
+
+    4.  Create a filter.
+
+    5.  Delete a dashboard.
+
+    6.  Close application.
+
+
+## Automate Salesforce test cases
+
+-   Katalon Studio
+
+-   Salesforce account
+
+
+-   [Sample Git repository for this project](https://github.com/katalon-studio-samples/salesforce-katalon-sample.git).
+
+-   You can refer to video demonstration of the steps:
+
+    -   [Lead Management in Salesforce](https://academy.katalon.com/katalon-demo-and-integration/?video=36517)
+
+    -   [Case Management in Salesforce](https://academy.katalon.com/katalon-demo-and-integration/?video=36519)
+
+    -   [Account Management in Salesforce](https://academy.katalon.com/katalon-demo-and-integration/?video=36520)
+
+    -   [Dashboard Management in Salesforce](https://academy.katalon.com/katalon-demo-and-integration/?video=36518)
+
+
+1.  Customise Setting before recording a test case:
+
+    Go to **Project** &gt; **Settings** &gt; **Test Design** &gt; **Web UI** and [change the priority of Xpath Locators](/maintain/self-healing-tests-in-katalon-studio).<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Salesforce_testing/image/KS_change_priority_of_XPath_Locators.png" alt="change Xpath Locators priority in Katalon Studio project settings" />
+
+2.  Add Desired Capability to handle Popup \(Show Notification\). You can refer to [Manage Desired Capabilities in Katalon Studio](/create-tests/manage-projects/project-settings/desired-capabilities/manage-desired-capabilities-in-katalon-studio).
+
+3.  Record test script via Katalon Recorder and save test objects and test cases. You can refer to [Record web utility in Katalon Studio](/create-tests/record-and-spy/webui-record-and-spy-utilities/record-web-utility-in-katalon-studio).
+
+4.  Update the application URL, username, and password inside the Default profile.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Salesforce_testing/image/KS-update_URL_username_password_in_Default_profile.png" alt="Update URL, username, password in Default profile" />
+
+5.  Run the test execution. You can refer to [Execute tests with Katalon Studio overview](/execute/execute-tests-with-katalon-studio/execute-tests-with-katalon-studio-overview).
+
+6.  Verify the test execution result. You can refer to [View test results and execution logs in Katalon TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops).
+
+
+If the test execution fails because of "Element not interactable" exception, you can change the keyword <code>Click</code> to <code>Enhanced Click</code>.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/Salesforce_testing/image/KS_keyword_enhanced_click.png" alt="KS enhanced click" />

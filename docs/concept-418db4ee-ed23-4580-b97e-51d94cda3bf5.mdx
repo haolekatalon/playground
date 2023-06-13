@@ -1,0 +1,54 @@
+---
+id: concept-418db4ee-ed23-4580-b97e-51d94cda3bf5
+slug: /create-tests/manage-projects/project-settings/desired-capabilities/set-custom-desired-capabilities-in-katalon-studio
+---
+
+# Set Custom Desired Capabilities in Katalon Studio
+
+If you want to make a list of custom desired capabilities for some environments, you can use the **Custom** settings in desired capabilities.
+
+This article shows you how to configure custom capabilities and where they are saved.
+
+## Custom desired capabilities
+
+To create a custom execution with desired capabilities, follow these steps:
+
+1.  Go to **Project &gt; Settings &gt; Desired Capabilities &gt; Custom**. Click **Add** on the command toolbar to add a custom profile.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-Custom-settings.png" alt="Create a custom profile" />
+
+2.  Change the name if needed, then click on *More* \(...\) under the **Value** column.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/project-settings-new-ui/KS-DC-CUSTOM-Add-property.png" alt="Edit the custom profile settings" />
+
+3.  In the **Custom Execution Configuration Builder** dialog, click **Add**, then specify the **Driver Name** for your custom execution.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-settings/KS-DC-Choose-environment.png" alt="Choose the environment to set DC" />
+
+    
+    :::tip
+
+    -   You can have at most one web driver and one mobile driver here since there may be a potential conflict if you use multiple web or mobile drivers in the same test execution.
+
+    :::
+
+4.  Click on *More* \(...\) under the **Preferences** column.
+
+5.  The **Driver Builder** dialog opens. Set desired capabilities for the selected driver. The steps to add new desired capabilities here is similar to configuring desired capabilities in each environment. You can refer to the following documents for setting up desired capabilities in different environment:
+
+    -   [Set up desired capabilities in WebUI testing](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-desired-capabilities-for-webui-testing-in-katalon-studio)
+
+    -   [Set up desired capabilities in mobile testing](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-desired-capabilities-in-mobile-testing-in-katalon-studio)
+
+    -   [Set up desired capabilities in Windows Desktop App testing](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-desired-capabilities-in-windows-desktop-app-testing-in-katalon-studio)
+
+    -   [Set up remote server in desired capabilities](/create-tests/manage-projects/project-settings/desired-capabilities/set-up-remote-server-in-desired-capabilities-in-katalon-studio)
+
+    Click **OK** when you finish.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/execution-settings/KS-DC-Set-DC-for-the-chosen-%20environment.png" alt="Set DC for the chosen environment" />
+
+
+## Location of custom desired capabilities files
+
+You can find the settings files for custom desired capabilities in the <code>&lt;your test project location&gt;\settings\external\execution</code> folder.

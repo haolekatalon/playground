@@ -1,0 +1,45 @@
+---
+id: concept-59a1851a-b041-422d-82c3-3041d5fd9442
+slug: /plugins-and-add-ons/katalium-server/contributing-guidelines-for-katalium-server
+---
+
+# Contributing Guidelines for Katalium Server
+
+Katalium Server is open-sourced at <code>https://github.com/katalon-studio/katalium-server</code>.
+
+## Frontend
+
+The GUI of Katalium Server is built with ReactJS and [Create React App \(CRA\)](https://github.com/facebook/create-react-app). This GUI is only enabled in Grid mode.
+
+The recommended NodeJS version is <code>10.16.0</code> or newer.
+
+Executing the following commands to start:
+
+```
+cd web
+npm install
+npm run start
+
+```
+
+CRA scripts will start a server at <code>http://localhost:3000</code> with API requests forwarded to Selenium Grid at <code>http://localhost:4444</code>.
+
+## Backend
+
+Importing as Maven project into <code>IntelliJ IDEA</code>, <code>Visual Studio Code</code> or <code>Eclipse</code>.
+
+To start the server in standalone mode, use entry class <code>com.katalon.kata.server.KatalonServer</code>.
+
+To start the server as a hub, use entry class <code>com.katalon.kata.server.KatalonServer</code> with arguments <code>-role hub -servlets com.katalon.kata.servlet.ListSessionsServlet,com.katalon.kata.servlet.KatalonConsole,com.katalon.kata.servlet.ScreenShotsServlet,com.katalon.kata.servlet.ConfigSessionsServlet,com.katalon.kata.servlet.SessionServlet</code>.
+
+To start the server as a node, use entry class <code>com.katalon.kata.server.KatalonServer</code> with arguments <code>-role node -hub http://localhost:4444/grid/register -proxy com.katalon.kata.proxy.KatalonProxy</code>.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalium-server/docs/katalium-contributing/1-katalium.png" />
+
+## Package
+
+For more detailed infomation please refer to <code>Jenkinsfile</code>.
+
+## References
+
+Selenium Grid <code>https://www.seleniumhq.org/docs/07&#95;selenium&#95;grid.jsp</code>.

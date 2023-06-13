@@ -1,0 +1,15 @@
+---
+id: troubleshooting-74f8849b-220a-40b2-87b4-ffc581a039ed
+slug: /execute/troubleshooting/illegal-option-specification-exception
+---
+
+# Illegal option specification exception
+
+When executing in console mode, you can encounter the following error: <code>joptsimple.IllegalOptionSpecificationException: $ is not a legal option character</code>.
+
+This is because the name of your global variables might contain special characters like <code>$</code>, or a space. For instance:
+
+-   Supported: <code>-g&#95;myVar="test"</code>
+-   Not supported: <code>-g&#95;$myVar="test"</code>
+
+1.  To solve this issue, we recommend giving global variables a name without <code>$</code>, and/or space.

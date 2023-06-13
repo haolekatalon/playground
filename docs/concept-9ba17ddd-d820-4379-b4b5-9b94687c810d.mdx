@@ -1,0 +1,85 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-9ba17ddd-d820-4379-b4b5-9b94687c810d
+slug: /integrations/unsupported-integrations/performance-testing-katalon-and-octoperf
+---
+
+# Performance Testing: Katalon and OctoPerf
+
+
+:::note
+
+-   Please note that the use case presented here is a suggestion only and should be implemented with caution. It has not undergone quality assurance testing and is not officially supported by our platform.
+
+
+:::
+
+Katalon and OctoPerf play a critical role in the continuous performance testing process, where OctoPerf can help in building the performance activity, and Katalon can trigger build activity and push performance reports into the Katalon platform. By integrating Katalon into OctoPerf, you can ensure that you have comprehensive end-to-end test coverage in a fully automated way. The integration between these two solutions will help you automate the build, test, and deployment of your applications.
+
+To integrate these two applications, first we need to prepare an OctoPerf workspace with all the necessary performance activity and then we have to call the OctoPerf APIs within Katalon Studio which can generate a performance test report. Finally, the results of test execution will be presented in the Katalon TestOps solution.
+
+## Account setup in OctoPerf
+
+This guide demonstrates how Katalon Studio helps users to perform the performance testing by using OctoPerf. Our GitHub [sample project](https://github.com/katalon-studio-samples/katalon-octoperf-sample) contains a test suite which triggers a Load test from OctoPerf.
+
+1.  Login your OctoPerf account, create a Workspace and copy the Workspace ID from URL.
+
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/Octoperf_account.png" width={700} alt="OctoPerf workspace" />
+
+2.  Create a project and copy the Project ID from the URL.
+
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/Octoperf_project_ID.png" alt="Octoperf project ID" />
+
+3.  Create Virtual Users: A [Virtual User](https://api.octoperf.com/doc/design/#create-a-vu) represents a user journey through your application. It lets you simulate a real user behavior.
+
+    We are using Browser Record \(HAR\) for the Virtual user so we generate a .har file on browser \(Chrome/firefox\) by recording all the action for test application.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/generate_.har_file.png" alt="generate .har file" />
+
+4.  Go with the Virtual User Validation check. Click on [Execute Load Test](https://api.octoperf.com/doc/runtime/#runtime-scenarios-list).
+
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/Octoperf-_execute_load_test.png" alt="octoperf- execute load test" />
+
+5.  Click on **Scenario** and copy Scenario ID from the URL.
+
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/Octoperf_scenario_ID.png" alt="octoperf scenario ID" />
+
+6.  Enter the [Time of occurrence and number of concurrent users](https://api.octoperf.com/doc/runtime/edit-scenario/edit-user-profile/strategy/load/%3E).
+
+7.  Click on **Templates** &gt; **Extract Template** and copy Template ID from the URL.
+
+
+## Project Setup in Katalon
+
+1.  Create a project. Add all the stored values for OctoPerf into Katalon Profile.
+
+    -   Template ID
+    -   Scenario ID
+    -   Worksapce ID
+    -   Project ID
+    -   OctoPerf API Key
+    -   Add download-report.sh at project root directory.
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/KS-add_stored_values.png" alt="Katalon Studio add stored values" />
+
+2.  Create APIs within **Object Repository**.
+
+    -   API EndPoint - POST [https://api.octoperf.com/runtime/scenarios/run/](https://api.octoperf.com/runtime/scenarios/run/)&lt;scenarioId&gt;?templateId=&lt;templateId&gt;
+    -   Http Header - Authorization - Bearer $\{apikey\}
+    <img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/KS-_create_APIs.png" alt="Katalon Studio create APIs" />
+
+    -   API EndPoint - [https://api.octoperf.com/runtime/bench-results/progress/$\{benchResultId\}](https://api.octoperf.com/runtime/bench-results/progress/$%7BbenchResultId%7D)
+
+    -   Http Header - Authorization - Bearer $\{apikey\}
+
+3.  Create Test Cases and Extract the values from APIs.
+
+    -   Test Case No 1: TC001\_Executes the scenario with the given ID<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/Test_Case_1.png" alt="Test case 1" />
+
+    -   Test Case No 2: TC002\_Track Run Progress<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/test_case_2.png" alt="Test case 2" />
+
+    -   Test Case No 3: TC003\_Download PDF Report<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/test_case_3.png" alt="test case 3" />
+
+4.  Create a Test Suite and ddd all the above test cases.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/create_a_test_suite_and_add_test_cases.png" alt="create test suite" />
+
+5.  Run Katalon Test suite and verify the report downloaded on the project root directory.<img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/execute_and_report_test_suite_.png" alt="test report in Katalon Studio" /><img src="/doc_images/Documents/General_Information/Unsupported-Integrations/OctoPerf_integration/images/Octoperf_-_test_report.png" alt="test report in OctoPerf" />
+
+
+Performance testing is a crucial part of software testing, ensuring that an application is stable, reliable, and scalable. Katalon and OctoPerf are two tools that can work together to provide comprehensive end-to-end test coverage in an automated way. The integration between these two tools allows for the automation of the build, test, and deployment of applications, making it easier for teams to identify and eliminate performance bottlenecks. With OctoPerf's ability to simulate thousands of concurrent users and Katalon's comprehensive toolset for automation testing, the combined solution provides a powerful performance testing tool for teams of any size. By following the steps outlined in this article, teams can set up an OctoPerf workspace and integrate it with Katalon to generate performance test reports and identify performance issues efficiently.

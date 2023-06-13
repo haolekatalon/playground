@@ -1,0 +1,182 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-982afc5b-5c93-4111-847c-c83228d4d2a3
+slug: /analyze/analytics/visual-testing/robot-framework-integration-with-visual-testing
+---
+
+# Robot Framework integration with Visual Testing
+
+The Robot Framework package <code>testops-robot</code> allows you to apply Katalon Visual Testing directly in a Robot Framework test case. The package provides you with a simple interface to upload checkpoint images and retrieve comparison results. Status of each Robot Framework test case can be promptly driven by each comparison result returned from Katalon Visual Testing
+
+You can find the sample project for <code>testops-robot</code> our GitHub repository: [katalon-testops-robot-sample](https://github.com/katalon-studio-samples/katalon-testops-robot-sample).
+
+This guide shows you how to configure the <code>testops-robot</code> package and perform visual testing with the sample project.
+
+## Prerequisites
+
+-   Subscriptions to Visual Testing Standard \(VTS\) or Visual Testing Professional \(VTP\). See: [Visual Testing Feature Comparison](/administer/katalon-platform-packages/visual-testing-feature-comparison).
+
+-   Python version 3.6 or above.
+
+
+## Configure the Robot Framework integration
+
+To use the <code>testops-robot</code> package, you need to set up the configuration file <code>testops-config.json</code> for your Robot Framework tests. This configuration file includes the following properties:
+
+-   <code>apiKey</code>: The API key to authenticate with Katalon Platform. See: [Generate a Katalon API Key](/administer/settings/katalon-api-key-in-katalon-testops#).
+
+-   <code>projectId</code>: The ID of your Katalon project.
+
+-   <code>reportFolder</code>: The local folder to store your test results.
+
+-   <code>baselineCollectionId</code>: The ID of the baseline collection to store baseline images. See: [Baseline collection](/analyze/analytics/visual-testing/baseline-collection).
+
+
+Follow these steps:
+
+1.  Sign in to [Katalon TestOps](https://testops.katalon.io/login) and go to your project.
+
+2.  Go to **Configurations** &gt; **Integrations**.
+
+3.  In the **Integrations** tab, select **Robot Framework - Python** and follow the on-screen instructions.
+
+    
+    :::note
+
+    -   When the **Visual Baseline Collection** toggle is on and there is no baseline collection in TestOps, the system will automatically generate a default baseline collection. See: [Robot Framework integration with Visual Testing](/analyze/analytics/visual-testing/robot-framework-integration-with-visual-testing).
+
+    :::
+
+    <img src="/doc_images/Documents/Analyze/Analytics/Visual_testing/visual_testing_robot_framework/images/TestOps_Robot_Framework_configuration.png" width={700} alt="TestOps Integrations tab" />
+
+
+Once you've finished the instructions, TestOps produces two files that you can use in your Robot Framework project:
+
+-   **<code>testops-config.json</code>**: The file that stores configuration information for <code>testops-robot</code>.
+
+-   **<code>katalon&#95;visual&#95;testing.py</code>**: The Python library file that contains the image verification function <code>verify&#95;checkpoint</code>. This function uploads and verifies checkpoint images.
+
+
+<img src="/doc_images/Documents/Analyze/Analytics/Visual_testing/visual_testing_robot_framework/images/TestOps_Robot_Framework_config_files.png" width={700} alt="Configuration files produced" />
+
+When you call the <code>verify&#95;checkpoint</code> function in a Robot Framework test case, <code>testops-robot</code> will look for configuration information \(API key, baseline collection ID, ...\) in <code>testops-config.json</code> and make requests to TestOps server.
+
+## Sample Robot Framework project
+
+To quickly get started with <code>testops-robot</code>, you can clone our sample project and run a sample test case: [katalon-testops-robot-sample](https://github.com/katalon-studio-samples/katalon-testops-robot-sample).
+
+In the <code>resource.robot</code> file of the project, you can find all the sample keywords and the use of the <code>Verify checkpoint</code> function defined in <code>VisualLibrary</code> class:
+
+```
+
+*** Settings ***
+Documentation     A resource file with reusable keywords and variables.
+...
+...               The system specific keywords created here form our own
+...               domain specific language. They utilize keywords provided
+...               by the imported SeleniumLibrary.
+| Library |       SeleniumLibrary
+| Library |       ../library/VisualLibrary.py
+
+
+*** Variables ***
+${SERVER}         https://katalon-demo-cura.herokuapp.com
+${BROWSER}        Chrome
+${DELAY}          0
+${VALID USER}     John Doe
+${VALID PASSWORD}    ThisIsNotAPassword
+${CHECKPOINT_LOCATION}    checkpoint
+${BOOKING_URL}    ${SERVER}/#appointment
+*** Keywords ***
+Analyze checkpoint "${checkpoint}"
+    Verify checkpoint    ${checkpoint}
+
+Open Browser To Cura Shop
+    Open Browser    ${SERVER}    ${BROWSER}
+    Maximize Browser Window
+    Set Selenium Speed    ${DELAY}
+
+Input Username
+    [Arguments]    ${username}
+    Input Text    txt-username    ${username}
+
+Enter Password
+    [Arguments]    ${password}
+    Input Text    txt-password    ${password}
+
+Submit Credentials
+    Click Button    btn-login
+
+Welcome Page Should Be Open
+    Location Should Be    ${BOOKING_URL}
+    Title Should Be    CURA Healthcare Service
+
+Login Should Have Failed
+    Element Should Be Visible    //p[contains(text(), "Login failed! Please ensure the username and password are valid.")]
+
+```
+
+In the test case <code>valid&#95;login&#95;with&#95;AI.robot</code>, we use the <code>Analyze checkpoint</code> keyword to verify images:
+
+```
+
+*** Settings ***
+Documentation     A test suite with a single test for valid login.
+...
+...               This test has a workflow that is created using keywords in
+...               the imported resource file.
+Resource          resource.robot
+
+*** Test Cases ***
+Valid Login
+    Open Browser To Cura Shop
+    Capture Page Screenshot    ${CHECKPOINT_LOCATION}/Review-Appoitment.png
+    Analyze checkpoint "${CHECKPOINT_LOCATION}/Review-Appoitment.png"
+    Click Element       //a[contains(text(),'Make Appointment')]
+    Capture Page Screenshot    ${CHECKPOINT_LOCATION}/Login-Dialog-Origin.png
+    Analyze checkpoint "${CHECKPOINT_LOCATION}/Login-Dialog-Origin.png"
+    Input Username    ${VALID USER}
+    Enter Password    ${VALID PASSWORD}
+    Capture Page Screenshot    ${CHECKPOINT_LOCATION}/Login-Dialog-With-Data.png
+    Analyze checkpoint "${CHECKPOINT_LOCATION}/Login-Dialog-With-Data.png"
+    Submit Credentials
+    Element Should Be Visible  appointment
+    [Teardown]    Close Browser
+
+```
+
+To execute the test case, follow these steps in your terminal:
+
+1.  Clone the sample project to your local machine.
+
+    ```
+    git clone https://github.com/katalon-studio-samples/katalon-testops-robot-sample.git
+    ```
+
+2.  Navigate into the project folder and install the Python dependencies.
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+3.  Run a sample test case. Here we run a sample test case with a valid login scenario <code>valid&#95;login&#95;with&#95;AI.robot</code>.
+
+    ```
+    robot --listener testops.Listener test_sample/valid_login_with_AI.robot
+    ```
+
+    The test case is then executed with the Visual Testing steps.<img src="/doc_images/Documents/Analyze/Analytics/Visual_testing/visual_testing_robot_framework/images/Robot_Framework_sample_test_run.png" width={600} alt="Execution terminal" />
+
+
+Once the execution is done, you can view the test results stored in the <code>testops-report</code> folder \(specified in <code>testops-config.json</code>\) or with the <code>report.html</code> file.<img src="/doc_images/Documents/Analyze/Analytics/Visual_testing/visual_testing_robot_framework/images/Robot_Framework_sample_report.png" width={700} alt="report.html" />
+
+## Known issues
+
+When running a Robot Framework with Katalon Visual Testing steps for the first time, you might encounter the following behaviors and issues:
+
+-   If the baseline collection is not specified in the configuration file, TestOps will generate a default baseline collection.
+
+-   When a Robot Framework test case is run, captured images are uploaded to TestOps one after another \(as opposed to being uploaded altogether in a Katalon test suite\). The first captured image will be labeled *New - Passed* and the rest will have *New - Unresolved* status. Therefore, to correctly compare images, you need to mark and add the *Unresolved* images to the default baseline manually.
+
+
+We recommend creating a baseline collection and specifying it in the configuration file.

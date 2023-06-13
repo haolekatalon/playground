@@ -1,0 +1,36 @@
+---
+id: troubleshooting-e91d5ffd-65ba-4f9f-9db7-6f004e400e52
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-windows-automated-testing/unable-to-start-the-windows-application
+---
+
+# Unable to start the Windows application
+
+When you encounter the following error:
+
+```
+Unable to start application:
+java.util.concurrent.ExecutionException: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.kms.katalon.core.windows.driver.WindowsDriverFactory
+```
+
+There are two possible causes as follows:
+
+-   If your application has splash screens at the application launch, it might take longer for the app to load. The WinAppDriver hangs on and eventually time out. This can be resolved by telling WinAppDriver to wait for a defined amount of time after an app launch. Do as follows:
+
+
+1.  Install WinAppDriver version 1.2 onwards. You can download the latest WinAppDriver version from the WinAppDriver GitHub project here: [WinAppDriver](https://github.com/microsoft/WinAppDriver).
+
+2.  Install Appium version 1.16.0 onwards. Follow the instruction in the Appium document to install the latest Appium version: [Getting started](http://appium.io/docs/en/about-appium/getting-started/#installing-appium).
+
+3.  In Katalon Studio, go to **Project Settings &gt; Desired capabilities &gt; Windows** and add this desired capability: <code>"ms:waitForAppLaunch": "25"</code>.
+
+    You can consider using **Native Windows Recorder**to record your actions more easily.
+
+
+-   If your app does not have splash screens, you can try adding the application title at the application launch. After the application starts, if WinAppDriver cannot detect the main application window correctly, Katalon Studio will use the given window title parameter to find the opened application to continue working. You can add the application title in one of the following ways:
+
+
+1.  When using Windows Spy/Record Utility, in the **Application Title** field, add the application title and start again.
+
+    OR
+
+    Use this keyword to start the application: [\[Windows\] Start Application with Title](/create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-start-application-with-title).

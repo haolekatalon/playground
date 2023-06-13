@@ -1,0 +1,82 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-af190622-ae42-4530-8392-c9e8da008915
+slug: /get-started/onboarding-katalon-platform/quick-guide-for-qa-managers
+---
+
+# Quick guide for QA managers
+
+In this guide, you'll explore some of the possibilities the Katalon Platform can offer to plan tests, organize tests, and analyze test reports.
+
+## Requirements
+
+-   You have created a Katalon account.
+
+-   You have connected a Git repository for your project. To learn how to connect the Git repository to your project, refer to this document: [Upload test scripts from the Git repository to TestOps](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops).
+
+
+## Plan tests
+
+Here is a quick guide for QA managers on planning tests using Katalon TestOps.
+
+The test planning features in Katalon TestOps allow you to check release readiness and requirement coverage. To utilize this feature to the best of its capabilities, it is advised that you integrate Katalon TestOps with Jira.
+
+To learn more about TestOps - Jira integration, you can refer to this document: [Enable TestOps - Jira integration for test management](/organize/integration-for-organizing-tests/jira-integration/enable-testops-jira-integration-for-test-management)
+
+Once Jira integration is enabled, you can:
+
+-   Populate Jira releases. See: [Populate Jira releases](/plan/integration-for-test-planning/populate-jira-releases)
+
+-   Link test cases to Jira requirements. See: [Link test cases to Jira requirements](/plan/integration-for-test-planning/link-test-cases-to-jira-requirements)
+
+
+After creating a release, you can link test runs to a release. See: [Link test runs to a release in TestOps](/plan/link-test-runs-to-a-release-in-testops)
+
+
+:::note
+
+-   If you have not created any test runs, refer to the onboarding document for testers: [Quick guide for testers](/get-started/onboarding-katalon-platform/quick-guide-for-testers)
+
+
+:::
+
+The **Planning** &gt; **Releases** tab as shown in the image below allows you to view and analyze test releases and its readiness after linking your test runs to Jira releases.
+
+<img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_QA_managers/Image/KS-Onboarding-Releases-tab.png" alt="The Release tab" />
+
+The **Planning** &gt; **Requirements** tab organizes your Jira requirements linked to your test cases. This tab also allows you to access and view test case coverage and traceability matrix reports.
+
+<img src="/doc_images/Documents/Get_Started/Onboarding_Katalon_Platform/Quick_guide_for_QA_managers/Image/KS-Onboarding-Requirement-coverage.png" alt="The Requirement tab" />
+
+If you have enabled BDD configuration in Katalon TestOps, you can also quickly check BDD test results in the **Requirement** tab. See: [View BDD test results in TestOps](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-bdd-test-results-in-testops)
+
+## Organize your test cases
+
+Here is a quick guide for QA managers on how to organize test cases in Katalon TestOps.
+
+In Katalon Platform, you first need to upload your test scripts using the Git repositories to Katalon TestOps. This allows you to manage version control and synchronization in the Katalon Platform. See: [Upload test scripts from the Git repository to TestOps](/organize/upload-test-scripts-from-a-git-repository/upload-test-scripts-from-the-git-repository-to-testops)
+
+After uploading your test scripts from the Git repository, you can organize your tests in test suites or dynamic test suites.
+
+-   To manage your tests in Katalon TestOps, see: [Manage test suites in Katalon TestOps](/organize/manage-tests/test-suite/manage-test-suites-in-katalon-testops)
+
+-   To manage your tests in Katalon Studio, see the following topics:
+
+    -   [Manage test suites in Katalon Studio](/organize/manage-tests/test-suite/manage-test-suites-in-katalon-studio)
+
+    -   [Manage dynamic test suites in Katalon Studio](/organize/manage-tests/dynamic-test-suite/manage-dynamic-test-suites-in-katalon-studio)
+
+
+If you want to run parallel tests with multiple browsers, you can add and manage your test suites in a test suite collection. See: [Manage test suite collections in Katalon Studio](/organize/manage-tests/manage-test-suite-collections-in-katalon-studio).
+
+## Analyze your test reports
+
+Here is a quick guide for QA managers on how to view and understand test reports in Katalon TestOps.
+
+Katalon Platform provides several ways to gain a clear view of the overall readiness of your projects.
+
+As part of your daily tasks, you will refer to the test reports to evaluate your testing progress. Go to your project &gt; **Reports** on the Katalon TestOps dashboard to view your test reports.
+
+The test reports popularly used by Katalon users are:
+
+<table><tr><th>Report</th><th>What does it do?</th></tr><tbody><tr><td>Test Activities</td><td>Shows your testing activities in daily/weekly/monthly periods. This enables faster troubleshooting and assists you in the decision-making process of your product cycle. See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/test-activities-reports" >Test activities reports</a></td></tr><tr><td>Release Readiness</td><td>Shows how ready your releases are. This allows you to:<ul><li><p>Evaluate the status of the two most recent releases.</p></li><li><p>Oversee your release plan with reminders of the delivery date.</p></li><li><p>Monitor productivity to see progress in development and testing.</p></li><li><p>Highlight the total number of defects for each release.</p></li></ul>See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/release-readiness-reports" >Release Readiness reports</a></td></tr><tr><td>Productivity</td><td>Tracks the total number of test cases you have created in your project in a daily/weekly/monthly period. See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/productivity-reports" >Productivity reports</a></td></tr><tr><td>Quality</td><td>Shows the test quality based on Flakiness Test Distribution (the distribution of test cases by their flakiness probability). See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/quality-reports" >Quality reports</a></td></tr><tr><td>Platform Coverage</td><td>Shows the coverage of test runs or test results executed in corresponding environments. See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/platform-coverage-reports" >Platform coverage reports</a></td></tr><tr><td>Requirement Coverage</td><td><p>Provides the coverage status of requirements for a given scope. This allows you to centralize all Jira and BDD requirements in one single place for reports and analytics.</p><p>See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/requirement-coverage-reports" >Requirement coverage reports</a></p></td></tr><tr><td>Local Test Environment</td><td>Shows the number of online and offline agents and the distribution of all agents by the operating system. See: <a href="/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-testops-dashboard/local-test-environment-reports" >Local test environment reports</a></td></tr></tbody></table>

@@ -1,0 +1,238 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-61af4423-bada-4ef8-a77a-9746417a8c25
+slug: /create-tests/test-objects/api-test-objects/graphql-in-katalon-studio
+---
+
+# GraphQL in Katalon Studio
+
+This article provides basic information on GraphQL and how to work with GraphQL in Katalon Studio.
+
+## What is GraphQL?
+
+GraphQL is a query language that allows API consumers to write queries to get the exact data they need from a single request to a single endpoint. GraphQL provides a detailed and easy-to-understand description of the data in your API, making it easier to evolve APIs over time. GraphQL queries get many resources in a single request and always return predictable results. Therefore, GraphQL significantly improves the efficiency and performance of API calls.
+
+To learn more about GraphQL, you can refer to GraphQL documentation: [Introduction to GraphQL](https://graphql.org/learn/).
+
+## GraphQL testing in Katalon Studio
+
+With this GraphQL testing in Katalon Studio, you can:
+
+-   Create a GraphQL test request with RESTful by GET and POST methods, using queries or mutations.
+-   Use query variables in a GraphQL request.
+-   Validate GraphQL request and response against schemas.
+
+### Queries and mutations
+
+The most typical GraphQL operations from the perspective of the client are queries and mutations. In terms of the CRUD model \(create, read, update, and delete\), a query is identical to read, using the GET method. Mutations handle all of the others, which are create, update, and delete.
+
+Testing mutations are essential as it involves testing data access and additions to databases. Mutations modify data in the database and return us a value. Mutations can edit and manipulate the data from the server side.
+
+There are two ways to execute a GraphQL request with RestFUL in Katalon Studio: GET and POST methods. You can put the GraphQL query into the GET query parameter to create a GraphQL test request. GraphQL mutations only support the POST method.
+
+### Validate GraphQL request and response against a schema
+
+Since GraphQL returns a response in JSON format, you can validate a GraphQL response against a JSON schema. This action also helps you troubleshoot the error without the HAR file.
+
+You can also validate a GraphQL request body against a GraphQL schema to make sure the request is valid before sending the request to the server. The validation action happens on the server side. You receive the validation results in the **Response** section if you use keywords in the **Verification** tab or the **Log Viewer** if you use keywords in a test case.
+
+## Sending GraphQL queries using Query Parameters
+
+This section shows you an example of how to send GraphQL queries using **Query Parameters**. To learn more details about **Query Parameters**, you can refer to this document: [Parameterize a Web Service Object](/create-tests/test-objects/api-test-objects/rest-request/parameterize-a-web-service-object-in-katalon-studio).
+
+In this example, we want to get country information from the <code>https://countries.trevorblades.com</code> website. Do as follows:
+
+1.  Create a **Web Service Request** object and choose the **Request Type** as **RESTful**.
+
+2.  In the **Web Service Request** object editor, choose the **GET** request method.
+
+3.  In the **URL** field, input this GraphQL URL: <code>https://countries.trevorblades.com/graphql?query=query Query &#10100; country(code: "VN") &#10100; name native capital emoji currency languages &#10100; code name &#10101; &#10101;&#10101;</code>
+
+    Katalon Studio detects the query parameters after the question mark and lists them in the **Query Parameters** table like below:
+
+    -   Name: query
+    -   Value: <code>query Query &#10100; country(code: "VN") &#10100; name native capital emoji currency languages &#10100; code name &#10101; &#10101;&#10101;</code><img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/query-parameters.png" alt="query parameters" />
+4.  Save your request, then click **Test Request and Verify**.
+
+
+In the **Response** tab, the country information is returned as JSON responses.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-query-response.png" width={400} alt="GraphQL response" />
+
+## Sending GraphQL queries and mutations in the HTTP Body
+
+POST requests usually use the application or JSON content type in the HTTP Body. To send a GraphQL query in the **HTTP Body**, do as follows:
+
+1.  Create a **Web Service Request** object and choose the **Request Type** as **RESTful**.
+
+2.  In the **Web Service Request** object editor, choose the **POST** request method.
+
+3.  In the **URL** field, input the GraphQL endpoint URL.
+
+    For example: <code>https://katalon-sample-graphql-aut.herokuapp.com/graphql</code>
+
+4.  Switch to the **HTTP Body** tab and choose the **GraphQL** body type.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-graph-ql-query.png" width={700} alt="GraphQL query" />
+
+5.  In the **Query** textbox, insert your GraphQL query or mutation.
+
+    GraphQL query example:
+
+    ```
+    query {
+    findAllBooks {
+        id
+        title
+        isbn
+        pageCount
+        author {
+            id
+            firstName
+            lastName
+        }
+      }
+    }
+    
+    ```
+
+    GraphQL mutation example:
+
+    ```
+    mutation {
+        deleteBook(id:3)
+    }
+    
+    ```
+
+6.  Save your request, then click **Test Request and Verify**.
+
+7.  View the result in the **Response** tab.
+
+
+Below are some examples of using GraphQL queries and mutations in the test request object:
+
+-   Find all books using a GraphQL query<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-find-all-book.png" alt="find all book" />
+
+-   Create a new book using a GraphQL mutation<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-create-new-book-mutation.png" alt="create a new book" />
+
+-   Modify the name of a book using a GraphQL mutation<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-modify-mutation.png" alt="modify book name" />
+
+-   Delete a book using a GraphQL mutation<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-mutation-delete.png" alt="delete a book" />
+
+
+## Add a GraphQL request to a test case
+
+You can add a GraphQL request into a test case. Katalon Studio generates a script that has send request method with a map of variables. Below is a sample test script generated:
+
+```
+res = WS.sendRequest(findTestObject('Country/CountryQueryVarsInVars', [('id') : 'US']))
+
+println CustomKeywords.'util.JSON.jsonBeautify'( res.getResponseBodyContent());
+```
+
+Save and run your test case. You can view the result of sending the request in the **Log Viewer** tab.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/send-request-in-a-test-case.png" alt="log viewer tab" />
+
+## Use GraphQL variables
+
+To use GraphQL variables, do as follows:
+
+1.  Switch to the **HTTP Body** tab and choose **GraphQL** body type.
+
+2.  In the **Query** textbox, insert your GraphQL query with defined variables.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-query-variable.png" width={700} alt="GraphQL query" />
+
+3.  In the **Query Variables** textbox, insert the values of your GraphQL variables.
+
+    Example 1: In the **Query** textbox, input <code>$id: ID!</code>, then define <code>id</code> in the **Query Variables** textbox:
+
+    ```
+    {
+        "id" : "AU"
+    }
+    ```
+
+    You can also use Katalon Studio variables as inputs for GraphQL variables using the <code>$&#10100;variable&#10101;</code> syntax.
+
+    Example 2: In the **Query Variables** textbox, use Katalon Studio variable: <code>$&#10100;id&#10101;</code>.
+
+    ```
+    {
+        "id" : "${id}"
+    }
+    
+    ```
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-query-variable-in-variable.png" width={700} alt="query variable in variable" />
+
+    Then, navigate to the **Variables** tab and define the variable name: <code>id</code> the default value: <code>"VN"</code> in our case.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-variables-tab.png" alt="variables tab" />
+
+
+## Validate GraphQL request and response against schemas
+
+To validate a GraphQL request body and the response returns against schemas, do as follows:
+
+1.  Create a GraphQL web service request object.
+
+2.  In the web service request object editor, switch to the **Verification** tab.
+
+3.  In the **Verification** snippets, use the <code>WS.validateGraphQLBodyAgainstSchema</code> with the request body and a schema. See [\[WS\] Validate GraphQL request body against a GraphQL schema](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-graphql-request-against-a-graphql-schema).
+
+    The response returns as the JSON format, so you can also add the <code>WS.validateJsonAgainstSchema</code> to validate the response. See [\[WS\] Validate the response against a JSON schema](/create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-validate-json-string-against-a-schema#).
+
+    For example:
+
+    ```
+    import static org.assertj.core.api.Assertions.*
+    
+    import com.kms.katalon.core.model.FailureHandling
+    import com.kms.katalon.core.testobject.RequestObject
+    import com.kms.katalon.core.testobject.ResponseObject
+    import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+    import com.kms.katalon.core.webservice.verification.WSResponseManager
+    
+    import groovy.json.JsonSlurper
+    import internal.GlobalVariable as GlobalVariable
+    
+    RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
+    
+    ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
+    
+    WS.validateGraphQLBodyAgainstSchema(request, "Schema/Country.qls", FailureHandling.CONTINUE_ON_FAILURE)
+    
+    WS.validateJsonAgainstSchema(response, "Schema/JSON/CountrySchema.json", FailureHandling.STOP_ON_FAILURE)
+    ```
+
+4.  Save and click **Test Request and Verify**.
+
+
+You can view the validation result in the **Response** section.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-verification-tab.png" alt="response tab" />
+
+You can also validate the GraphQL request/ response against schemas in a test case and view the validation result in the **Log Viewer**. For example:
+
+<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-validation.png" /><img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/graphql/ks-840-validate-graphql-schema.png" />
+
+Sample script:
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.RequestObject
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+
+RequestObject req = findTestObject('Country/CountryQuerySchema');
+if (WS.validateGraphQLBodyAgainstSchema(req, "Schema/Country.qls")) {
+	res = WS.sendRequest(findTestObject('Country/CountryQuerySchema'))
+	WS.validateAgainstJsonSchema(res, "Schema/JSON/CountrySchema.json")
+}
+```

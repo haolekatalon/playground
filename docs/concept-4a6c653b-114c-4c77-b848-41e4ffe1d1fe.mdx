@@ -1,0 +1,32 @@
+---
+id: concept-4a6c653b-114c-4c77-b848-41e4ffe1d1fe
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/windows-keywords/windows-click
+---
+
+# \[Windows\] Click
+
+
+:::note
+
+-   Starting from **version 7.0.0**, Windows desktop application testing is available on Katalon Studio.
+
+
+:::
+
+## click
+
+-   **Description**: Perform a left-clicking action on the Web element found by using the locator value of the given Windows object.
+-   **Keyword name**: click
+-   **Keyword syntax**: Windows.click\(windowsObject\)
+-   **Parameter**: windowsObject
+
+    -   Description: An object describing the locator and locator strategy to find a Windows element.
+    -   Parameter Type: WindowsTestObject
+    -   Mandatory: Required
+-   **Example**:
+
+```
+"Click on the Close button"
+ Windows.click(findWindowsObject("Object Repository/CloseButton"))
+
+```

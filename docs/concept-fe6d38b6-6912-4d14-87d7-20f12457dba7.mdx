@@ -1,0 +1,119 @@
+---
+id: concept-fe6d38b6-6912-4d14-87d7-20f12457dba7
+slug: /create-tests/record-and-spy/webui-record-and-spy-utilities/smart-wait-function
+---
+
+# Smart Wait Function
+
+This article shows you how to enable and use the Smart Wait function in Katalon Studio.
+
+## Description
+
+The Smart Wait function tackles the timing issue of automated web testing by automatically waiting for all front end process of a page to complete before taking further test steps.
+
+Katalon Studio introduced Smart Wait from version 7.0.0 as a browser extension.
+
+You can download the Smart Wait sample project from our GitHub repository: [Smart Wait sample tests](https://github.com/katalon-studio-samples/smart-wait-example-tests).
+
+## Requirements
+
+-   Katalon Studio version 7.0.0 onwards \(Smart Wait as a web extension\).
+
+
+## Supported browsers
+
+Smart Wait was previously implemented as web extension. From version 8.6.0 of Katalon Studio, Smart Wait has become a built-in feature \(no extension installation required\).
+
+The following are the supported browsers with compatible Katalon Studio versions.
+
+<table><tr><th>Browser</th><th>Katalon Studio version</th></tr><tbody><tr><td>Chrome</td><td><p>From 8.6.0: built-in Smart Wait.</p><p>From 7.0.0: Smart Wait extension.</p></td></tr><tr><td>Edge Chromium</td><td><p>From 8.6.0: built-in Smart Wait.</p><p>From 8.2.0: Smart Wait extension.</p></td></tr><tr><td>Firefox</td><td><p>From 8.2.0: Smart Wait extension.</p></td></tr><tr><td>Chrome Headless (local execution)</td><td><p>From 8.6.0: built-in Smart Wait.</p></td></tr></tbody></table>
+
+## Enable Smart Wait in Katalon Studio
+
+-   Smart Wait is enabled by default in **Project** &gt; **Settings** &gt; **Execution** &gt; **WebUI**. This default configuration will automatically apply Smart Wait to all elements in that project.
+
+    <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/webui-smartwait/image/ks-840-smart-wait.png" width={700} alt="smart wait" />
+
+
+## Temporarily turn off Smart Wait
+
+The **Default Smart Wait** function is enabled.
+
+You can use the <code>enableSmartWait</code> and <code>disableSmartWait</code> keywords to enable/disable Smart Wait during the test temporarily.
+
+-   Use the <code>enableSmartWait</code> or <code>disableSmartWait</code> keywords to enable/disable Smart Wait on your target elements.
+
+    In the following example, we first use the <code>disableSmartWait</code> keyword to disable Smart Wait at the beginning of the test temporarily.
+
+    Then we use the <code>enableSmartWait</code> keyword to enable Smart Wait when setting text on the <code>Username</code> object. Smart Wait is enabled until the <code>disableSmartWait</code> keyword is applied.
+
+    ```
+    
+    WebUI.disableSmartWait()
+    
+    WebUI.openBrowser('')
+    
+    WebUI.navigateToUrl('https://store.katalon.com/')
+    
+    WebUI.maximizeWindow()
+    
+    WebUI.click(findTestObject('signin-link'))
+    
+    WebUI.enableSmartWait()
+    
+    WebUI.setText(findTestObject('username'), 'demo@katalon.com')
+    
+    WebUI.setEncryptedText(findTestObject('password'),'3zBGMH+v8QQXwX1AbEAx2g==')
+    
+    WebUI.click(findTestObject('signin-button'))
+    
+    WebUI.click(findTestObject('menu-dropdown'))
+    
+    WebUI.click(findTestObject('dashboard-item'))
+    
+    WebUI.click(findTestObject('plugins-item'))
+    
+    WebUI.disableSmartWait()
+    
+    WebUI.closeBrowser()
+    ```
+
+
+## Workaround for remote execution
+
+This section presents a workaround for applying Smart Wait extension for remote execution.
+
+-   The Smart Wait function is only available on Chrome and Firefox.
+
+-   From version 8.2.0 onwards, the Smart Wait function is available on Edge Chromium.
+
+
+To apply Smart Wait for remote execution in Chrome for Katalon Studio, follow these steps:
+
+1.  **In the node machine**
+
+    1.  Download a Katalon .zip package. You can download different versions of the Katalon package from our GitHub repository: [Katalon releases](https://github.com/katalon-studio/katalon-studio/releases).
+
+    2.  Unzip the file and locate the Smart Wait folder.
+
+        For macOS: <code>&lt;Katalon Studio folder&gt;/Contents/Eclipse/configuration/resources/extensions/Chrome/Smart Wait</code>
+
+        For Windows: <code>&lt;Katalon Studio folder&gt;\configuration\resources\extensions\Chrome\Smart Wait</code>
+
+2.  **In the test runner machine**: The test runner machine is where you install Katalon Studio and store the test scripts.
+
+    1.  Open Katalon Studio.
+
+    2.  Go to **Project** &gt; **Settings** &gt; **Desired Capabilities** &gt; **Remote**, then fill in the following information:
+
+        -   Remote Server URL: <code>http://localhost:port/wd/hub</code> - the URL of the hub machine.
+
+        -   Remote Server Type: Choose **Selenium**.
+
+        -   Click **Add** on the command toolbar, then input the following values:
+
+            <table><tr><th>Name</th><th>Type</th><th>Value</th></tr><tbody><tr><td>browserName</td><td>String</td><td>chrome</td></tr><tr><td>goog:chromeOptions</td><td>Dictionary</td><td>Click <em>More</em> (...). In the pop-up <strong>Dictionary Property Builder</strong> dialog, click <strong>Add</strong>, then input values from Table 2.</td></tr>            </tbody></table>
+
+            <table><tr><th>Name</th><th>Type</th><th>Value</th></tr><tbody><tr><td>args</td><td>List</td><td>load-extension=&lt;the absolute path to the Smart Wait folder located in the node machine&gt;</td></tr>            </tbody></table>
+
+            <img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/webui-smartwait/image/ks-smartwait-remote.png" width={700} /><img src="/doc_images/Documents/Create_tests/Record_And_Spy/WebUI_Record_And_Spy_Utilities/webui-smartwait/image/KS-Smart-Wait-set-up-DC-for-remote-execution.png" width={500} alt="Apply Smart Wait for remote execution in Chrome" />

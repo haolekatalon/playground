@@ -1,0 +1,18 @@
+---
+id: troubleshooting-d1422968-b09a-4c99-b421-9d9600422af2
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-mobile-automated-testing/an-unknown-server-side-error-occurred-while-processing-the-command
+---
+
+# An unknown server-side error occurred while processing the command
+
+When you encounter the error <code>java.util.concurrent.ExecutionException: org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command</code>.
+
+Original error: <code>Could not proxy command to the remote server</code>.
+
+Original error: <code>timeout of 240000ms exceeded</code>.
+
+1.  Install [Webdriveragent](/create-tests/manage-projects/set-up-projects/mobile-testing/ios/mobile-install-webdriveragent-for-real-ios-devices-in-katalon-studio).
+
+2.  Kill the running appium proccesses with the following command: <code>killall -9 node</code>.
+
+3.  Start the AUT again.

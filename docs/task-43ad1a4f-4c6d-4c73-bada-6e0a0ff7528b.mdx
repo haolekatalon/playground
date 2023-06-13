@@ -1,0 +1,98 @@
+---
+id: task-43ad1a4f-4c6d-4c73-bada-6e0a0ff7528b
+slug: /create-tests/create-test-cases/generate-test-steps-in-katalon-studio-manual-view
+---
+
+# Generate test steps in Katalon Studio manual view
+
+The tutorial below gives you step-by-step instructions to create test steps in Katalon Studio manual view.
+
+1.  In the **Manual** tab of the **Test Case Editor**, click **Add**. A new line representing a test step is generated.
+
+2.  In the newly created test step, type a keyword, or click on the dropdown button to select a keyword. Add an **Object**, **Input**, **Output**, and **Description** for that test step, if any.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/830-tc-hover.png" alt="Create a new step in test case" />
+
+    
+    :::note
+
+    -   To learn more about a keyword in Katalon Studio, hover over each keyword to see its description. You can also use the search bar on our Katalon Studio documentation page to find the detailed information and usage example of each keyword.
+
+    :::
+
+    You can also add a **Statement** or **Call Test Case** as a test step. To learn how **Statement** and **Call Test Case** works, see [Statement](/create-tests/create-test-cases/statements/statements-in-katalon-studio-overview)and [Call Test Case](/create-tests/create-test-cases/call-test-case-in-katalon-studio).
+
+3.  Continue adding your test steps. You can also **Move up**, **Move down**, or **Delete** a test step.
+
+4.  To execute a test case, from the main toolbar, click **Run**.
+
+    <img src="/doc_images/Global_reuse/Common_steps/image/ks-run.png" width={250} />
+
+
+## Recent keywords
+
+1.  **Recent keywords** allow users to quickly add any of the last 10 recently used keywords in the Item list. To reuse recent keywords, in the test case editor, click on **Recent keywords**.
+
+
+## Recent objects and object folders
+
+Katalon Studio allows you to quickly select recently used objects or jump directly to the recently used **Object Folder** in the object repository.
+
+1.  In the Object column, double-click on any Test Object to open the **Test Object Output** dialog. Here, you can see the *Recent Object* button on the top right corner.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/tc-recent-object.png" width={600} alt="Recent object" />
+
+    The recent list will have two sections: **Object Folder** and **Test Object**.
+
+    -   **Test Object**: Displays the names of the last 5 selected objects.
+    -   **Object Folder**: Displays the names of 5 folders that contains any recently used objects.
+
+## Usage example: Create a sample test case in manual view
+
+In our example, we use a sample test case with the steps as below:
+
+-   Open the browser.
+-   Navigate to a website.
+-   Click on a specific control.
+-   Validate if a control exists on the page.
+-   Close the browser.
+
+1.  **Open the browser**: Select the [Open Browser](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-open-browser) keyword. This keyword opens a browser and navigates to the specified URL if provided.
+
+    
+    :::note
+
+    -   You can view the description of a keyword by hover your mouse over that keyword.
+
+    :::
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/open-browser-manual.png" alt="Open browser keyword" />
+
+2.  **Navigate to a website**: Add the **[Navigate To Url](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-navigate-to-url)** keyword. This keyword will navigate to a specified URL. Double click on the **Input** cell to provide additional data \(parameters\) for the keyword.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/tc-navigate.png" width={600} alt="Navigate to url" />
+
+    The **Input** dialog displays.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/tc-input.png" width={600} alt="Input dialog" />
+
+    For now, enter the URL of Katalon demo AUT: http://demoaut.katalon.com into the **Value** column, then click **OK**.
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>No</td><td>The number of parameter for the selected keyword.</td></tr><tr><td>Param Name</td><td>The name of the parameter.</td></tr><tr><td>Param Type</td><td>The required data type for the parameter.</td></tr><tr><td>Value Type</td><td>The type of your input value (e.g. strings, <a href="/create-tests/data-driven-testing/data-driven-testing-with-katalon-studio" >variables</a>, <a href="/create-tests/data-driven-testing/manage-test-data" >data sources</a>...)</td></tr><tr><td>Value</td><td><p>The input value for this parameter.</p><p>The input value can be varied based on <strong>Value Type</strong>. Refer to <a href="/create-tests/create-test-cases/value-types-in-katalon-studio" >Value Types in Katalon</a> for more details.</p></td></tr>    </tbody></table>
+
+3.  **Click on a specific control**: Add the **[Click](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-click)** keyword. This keyword represents the click action on a given object. Double click on the **Object** cell and provide the object for the keyword.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/click-manual.png" width={600} alt="Add click keyword manually" />
+
+4.  **Validate if a control exists on the page**: All captured objects in **Object Repository** are displayed in the **Test Object Input** dialog. Select your object then click **OK**. To learn how to capture objects, see [Spy Object](/create-tests/record-and-spy/webui-record-and-spy-utilities/spy-web-utility-in-katalon-studio).
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/test-object-input.png" width={500} alt="Test object input dialog" />
+
+    Add the **[Verify Element Present](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-verify-element-present)** keyword. This keyword validates if a certain object is displayed on the executing browser. Similar to the previous step, you need to specify the object to be used with this keyword.<img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/verify-element-present-manual.png" width={600} alt="Verify element present manually" />
+
+5.  **Close the browser**: Add the **[Close Browser](/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-close-browser)** keyword and save your test case.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Images/close-browser-manual.png" width={600} alt="Close the browser manually" />
+
+
+You have successfully created a test case in Katalon Studio manual view.

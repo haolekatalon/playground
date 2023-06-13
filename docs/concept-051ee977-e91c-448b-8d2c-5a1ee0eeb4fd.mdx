@@ -1,0 +1,74 @@
+---
+author: Dong Nguyen <dong.nguyen@katalon.com>
+id: concept-051ee977-e91c-448b-8d2c-5a1ee0eeb4fd
+slug: /organize/custom-field-and-tags/custom-fields-and-tags
+---
+
+# Custom Fields and Tags
+
+Custom fields & tags are great tools to create and label meta-data to your Katalon test artifacts such as test case, test run schedule, test execution. You can create as many attributes to your test entities as you need, then categorize, organize or filter them with ease throughout the testing cycle on Katalon Platform.
+
+Custom field is a pair of key and value meta-data that you can assign to then differentiate among your test entities, for example: **testPriority:**High, or, **scriptLanguage:**Java**.**
+
+Tag is a single-word string value \(not including a white-space\), similar to a hashtag, that you can assign to tests entities and query with them later on.
+
+Custom fields can only be created in **Configurations** section of Katalon Platform, while Tags can be created on-the-move in the test case detail, test run detail and test result detail module.
+
+Custom fields and tags empower you throughout testing cycles on Katalon Platform:
+
+-   Assign custom fields and tags to your [test case](/organize/manage-tests/test-case/add-custom-fields-and-tags-to-test-cases) and [query your test case](/organize/manage-tests/test-case/search-a-test-case-by-custom-fields-and-tags) by them.
+-   Assign custom fields and tags to [test run schedules](/execute/schedule-test-execution/schedule-test-runs-in-testops#) or [test run results](/analyze/reports/view-test-reports/view-test-reports-in-katalon-testops/view-test-run-results/view-test-results-and-execution-logs-in-katalon-testops/view-test-results-and-execution-logs-in-katalon-testops#).
+
+-   Assign custom fields and tags to a [test execution](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine#) via Katalon Runtime Engine command-line interface.
+
+-   Assign custom fields and tags when you [manually import your test run results to TestOps](/analyze/reports/upload-test-reports/upload-junit-and-katalon-studio-reports-to-testops-manually).
+
+
+## Create Custom Fields in Configurations
+
+1.  Login to Katalon TestOps, then navigate to **Configurations** &gt; **Custom Fields**.
+
+    The **Custom Fields** page appears.<img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-Configurations-Custom_Fields.png" alt="TestOps custom fields page" />
+
+2.  Click the **+ Create new customer field** button.
+
+    The **Create new custom field** dialog appears. <img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-Configuration-Create_new_custom_field_dialog.png" alt="Create new custom field" />
+
+3.  For **Key**, enter a key for your custom field, for example: **priority**, **testing-type**.
+
+4.  For **Display Name**, enter a name for your key what would display on Katalon Platform interface, for example: **Priority**, **Testing Type**.
+
+5.  For **Values**, enter a value for your key, for example **High, Medium** or **Low** for **Priority** key; **API or Regression** for **Testing Type** key. You can create multiple values for a key by selecting **+ Add new value**.
+
+    <img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-custom_fields-Create_.png" alt="custom fields values" />
+
+6.  Click **Create**.
+
+
+Your custom field is created successfully.
+
+## Edit your Custom Fields
+
+1.  To edit your custom field, select the **Edit** button.
+
+    <img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-Configurations-edit_custom_field.png" alt="edit custom field button" />
+
+    The Edit custom field dialog appears.
+
+2.  You can edit display name and values of your custom field, but not the key. When you finish editing, select **Save Changes**.<img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-Custom_Fields-Edit_custom_field.png" alt="Edit custom field dialog" />
+
+
+Your custom field is updated and it will reflect in any test case, test run where it is assigned.
+
+## Delete your Custom Field
+
+1.  To delete your custom field, click the **Delete** button.
+
+    <img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-Configuration-delete_custom_field.png" alt="delete custom field" />The delete custom field warning dialog appears.
+
+2.  Deleting a custom field will also remove it from any test entities such as test case, test run in your project. When you are sure, select **Delete**.
+
+    <img src="/doc_images/Documents/Organize/Custom_Field_and_Tags/images/TO-Configurations-delete_custom_field_dialog.png" alt="delete custom field dialog" />
+
+
+Your custom field is deleted.

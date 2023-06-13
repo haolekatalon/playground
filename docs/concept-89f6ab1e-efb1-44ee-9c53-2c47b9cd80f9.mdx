@@ -1,0 +1,65 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-89f6ab1e-efb1-44ee-9c53-2c47b9cd80f9
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-get-elements-count
+---
+
+# \[WS\] Get Elements Count
+
+## Description
+
+<code>getElementsCount(ResponseObject response, String locator, FailureHandling flowControl)</code>
+
+Get the number of characters of the expected elements in the \(JSON/XML\) response of a web service call.
+
+## Parameters
+
+<table><tr><th>Parameters</th><th>Parameter type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>response</td><td>ResponseObject</td><td>Required</td><td><p>The object that represents an HTTP response.</p></td></tr><tr><td>locator</td><td>String</td><td>Required</td><td>The element locator that Katalon uses to look for the expected data. To learn more about element locators, you can refer to this document: <p><a href="/create-tests/test-objects/api-test-objects/handle-response-messages-in-katalon-studio" >Handle Response messages.</a></p></td></tr><tr><td>flowControl</td><td>Failure handling</td><td>Optional</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. To learn more about failure handling settings, you can refer to this document: <p><a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >Failure handling.</a></p></td></tr></tbody></table>
+
+## Returns
+
+The number of characters of the expected elements.
+
+## Example
+
+Given the following response from a sample **POST a new user** POST request:
+
+```
+{
+  "id":4,
+  "username":"mimi",
+  "password":"123456789",
+  "gender":"MALE",
+  "age":18,
+  "avatar":null
+}
+```
+
+We want to count the number of characters of the <code>password</code> element in the response after sending the request. We use the <code>WS.getElementsCount</code> keyword as follows:
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+
+'Send a POST request and returns its response'
+def response = WS.sendRequest(findTestObject('POST a new user'))
+
+'Get the number of characters of the selected element in the response'
+elementsCount = WS.getElementsCount(response, 'password')
+```

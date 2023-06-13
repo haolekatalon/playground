@@ -1,0 +1,49 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-9e4df547-fdb1-402e-880b-1ee41b673153
+slug: /create-tests/test-objects/api-test-objects/authorization/ntlm-authentication-in-katalon-studio
+---
+
+# NTLM Authentication in Katalon Studio
+
+From version 8.4.0 beta, Katalon Studio supports NTLM authentication.
+
+## NTLM Requirements
+
+-   An active Katalon Studio Enterprise license.
+-   Katalon Studio version 8.4.0 beta onwards.
+-   Connection to a server that has NTLM Windows Authentication enabled. To check your connection to the server, open the terminal/command line and type: <code>ping &lt;ip&#95;address&gt;</code>.
+
+    The NTLM authentication in Katalon Studio is tested with:
+
+    -   Windows Server 2003 systems, configured to use LM and NTLMv1 authentication.
+    -   Windows Server 2016 systems, configured to use NTLM2SessionResponse authentication.
+
+## What is NTLM authentication?
+
+Windows New Technology LAN Manager \(NTLM\) is an authentication protocol used for Windows authentication with systems configured as members of workgroups. NTLM applies to web application authentication when the organization uses a domain controller for user domain and identity management. A domain controller is a server running a Windows Server operating system version with Active Directory Domain Services installed.
+
+To learn more about domain controllers and NTLM, you can refer to Microsoft documentation: [Domain Controller Roles](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc786438(v=ws.10)) and [Microsoft NTLM](https://docs.microsoft.com/en-us/windows/win32/secauthn/microsoft-ntlm).
+
+## Use NTLM Authorization in Katalon Studio
+
+1.  Open your web service request object.
+
+2.  In the web service request object editor, switch to the **Authorization** tab.
+
+3.  Choose **Authorization** type as **NTLM**.
+
+    <img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/bearer-authorization/ks-840-authorization-type.png" width={700} alt="choose authorization type" />
+
+4.  Input the following information:<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/ntlm-authentication/ntlm-authentication.png" width={700} alt="update NTLM successfully" />
+
+    -   **Username**: The username of the account used to authenticate. The username should not include the domain. For example: "user" is correct, whereas "DOMAIN\\user" is not.
+    -   **Password**: The password of the account used to authenticate.
+    -   **Domain \(Optional\)**: The domain to authenticate against. If you are using a domain account, you need to input your domain to avoid the error: <code>401 Unauthorized: Access is denied due to invalid credentials</code>. If you are using a local account to log in, you can leave this field empty.
+    -   **Workstation \(Optional\)**: The hostname of your computer. Naming your workstation helps better management since the workstation name is more straightforward to track than an IP address when logging in to another machine.
+5.  To update inputs to the request, click **Update**.
+
+
+NTLM authenticates connections, not requests. Therefore, the NTLM authorization inputs are updated directly to the request, not to the HTTP Header.
+
+Once the log-on is successful, you can see the workstation name and domain information in event 4624.<img src="/doc_images/Documents/Create_tests/Test_Objects/API_Test_Object/Authorization/ntlm-authentication/event-4624.png" width={750} alt="event 4624" />You can learn more about the 4624 event at Microsoft documentation: [4624\(S\): An account was successfully logged on](https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624).

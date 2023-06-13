@@ -1,0 +1,76 @@
+---
+author: Hao Le <hao.le@katalon.com>
+id: concept-d455bbc2-99bb-4aca-941c-e24c8e0da181
+slug: /execute/execute-tests-with-katalon-studio/execute-dynamic-test-suites-in-katalon-studio
+---
+
+# Execute dynamic test suites in Katalon Studio
+
+This guide shows you how to execute a dynamic test suite in Katalon Studio.
+
+**Previous step**  
+
+
+[Manage dynamic test suites in Katalon Studio](/organize/manage-tests/dynamic-test-suite/manage-dynamic-test-suites-in-katalon-studio)
+
+## Modify execution information
+
+Before executing a test suite or a dynamic test suite, you might want to modify the execution information, including timeout, retry, and email recipient list for test execution reports.
+
+You can specify additional configurations for the test suite execution by expanding the **Execution Information** section as below:
+
+<img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite/image/ks-execution-information.png" width={700} />
+
+### Set implicit timeout in a test suite execution
+
+In **Implicit timeout**, you can decide the timeout period that Katalon Studio waits for a page to be loaded by choosing one of the following options:<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/create-test-suite/implicit-timeout.png" width={500} alt="implicit timeout" />
+
+-   **Use default**: Use the predefined default value in **Project Settings** &gt; **Execution** &gt; **Default wait for element to timeout \(in seconds\)**.
+-   **User define**: Set a custom waiting time. Input a value in seconds.
+
+### Retry after executing all
+
+Katalon allows you to rerun test cases in a failed test suite execution to identify flaky tests.
+
+To do so, in the **Retry after executing all** text field, set the desired number of retry times. By default, this is set to <code>0</code>.<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/dynamic-test-suite-ks/KS-DYNAMIC-Retry-options.png" width={350} alt="retry after executing all" />
+
+Choose one of the following options:
+
+-   **Retry all executions**: Retry all test cases when the test suite fails.
+-   **Retry failed executions only**: Retry only failed test cases when the test suite fails.
+
+    For example, when a test suite execution fails, we want to rerun failed test cases in that test suite twice.
+
+    In the **Retry after executing all** checkbox, we input <code>2</code> in the text field, then we choose the **Retry failed executions only** option.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite/image/ks-retry-failed-executions-only.png" width={350} />
+
+
+In this case, the test suite is executed three times in total. The first one is the main execution, while the latter two are the retried executions when the first execution fails.
+
+<img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite/image/ks-retry-progress.png" width={600} />
+
+Katalon Studio automatically generates reports after each test execution.
+
+<img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-suite/image/ks-report-retry.png" width={500} />
+
+## Execute a test suite
+
+To execute a test suite or a dynamic test suite, follow these steps:
+
+1.  In **Tests Explorer**, open a test suite or a dynamic test suite.
+
+2.  Click on the drop-down of **Run** and select an environment to execute the test suite.
+
+    <img src="/doc_images/Documents/Execute/Execute_tests_in_Katalon_Studio/execute-a-test-case/image/ks-execute-test-suite.png" width={250} />
+
+    If you only click on **Run**, Katalon Studio executes the test suite with the default execution environment defined in **Project Settings** &gt; **Execution** &gt; **Default execution**. See [Set desired execution behaviors of Katalon Studio](/create-tests/manage-projects/project-settings/set-desired-execution-behaviors-of-katalon-studio).
+
+3.  Click **Run**.
+
+
+The **Job Progress** is triggered automatically to show the progress while your test suite is being executed.
+
+<img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/create-test-suite/job-progress.png" width={600} alt="job progress" />
+
+You can also run a test suite or a dynamic test suite in console mode. For detailed instructions on test execution in console mode, you can refer to this document: [Command-line syntax in Katalon Runtime Engine](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine).

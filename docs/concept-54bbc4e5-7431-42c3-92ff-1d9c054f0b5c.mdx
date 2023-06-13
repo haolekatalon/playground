@@ -1,0 +1,104 @@
+---
+id: concept-54bbc4e5-7431-42c3-92ff-1d9c054f0b5c
+slug: /plugins-and-add-ons/katalon-recorder-extension/get-started/katalon-recorder-gui-overview
+---
+
+# Katalon Recorder GUI Overview
+
+Katalon Recorder main UI contains 4 sections:
+
+-   Main toolbar
+-   Workspace
+
+-   Test Case Details View
+-   Log/Reference/Variable
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-started/gui-overview/KR-590-gui.png" />
+
+## Toolbar
+
+Katalon Recorder main toolbar contains buttons to help you to manage web recording process.
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-started/gui-overview/KR-583-main-toolbar.png" />
+
+<table><tr><th>Button</th><th>Description</th></tr><tbody><tr><td>Record</td><td>For recording automation test.</td></tr><tr><td>Play Test Case</td><td>Execute selected single test case.</td></tr><tr><td>Play Test Suite</td><td>Execute selected test suite.</td></tr><tr><td>Play All Suites</td><td>Execute all test suites.</td></tr><tr><td>Stop</td><td>Stop recording or stop the current execution.</td></tr><tr><td>Pause Execution</td><td>Pause the current execution.</td></tr><tr><td>Resume</td><td>Resume current execution.</td></tr><tr><td>User Manual</td><td>Katalon Recorder onboarding tutorials.</td></tr><tr><td>Speed</td><td>Adjust execution speed.</td></tr><tr><td>Setting</td><td>Port configuration to change the default port used by Katalon Studio to communicate with the active browser.</td></tr><tr><td>Help</td><td>Katalon Recorder User Guide.</td></tr><tr><td>GitHub</td><td>Access Katalon Recorder public repository on GitHub.</td></tr><tr><td>Stats</td><td>Your daily stats for automated manual processes and executed automation scripts.</td></tr></tbody></table>
+
+## Workspace
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-started/gui-overview/KR-590-workspace.png" width={350} />
+
+The workspace view displays the structure of the test suites, dynamic test suites, and associated test cases, helping you to organize, browse and quickly access to any test cases. Workspace also contains test data, extension scripts, and profile for using global variables. Open/Add Test Suite can be performed quickly by clicking on correspondent icons on the upper right corner.
+
+Test execution status is also displayed here at the bottom. You can immediately observe the number of passed or failed tests.
+
+### Test Data
+
+The **Test Data** tab allows you to upload CSV file for data-driven testing. You can also manage test data file by editing the name or removing unwanted data file. To learn more about data-driven testing using Katalon Recorder, refer to [Data-driven testing in Katalon Recorder.](/plugins-and-add-ons/katalon-recorder-extension/get-your-job-done/data-driven-testing/data-driven-testing-in-katalon-recorder)
+
+## Test case details view
+
+Katalon Recorder displays recorded test script in the test case window. It displays command and its parameters in table format. You can also drag and drop any test step to organize the test case.
+
+### Editing test case
+
+Katalon Recorder allows you to edit any recorded commands or added the new command at any point in the steps. **Command, Target, Value** display information of currently selected command. This entry field is modifiable.
+
+To edit, select the step to be changed and edit it using the **Command**, **Target**, and **Value** fields. Command text field displays a drop-down menu to suggest commands based on the entering characters. Katalon Recorder supports most of the common Selenium commands.
+
+-   Actions – Commands that reproduce user interaction on the application under test.
+-   Accessors – Commands are used to store the results in variables.
+-   Assertions – Commands that verify the application under test behave as expected.
+
+For more details about Selenium commands, refer to Selenium documentation: [The Selenium Browser Automation Project](http://www.seleniumhq.org/docs/02_selenium_ide.jsp#selenium-commands-selenese).
+
+For more detail list of support commands, refer to [Selenese \(Selenium IDE\) Commands Reference](/plugins-and-add-ons/katalon-recorder-extension/get-your-job-done/automate-scenarios/selenese-selenium-ide-commands-reference).
+
+### Context menu
+
+Right-click on any space in test case detail views to display the context menu. You can perform most of the essential actions for command at any preferred test step. Context menu contains:
+
+#### Managing Test Case
+
+<table><tr><th>Command</th><th>Insert a new command in the currently selected step</th></tr><tbody><tr><td>Delete Command</td><td>Remove a single selected command.</td></tr><tr><td>Delete Multiple Command</td><td>Remove multiple commands of the currently selected test case.</td></tr><tr><td>Copy Command</td><td>Copy the currently selected command.</td></tr><tr><td>Paste Command</td><td>Paste a command at a particular test step.</td></tr></tbody></table>
+
+#### Debugging Test Case
+
+<table><tr><th>Control</th><th>Description</th></tr><tbody><tr><td>Toggle breakpoint</td><td>Set a breakpoint to stop at a specific command for debugging purposes.</td></tr></tbody></table>
+
+#### Execute
+
+<table><tr><th>Control</th><th>Description</th></tr><tbody><tr><td>Execute This Command</td><td>Run a single command for prompt feedback.</td></tr></tbody></table>
+
+You have multiple options when it comes to executing test cases in Katalon Recorder including **Play a single test case**, **Play All** test cases in test suites, **Pause** and **Resume**, or even execute a single command from context menu while composing automation test.
+
+## Log/Screenshots/Variables/Reference/Self-healing
+
+### Log
+
+The log view shows the real-time report/log of the test execution. All execution errors message, information message and execution progress is displayed here.
+
+### Screenshot
+
+This tab shows all captured screenshot of the keyword in <code>captureEntirePageScreenshot</code> test case.
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-started/gui-overview/KR-583-screenshots.png" />
+
+### Reference
+
+The **Reference** tab displays the detail documentation of selected command. It helps you to ensure the correct types and the number of parameters for the command.
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-started/gui-overview/KR-583-reference.png" />
+
+### Variable
+
+The Variable tab display detail information the currently selected command. You can view command name, target, and values in this tab while the test is executing.
+
+### Self-healing
+
+When a default locator fails, Self-healing finds alternative locators to complete the test execution. After the test execution is completed, you can choose to replace failing locators by approving Self-Healing suggestions in the **Self-healing** tab. To learn more about Self-healing, see [Use the Self-Healing function](/plugins-and-add-ons/katalon-recorder-extension/get-your-job-done/execute-scenarios/use-the-self-healing-function-in-katalon-recorder).
+
+<img src="/doc_images/Documents/Plugins_And_Add-ons/Katalon_Recorder_Extension/Get-started/gui-overview/KR-583-self-healing.png" />
+
+### Katalon TestOps
+
+Upload execution logs to Katalon TestOps to keep track of execution history, access to the test automation smart dashboard, and reports.

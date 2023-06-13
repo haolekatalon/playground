@@ -1,0 +1,78 @@
+---
+id: troubleshooting-9b3ec3df-652d-43b9-a674-fe9af38876e2
+slug: /execute/troubleshooting/unable-to-execute-tests-on-localhost-with-testcloud-tunnel
+---
+
+# Unable to execute tests on localhost with TestCloud Tunnel
+
+Execution with TestCloud and **TestCloud Tunnel** fails on locally hosted sites. In this case, the report screenshot might show that the test fails to load the local site as follows: <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/Unable_to_load_localhost.png" />
+
+The workaround is to set an additional domain for your local address \(127.0.0.1\) and use that domain, instead of <code>localhost</code>, in your tests.
+
+In most operating systems, domains can be set in the <code>hosts</code> file. The following remedy shows you how to set the additional domain.
+
+-   **On Windows**:
+
+    1.  Navigate to the <code>C:\Windows\System32\Drivers\etc\hosts</code> file.
+
+        <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/Windows_hosts_file.png" width={500} />
+
+    2.  Open the file in an editor with administrator privilege.
+
+    3.  In the file, add another domain for <code>127.0.0.1</code>.
+
+        For example, we add the <code>mydomain</code> domain name.<img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/Notepad_hosts_file.png" width={500} />
+
+    4.  Open the file again to verify that the changes have been updated.
+
+-   **On macOS**:
+
+    1.  In your terminal, open the hosts file with an editor.
+
+        Here we use <code>nano</code> to open the host file at <code>/private/etc/hosts</code>.
+
+        ```
+        sudo nano /private/etc/hosts
+        ```
+
+    2.  Add the new domain name into the file.
+
+        ```
+        127.0.0.1       mydomain
+        ```
+
+        <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/macOS_terminal_hosts_file.png" width={500} />
+
+    3.  Save the file. With <code>nano</code>, use <code>Ctrl</code> + <code>X</code> then <code>Y</code> to save the file.
+
+    4.  Open the file again to verify the changes.
+
+        ```
+        cat /private/etc/hosts  
+        ```
+
+        <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/macOS_hosts_file_updated.png" width={500} />
+
+-   **On Linux:**
+
+    1.  In your terminal, open the hosts file with an editor.
+
+        ```
+        sudo nano /etc/hosts
+        ```
+
+    2.  Add the new domain name to the file.
+
+        ```
+        127.0.0.1       mydomain
+        ```
+
+        <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/ubuntu_nano_hosts_file.png" width={500} />
+
+    3.  Open the file again to verify the changes.
+
+        ```
+        cat /etc/hosts
+        ```
+
+        <img src="/doc_images/Documents/Execute/Troubleshoot/Troubleshoot_CLI/image/ubuntu_hosts_file_edited.png" width={500} />

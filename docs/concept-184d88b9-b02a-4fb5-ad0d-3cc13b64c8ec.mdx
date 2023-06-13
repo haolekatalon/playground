@@ -1,0 +1,65 @@
+---
+id: concept-184d88b9-b02a-4fb5-ad0d-3cc13b64c8ec
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/visual-based-web-testing-keywords/webui-take-full-page-screenshot-as-checkpoint
+---
+
+# \[WebUI\] Take Full Page Screenshot As Checkpoint
+
+
+:::note
+
+-   From version **7.7.0**, this keyword is available.
+
+
+:::
+
+**Warning**: If this method is used with the ignored elements, JavaScript is required to be enabled on test browser. The method used to take an entire-page screenshot is simulating a scroll action to the end of the page. If the web page uses infinity-scrolling, it's not recommended to use this keyword.
+
+## takeFullPageScreenshotAsCheckpoint
+
+-   **Description**: Take an entire-page screenshot to send to TestOps Vision. The captured image will be saved in '.png' format and stored in the 'keyes' folder in the report folder. This method simulates a scroll action, takes a numbers of shots, then merges them together to make a full-page screenshot.
+-   **Keyword name**: takeFullPageScreenshotAsCheckpoint
+-   **Keyword syntax**:
+
+    ```
+    WebUI.takeFullPageScreenshotAsCheckpoint(checkpointName, ignoredElements, flowControl)
+    ```
+
+-   **Parameters**:
+
+    -   Name: checkpointName
+
+        -   Description: A String that represents the name of the image on TestOps Vision. On local machine, this name will be appended with TestOps Vision prefix\('keyes-'\).
+        -   Parameter Type: String
+        -   Mandatory: Required
+    -   Name: ignoredElements
+
+        -   Description: List of Test Objects you want to hide when taking a screenshot.
+        -   Parameter Type: List
+        -   Mandatory: Optional
+    -   Name: flowControl
+
+        -   Description: Specify [failure handling](/maintain/configure-failure-handling-settings-in-katalon-studio) schema to determine whether the execution should be allowed to continue or stop.
+        -   Parameter Type: FailureHandling
+        -   Mandatory: Optional
+-   **Examples**:
+
+    -   You want to take a full-page screenshot as TestOps Vision checkpoint named 'full-page' and use default [failure handling](/maintain/configure-failure-handling-settings-in-katalon-studio):
+
+        ```
+        WebUI.takeFullPageScreenshotAsCheckpoint('current_viewport')
+        ```
+
+    -   You want to take a full-page screenshot as TestOps Vision checkpoint named 'full\_view\_no\_logo' and hide some web elements:
+
+        ```
+        import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+        
+        WebUI.takeFullPageScreenshotAsCheckpoint('full_view_no_elements', [findTestObject('UI/logo')])ebUI.takeFullPageScreenshotAsCheckpoint('current_viewport')
+        ```
+
+    -   You want to take a full-page screenshot as TestOps Vision checkpoint named 'full\_view\_no\_elements' and hide some web elements defined in a variable named 'ignoredElements':
+
+        ```
+        // where ignoredElements is a user-defined List-typed variable. WebUI.takeFullPageScreenshotAsCheckpoint('full_view_no_elements', ignoredElements)
+        ```

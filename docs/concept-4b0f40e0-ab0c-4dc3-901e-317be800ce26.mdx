@@ -1,0 +1,155 @@
+---
+author: Marjorie Chua <marjorie.chua@katalon.com>
+id: concept-4b0f40e0-ab0c-4dc3-901e-317be800ce26
+slug: /administer/katalon-platform-packages/katalon-platform-on-premises/upgrade-your-on-premises-license-server-to-v2-1-0
+---
+
+# Upgrade your On-Premises License Server to v2.1.0
+
+Here's a guide to upgrading to the newest version of your Katalon On-Premises License server.
+
+## Upgrade an On-Premises License Server to v2.1.0 with the Katalon Platform \(SSL\)
+
+This serves as a guide for users who want to upgrade their Katalon On-Premises solution \(with the Katalon Platform\) to the latest version.
+
+
+:::note
+
+-   You must have a working On-Premises package.
+
+-   It's best for you to back up your database before performing this step to mitigate possible data loss.
+
+
+:::
+
+1.  Start by turning Docker off by running the following command:
+
+    ```
+    docker-compose down
+    ```
+
+2.  Download the migration file from this url: [download link](https://katalon-one-build.s3.amazonaws.com/op/latest/migration.tar.gz).
+
+3.  Load the migration file into docker by running the following command:
+
+    ```
+    docker load -i migration.tar.gz
+    ```
+
+4.  Run the migration file by inputting the following command:
+
+    ```
+    docker run --rm -ti -e "DB_HOST=<hostname/address>" -e "DB_PORT=5432" -e "DB_USERNAME=<DB username>" -e "DB_PASSWORD=<password>" migration:latest
+    ```
+
+5.  Create a folder for TestOps storage by running the command:
+
+    ```
+    mkdir /opt/testops_data 
+    chmode 755 /opt/testops_data
+    ```
+
+6.  Reconfigure the .env file. It should contain the following:
+
+    ```
+    ### Katalon-OP env
+    
+    DB_HOST=<database_hostname>
+    DB_PORT=5432
+    DB_USERNAME=postgres
+    DB_PASSWORD=<database_password>
+    
+    # License Server configs
+    ADMIN_EMAIL=<email>
+    ADMIN_PASSWORD=<password>
+    LICENSE_SERVER_URL=https://admin.kata-op.com
+    
+    # TestOps configs (ignored without testops profile)
+    TESTOPS_FILE_STORAGE_PATH=/opt/testops-data
+    TESTOPS_SERVER_URL=https://testops.kata-op.com
+    
+    # HTTPS config
+    HTTPS_PORT=443
+    CERT_PATH=./katalon-op.crt
+    KEY_PATH=./katalon-op.key
+    KEY_PASSPHRASE=
+    
+    ```
+
+7.  Install the v2.1.0 build by running the command:
+
+    ```
+    docker-compose --profile testops up -d
+    ```
+
+
+The upgrade is complete.
+
+## Upgrade an On-Premises License Server to v2.1.0 without the Katalon Platform \(SSL\)
+
+This serves as a guide for users who want to upgrade their Katalon On-Premises solution \(without the Katalon Platform\) to the latest version.
+
+
+:::note
+
+-   You must have an On-Premises package.
+
+-   It's best for you to back up your database before performing this step to mitigate possible data loss.
+
+
+:::
+
+1.  Start by turning Docker off by running the following command:
+
+    ```
+    docker-compose down
+    ```
+
+2.  Download the migration file from this url: [download link](https://katalon-one-build.s3.amazonaws.com/op/latest/migration.tar.gz).
+
+3.  Load the migration file into docker by running the following command:
+
+    ```
+    docker load -i migration.tar.gz
+    ```
+
+4.  Run the migration file by inputting the following command:
+
+    ```
+    docker run --rm -ti -e "DB_HOST=<hostname/address>" -e "DB_PORT=5432" -e "DB_USERNAME=<DB username>" -e "DB_PASSWORD=<password>" migration:latest
+    ```
+
+5.  Reconfigure the .env file. It should contain the following:
+
+    ```
+    ### Katalon-OP env
+    
+    DB_HOST=<database_hostname>
+    DB_PORT=5432
+    DB_USERNAME=postgres
+    DB_PASSWORD=<database_password>
+    
+    # License Server configs
+    ADMIN_EMAIL=<email>
+    ADMIN_PASSWORD=<password>
+    LICENSE_SERVER_URL=https://admin.kata-op.com
+    
+    # TestOps configs (ignored without testops profile)
+    TESTOPS_FILE_STORAGE_PATH=/opt/testops-data
+    TESTOPS_SERVER_URL=https://testops.kata-op.com
+    
+    # HTTPS config
+    HTTPS_PORT=443
+    CERT_PATH=./katalon-op.crt
+    KEY_PATH=./katalon-op.key
+    KEY_PASSPHRASE=
+    ```
+
+6.  Install the v2.1.0 build by running the command:
+
+    ```
+    sh docker-compose up -d
+    ```
+
+
+The upgrade is complete.

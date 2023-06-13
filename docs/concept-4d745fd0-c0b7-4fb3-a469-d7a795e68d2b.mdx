@@ -1,0 +1,73 @@
+---
+id: concept-4d745fd0-c0b7-4fb3-a469-d7a795e68d2b
+slug: /execute/ci-cd-integrations/jenkins-integration/use-katalon-plugins-for-jenkins-integration/integrate-jenkins-with-testops
+---
+
+# Integrate Jenkins with TestOps
+
+
+:::note
+
+-   You have downloaded and installed [Jenkins](https://jenkins.io/download/).
+-   You have downloaded and installed [Katalon Runtime Engine](/execute/katalon-runtime-engine/get-started-with-katalon-runtime-engine).
+
+:::
+
+## Install the Katalon plugin on Jenkins
+
+To run Katalon tests on Jenkins, you need to install the Katalon plugin on Jenkins. Do as follows:
+
+1.  Sign in to Jenkins and go to **Manage Jenkins** &gt; **Manage Plugins**.
+
+    The **Plugin Manager** page appears.
+
+2.  Click on the **Available** tab and search for the Katalon plugin.
+
+    <img src="/doc_images/Global_reuse/Common_tasks_warehouse/Integration/image/jenkins-install-plugin.png" width={850} alt="plugin-manager" />
+
+3.  Select the plugin and choose **Install without restart**.
+
+
+## Configure Test Runs in Katalon TestOps
+
+You must schedule test runs in Katalon TestOps before assigning this schedule to Jenkins for test executions. See: [Schedule Test Runs](/execute/schedule-test-execution/schedule-test-runs-in-testops).
+
+
+:::note
+
+-   Choose the **Save Configurations** option in the **Schedule Test Run** dialog to schedule Test Runs for Jenkins.
+
+:::
+
+## Execute Katalon TestOps plan on Jenkins
+
+To execute the test run scheduled from Katalon TestOps on Jenkins, do as follows:
+
+1.  On Jenkins, create a new **Freestyle** project.
+
+2.  In **Build Steps**, add **Execute Katalon TestOps Plan**.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/ka-integration-jenkins/image/jenkins-execute-kt-plan.png" width={500} alt="execute Katalon TestOps plan" />
+
+    The **Execute Katalon TestOps Plan** is added as a build step.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/ka-integration-jenkins/image/jenkins-build-step.png" width={850} alt="execute Katalon TestOps plan" />
+
+3.  In **Server URL**, enter your TestOps server URL: <code>https://testops.katalon.io</code>.
+
+4.  In **Credentials**, add a secret text with the secret value is your Katalon API key.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/ka-integration-jenkins/image/jenkins-add-credentials.png" width={600} alt="add credentials" />
+
+5.  After you added your Katalon API key, select it and click on **Test Connection**. If you are successfully connected, you can retrieve your projects and test plan.
+
+    <img src="/doc_images/Documents/Execute/CICD_Integrations/Jenkins-Integration/ka-integration-jenkins/image/jenkins-test-connection.png" width={600} />
+
+6.  Choose your project, then choose the test plan that you want to execute.
+
+7.  Save your project, then click **Build Now**.
+
+
+Your test run is executed. You can view the execution log in **Console Output**.
+
+After the test is completed, you can go back to Katalon TestOps to view and analyze your report.

@@ -1,0 +1,27 @@
+---
+id: task-6e79b522-3614-48b6-828a-9788b68a8ad8
+slug: /create-tests/manage-projects/set-up-projects/mobile-testing/android/use-the-keyboard-keys-while-automating-android-apps
+---
+
+# Use the keyboard keys while automating Android apps
+
+1.  Import the following library on the top of your test script.
+
+    ```
+    import com.kms.katalon.core.mobile.keyword.internal.MobileDriverFactory
+    
+    import io.appium.java_client.android.AndroidDriver
+    import io.appium.java_client.android.AndroidKeyCode
+    
+    ```
+
+2.  Then use this code to access the keys where <code>AndroidKeyCode</code> is an enum with all of the possible key entries, for example <code>KEYCODE&#95;0</code>, <code>KEYCODE&#95;A</code>.
+
+    ```
+    AndroidDriver<?> driver = MobileDriverFactory.getDriver()
+    driver.pressKeyCode(AndroidKeyCode.ENTER)
+    ```
+
+    Refer to this [list of Android keys](https://appium.github.io/java-client/io/appium/java_client/android/nativekey/AndroidKey.html).
+
+    You can also refer to the video demonstration below:

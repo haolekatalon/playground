@@ -1,0 +1,30 @@
+---
+author: Xuan Tran <xuan.tran@katalon.com>
+id: concept-3cb9588f-6d5a-462e-a1b7-6840d83e9df6
+slug: /analyze/integration-for-test-analyzing/integrate-katalon-studio-with-microsoft-teams
+---
+
+# Integrate Katalon Studio with Microsoft Teams
+
+This document shows you how to integrate Katalon Studio with Microsoft Teams so that your team can receive a real-time summary of your test execution results in your Microsoft Teams channels.
+
+## Integrate Katalon Studio with Microsoft Teams
+
+To integrate Katalon Studio with Microsoft Teams, do as follows:
+
+1.  Install our plugin from the Katalon Store: [Microsoft Teams Integration](https://store.katalon.com/product/77/Microsoft-Teams-Integration).
+
+2.  Open Katalon Studio and select **Your Account** &gt; **Reload Plugins**. For detailed instructions, see: [Reload your plugins in Katalon Studio](/plugins-and-add-ons/katalon-store/katalon-studio-plugins/installing-plugin-offline-in-katalon-studio#).
+
+3.  On your Microsoft Teams channel, create an Incoming Webhook to allow Katalon Studio to share content in Microsoft Teams channels. For better notification management, you might want to enter <code>Katalon Studio</code> as your Incoming Webhook connection. For detailed instructions, see the Microsoft document: [Create Incoming Webhooks](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook).
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Microsoft_Team_Integration/image/ks-incoming-webhook.png" width={700} alt="set incoming webhook" />Copy and save the unique webhook URL present in the dialog window. The URL maps to the channel and you can use it to send information to Teams.
+
+4.  Open Katalon Studio. Go to **Project Setting** &gt; **Plugins** &gt; **Microsoft Teams**.
+
+5.  Enter the Incoming Webhook URL, then click **Apply and Close**.
+
+    <img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Microsoft_Team_Integration/image/ks-ms-setting.png" width={700} alt="project settings" />
+
+
+After the configuration, whenever an execution in Katalon Studio is finished, your Microsoft Teams channel will automatically receive the summary execution result.<img src="/doc_images/Documents/Analyze/Integrations_For_Reports_And_Analytics/Microsoft_Team_Integration/image/ks-report.png" width={700} alt="MS team reports" />

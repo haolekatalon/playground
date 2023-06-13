@@ -1,0 +1,116 @@
+---
+id: concept-2c6ef154-8012-4d47-a60e-bb12a9342c3a
+slug: /organize/integration-for-organizing-tests/configure-azure-devops-test-plans-integration-in-katalon-studio
+---
+
+# Configure Azure DevOps Test Plans integration in Katalon Studio
+
+From Katalon Studio version 8.1.0 onwards, Katalon Studio can natively integrate with the Azure Test Plans service of Azure DevOps \(ADO\). This integration helps you automatically submit test runs and results to ADO with release information \(release stage and release ID\), execution logs, reports, and images for analysis.
+
+## Requirements
+
+-   Katalon Studio version 8.0.0 onwards.
+-   An active Katalon Studio Enterprise license.
+
+## Enable Azure DevOps Test Plans integration in Katalon Studio
+
+To retrieve your test artifacts and create new test results directly on Azure DevOps, you need to integrate and authenticate your project with Azure Server. Follow these steps:
+
+1.  In Katalon Studio, go to **Project** &gt; **Settings** &gt; **Integrations** &gt; **Azure DevOps**.
+
+    1.  In the opened dialog, check the **Enable Integration** box.
+
+        The **Authentication** area can now be edited.
+
+    2.  Enter your credentials. Your credentials are encrypted by default.
+
+        -   **Server URL**: <code>https://dev.azure.com/&#10100;yourorganization&#10101;</code>
+        -   **Personal Access Token**: your Personal Access Token. We recommend you create a Personal Access Token with full-access scopes. See Microsoft document: [Use personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) and [Scopes](https://docs.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/oauth?view=azure-devops#scopes).
+    3.  Click **Connect**. If the connection to the Azure server is successful, the **Test Connection Succeeded** line appears.
+
+        <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/azure-devops-test-plans/Image/ADO-Authentication-successfully.png" width={600} alt="Authenticate Azure DevOps successfully" />
+
+2.  After successfully authenticating your project with the Azure Server, in the dropdown list of **Project**, select an ADO project that you have access to.
+
+    To retrieve the latest projects list, click **Fetch Project**.
+
+    After you select a project, the **Test Artifacts Mapping** and **Submission Option** fieldsets automatically expand.
+
+3.  Next, you need to map test artifacts between Katalon Studio and ADO.
+
+    1.  In the **Execution Status Mapping**, match test results in Katalon Studio with test outcomes in ADO.
+
+    2.  In the **Test Configuration Mapping**, you need to pair **Execution OS/Device** and **Execution Browser/App** in Katalon Studio with **Test Configurations** retrieved from Azure Test Plans. This step is to map test cases with test points in ADO for result submission.
+
+        You can **Add** or **Remove** one or more items in each section at your convenience.
+
+        -   **What is a test point?**
+
+            A test point is a unique combination of a test case, test suite, configuration, and tester. Test cases by themselves are not executable. When you add a test case to a test suite, a test point is generated. To learn more about test points, see Microsoft document: [Execute tab](https://docs.microsoft.com/en-us/azure/devops/test/new-test-plans-page?view=azure-devops#execute-tab).
+
+        -   **What is a test configuration?**
+
+            A test configuration is a combination of configuration variable values containing operating system information, browser, CPU type, database. For example, Windows 8 + 32-bit CPU or Windows 10 + 64-bit CPU. To learn more about the test configuration, see Microsoft document: [Test different configurations.](https://docs.microsoft.com/en-us/azure/devops/test/test-different-configurations?view=azure-devops)
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/azure-devops-test-plans/Image/ADO-Expand_test_artifacts_mapping_section.png" width={600} alt="Map test artifacts section" />
+
+4.  To submit test results to ADO, follow these steps:
+
+    1.  Select a test plan for the test run to be submitted. To retrieve the latest test plans list, click **Fetch Test Plans**.
+
+        By default, the **Automatically submit test run** is checked.
+
+    2.  Name the test run.
+
+    3.  **Optional:** If you want to add build and release information to test runs, specify **Build Definition ID** and **Release Definition ID** respectively \(**Release Definition ID** was introduced in 8.1.0\).
+
+        During runtime, Katalon Studio uses these pipeline definition IDs to get and pass the latest Build and Release to the corresponding properties of a test run.
+
+    4.  **Optional:** Decide what attachments to be sent together with a test run.
+
+    5.  **Optional:** With the associated test case ID and test configurations, more than one test point might be returned. These test points share the same test case ID and test configurations, but can still differ depending on the test suite and Tester. In this case, to decide whether Katalon Studio submits test results regardless of the number of test points returned, select **Submit test results for multiple test points with the same test case ID**.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/azure-devops-test-plans/Image/ADO-Select-submissions-options.png" width={600} alt="Select submission options" />
+
+5.  To save your settings, click **Apply and Close**.
+
+
+## Map test cases between Katalon Studio and Azure DevOps
+
+To map test cases between Katalon Studio and Azure DevOps, do as follows:
+
+1.  You can view your test case IDs in a test suite in Azure Test Plans.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/azure-devops-test-plans/Image/ADO-View-TC-ID-in-Azure.png" width={600} alt="View Test Case ID in Azure" />
+
+2.  Open a test case in Katalon Studio.
+
+3.  Select the **Integration tab**.
+
+4.  Input one or more test case IDs of ADO. You can map one test case ID in Katalon Studio with many test case IDs on ADO. IDs are separate by commas.
+
+5.  To check whether the test case ID is valid, click **Verify**.
+
+6.  Save your test case.
+
+    <img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/azure-devops-test-plans/Image/ADO-Verify-TC-ids.png" width={500} alt="Verify test case ID" />
+
+
+You have successfully integrated Azure Test Plans with Katalon Studio. After a test suite execution finishes, Katalon Studio automatically adds a new test run and test results to the specified test plan.
+
+<img src="/doc_images/Documents/Organize/Integration_For_Organizing_Tests/azure-devops-test-plans/Image/ADO-Test-results.png" width={600} alt="New test results uploaded to Azure" />
+
+You can also dynamically change the test plan ID, test run name, build and release definition IDs of a test run by using the command-line option. See [Azure DevOps integration arguments](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine#).
+
+When you cannot upload test results to Azure DevOps, you might encounter the following error in the **Event Log**:
+
+```
+Cannot create test results for Azure DevOps Test Case ID=<test-case-ID> due to multiple Test Points returned.
+```
+
+To solve this issue, you can check the IDs of the returned test points in the **Event Log** to readjust the test configuration; or allow sending test results anyway in project settings. See [Allow multiple test results submission for multiple test points](/organize/integration-for-organizing-tests/configure-azure-devops-test-plans-integration-in-katalon-studio#).
+
+**Learn more with Katalon Academy course:**  
+
+
+[Integrating Katalon Studio with Azure DevOps](https://academy.katalon.com/courses/integrating-azure-devops/?utm_source=kat_docs&utm_medium=azure_devops_test_plans)

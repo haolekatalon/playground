@@ -1,0 +1,177 @@
+---
+id: concept-5069c155-ca87-4b54-9194-42eff2616f59
+slug: /create-tests/record-and-spy/webui-record-and-spy-utilities/katalon-compact-utility-for-katalon-studio
+---
+
+# Katalon Compact Utility for Katalon Studio
+
+
+:::note
+
+-   For Chrome: Katalon Studio version 8.2.5 onwards.
+-   For Microsoft Edge: Katalon Studio version 8.3.5 onwards.
+-   A Chrome or Microsoft Edge Profile. Find more information at Google Help Center: [Share Chrome with others](https://support.google.com/chrome/answer/2364824/share-chrome-with-others-computer), and Microsoft Support: [Sign in and create multiple profiles in Microsoft Edge](https://support.microsoft.com/en-us/topic/sign-in-and-create-multiple-profiles-in-microsoft-edge-df94e622-2061-49ae-ad1d-6f0e43ce6435).
+
+:::
+
+In restricted environments, unpacked extensions are disabled as a security feature. In that case, when you use the Spy, Record, and Smart Wait with Chrome, Katalon Studio might prompt this error message: "*Loading the unpacked extension is disabled by the administrators*."
+
+Alternatively, you can use the Katalon Compact Utility \(KCU\) packed extension. The extension is available on Chrome Web Store and Microsoft Edge Add-ons.
+
+This article shows you how to install the KCU extension and configure your Profile to use the Spy, Record, and Smart Wait in Katalon Studio.
+
+
+:::note
+
+-   This utility is linked with your Chrome/ Microsoft Edge Profile, which means you can only have one active session at any given time. Make sure you log out of all your Chrome/ Microsoft Edge sessions before executing.
+
+
+:::
+
+## Install Katalon Compact Utility
+
+1.  Open Chrome/ Microsoft Edge. Make sure you use the Profile you want to use the Spy, Record, or Smart Wait with.
+
+2.  Navigate to the extension page:
+
+    -   Chrome Web Store: [Katalon Compact Utility](https://chrome.google.com/webstore/detail/kataton-compact-utility/gkihajmjffefinkmpokfepcdbhnpflee?hl=en&authuser=1).
+    -   Microsoft Edge Add-ons: [Katalon Compact Utility](https://microsoftedge.microsoft.com/addons/detail/katalon-compact-utility/kkmafoknllgdaapbegpkpmbncidodkaa).
+3.  Download and install **Katalon Compact Utility**.
+
+4.  Make sure the extension is now active. You can find instructions to manage your extensions here:
+
+    -   For Chrome: [Install and Manage Extensions](https://support.google.com/chrome_webstore/answer/2664769).
+    -   For Microsoft Edge: [Find, add, or remove extensions in Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge/find-add-or-remove-extensions-in-microsoft-edge-f3522273-d067-7435-6a9d-fdb99213e9a8).
+
+## Configure the Compact Utility with Chrome Profile
+
+The next steps help you link your Chrome Profile with the Spy, Record, and Smart Wait functions in Katalon Studio.
+
+To configure and use Katalon Compact Utility, you need to update the Desired Capabilities. Do as follows:
+
+1.  Go to **Project &gt; Settings &gt; Desired Capabilities**.
+2.  In the **Desired Capabilities** section, select **Web UI &gt; Chrome**.
+3.  Click **Add** to create a new capability named <code>args</code>, for which the type is <code>List</code>.
+4.  To add elements to your list, in the **Value** column of the capability you've created, click on the <code>...</code> button.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-compact-utility/project-settings-825.png" alt="element" />
+
+5.  The **List Properties Builder** dialog appears. Click **Add** to create two elements as below. When you are done, click **OK** to save.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-compact-utility/list-properties-builder.png" alt="list" />
+
+    <table><tbody><tr><td><strong>Type</strong></td><td><strong>Value</strong></td></tr><tr><td  rowspan="2"  td>String</td><td>For Windows: <code>user-data-dir=C:\Users\&lt;your&#95;username&gt;\AppData\Local\Google\Chrome\User Data</code></td></tr><tr><td>For macOS: <code>user-data-dir=/Users/&lt;your&#95;username&gt;/Library/Application Support/Google/Chrome</code></td></tr><tr><td>String</td><td><code>profile-directory=&lt;your&#95;profile&#95;name&gt;</code></td></tr>    </tbody></table>
+
+    
+    :::tip
+
+    **Finding your Chrome Profile in the User Data Directory**
+
+    There are multiple Profiles in a given User Data Directory. To find the name of a Chrome Profile, do as follows:
+
+    -   Open Chrome with the Profile you previously used to install Katalon Compact Utility. In the address bar, type <code>chrome://version</code> and press Enter.
+    -   The line **Profile Path** displays the path to your active Profile. For example: <code>C:\Users\your&#95;username\AppData\Local\Google\Chrome\User Data\your&#95;profile&#95;name</code>.
+    :::
+
+6.  To save the Chrome configuration, click **Apply and Close**.
+
+    You can now use the Spy, Record, and Smart Wait features with the default Chrome option.
+
+    
+    :::note
+
+    -   Using Katalon Compact Utility with Chrome version 103 sometimes my cause the error: <code>unknown error: cannot determine loading status from unknown error: unexpected command response</code>. This issue is addressed in ChromeDriver release notes, and it will be fixed in Chrome version 104 onwards. You can still close the error dialog in Katalon Studio and save your script as normal. To learn more, see ChromeDriver documentation: [Current Releases](https://chromedriver.chromium.org/downloads).
+
+    :::
+
+
+## Configure the Compact Utility with Microsoft Edge Profile
+
+The next steps help you link your Microsoft Edge Profile with the Spy, Record, and Smart Wait functions in Katalon Studio.
+
+To configure and use Katalon Compact Utility, you need to update the Desired Capabilities. Do as follows:
+
+1.  Go to **Project &gt; Settings &gt; Desired Capabilities**.
+2.  In the **Desired Capabilities** section, select **Web UI &gt; Edge Chromium**.
+3.  Click **Add** to create a new capability:
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-compact-utility/edge-desired-capabilities.png" alt="edge-desired-capabilities" />
+
+    -   Name: <code>ms:edgeOptions</code>
+    -   Type: <code>Dictionary</code>
+    -   Value: Click on the <code>...</code> button of the value cell, the **Dictionary Properties Builder** dialog appears. Click **Add** and input these fields:
+
+        <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-compact-utility/dictionary-properties-builder.png" alt="add dictionary" />
+
+        -   Name: <code>args</code>
+        -   Type: <code>List</code>
+        -   Value: Click on the <code>...</code> button of the value cell, the **List Properties Builder** dialog appears.
+
+            <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-compact-utility/edge-list-properties-builder.png" alt="list" />
+
+            Click **Add** to create two elements as below. When you are done, click **OK** to save.
+
+            <table><tbody><tr><td><strong>Type</strong></td><td><strong>Value</strong></td></tr><tr><td  rowspan="2"  td>String</td><td>For Windows: <code>user-data-dir=C:\Users\&lt;your&#95;username&gt;\AppData\Local\Microsoft\Edge\User Data</code></td></tr><tr><td>For macOS: <code>user-data-dir=/Users/&lt;your&#95;username&gt;/Library/Application Support/Microsoft Edge</code></td></tr><tr><td>String</td><td><code>profile-directory=&lt;your&#95;profile&#95;name&gt;</code></td></tr>            </tbody></table>
+
+            
+            :::tip
+
+            **Finding your Microsoft Edge Profile in the User Data Directory**
+
+            There are multiple Profiles in a given User Data Directory. To find the name of a Microsoft Edge Profile, do as follows:
+
+            -   Open Microsoft Edge with the Profile you previously used to install Katalon Compact Utility. In the address bar, type <code>edge://version</code> and press Enter.
+            -   The line **Profile Path** displays the path to your active Profile. For example:<code>/Users/your&#95;username/Library/Application Support/Microsoft Edge/Default</code>.
+            :::
+
+4.  To save the configuration, click **Apply and Close**.
+
+
+You can now use Katalon Compact Utility extension on Microsoft Edge and run your Record and Spy test script as normal.
+
+
+:::note
+
+**Workaround for KCU Chrome extension on Microsoft Edge based on Chromium**
+
+In some cases, the following error returns when you run a new Record and Spy session on a Microsoft Edge Chromium browser:
+
+```
+DevToolsActivePort file doesn't exist
+```
+
+Run the following command to close the active session:
+
+```
+taskkill /f /im msedge
+```
+
+You can now run a new Record and Spy session again without error.
+
+:::
+
+### Disable XPath visibility
+
+From Katalon Studio version 8.2.5 onwards, you can enable/disable the XPath visibility while recording actions on your app under test. Do as follows:
+
+1.  For Chrome: Open Chrome, then click on the *Extension* icon. Click on the *More* icon of the **Katalon Compact Utility**, then choose **Options**.
+
+    For Microsoft Edge: Open Microsoft Edge, then click on the *More* icon and choose **Extension &gt; Manage Extension**. Click on **Details** of the **Katalon Compact Utility**.
+
+2.  Click on the **XPath Visibility** toggle to enable/disable XPath visibility.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/katalon-compact-utility/xpath-visibility.png" width={400} alt="xpath visibility" />
+
+
+
+:::caution
+
+-   For web pages saved as HTML local files, Katalon Compact Utility cannot spy and capture objects, while unpacked extensions \(from the native Spy and Record utility\) can do that.
+
+:::
+
+See also:
+
+-   [Spy Web Utility](/create-tests/record-and-spy/webui-record-and-spy-utilities/spy-web-utility-in-katalon-studio)
+-   [Creating test cases using Record & Playback](/create-tests/record-and-spy/webui-record-and-spy-utilities/create-test-case-with-record-and-playback-in-katalon-studio)
+-   [\[WebUI\] Smart Wait Function](/create-tests/record-and-spy/webui-record-and-spy-utilities/smart-wait-function)

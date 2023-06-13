@@ -1,0 +1,195 @@
+---
+id: concept-6c40b26a-de5e-4ea4-afce-eddc7b0ba64a
+slug: /execute/cloud-based-test-execution/integration-with-other-vendors-for-cloud-execution/app-center-integration
+---
+
+# App Center Integration
+
+**Sideload** is built for executing Katalon Studio tests on App Center Test. [App Center Test](https://docs.microsoft.com/en-us/appcenter/test-cloud/) only supports running tests using supported frameworks such as [Appium tests written in Java with JUnit](https://docs.microsoft.com/en-gb/appcenter/test-cloud/preparing-for-upload/appium); hence, Katalon users cannot execute their tests on App Center Test directly.
+
+You can execute your Katalon test scripts with devices provided on App Center Test by using **sideload** to package Katalon projects in JUnit format. This tutorial shows you how to integrate with App Center Test using **sideload**. We also provide the **KatalonDemoProject** as a usage example.
+
+## Integrate with App Center
+
+
+:::note
+
+-   An active [Katalon Runtime Engine](/administer/katalon-studio-enterprise-and-katalon-runtime-engine-license/license-overview) license
+-   A [Katalon API Key](/administer/settings/katalon-api-key-in-katalon-testops)
+-   Katalon Studio version 7.6.0 onwards
+-   [Apache Maven](https://maven.apache.org/download.cgi) version 3.3.9 or later installed
+-   [NodeJS](https://nodejs.org/es/blog/release/) version 6.3 or later installed
+-   [App Center CLI](https://docs.microsoft.com/en-us/appcenter/cli/#installation) installed and logged in
+
+:::
+
+To run your Katalon projects with App Center Test, you have to configure your Katalon project and make updates in **sideload**.
+
+### Configure your Katalon Project
+
+Before executing any test, you need to manually create an **Appium Driver instance** and set it as the currently used instance in Katalon Studio.
+
+1.  Open your project in Katalon Studio. At the beginning of your test script or in the <code>Before Test Case</code> listener, input the following snippet:
+
+```
+import com.kms.katalon.core.appium.driver.AppiumDriverManager
+import org.openqa.selenium.remote.DesiredCapabilities
+import io.appium.java_client.MobileElement
+import io.appium.java_client.android.AndroidDriver
+import io.appium.java_client.remote.MobileCapabilityType
+
+String remoteServerUrl = System.getenv('XTC_SERVICE_ENDPOINT_APPIUM') + 'wd/hub'
+
+DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, 'S10 Plus')
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, 'android')
+capabilities.setCapability('appActivity', 'com.hmh.api.ApiDemos')
+capabilities.setCapability('appPackage', 'com.hmh.api')
+capabilities.setCapability('appWaitActivity', '*')
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AppiumDriverManager.UIAUTOMATOR2)
+capabilities.setCapability('autoGrantPermissions', true)
+
+AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(new URL(remoteServerUrl), capabilities)
+AppiumDriverManager.setDriver(driver)
+
+```
+
+1.  Change the [desired capabilities](http://appium.io/docs/en/writing-running-appium/caps/) corresponding to your app.
+
+    Since you have created a custom Appium driver, you need to comment out or remove all the <code>Mobile.startApplication(...)</code> or <code>Mobile.startExistingApplication(...)</code> in your current test cases.
+
+2.  Package your Katalon project into a **.zip** file.
+
+    
+    :::note
+
+    -   When running tests on App Center with the **.zip** file packaged by macOS default file compress tool, you can sometimes encounter the error: *No such file or directory*.
+
+    -   To resolve this error, try running this command from the directory where the **.zip** file is located: <code>zip -d &lt;katalon&#95;project&#95;package&#95;file&gt; &#95;&#95;MACOSX/\&lt;</code>, then continue with the following steps to update sideload.
+
+    :::
+
+
+### Update sideload
+
+1.  Clone or download **sideload** from our repository: [Katalon Studio sideload](https://github.com/katalon-studio/sideload).
+
+2.  Inside sideload, place your Katalon Project .**zip** file in this directory: <code>src/test/resources</code>.
+
+3.  Configure sideload.
+
+    There are two ways to update sideload for you to choose:
+
+    -   Configure .bat file: <code>upload.sh/upload.bat</code>
+    -   Configure .java file: <code>src/test/java/com/katalon/sideload/SideloadTest.java</code>
+    
+    :::note
+
+    -   If both files contain the configuration, the configuration in the **.bat** file will be prioritized.
+
+    :::
+
+    **Configure .bat file**Upload
+
+    Open the upload.bat file. Change the following variables as your context:
+
+    -   <code>&lt;app&#95;name&gt;</code>: Your App Name on App Center
+    -   <code>&lt;device&#95;id/device&#95;name&gt;</code>: Device ID or Device Name on App Center. To find your Device ID or Device Name on App Center, go to <code>Test &gt; Device sets</code>.
+    -   <code>&lt;path&#95;to&#95;app&#95;file&gt;</code>: The App to upload to App Center
+    -   <code>&lt;katalon&#95;version&gt;</code>: The version of Katalon Studio used to execute. Left blank or set as "latest" to run with the latest version of Katalon Studio.
+    -   <code>&lt;katalon&#95;project&#95;package&#95;file&gt;</code>: Your package file
+    -   <code>&lt;katalon&#95;project&#95;path&gt;</code>: Relative path of Katalon project's folder inside the <code>zip</code> package
+    -   <code>&lt;katalon&#95;execute&#95;args&gt;</code>: The arguments part of your Katalon run command
+
+        -   The argument <code>browserType</code> must be set as <code>"Chome"</code>
+        -   The argument <code>projectPath</code> must be excluded from this parameter
+        -   For more arguments, refer to [Command Syntax](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine#)
+    For example:
+
+    ```
+    appcenter test run appium ^
+    --app "katalon/Sideload" ^
+    --devices "katalon/nexus" ^
+    --app-path "apps/APIDemos.apk" ^
+    --test-series "master" ^
+    --locale "en_US" ^
+    --build-dir target/upload ^
+    --test-parameter "test_env=KATALON_VERSION=" ^
+    --test-parameter "test_env=KATALON_PROJECT_PACKAGE_FILE=KatalonDemoProject.zip" ^
+    --test-parameter "test_env=KATALON_PROJECT_PATH=" ^
+    --test-parameter "test_env=KATALON_EXECUTE_ARGS=-retry=0 -testSuitePath=""Test Suites/Regression Tests"" -executionProfile=default -browserType=Chrome -apiKey=""12345678-aaaa-bbbb-cccc-91011121314"""
+    ```
+
+    **Configure .java file**
+
+    Open <code>src/test/java/com/katalon/sideload/SideloadTest.java</code>, find the <code>SideloadTest</code> section and change the following variables as your context:
+
+    -   **API\_KEY**: Your API key
+    -   **KATALON\_VERSION**: The version of Katalon Studio used to execute. Left blank or set as "latest" to run with the latest version of Katalon Studio.
+    -   **KATALON*PROJECT*PACKAGE\_FILE**: Your package file
+
+    -   **KATALON*PROJECT*PATH**: Path to the Katalon project inside the package file.
+
+    -   **KATALON*EXECUTE*ARGS**: The arguments part of your Katalon run command
+
+        -   The argument <code>browserType</code> must be set as <code>"Chome"</code>
+        -   The argument <code>projectPath</code> must be excluded from this parameter
+        -   For more arguments, refer to [Command Syntax](/execute/katalon-runtime-engine/command-line-syntax-in-katalon-runtime-engine#)
+    For example:
+
+    ```
+    public class SideloadTest {
+    /**
+     * Your Katalon API Key
+     */
+    private static final String API_KEY = "12345678-aaaa-bbbb-cccc-91011121314";
+    
+    /**
+     * Katalon version which will be used to run the test
+     */
+    private static final String KATALON_VERSION = ""; // Leave it blank to always use the latest version
+    
+    /**
+     * The package file under the "src/test/resources" folder
+     */
+    private static final String KATALON_PROJECT_PACKAGE_FILE = "KatalonDemoProject.zip";
+    
+    /**
+     * Path to the katalon project inside the package file.
+     * If not specified it will use the same name with the package file.
+     * (In this case, it is: KatalonDemoProject)
+     */
+    private static final String KATALON_PROJECT_PATH = "";
+    
+    /**
+     * Katalon arguments
+     * @apiNote Remember to always set "browserType" to "Chrome". This will prevent Katalon from inject inappropriate configurations in execution.
+     * @apiNote Besides, you do not need to include project path in the argument list.
+     */
+    private static final String KATALON_EXECUTE_ARGS = String.format("-retry=0 -testSuitePath=\"Test Suites/Regression Tests\" -executionProfile=default -browserType=Chrome -apiKey=\"%s\"", API_KEY);
+    
+    ```
+
+4.  To pack your sideload project, execute the file <code>package.bat</code>/<code>package.sh</code>.
+
+5.  To upload and run your sideload project on the App Center, execute the file <code>upload.sh</code>/<code>upload.bat</code>.
+
+
+## Upload KatalonDemoProject
+
+This section provides you a usage example on how to upload **KatalonDemoProject** packaged in JUnit by **sideload** and start a test run in App Center Test.
+
+1.  Clone or download **sideload** from our repository: [Katalon Studio sideload](https://github.com/katalon-studio/sideload).
+2.  Open the workspace of the usage example project by following the path: <code>src/test/resources/KatalonDemoProject.zip</code>.
+
+    On App Center Test, create and start a new test run. See Microsoft documentation: [Starting a test run](https://docs.microsoft.com/en-us/appcenter/test-cloud/starting-a-test-run#new-test-run).
+
+    -   Device: Android 7.1.1 or prior. Ex: Motorola Nexus 6
+    -   Test framework: Appium
+3.  To pack your sideload project, execute the file <code>package.bat</code>/<code>package.sh</code>.
+
+4.  Upload sideload:
+
+    -   Before uploading, you should configure in the file <code>upload.sh</code>/<code>upload.bat</code>.
+    -   To upload and run your sideload project on the App Center, execute the file <code>upload.sh</code>/<code>upload.bat</code>.
+    You can view test reports on App Center Test. See Microsoft documentation: [Test reports](https://docs.microsoft.com/en-us/appcenter/test-cloud/test-reports).

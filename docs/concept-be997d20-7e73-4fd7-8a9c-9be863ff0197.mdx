@@ -1,0 +1,271 @@
+---
+author: Marjorie Chua <marjorie.chua@katalon.com>
+id: concept-be997d20-7e73-4fd7-8a9c-9be863ff0197
+slug: /administer/katalon-platform-packages/katalon-platform-on-premises/katalon-on-premises-deployment-guide
+---
+
+# Katalon On-Premises deployment guide
+
+This document serves as a guide for those who want to install and activate their Katalon On-Premises License Server plan.
+
+## About the On-Premises License Server
+
+
+:::note
+
+-   Only applicable to users with any On-Premises plan.
+
+-   This service only supports Linux \(Debian or CentOS based\).
+
+-   Existing On-Premises package users can contact our Sales team at business@katalon.com for data migration.
+
+
+:::
+
+The Katalon Studio On-Premises License Server allows the installation and activation of Katalon Studio at the client's network location. It is best for users who must work within a restricted network environment.
+
+There are two package plans available:
+
+-   License Server only.
+
+-   License Server with Katalon Platform.
+
+
+Begin the installation process by checking if your system can run it.
+
+### System Requirements
+
+<table><tbody><tr><td><strong>Requirements</strong></td><td></td></tr><tr><td>Operating System</td><td>64-bit Linux (Debian or CentOS based)</td></tr><tr><td>CPU</td><td>Minimum 4 cores</td></tr><tr><td>Memory</td><td>Minimum 16GiB</td></tr><tr><td>Hard Drive</td><td>Minimum 100GiB available hard disk space</td></tr></tbody></table>
+
+### Prerequisites
+
+Before deploying Katalon Platform On-Premises, the following prerequisites need to be met:
+
+-   A physical or virtual server that meets the System Requirements.
+
+-   Docker and Docker Compose installed on the target server. If Docker and Docker Compose are not available via your Linux server's package manager, please review the instructions for manual install.
+
+    -   To install Docker for Linux, view Docker's guide here: [Install Docker Desktop on Linux](https://docs.docker.com/desktop/install/linux-install/) or [Install Docker Engine](https://docs.docker.com/engine/install/).
+
+    -   To install Docker Compose for Linux, see Docker's guide here: [Install Docker Compose](https://docs.docker.com/compose/install/).
+-   A Postgres 14.3.x Database Server with [EXTENSION](https://www.postgresql.org/docs/current/pgstatstatements.html): pg\_stat\_statements
+
+
+### Install the Katalon Platform On-Premises License Server
+
+
+:::note
+
+-   Ensure that your environment meets all of the System Requirements and Prerequisites outlined above.
+
+
+:::
+
+There are two package plans for the On-Premises License Server:
+
+-   License Server only;
+
+-   License Server with Katalon Platform.
+
+
+Identify which package plan you are on and ensure that you only use the one applicable to you.
+
+## Download the Katalon On-Premises package and configure
+
+Here's how you can obtain the Katalon On-Premises package and configure it according to your needs.
+
+Start the process by contacting the Katalon Sales team at business@katalon.com and asking for the On-Premises package.
+
+1.  Receive the On-Premises package from the Katalon sales team.
+
+2.  Extract or unzip the .zip package file.
+
+3.  Open a terminal emulator \(command line\). Input this code:
+
+    ```
+    mkdir -p /katalon/
+    cp katalon-op.zip /katalon/
+    cd /katalon/
+    unzip katalon-op.zip
+    ```
+
+4.  Go back to the unzipped folder \(named katalon-op\). It should contain these files:
+
+    ```
+    cd /katalon/katalon-op/
+    ls -la
+    -rw-r--r--  .env
+    -rw-r--r--  docker-compose.yml
+    -rw-r--r--  images_2.1.0.tar.gz
+    -rw-r--r--  katalon-op.crt
+    -rw-r--r--  katalon-op.key
+    ```
+
+5.  Run the command below to load the Docker image.
+
+    ```
+    docker load < images_2.1.0.tar.gz
+    docker images
+    ```
+
+6.  Open and reconfigure the .env file. It should contain the following:
+
+    ```
+    ### Katalon-OP env
+    
+    DB_HOST=<database_hostname>
+    DB_PORT=5432
+    DB_USERNAME=postgres
+    DB_PASSWORD=<database_password>
+    
+    # License Server configs
+    ADMIN_EMAIL=<email>
+    ADMIN_PASSWORD=<password>
+    LICENSE_SERVER_URL=https://admin.kata-op.com
+    
+    # TestOps configs (ignored without testops profile)
+    TESTOPS_FILE_STORAGE_PATH=/opt/testops-data
+    TESTOPS_SERVER_URL=https://testops.kata-op.com
+    
+    # HTTPS config
+    HTTPS_PORT=443
+    CERT_PATH=./katalon-op.crt
+    KEY_PATH=./katalon-op.key
+    KEY_PASSPHRASE=
+    ```
+
+7.  Make sure you create a folder for **TESTOPS\_FILE\_STORAGE\_PATH**. For example, if your preferred configuration is **TESTOPS\_FILE\_STORAGE\_PATH=/opt/testops\_data**, then create folder "/opt/testops\_data". Run the code below to do so.
+
+    ```
+    mkdir /opt/testops_data
+    chmode 755 /opt/testops_data
+    ```
+
+8.  Make sure you have two PostgreSQL databases with name: k1, kit
+
+9.  Copy your SSL cert and key to the Katalon On-Premises folder.
+
+    
+    :::note
+
+    -   If you are running the License Server with Katalon Platform, then you need to run with two sub-domains \(ex: **admin.my-domain.com**, **testops.my-domain.com**\) and Wildcard SSL.
+
+    :::
+
+    Run the code below to copy your SSL cert:
+
+    ```
+    cp my-domain.crt /katalon/katalon-op/my-domain.crt
+    cp my-domain.key /katalon/katalon-op/my-domain.key
+    ```
+
+10. Update the .env file with your information.
+
+    1.  Replace **admin.kata-op.com** and **testops.kata-op.com** with your domain.
+
+        For example:
+
+        <code>DB&#95;HOST=10.10.20.5</code>
+
+        <code>DB&#95;PASSWORD=adminpasswdsql@!!!</code>
+
+        <code>LICENSE&#95;SERVER&#95;URL=https://admin.my-domain.com</code>
+
+        <code>TESTOPS&#95;SERVER&#95;URL=https://testops.my-domain.com</code>
+
+        <code>TESTOPS&#95;FILE&#95;STORAGE&#95;PATH=/opt/testops&#95;data</code>
+
+        <code>ADMIN&#95;EMAIL=admin@katalon-op.local</code>
+
+        <code>ADMIN&#95;PASSWORD=adminpasswd@!!!</code>
+
+        <code>CERT&#95;PATH=./my-domain.crt</code>
+
+        <code>KEY&#95;PATH=./my-domain.key</code>
+
+11. Run the corresponding command below to start the application. Ensure to use the one that aligns with your plan.
+
+    1.  **Start Katalon On-Premises, License Server only:**
+
+        ```
+        cd /katalon/katalon-op/
+        docker-compose up -d
+        ```
+
+    2.  **Start Katalon On-Premises, License Server with Katalon Platform:**
+
+        ```
+        cd /katalon/katalon-op/
+        docker-compose --profile testops up -d
+        ```
+
+
+After these steps, activate your license.
+
+## Activate the On-Premises license
+
+In order to begin using your Katalon On-Premises license, you must activate it by following the steps below.
+
+1.  Access the admin homepage on the browser. For example, if your LICENSE\_SERVER\_URL is **https://admin.my-domain.com**, then enter the URL: **https://admin.my-domain.com/**
+
+    1.  Wait for Init DB to complete. It takes around 3 to 5 minutes.
+
+    2.  The screen automatically redirects to **https://admin.my-domain.com/katone/activate-license**
+
+2.  Copy your **Machine ID** to generate your License Key.
+
+3.  Click **Choose File**.
+
+4.  Open your License Key file, and click **Activate**.<img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/Katalon-Platform-On-Premises/On-Premises-deployment-guide-march-2023/4_activate_license_step_3_.png" alt="The On-Premises license activation screen" />
+
+5.  Log in with your username and password. Make sure to use the same credentials in the .env file configured previously. <img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/Katalon-Platform-On-Premises/On-Premises-deployment-guide-march-2023/4_activate_license_step_5.png" alt="Katalon On-Premises' sign-in screen" />
+
+
+Signing in will bring you to the homepage. This confirms that you have activated your license successfully.<img src="/doc_images/Documents/Administer/Katalon_Platform_Packages/Katalon-Platform-On-Premises/On-Premises-deployment-guide-march-2023/4_katalon_op_homepage.png" />
+
+## Access the Katalon Platform
+
+To access the Katalon Platform on a browser, you need to manually enter a URL.
+
+1.  Type the name of your TESTOPS\_SERVER\_URL in your browser.
+
+    1.  For example, if your TESTOPS\_SERVER\_URL is **https://testops.my-domain.com**, then enter the URL: **https://testops.my-domain.com**.
+
+
+This will bring you to the homepage of the On-Premises Katalon Platform.
+
+## Stop Katalon On-Premises
+
+
+:::note
+
+Running these commands will **stop and remove**all Docker containers in your server. It **will not**remove any data in the folder **TESTOPS\_FILE\_STORAGE\_PATH** and your database.
+
+:::
+
+Ensure to use the command appropriate for your package plan.
+
+1.  To stop Katalon On-Premises License Server only, run the following command:
+
+    ```
+    cd /katalon/katalon-op/
+    docker-compose down
+    ```
+
+2.  To stop Katalon On-Premises License Server with Katalon Platform, run the following command:
+
+    ```
+    cd /katalon/katalon-op/
+    docker-compose --profile testops down
+    ```
+
+
+Running either command successfully will stop Katalon's On-Premises from running.
+
+## Troubleshooting and support for Katalon On-Premises
+
+If you are having trouble with the On-Premises plan, contact Katalon.
+
+You can contact Katalon directly through your Katalon Partner or at business@katalon.com for any installation or configuration issues you encounter. Our team will work with you directly to resolve any issues.
+
+1.  In order to provide the highest level of customer support, the support team may request certain commands to be executed in order to generate telemetry, utilization, and log data. This will be worked on with you directly.

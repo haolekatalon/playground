@@ -1,0 +1,59 @@
+---
+id: concept-e14dad87-2c3f-4808-8e62-c119f2e19251
+slug: /create-tests/create-test-cases/statements/exception-handling-statements
+---
+
+# Exception Handling statements
+
+
+:::note
+
+-   Once a test step is added as any of the control statements, it is not allowed to change into another keyword.
+
+
+:::
+
+## In Manual view
+
+1.  Open a test case in **Manual** view.
+
+2.  Click on the drop-down icon of the **Add** button, then choose **Exception Handling Statements**.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/statements/exception-handling-statements.png" width={500} alt="exception handling statement" />
+
+3.  To add a keyword under a statement, select that statement, then click **Add**. A test step is created under that statement.
+
+    <img src="https://github.com/katalon-studio/docs-images/raw/master/katalon-studio/docs/statements/exception-handling.png" alt="exception handling statements in manual view" />
+
+    Refer to the following table for the usage of each statement:
+
+    <table><tr><th>Statement</th><th>Description</th></tr><tbody><tr><td>Try</td><td>This statement indicates that all steps within is monitored by exception handlers.</td></tr><tr><td>Throw</td><td>Some code must throw an exception before you can <strong>Catch</strong> an exception. Regardless of what code throws the exception, it always involves the <strong>Throw</strong> statement.</td></tr><tr><td>Catch</td><td>When there is any issue occurred during the execution of the <strong>Try</strong> block, Katalon Studio executes all steps within.</td></tr><tr><td>Finally</td><td>This is the last part of the <strong>Try-Catch-Finally</strong></td></tr>    </tbody></table>
+
+
+## In Script view
+
+The **Script** view of test cases allows you to programmatically define and handle exceptions using Groovy or Java language. For more details about exception handling in Groovy, refer to this Groovy documentation: [Try - Catch - Finally](http://groovy-lang.org/semantics.html#_try_catch_finally).
+
+For example:
+
+```
+   try {
+        WebUI.openBrowser('')
+
+        WebUI.navigateToUrl('katalon.com')
+
+        if (WebUI.getText(findTestObject('Object Repository/txt_singin')).length() < 0) {
+            throw new com.kms.katalon.core.exception.StepFailedException('Value required')
+        }
+    }
+    catch (StepErrorException e) {
+        this.println(e)
+    } 
+    catch (Exception e) {
+        this.println("General issue occurs.")
+    } 
+    finally { 
+        this.println("Navigate to a page.")
+    }
+
+```

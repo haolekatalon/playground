@@ -1,0 +1,88 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-b9c85e00-4e5f-4ab5-8ee4-57e98202314e
+slug: /create-tests/manage-projects/project-settings/library-management-in-katalon-studio
+---
+
+# Library management in Katalon Studio
+
+Katalon Studio allows using external Java <code>.jar</code> libraries either through project settings or adding them to a designated folder. You can leverage this to extend the capabilities of Katalon Studio and handle specific situations when needed.
+
+This document shows you ways to add external libraries to Katalon Studio and replace the built-in libraries with the external ones in a test project.
+
+## Add external libraries to a project
+
+You can add external libraries to a Katalon Studio project in three different ways:
+
+-   Use the Gradle plugin.
+-   Go to Library Management settings of a project.
+-   Copy and paste a library <code>.jar</code> file to the Drivers folder of a project.
+
+### Use Gradle in Katalon Studio
+
+-   Katalon Studio supports automatically downloading libraries from Maven repositories using the Gradle plugin. You can refer to our GitHub repository here: [Katalon Studio Gradle plugin](https://github.com/katalon-studio/gradle-plugin).
+
+
+### Use project settings
+
+To add external libraries in project settings, do as follows:
+
+1.  In Katalon Studio, go to **Project** &gt; **Settings** &gt; **Library Management**.
+
+    For Katalon Studio versions before 7.8.0, go to **Project** &gt; **Settings** &gt; **External Library**.
+
+2.  In **Library Management**, click **Add** to browse your <code>.jar</code> file\(s\) \(and its dependencies if any\).
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Libraries_Management/Images/KS-LIBRARY-Add-external-library.png" width={500} alt="Add external libraries" />
+
+    To remove an added external library, select a library and click **Remove** &gt; **OK**.
+
+3.  Click **Apply and Close** to save the settings.
+
+
+After saving the settings, Katalon Studio will add the library file\(s\) to the project **Drivers** folder and load the libraries.
+
+<img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Libraries_Management/Images/KS-LIBRARY-View-add-external-library-in-folder.png" width={500} alt="Libraries added in the Drivers folder" />
+
+### Copy and paste a library .jar file to the Drivers folder
+
+1.  Copy the <code>.jar</code> file \(and its dependencies, if any\) you want to add to the project.
+
+2.  Go to your project folder, select the **Drivers** folder and paste the <code>.jar</code> file.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Libraries_Management/Images/ks-paste-file-in-drivers.png" width={500} alt="Manually add the library" />
+
+3.  Close and re-open the project in Katalon Studio to reload the class paths.
+
+
+When your <code>.jar</code> library file is recognized by Katalon Studio, you should be able to use it.
+
+## Exclude built-in libraries
+
+-   An active Katalon Studio Enterprise license.
+-   Katalon Studio version 7.8.0 onwards.
+
+
+The **Exclude built-in libraries** feature allows you to remove built-in libraries stored in the <code>.classpath</code> file of a project folder. This feature applies to all libraries in the <code>.classpath</code> file, excluding the following:
+
+-   <code>com.kms.katalon.&lt;.jar</code>
+-   <code>selenium-server-standalone-3.141.59.jar</code>
+-   <code>poi-3.17.jar</code>
+-   <code>poi-ooxml-3.17.jar</code>
+-   <code>poi-ooxml-schemas-3.17.jar</code>
+-   <code>java-client-7.0.0.jar</code>
+-   <code>io.cucumber.&lt;.jar</code>
+
+Removing the above libraries may cause failure of the relevant features.
+
+You can also replace the excluded built-in library with an external one for flexible libraries usage in a test project.
+
+1.  In Katalon Studio, go to **Project** &gt; **Settings** &gt; **Library Management**.
+
+2.  In the **Exclude the following built-in libraries** section, click **Add** to add a built-in library you want to remove.
+
+3.  In the **External Libraries** section, click **Add** to browse an external library to replace the excluded one.
+
+    <img src="/doc_images/Documents/Create_tests/Manage_Projects/Project_Settings/Libraries_Management/Images/KS-Exclude-the-library.png" alt="Exclude libraries" />
+
+4.  Click **Apply and Close**.

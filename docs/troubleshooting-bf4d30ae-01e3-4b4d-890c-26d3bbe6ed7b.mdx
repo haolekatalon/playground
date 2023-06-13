@@ -1,0 +1,27 @@
+---
+id: troubleshooting-bf4d30ae-01e3-4b4d-890c-26d3bbe6ed7b
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/web-element-not-found-exception
+---
+
+# Web element not found exception
+
+When you encounter the following exception: <code>com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id ... not found.</code>
+
+There are two possible causes:
+
+This can be caused by incorrect XPath locators.
+
+1.  Open your page using Chrome.
+
+2.  Right-click on your desired test object and select **Inspect**.
+
+3.  In the **Elements** tab of **DevTool**, right-click on your target object and select **Copy** &gt; **Copy XPath**.
+
+4.  Open your test object in Katalon Studio and update your XPath property with the copied value.
+
+    Alternatively, You can also try optimizing your test object properties by referring to this document here: [Optimize object identification and tools.](/create-tests/test-objects/web-test-objects/optimizing-object-identification-and-tools-in-katalon-studio)
+
+
+The exception can also be caused by outdated WebDriver.
+
+1.  On the main toolbar, select **Tool** &gt; **Update WebDrivers** &gt; select the corresponding browser in the drop-down list.

@@ -1,0 +1,29 @@
+---
+id: troubleshooting-55c25387-f617-4a87-95b2-a882ed88970b
+slug: /create-tests/troubleshooting-for-test-creation/troubleshoot-web-automated-testing/firefox-browser-alert-is-not-getting-popped-up
+---
+
+# Firefox Browser Alert is not getting popped up
+
+During automation testing, the expected alert is not getting popped up in Firefox browser.
+
+By default the preference variable <code>dom.disable&#95;beforeunload</code> has the value <code>true</code> which blocks the popup.
+
+1.  We need to set the value of preference variable <code>dom.disable&#95;beforeunload</code> to <code>false</code> before launching the Firefox browser.
+
+    ```
+    String browser = DriverFactory.getExecutedBrowser().getName()
+        if (browser.equalsIgnoreCase('FIREFOX_DRIVER')) {              
+          System.setProperty("webdriver.gecko.driver", 
+            DriverFactory.getGeckoDriverPath());
+          FirefoxOptions firefoxOptions = new FirefoxOptions();
+          firefoxOptions.addPreference("dom.disable_beforeunload", false);  // only for firefox browser special preference is needed.
+          WebDriver driver = new FirefoxDriver(firefoxOptions);
+          driver.navigate().to(url);
+          DriverFactory.changeWebDriver(driver)
+        }else {
+          WebUI.openBrowser(url)
+        }
+    ```
+
+    Here the desired capabilities option in Katalon doesn't work because the constructor of the Firefox driver accepts only Firefox options as input.

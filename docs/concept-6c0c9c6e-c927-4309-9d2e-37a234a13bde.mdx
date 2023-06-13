@@ -1,0 +1,43 @@
+---
+id: concept-6c0c9c6e-c927-4309-9d2e-37a234a13bde
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/mobile-keywords/mobile-toggle-wifi
+---
+
+# \[Mobile\] Toggle Wifi
+
+
+:::note
+
+-   Katalon Studio version 8.3.0 onwards.
+
+:::
+
+## Description
+
+Simulate toggling Wifi on/off on mobile devices.
+
+
+:::note
+
+-   This keyword supports real iOS devices and Android emulators.
+-   On iOS devices, **Access Within Apps** must be enabled. To enable the feature, refer to the following Apple document: [Edit Control Center on your iPhone, iPad, and iPod touch](https://support.apple.com/en-us/HT211812).
+
+:::
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>mode</td><td>String</td><td>Yes</td><td>["no", "off", "false"] to turn off Wifi; ["yes", "on", "true"] to turn on Wifi.</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>No</td><td>Specify failure handling schema to determine whether the execution should be allowed to continue or stop. Refer to: <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >Failure Handling</a>.</td></tr></tbody></table>
+
+## Example
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase import static com.kms.katalon.core.testdata.TestDataFactory.findTestData import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile import com.kms.katalon.core.model.FailureHandling as FailureHandling import com.kms.katalon.core.testcase.TestCase as TestCase import com.kms.katalon.core.testdata.TestData as TestData import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW import com.kms.katalon.core.testobject.TestObject as TestObject import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows import internal.GlobalVariable as GlobalVariable import org.openqa.selenium.Keys as Keys 
+
+'Start application on the current selected Android device' Mobile.startApplication('/Users/katalon/Downloads/Authentication.apk', true) 
+
+'Turn on Wifi on the device' 
+Mobile.toggleWifi('true') 
+
+'Close application on the current selected Android device' 
+Mobile.closeApplication()
+```

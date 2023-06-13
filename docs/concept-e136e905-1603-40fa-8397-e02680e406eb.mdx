@@ -1,0 +1,60 @@
+---
+author: Yen Nguyen <yen.nguyen@katalon.com>
+id: concept-e136e905-1603-40fa-8397-e02680e406eb
+slug: /create-tests/create-test-cases/statements/define-method
+---
+
+# Define Method
+
+A method consists of instructions to perform a specific task. Defined methods can be called to use later. For more details regarding how to call a defined method, refer to [Method Call Statements](/create-tests/create-test-cases/statements/method-call-statements).
+
+
+:::note
+
+-   Once a test step is added as any of the control statements, it is not allowed to change into another keyword.
+
+
+:::
+
+## In manual view
+
+1.  Open a test case in **Manual** view. Click on the drop-down icon of the Add button, then choose **Method**.
+
+2.  To add a keyword under a statement, select that statement, then click **Add** . A test step is created under that statement.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/method-statement.png" width={300} alt="Define method" />
+
+    The Method builder dialog appears.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/method-builder.png" width={500} alt="Method builder dialog" />
+
+3.  Specify the required information for your method as follows:
+
+    <table><tr><th>Field</th><th>Description</th></tr><tbody><tr><td>Name</td><td>The name of the method.</td></tr><tr><td>Return type</td><td>The object type that this method returns after its execution.</td></tr><tr><td>Setup, Teardown options</td><td>Select any checkbox to indicate whether it should be a setUp or tearDown method. Refer to <a href="/create-tests/create-test-cases/statements/statements-in-katalon-studio-overview" >SetUp() and TearDown() in Manual view</a> for more details.</td></tr><tr><td>Parameter list</td><td><p>Any parameter needed to pass into the method.</p> <p>By clicking on the <strong>Insert</strong> button, a row will be appended into the grid. You can then change the type and name of the parameter by double-clicking and editing them.</p></td></tr>    </tbody></table>
+
+4.  After configuring the method details, click **OK**.
+
+    A test step representing the recently defined method is added to the test case. You can switch to the script view to define content for the method.
+
+    <img src="/doc_images/Documents/Create_tests/Create_Test_Cases/Statements/Images/830-setup-teardown-manual.png" alt="Define method steps" />
+
+5.  When you're done, save the test case.
+
+
+## In script view
+
+The **Script** view of a test case allows you to programmatically define and handle methods using Groovy or Java language. For details about methods in Groovy, refer to Groovy documentation:  [Methods](http://groovy-lang.org/structure.html#_methods) .
+
+For example:
+
+-   **Method declaration** :
+
+    ```
+    Integer myMethod(def param1, def param2) { return param1 + param2 }
+    ```
+
+-   **Method call** :
+
+    ```
+    myVar = myMethod1(varA, varB)
+    ```

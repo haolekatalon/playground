@@ -1,0 +1,53 @@
+---
+id: concept-a2deee03-a79c-489d-bf22-0e515359a4b1
+slug: /create-tests/keywords/keyword-description-in-katalon-studio/web-service-keywords/ws-verify-response-status-code-in-range
+---
+
+# \[WS\] Verify Response Status Code In Range
+
+## Description
+
+Verify status code valid in a range of status codes in the returned data from a web service call.
+
+Keyword name: <code>WS.verifyResponseStatusCodeInRange</code>
+
+## Parameters
+
+<table><tr><th>Parameter</th><th>Parameter Type</th><th>Mandatory</th><th>Description</th></tr><tbody><tr><td>responseObject</td><td>ResponseObject</td><td>Required</td><td>The object that represents an HTTP response</td></tr><tr><td>fromStatusCode</td><td>int</td><td>Required</td><td>From status code</td></tr><tr><td>toStatusCode</td><td>int</td><td>Required</td><td>To status code</td></tr><tr><td>flowControl</td><td>FailureHandling</td><td>Optional</td><td>Specify <a href="/maintain/configure-failure-handling-settings-in-katalon-studio" >failure handling</a> schema to determine whether the execution should be allowed to continue or stop.</td></tr></tbody></table>
+
+## Returns
+
+-   <code>true</code> if the response status code is the same as the expected status code, otherwise <code>false</code>.
+
+## Example
+
+You want to verify if the response from "REST\_Status Codes/POST\_201" object returns a status code from 200 to 400.
+
+```
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpointimport static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
+import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+'Send a request and returns its response'
+def response = WS.sendRequest(findTestObject('REST_Status Codes/POST_201'))
+
+'Verify if the response from "REST_Status Codes/POST_201" object returns a status code from 200 to 400'
+WS.verifyResponseStatusCodeInRange(response, 200, 400)
+
+```

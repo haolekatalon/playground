@@ -1,0 +1,69 @@
+---
+id: concept-aeb8312c-1351-45a3-b601-0ab83ae472dc
+slug: /plugins-and-add-ons/katalium-framework/other-utilities-in-katalium-framework
+---
+
+# Other Utilities in Katalium Framework
+
+## Parameterization
+
+TestNG provides a comprehensive mechanism for customizing parameters, which can be referred [here](https://testng.org/doc/documentation-main.html#parameters).
+
+In Katalium Framework, you can set default values for parameters in the file <code>kata-default.properties</code> \([example](https://github.com/katalon-studio/katalium-sample/blob/master/src/test/resources/kata-default.properties)\), or using at runtime using Java's system properties, e.g. <code>mvn clean test -DkataBrowser=firefox</code>. This is very handy when you do not want reconfigure unchanged parameters.
+
+Default values of parameters can be accessed using the helper <code>com.katalon.kata.helper.ParameterHelper</code>.
+
+## Logging
+
+Katalium Framework provides the class <code>com.katalon.kata.helper.LogHelper</code> to help retrieve <code>org.slf4j.Logger</code> instances with correct class names.
+
+```
+private static final Logger log = LogHelper.getLogger();
+
+```
+
+```
+log.info("Open CURA home page.");
+
+```
+
+Sample output:
+
+```
+09:26:29.475 [main] INFO  com.katalon.kata.testng.TestTemplate - Make appointment with parameters
+09:26:29.475 [main] INFO  com.katalon.kata.testng.TestTemplate - Facility Hongkong CURA Healthcare Center
+09:26:29.476 [main] INFO  com.katalon.kata.testng.TestTemplate - VisitDate 27/12/2016
+09:26:29.476 [main] INFO  com.katalon.kata.testng.TestTemplate - Comment Please make appointment as soon as possible.
+09:26:29.476 [main] INFO  c.katalon.kata.selenium.PageTemplate - Open CURA home page.
+09:26:38.528 [main] INFO  c.katalon.kata.selenium.PageTemplate - Make appointment.
+
+```
+
+Logs will be printed out on the console and in TestNG XML reports.
+
+## Capture WebDriver actions
+
+You can attach a custom <code>org.openqa.selenium.support.events.AbstractWebDriverEventListener</code> to capture WebDriver events \([source code](https://github.com/katalon-studio/katalium-sample/blob/master/src/test/java/com/katalon/kata/sample/listener/EventListener.java)\):
+
+```
+package com.katalon.kata.sample.listener;
+
+import com.katalon.kata.webdriver.WebDriverPool;
+import org.testng.IExecutionListener;
+
+public class EventListener implements IExecutionListener {
+  @Override
+  public void onExecutionStart() {
+    WebDriverPool webDriverPool = WebDriverPool.get();
+    webDriverPool.setAfterCreateDriverListener(driver -> {
+      driver.register(new WebDriverEventListener());
+    });
+  }
+
+  @Override
+  public void onExecutionFinish() {
+
+  }
+}
+
+```
